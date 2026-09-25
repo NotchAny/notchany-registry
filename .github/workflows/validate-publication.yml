@@ -1,0 +1,34 @@
+name: 校验并合入发布产物
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        type: string
+        required: true
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+  actions: write
+concurrency:
+  group: market-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/validate-publication.mjs
+        env:
+          PR_NUMBER: ${{ inputs.pr_number }}
+          MERGE_PUBLICATION: '1'
+          GITHUB_TOKEN: ${{ github.token }}
+          MARKET_API_BASE: ${{ vars.MARKET_API_BASE }}
+          MARKET_INTERNAL_HMAC_SECRET: ${{ secrets.MARKET_INTERNAL_HMAC_SECRET }}

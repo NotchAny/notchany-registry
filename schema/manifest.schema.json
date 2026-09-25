@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/NotchAny/notchany-registry/main/schema/manifest.schema.json",
+  "title": "NotchAny registry package manifest",
+  "description": "包目录 manifest.json 的形状（manifest_version: 1）。names/summaries/descriptions 都是 {语言码: 文案} map，语言码为宽松 BCP-47（如 zh-Hans、en）。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifest_version", "names", "summaries", "version", "license"],
+  "properties": {
+    "manifest_version": {
+      "const": 1,
+      "description": "manifest 格式版本，当前固定 1"
+    },
+    "names": {
+      "type": "object",
+      "description": "显示名（语言码 → 名称）",
+      "minProperties": 1,
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "summaries": {
+      "type": "object",
+      "description": "一句话简介（语言码 → 文案，每条 ≤80 字符）",
+      "minProperties": 1,
+      "additionalProperties": { "type": "string", "minLength": 1, "maxLength": 80 }
+    },
+    "descriptions": {
+      "type": "object",
+      "description": "详细说明（语言码 → markdown）",
+      "additionalProperties": { "type": "string" }
+    },
+    "version": {
+      "type": "string",
+      "description": "包版本（semver 三段式），更新包时必须严格递增",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "tags": {
+      "type": "array",
+      "description": "分类标签，最多 5 项",
+      "maxItems": 5,
+      "items": { "type": "string", "pattern": "^[a-z0-9-]{1,24}$" }
+    },
+    "homepage": {
+      "type": "string",
+      "description": "主页 URL（可选）",
+      "format": "uri"
+    },
+    "license": {
+      "type": "string",
+      "description": "SPDX 许可证标识（如 MIT）",
+      "minLength": 1
+    },
+    "min_app_version": {
+      "type": "string",
+      "description": "要求的最低 NotchAny 版本（可选，semver 三段式）",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    }
+  }
+}

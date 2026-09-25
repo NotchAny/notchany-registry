@@ -1,0 +1,45 @@
+name: 发布 index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "packages/**"
+  workflow_dispatch:
+
+concurrency:
+  group: market-publication
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 校验并准备已发布快照
+        run: node scripts/publish-approved.mjs
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_ACTOR_ID: ${{ github.actor_id }}
+          MARKET_API_BASE: ${{ vars.MARKET_API_BASE }}
+          MARKET_INTERNAL_HMAC_SECRET: ${{ secrets.MARKET_INTERNAL_HMAC_SECRET }}
+
+      - name: 创建受控发布 PR 并调度合入前检查
+        run: node scripts/open-publication-pr.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

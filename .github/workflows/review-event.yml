@@ -1,0 +1,10 @@
+name: 市场 Review 事件
+on:
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+permissions: {}
+jobs:
+  event:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'true'

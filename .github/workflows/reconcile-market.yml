@@ -1,0 +1,28 @@
+name: 对账 Market 归属
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 5 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 对账 Registry 与 Market D1
+        run: npm run reconcile:market
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          MARKET_API_BASE: ${{ vars.MARKET_API_BASE }}
+          MARKET_INTERNAL_HMAC_SECRET: ${{ secrets.MARKET_INTERNAL_HMAC_SECRET }}

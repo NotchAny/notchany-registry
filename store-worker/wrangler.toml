@@ -1,0 +1,13 @@
+# 公开 Store 与账号服务分开部署。生产域在影子地址验收后再单独绑定。
+name = "notchany-store"
+main = "worker.js"
+compatibility_date = "2026-09-04"
+workers_dev = true
+preview_urls = true
+
+[assets]
+directory = "../site/dist"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"
+run_worker_first = true

@@ -1,0 +1,10 @@
+# NotchAny 市场下载计数 Worker 的 wrangler 配置。
+# 部署前先创建 KV namespace 并把 id 填进来（见 worker/README.md）。
+
+name = "notchany-market"
+main = "worker.js"
+compatibility_date = "2026-08-31"
+
+[[kv_namespaces]]
+binding = "COUNTS"
+id = "686acd0e985b4967b2cda13c5b6764ab"

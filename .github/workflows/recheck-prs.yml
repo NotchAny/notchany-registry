@@ -1,0 +1,60 @@
+name: 重验市场权限
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pull-requests: read
+  statuses: write
+concurrency:
+  group: market-recheck-feed
+  cancel-in-progress: false
+jobs:
+  pending:
+    runs-on: ubuntu-latest
+    outputs:
+      prs: ${{ steps.feed.outputs.prs }}
+      ids: ${{ steps.feed.outputs.ids }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: feed
+        run: node scripts/recheck-prs.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          MARKET_API_BASE: ${{ vars.MARKET_API_BASE }}
+          MARKET_INTERNAL_HMAC_SECRET: ${{ secrets.MARKET_INTERNAL_HMAC_SECRET }}
+  check:
+    needs: pending
+    if: needs.pending.outputs.prs != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        pr: ${{ fromJSON(needs.pending.outputs.prs) }}
+    uses: ./.github/workflows/trusted-pr-check.yml
+    with:
+      pr_number: ${{ matrix.pr }}
+    secrets: inherit
+  acknowledge:
+    needs: [pending, check]
+    if: always() && needs.pending.result == 'success' && (needs.check.result == 'success' || needs.check.result == 'skipped')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/recheck-prs.mjs
+        env:
+          RECHECK_ACK: ${{ needs.pending.outputs.ids }}
+          MARKET_API_BASE: ${{ vars.MARKET_API_BASE }}
+          MARKET_INTERNAL_HMAC_SECRET: ${{ secrets.MARKET_INTERNAL_HMAC_SECRET }}

@@ -1,0 +1,26 @@
+name: PR 校验
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, edited]
+  workflow_run:
+    workflows: [市场 Review 事件]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: read
+  statuses: write
+
+jobs:
+  validate:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.pull_requests[0].number
+    uses: ./.github/workflows/trusted-pr-check.yml
+    with:
+      pr_number: ${{ format('{0}', github.event.pull_request.number || github.event.workflow_run.pull_requests[0].number || inputs.pr_number) }}
+    secrets: inherit
