@@ -23,60 +23,103 @@ const packages = ["cpu", "image", "wifi"].map((slug, index) => ({
   screenshots: [],
 }));
 
-test("home hero renders an interactive Mac desktop with live clock targets", () => {
-  const html = homePage({
-    lang: "zh",
-    packages,
-    featuredIDs: packages.map((item) => item.package_id),
-    countsURL: "",
-    css: "",
-    js: "",
-  });
+const home = (lang, overrides = {}) => homePage({
+  lang,
+  packages,
+  featuredIDs: packages.map((item) => item.package_id),
+  countsURL: "",
+  css: "",
+  js: "",
+  landingAssets: "assets/landing/0123456789",
+  ...overrides,
+});
 
-  for (const marker of ["macbook", "mac-desktop", "keyboard-deck", "mac-menu-date", "mac-menu-time", "demo-notch"]) {
-    assert.match(html, new RegExp(`(?:class|id)=\"[^\"]*${marker}`));
-  }
-  assert.equal((html.match(/class="demo-tray-item"/g) || []).length, 3);
-  assert.equal((html.match(/class="mac-key"/g) || []).length, 77);
+test("home leads with the product landing sections before the Store", () => {
+  const html = home("zh");
+
+  assert.doesNotMatch(html, /mac-scene|macbook|demo-notch|mac-key|keyboard-deck/);
   assert.match(html, /<link rel="canonical" href="https:\/\/notchany\.com\/">/);
   assert.match(html, /href="https:\/\/account\.notchany\.com\/account\?lang=zh"/);
-  assert.equal((html.match(/assets\/app-icon\.png\?v=balanced-20260925/g) || []).length, 4);
+  const order = ["lp-hero", 'id="film"', 'id="f-drop"', 'id="f-publish"', 'id="buy"', 'id="faq"', 'id="store"', "site-footer"]
+    .map((marker) => html.indexOf(marker));
+  assert.ok(order.every((index) => index > 0), order.join(","));
+  assert.deepEqual([...order].sort((x, y) => x - y), order);
 });
 
-test("each hero tray icon links to its package detail page", () => {
-  const html = homePage({
-    lang: "en",
-    packages,
-    featuredIDs: packages.map((item) => item.package_id),
-    countsURL: "",
-    css: "",
-    js: "",
-  });
-
-  for (const item of packages) {
-    assert.match(html, new RegExp(`href=\"\.\./en/packages/${item.package_id}/\"`));
-    assert.match(html, new RegExp(`src=\"\.\./assets/${item.icon_path.replaceAll("/", "\\/")}\"`));
+test("home trial and buy calls to action use the download guide and the account buy page", () => {
+  for (const lang of ["zh", "en"]) {
+    const html = home(lang);
+    assert.match(html, new RegExp(`href="https://account\\.notchany\\.com/account/buy\\?lang=${lang}"`));
+    assert.match(html, new RegExp(`class="lp-btn primary" href="${lang === "zh" ? "" : "\\.\\./en/"}download/"`));
   }
 });
 
-test("home navigation uses icon controls, a language menu, and two synchronized search targets", () => {
-  const html = homePage({
-    lang: "zh",
-    packages,
-    featuredIDs: packages.map((item) => item.package_id),
-    countsURL: "",
-    css: "",
-    js: "",
-  });
+test("home film loads only on demand and loops use per-language hashed assets", () => {
+  const zh = home("zh");
+  const en = home("en");
 
-  assert.equal((html.match(/class="nav-icon-button/g) || []).length, 4);
+  assert.match(zh, /id="film-video"[^>]*preload="none"[^>]*data-src="assets\/landing\/0123456789\/video\.mp4"/);
+  assert.match(en, /id="film-video"[^>]*preload="none"[^>]*data-src="\.\.\/assets\/landing\/0123456789\/video-en\.mp4"/);
+  assert.doesNotMatch(zh, /id="film-video"[^>]* src=/);
+  assert.match(zh, /src="assets\/landing\/0123456789\/hero-poster\.webp"/);
+  for (const name of ["drop", "builtins", "music", "notify", "effects", "agent", "ai", "customize", "publish"]) {
+    assert.match(zh, new RegExp(`<video data-loop muted loop playsinline preload="none"[^>]+poster="assets/landing/0123456789/loops/zh/${name}\\.webp" src="assets/landing/0123456789/loops/zh/${name}\\.mp4"`));
+    assert.match(en, new RegExp(`src="\\.\\./assets/landing/0123456789/loops/en/${name}\\.mp4"`));
+  }
+});
+
+test("home buy section lists device tiers without hardcoded prices", () => {
+  for (const lang of ["zh", "en"]) {
+    const html = home(lang);
+    const buy = html.slice(html.indexOf('id="buy"'), html.indexOf('id="faq"'));
+    assert.deepEqual([...buy.matchAll(/<strong>(\d+)<\/strong>/g)].map((match) => match[1]), ["1", "3", "5"]);
+    assert.equal((buy.match(/class="tier recommended"/g) || []).length, 1);
+    assert.doesNotMatch(html, /[$¥€£]\s*\d|\bUSD\b|\bCNY\b/);
+  }
+});
+
+test("home featured cards link to package detail pages", () => {
+  const html = home("en");
+
+  for (const item of packages) {
+    assert.match(html, new RegExp(`href=\"\\.\\./en/packages/${item.package_id}/\"`));
+    assert.match(html, new RegExp(`src=\"\\.\\./assets/${item.icon_path.replaceAll("/", "\\/")}\"`));
+  }
+});
+
+test("home navigation uses text section links, a language menu, and one Store search", () => {
+  const html = home("zh");
+
+  assert.match(html, /<header class="site-nav" id="site-nav" data-tone="dark">/);
+  assert.match(html, /class="nav-text optional" href="#features">功能<\/a>/);
+  assert.match(html, /class="nav-text" href="#store">Store<\/a>/);
+  assert.match(html, /class="nav-text optional" href="#buy">购买<\/a>/);
+  assert.equal((html.match(/class="nav-icon-button/g) || []).length, 2);
   assert.match(html, /id="language-toggle"[^>]+aria-haspopup="menu"[^>]+aria-expanded="false"/);
   assert.match(html, /href="" role="menuitem" lang="zh-Hans" aria-current="page">中文<\/a>/);
   assert.match(html, /href="en\/" role="menuitem" lang="en">English<\/a>/);
-  assert.equal((html.match(/data-store-search/g) || []).length, 2);
+  assert.equal((html.match(/data-store-search/g) || []).length, 1);
   assert.match(html, /id="library-search"/);
   assert.match(html, /id="result-count" aria-live="polite"/);
-  assert.match(html, /class="nav-download-button" href="download\/" aria-label="下载 App"/);
+  assert.match(html, /class="nav-download-button nav-trial" href="download\/">免费试用<\/a>/);
+});
+
+test("an empty Store hides search and points to the trial and submission", () => {
+  const html = home("zh", { packages: [], featuredIDs: [] });
+
+  assert.equal((html.match(/data-store-search/g) || []).length, 0);
+  assert.doesNotMatch(html, /id="catalog-list"/);
+  assert.match(html, /class="store-empty"/);
+  assert.match(html, /class="store-button primary" href="download\/"/);
+  assert.match(html, /"counts_url":""/);
+});
+
+test("non-home navigation keeps the Store identity and browses to the home Store section", () => {
+  const html = detailPage({ lang: "zh", item: packages[0], packages, countsURL: "", css: "", js: "" });
+
+  assert.match(html, /<strong>NotchAny<\/strong><span>Store<\/span>/);
+  assert.match(html, /class="nav-icon-button" href="\.\.\/\.\.\/\.\.\/#store"/);
+  assert.match(html, /class="nav-download-button" href="\.\.\/\.\.\/\.\.\/download\/" aria-label="下载 App"/);
 });
 
 test("detail navigation language menu preserves the package route", () => {
@@ -197,15 +240,16 @@ test("mobile detail grids keep long content inside the viewport", () => {
   assert.match(source, /\.profile-sidebar \.profile-avatar \{ width: 88px; height: 88px; border-radius: 50%; \}/);
 });
 
-test("notch intro is session-scoped and does not schedule repeating cycles", () => {
+test("landing film, loops and reveals respect reduced motion", () => {
   const source = readFileSync(new URL("../site/store.js", import.meta.url), "utf8");
+  const styles = readFileSync(new URL("../site/styles.css", import.meta.url), "utf8");
 
-  assert.match(source, /sessionStorage\.getItem\(introStorageKey\)/);
-  assert.match(source, /notchany-store-intro/);
-  assert.doesNotMatch(source, /scheduleCycle/);
+  assert.match(source, /filmVideo\.src = filmVideo\.dataset\.src/);
+  assert.match(source, /if \(!reducedMotion && "IntersectionObserver" in window\)/);
+  assert.match(styles, /\.js \.reveal \{ opacity: 1; transform: none; \}/);
 });
 
-test("pressing Enter in either search reveals the catalog", () => {
+test("pressing Enter in the Store search reveals the catalog", () => {
   const source = readFileSync(new URL("../site/store.js", import.meta.url), "utf8");
 
   assert.match(source, /event\.key !== "Enter"/);
@@ -213,7 +257,7 @@ test("pressing Enter in either search reveals the catalog", () => {
   assert.match(source, /behavior: reducedMotion \? "auto" : "smooth"/);
 });
 
-test("typing hides the hero shortcut hint so the native clear button stays usable", () => {
+test("typing hides the search shortcut hint so the native clear button stays usable", () => {
   const source = readFileSync(new URL("../site/styles.css", import.meta.url), "utf8");
 
   assert.match(source, /input:not\(:placeholder-shown\) ~ \.search-key \{ opacity: 0; \}/);

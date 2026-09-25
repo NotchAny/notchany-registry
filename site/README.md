@@ -8,8 +8,14 @@ npm run build:site
 python3 -m http.server 4173 --directory site/dist
 ```
 
-- 中文根路径与 `/en/` 英文镜像；首页提供精选、搜索、全部/最新/热门、类型/标签筛选与分页
-- 首页 MacBook 演示同步本机日期时间，刘海托盘自动开合、悬停展开，三个精选图标可直达详情；键盘支持指针与实体键盘按压反馈
+- 中文根路径与 `/en/` 英文镜像；首页先是产品落地段（首屏、宣传片、功能、购买、常见问题），
+  其后是 Store 段：精选、搜索、全部/最新/热门、类型/标签筛选与分页；⌘K 与 `/` 聚焦 Store 搜索。
+  Store 暂无作品时隐藏搜索，改为试用与提交作品入口
+- 落地素材放在 `site/assets/landing/`（宣传片 `video.mp4` / `video-en.mp4`、首屏海报、
+  `loops/<zh|en>/` 功能循环与海报，由 NotchAny 仓库 `videos/notchany-promo/tools/render-loops.mjs` 生成）；
+  构建时按内容哈希发布到 `assets/landing/<hash>/`，Worker 对其下发一年期 immutable 缓存。
+  宣传片点击后才加载，功能循环进入视口才播放，系统「减少动态效果」时停在海报帧
+- 购买入口只链到账号服务的选档页 `/account/buy`，页面不写价格
 - 首页、精选、列表和详情统一显示发布包的 `icon.png`；该文件由 NotchAny 发布向导按安装后的真实图标生成
 - `q/sort/kind/tag/page` 同步到查询参数，刷新、分享和浏览器返回可恢复
 - 详情页包含下载安装次数、双语正文、依赖/风险、Owner/维护者/贡献者、只读版本时间线；不展示可选截图，避免包之间版式不一致，
@@ -17,7 +23,7 @@ python3 -m http.server 4173 --directory site/dist
 - 全站「下载 App」进入双语下载提示页；通过 `NOTCHANY_APP_DOWNLOAD_URL` 注入正式下载地址，未配置时按钮显示准备中而不产生死链接
 - 「在 NotchAny 中打开」只打开 App 详情页，1.6 秒未唤起时自动进入下载提示页，不暗示静默安装
 - 作者主页可按全部、小组件、动作筛选，类型保留在 URL；点击作品项进入 Web 详情，右侧居中的「安装」唤起同一 App 详情与确认流程，并共享下载引导回退。
-- 无外部资源：CSS/JS 全部内联，系统字体栈，深浅色自适应
+- 无外部资源：CSS/JS 全部内联，系统字体栈；产品落地段恒为纯黑，Store 段与其余页面深浅色自适应
 - 下载计数为渐进增强：构建时通过 `NOTCHANY_COUNTS_URL` 注入 Worker 地址；失败时热门入口
   显示可重试状态，其他浏览能力不受影响。页面始终称为「下载量」。
 - Market 身份同样渐进增强：`NOTCHANY_MARKET_API_BASE` 注入 Commercial Worker 地址，页面用它
@@ -33,7 +39,8 @@ npm run build:site
 python3 -m http.server 4173 --directory site/dist
 ```
 
-验证 Cloudflare Worker 的真实 404、缓存与响应头：
+验证 Cloudflare Worker 的真实 404、缓存、响应头与视频 Range（Safari 播放 `<video>` 依赖 206，
+`python3 -m http.server` 不支持 Range）：
 
 ```bash
 npm run dev:store
