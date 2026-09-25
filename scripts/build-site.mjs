@@ -2,8 +2,9 @@
 // 生成双语 Web Store 到 site/dist/。样式与交互保持可维护的独立源文件，构建时内联，
 // 最终产物为零运行时依赖的纯静态 HTML。
 
-import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { createHash } from "node:crypto";
+import { copyFileSync, cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { basename, dirname, join } from "node:path";
 import process from "node:process";
 
 import { validateCuration } from "./site-lib.mjs";
@@ -14,6 +15,7 @@ const ROOT = process.cwd();
 const DIST = join(ROOT, "site", "dist");
 const INDEX_PATH = join(ROOT, "index", "v2", "index.json");
 const CURATION_PATH = join(ROOT, "site", "curation.json");
+const LANDING_PATH = join(ROOT, "site", "assets", "landing");
 const COUNTS_URL = process.env.NOTCHANY_COUNTS_URL?.trim() || "";
 const APP_DOWNLOAD_URL = process.env.NOTCHANY_APP_DOWNLOAD_URL?.trim() || "";
 const marketAPI = process.env.NOTCHANY_MARKET_API_BASE?.trim() || "";
@@ -66,18 +68,31 @@ function copy(relativePath) {
 }
 
 copyFileSync(join(ROOT, "site", "assets", "app-icon.png"), join(DIST, "assets", "app-icon.png"));
-copyFileSync(
-  join(ROOT, "site", "assets", "macos-desktop-wallpaper.webp"),
-  join(DIST, "assets", "macos-desktop-wallpaper.webp")
-);
+
+// 落地页视频与海报按内容哈希分目录发布，Worker 对 /assets/landing/ 下发一年期 immutable 缓存；
+// 换素材即换目录，不会命中旧缓存。
+function landingFiles() {
+  return readdirSync(LANDING_PATH, { recursive: true, withFileTypes: true })
+    .filter((entry) => entry.isFile() && !entry.name.startsWith("."))
+    .map((entry) => join(entry.parentPath, entry.name).slice(LANDING_PATH.length + 1))
+    .sort();
+}
+if (!existsSync(LANDING_PATH)) fail("缺少 site/assets/landing（落地页视频与海报）");
+const landingHash = createHash("sha256");
+for (const file of landingFiles()) {
+  landingHash.update(`${file}\0`);
+  landingHash.update(readFileSync(join(LANDING_PATH, file)));
+}
+const LANDING_ASSETS = `assets/landing/${landingHash.digest("hex").slice(0, 10)}`;
+cpSync(LANDING_PATH, join(DIST, LANDING_ASSETS), { recursive: true, filter: (source) => !basename(source).startsWith(".") });
 const histories = {};
 for (const item of packages) {
   if (item.icon_path) copy(item.icon_path);
   for (const screenshot of item.screenshots || []) copy(screenshot);
 }
 
-write("index.html", homePage({ lang: "zh", packages, featuredIDs, countsURL: COUNTS_URL, css, js }));
-write("en/index.html", homePage({ lang: "en", packages, featuredIDs, countsURL: COUNTS_URL, css, js }));
+write("index.html", homePage({ lang: "zh", packages, featuredIDs, countsURL: COUNTS_URL, css, js, landingAssets: LANDING_ASSETS }));
+write("en/index.html", homePage({ lang: "en", packages, featuredIDs, countsURL: COUNTS_URL, css, js, landingAssets: LANDING_ASSETS }));
 write("download/index.html", downloadPage({ lang: "zh", css, js, downloadURL: APP_DOWNLOAD_URL }));
 write("en/download/index.html", downloadPage({ lang: "en", css, js, downloadURL: APP_DOWNLOAD_URL }));
 for (const item of packages) {

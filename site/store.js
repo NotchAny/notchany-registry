@@ -86,7 +86,7 @@
     return `<article class="package-row">
       <img class="package-icon" src="${item.icon}" alt="" width="54" height="54">
       <div class="row-copy">
-        <div class="row-title"><h3>${escapeHTML(item.name)}</h3><span class="kind-mark">${escapeHTML(item.kind_label)}</span></div>
+        <div class="row-title"><h4>${escapeHTML(item.name)}</h4><span class="kind-mark">${escapeHTML(item.kind_label)}</span></div>
         <p class="row-summary">${escapeHTML(item.summary)}</p>
         <div class="row-meta"><a href="${escapeHTML(new URL('authors/' + encodeURIComponent(item.owner) + '/', document.querySelector('.brand').href).href)}">${escapeHTML(item.owner)}</a>${count === undefined ? "" : `<span>${formatCount(count)} ${escapeHTML(text.downloads)}</span>`}</div>
       </div>
@@ -195,7 +195,7 @@
   }
 
   const searches = [...document.querySelectorAll("[data-store-search]")];
-  const primarySearch = byId("store-search") || searches[0];
+  const primarySearch = searches[0];
   const revealCatalog = () => byId("catalog")?.scrollIntoView({
     behavior: reducedMotion ? "auto" : "smooth",
     block: "start",
@@ -236,7 +236,7 @@
     const page = event.target.closest("[data-page]");
     if (page) {
       update({ page: Number(page.dataset.page) }, "push");
-      byId("catalog").scrollIntoView({ behavior: "smooth", block: "start" });
+      byId("catalog").scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
     }
     if (event.target.closest("#clear-filters")) update({ q: "", sort: "all", kind: "all", tag: "", page: 1 }, "push");
     if (event.target.closest("#retry-counts")) loadCounts();
@@ -261,10 +261,12 @@
       languageOptions[next]?.focus();
       return;
     }
-    if ((event.key === "/" && !/input|textarea|select/i.test(document.activeElement?.tagName)) || ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k")) {
+    // 搜索框在页面下方的 Store 段里，快捷键先把它滚到视口中央再取焦
+    if (primarySearch && ((event.key === "/" && !/input|textarea|select/i.test(document.activeElement?.tagName)) || ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k"))) {
       event.preventDefault();
-      primarySearch?.focus();
-      primarySearch?.select();
+      primarySearch.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
+      primarySearch.focus({ preventScroll: true });
+      primarySearch.select();
     }
     const activeSearch = searches.includes(document.activeElement) ? document.activeElement : primarySearch;
     if (event.key === "Escape" && activeSearch && (searches.includes(document.activeElement) || state.q)) {
@@ -278,98 +280,61 @@
     render();
   });
 
-  const menuDate = byId("mac-menu-date");
-  const menuTime = byId("mac-menu-time");
-  if (menuDate && menuTime) {
-    const dateFormatter = new Intl.DateTimeFormat(locale, { month: "short", day: "numeric", weekday: "short" });
-    const timeFormatter = new Intl.DateTimeFormat(locale, { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
-    const updateClock = () => {
-      const now = new Date();
-      menuDate.textContent = dateFormatter.format(now);
-      menuTime.textContent = timeFormatter.format(now);
-    };
-    updateClock();
-    setInterval(updateClock, 1000);
-  }
-
-  const notch = byId("demo-notch");
-  if (notch) {
-    let engaged = false;
-    let introTimer;
-    let closeTimer;
-    const setOpen = (open) => {
-      notch.classList.toggle("is-open", open);
-      notch.setAttribute("aria-expanded", String(open));
-    };
-    const clearTimers = () => {
-      clearTimeout(introTimer);
-      clearTimeout(closeTimer);
-    };
-    const introStorageKey = "notchany-store-intro";
-    let shouldPlayIntro = !reducedMotion;
-    try {
-      shouldPlayIntro = shouldPlayIntro && sessionStorage.getItem(introStorageKey) !== "shown";
-      sessionStorage.setItem(introStorageKey, "shown");
-    } catch {
-      // sessionStorage 被禁用时，本次页面仍只自动演示一次。
-    }
-    if (shouldPlayIntro && !document.hidden) {
-      introTimer = setTimeout(() => {
-        if (engaged) return;
-        setOpen(true);
-        closeTimer = setTimeout(() => {
-          if (!engaged) setOpen(false);
-        }, 2600);
-      }, 900);
-    }
-    notch.addEventListener("pointerenter", () => {
-      engaged = true;
-      clearTimers();
-      setOpen(true);
-    });
-    notch.addEventListener("pointerleave", () => {
-      engaged = false;
-      clearTimers();
-      closeTimer = setTimeout(() => {
-        if (!engaged) setOpen(false);
-      }, 220);
-    });
-    notch.addEventListener("focusin", () => {
-      engaged = true;
-      clearTimers();
-      setOpen(true);
-    });
-    notch.addEventListener("focusout", (event) => {
-      if (notch.contains(event.relatedTarget)) return;
-      engaged = false;
-      clearTimers();
-      closeTimer = setTimeout(() => setOpen(false), 220);
-    });
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        clearTimers();
-        setOpen(false);
-      }
-    });
-  }
-
-  const demoKeys = [...document.querySelectorAll(".mac-key")];
-  const keysByCode = new Map(demoKeys.map((key) => [key.dataset.code, key]));
-  const releaseKey = (key) => key?.classList.remove("pressed");
-  demoKeys.forEach((key) => {
-    key.addEventListener("pointerdown", () => key.classList.add("pressed"));
-    key.addEventListener("pointerup", () => releaseKey(key));
-    key.addEventListener("pointercancel", () => releaseKey(key));
-    key.addEventListener("pointerleave", () => releaseKey(key));
+  // 宣传片只在点击后加载：preload="none" 且 src 延后到首次播放才写入
+  const film = byId("film");
+  const filmVideo = byId("film-video");
+  const playFilm = () => {
+    if (!film || !filmVideo) return;
+    if (!filmVideo.getAttribute("src")) filmVideo.src = filmVideo.dataset.src;
+    filmVideo.hidden = false;
+    film.classList.add("playing");
+    filmVideo.play().catch(() => {});
+    filmVideo.focus({ preventScroll: true });
+  };
+  document.querySelector("[data-play]")?.addEventListener("click", playFilm);
+  document.querySelector("[data-watch]")?.addEventListener("click", () => {
+    film?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
+    playFilm();
   });
-  document.addEventListener("keydown", (event) => keysByCode.get(event.code)?.classList.add("pressed"));
-  document.addEventListener("keyup", (event) => releaseKey(keysByCode.get(event.code)));
-  addEventListener("blur", () => demoKeys.forEach(releaseKey));
 
-  const trackpad = byId("trackpad");
-  trackpad?.addEventListener("pointerdown", () => trackpad.classList.add("pressed"));
-  for (const eventName of ["pointerup", "pointercancel", "pointerleave"]) {
-    trackpad?.addEventListener(eventName, () => trackpad.classList.remove("pressed"));
+  // 功能循环只在进入视口时播放，离开即暂停；减少动态效果时停在海报帧
+  if (!reducedMotion && "IntersectionObserver" in window) {
+    const loopObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.play().catch(() => {});
+        else entry.target.pause();
+      });
+    }, { threshold: 0.35 });
+    document.querySelectorAll("video[data-loop]").forEach((video) => loopObserver.observe(video));
+  }
+
+  const reveals = document.querySelectorAll(".reveal");
+  if (reveals.length) {
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in");
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+      reveals.forEach((node) => revealObserver.observe(node));
+    } else {
+      reveals.forEach((node) => node.classList.add("in"));
+    }
+  }
+
+  // Store 底板滑到导航下方时，导航从纯黑切回页面外观
+  const siteNav = byId("site-nav");
+  const storeSheet = byId("store");
+  if (siteNav && storeSheet) {
+    const syncNavTone = () => {
+      const tone = storeSheet.getBoundingClientRect().top <= siteNav.offsetHeight ? "store" : "dark";
+      if (siteNav.dataset.tone !== tone) siteNav.dataset.tone = tone;
+    };
+    addEventListener("scroll", syncNavTone, { passive: true });
+    addEventListener("resize", syncNavTone);
+    syncNavTone();
   }
 
   let cancelPendingLaunch = () => {};
