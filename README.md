@@ -6,7 +6,7 @@
 - **历史**：`history/v1/<namespace>/<slug>.json`（版本、PR 说明、commit、hash 与贡献者）
 - **已发布包体**：`published/<namespace>/<slug>/package.notchany.json`（经授权的固定快照）
 - **候选源码**：`packages/<namespace>/<slug>/package.notchany.json`（PR 修改区域，合并不等于发布）
-- **元数据**：`packages/<namespace>/<slug>/manifest.json`（名称/简介/版本/标签等，双语）
+- **元数据**：`packages/<namespace>/<slug>/manifest.json`（名称/简介/版本/标签等，按语言码逐条提供）
 
 Registry 是包内容、最新版、版本历史和贡献事实的真源。NotchAny Market D1 只保存账号的 GitHub
 数字身份投影、包归属、维护权限与邀请；不会复制包内容、release notes 或历史包 hash。
@@ -20,7 +20,8 @@ packages/
       package.notchany.json   # NotchAny 设置页导出的 .notchany.json 原样
       manifest.json           # 上架元数据（格式见 schema/manifest.schema.json）
       icon.png                # 必需：安装后的真实图标，方形 PNG，256–1024px，≤512KB
-      screenshots/            # 可选：最多 4 张 .png/.jpg，单张 ≤1MB
+      screenshots/            # 可选：主语言截图，最多 4 张 .png/.jpg，单张 ≤1MB
+        <locale>/             # 可选：其他语言的截图，每组同样最多 4 张
 ```
 
 `manifest.json` 形状（`manifest_version: 1`，完整约束见 [schema](schema/manifest.schema.json)）：
@@ -33,9 +34,16 @@ packages/
   "descriptions": { "zh-Hans": "markdown 详细说明", "en": "…" },
   "version": "1.0.0",
   "tags": ["monitor"],
-  "license": "MIT"
+  "license": "MIT",
+  "default_locale": "zh-Hans"
 }
 ```
+
+- `summaries` 不要求双语，只需提供一种语言；`default_locale` 是包的主语言，填写时 `summaries`
+  必须包含这个语言的摘要。其他语言的名称、摘要和描述都可以不写，缺失时按访问者的语言回落到已提供的语言。
+- 截图按语言分组：主语言截图直接放在 `screenshots/` 下；其他语言放在 `screenshots/<locale>/`，
+  目录名是合法语言码（如 `en`、`zh-Hant`、`ja`），且只允许一层、不能与主语言同名。出现语言子目录时
+  必须声明 `default_locale`。某语言没有截图组时展示主语言截图。
 
 ## 上架流程（PR）
 
@@ -73,7 +81,7 @@ npm run build:index            # 重建 v1/v2 index 与 history（maintainer 用
 - 脚本可读、无混淆、无编码/压缩后的不可审计内容；
 - 不做与描述无关的事：不偷偷联网上传、不写入包外文件、不修改系统配置；
 - 依赖第三方 CLI 的在 `action.requires` 中声明（App 导入时会检测提示）；
-- `manifest.json` 双语齐全（至少 zh-Hans 或 en 其一完整），描述与实际行为一致；
+- `manifest.json` 至少提供主语言的名称与摘要，描述与实际行为一致；
 - 小组件类建议先用 `notchany-cli test-widget` 自测通过再提交。
 
 ## 安全模型

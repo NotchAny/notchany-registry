@@ -26,6 +26,8 @@ const OWNER_PATTERN = /^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$/;
 const VERSION_PATTERN = /^\d+\.\d+\.\d+$/;
 const TAG_PATTERN = /^[a-z0-9-]{1,24}$/;
 const BASE64_PATTERN = /^[A-Za-z0-9+/]+={0,2}$/;
+// 宽松 BCP-47 子集，与 App 的 LocaleCode.isValid 一致：主语言 2–8 字母，子标签 1–8 位字母/数字，整体 ≤35 字符。
+const LOCALE_PATTERN = /^[A-Za-z]{2,8}(-[A-Za-z0-9]{1,8})*$/;
 const MAX_SCREENSHOTS = 4;
 const MAX_SCREENSHOT_BYTES = 1024 * 1024;
 const MAX_ICON_BYTES = 512 * 1024;
@@ -33,6 +35,20 @@ const MAX_ICON_BYTES = 512 * 1024;
 const violations = [];
 function violate(message) {
   violations.push(message);
+}
+
+function isLocaleCode(code) {
+  return typeof code === "string" && code.length <= 35 && LOCALE_PATTERN.test(code);
+}
+
+// 大小写归一（App LocaleCode.normalized 同算法）：zh-hans → zh-Hans，pt-br → pt-BR。
+function normalizeLocale(code) {
+  return code.split("-").map((part, index) => {
+    if (index === 0) return part.toLowerCase();
+    if (part.length === 4 && /^[A-Za-z]+$/.test(part)) return part[0].toUpperCase() + part.slice(1).toLowerCase();
+    if (part.length <= 3) return part.toUpperCase();
+    return part.toLowerCase();
+  }).join("-");
 }
 
 function readJSON(path) {
@@ -76,6 +92,7 @@ const MANIFEST_KEYS = new Set([
   "license",
   "min_app_version",
   "derived_from",
+  "default_locale",
 ]);
 
 function validateManifest(manifest, label) {
@@ -94,6 +111,17 @@ function validateManifest(manifest, label) {
     required: true,
     maxLength: 80,
   });
+  // 摘要只要求主语言一条：没有 default_locale 时任意一种语言即可（旧包不受影响）
+  if (manifest.default_locale !== undefined) {
+    if (!isLocaleCode(manifest.default_locale)) {
+      violate(`${label}：default_locale 必须是合法语言码（如 zh-Hans、en、ja）`);
+    } else if (
+      manifest.summaries && typeof manifest.summaries === "object" &&
+      !Object.keys(manifest.summaries).some((key) => isLocaleCode(key) && normalizeLocale(key) === normalizeLocale(manifest.default_locale))
+    ) {
+      violate(`${label}：summaries 缺少主语言 ${manifest.default_locale} 的摘要`);
+    }
+  }
   if (manifest.descriptions !== undefined) {
     validateLocaleMap(manifest.descriptions, `${label}：descriptions`, {
       allowEmptyValues: true,
@@ -213,22 +241,46 @@ function validatePackageFile(envelope, label) {
 
 // ---------- 截图校验 ----------
 
-function validateScreenshots(packageDir, label) {
+// 主语言截图平铺在 screenshots/（旧 App 照读）；其他语言放 screenshots/<语言码>/，只允许一层，每组各自 ≤4 张。
+function validateScreenshots(packageDir, label, defaultLocale) {
   const dir = join(packageDir, "screenshots");
   if (!existsSync(dir)) return;
-  const files = readdirSync(dir, { withFileTypes: true }).filter((entry) => entry.isFile());
-  if (files.length > MAX_SCREENSHOTS) {
-    violate(`${label}：截图最多 ${MAX_SCREENSHOTS} 张（现 ${files.length} 张）`);
-  }
-  for (const file of files) {
-    if (!/\.(png|jpe?g)$/.test(file.name)) {
-      violate(`${label}：截图 ${file.name} 只允许 PNG/JPEG`);
+  const primary = defaultLocale && isLocaleCode(defaultLocale) ? normalizeLocale(defaultLocale) : undefined;
+  const checkSet = (setDir, setLabel, files) => {
+    if (files.length > MAX_SCREENSHOTS) {
+      violate(`${label}：${setLabel}截图最多 ${MAX_SCREENSHOTS} 张（现 ${files.length} 张）`);
+    }
+    for (const name of files) {
+      if (!/\.(png|jpe?g)$/.test(name)) {
+        violate(`${label}：截图 ${setLabel}${name} 只允许 PNG/JPEG`);
+        continue;
+      }
+      const size = statSync(join(setDir, name)).size;
+      if (size > MAX_SCREENSHOT_BYTES) {
+        violate(`${label}：截图 ${setLabel}${name} 超过 1MB（现 ${size} 字节）`);
+      }
+    }
+  };
+  const entries = readdirSync(dir, { withFileTypes: true });
+  checkSet(dir, "", entries.filter((entry) => entry.isFile()).map((entry) => entry.name));
+  for (const entry of entries.filter((item) => item.isDirectory())) {
+    const setLabel = `${entry.name}/`;
+    if (!isLocaleCode(entry.name)) {
+      violate(`${label}：截图子目录 ${entry.name} 不是合法语言码`);
       continue;
     }
-    const size = statSync(join(dir, file.name)).size;
-    if (size > MAX_SCREENSHOT_BYTES) {
-      violate(`${label}：截图 ${file.name} 超过 1MB（现 ${size} 字节）`);
+    if (primary === undefined) {
+      violate(`${label}：多语言截图（screenshots/${entry.name}/）需要 manifest 声明 default_locale`);
+    } else if (normalizeLocale(entry.name) === primary) {
+      violate(`${label}：主语言 ${entry.name} 的截图应直接放在 screenshots/ 下`);
+      continue;
     }
+    const setDir = join(dir, entry.name);
+    const children = readdirSync(setDir, { withFileTypes: true });
+    for (const child of children.filter((item) => !item.isFile())) {
+      violate(`${label}：截图只允许一层语言子目录（screenshots/${entry.name}/${child.name}）`);
+    }
+    checkSet(setDir, setLabel, children.filter((item) => item.isFile()).map((item) => item.name));
   }
 }
 
@@ -280,8 +332,10 @@ function validatePackage(owner, slug, { checkVersionBump }) {
   }
   if (!complete) return;
 
+  let manifest;
   try {
-    validateManifest(readJSON(manifestPath), `${label}/manifest.json`);
+    manifest = readJSON(manifestPath);
+    validateManifest(manifest, `${label}/manifest.json`);
   } catch (error) {
     violate(`${label}/manifest.json 不是合法 JSON：${error.message}`);
   }
@@ -294,7 +348,7 @@ function validatePackage(owner, slug, { checkVersionBump }) {
   if (envelope !== undefined) {
     validatePackageFile(envelope, `${label}/package.notchany.json`);
   }
-  validateScreenshots(packageDir, label);
+  validateScreenshots(packageDir, label, manifest?.default_locale);
   validateIcon(packageDir, label);
   try { validateIdentityAndSource(`${owner}/${slug}`, packageDir, envelope); }
   catch (error) { violate(`${label}: ${error.message}`); }

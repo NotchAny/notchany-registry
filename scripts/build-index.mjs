@@ -93,14 +93,21 @@ for (const owner of listDirs(PACKAGES_DIR)) {
     const sha256 = createHash("sha256").update(bytes).digest("hex");
     if (sha256 !== approved.release.sha256 || manifest.version !== approved.release.version) fail(`${relativeDir} approved release mismatch`);
 
-    // 截图：实际存在的 .png/.jpg 文件，按文件名排序。
+    // 截图：实际存在的 .png/.jpg 文件，按文件名排序。主语言平铺在 screenshots/（旧 App 只读这一组），
+    // 其他语言在 screenshots/<语言码>/，汇成 localized_screenshots。
     const screenshotsDir = join(packageDir, "screenshots");
-    const screenshots = existsSync(screenshotsDir)
-      ? readdirSync(screenshotsDir, { withFileTypes: true })
-          .filter((entry) => entry.isFile() && /\.(png|jpe?g)$/.test(entry.name))
-          .map((entry) => `${relativeDir}/screenshots/${entry.name}`)
-          .sort()
-      : [];
+    const imagesIn = (dir, prefix) => readdirSync(dir, { withFileTypes: true })
+      .filter((entry) => entry.isFile() && /\.(png|jpe?g)$/.test(entry.name))
+      .map((entry) => `${prefix}/${entry.name}`)
+      .sort();
+    const screenshots = existsSync(screenshotsDir) ? imagesIn(screenshotsDir, `${relativeDir}/screenshots`) : [];
+    const localizedScreenshots = {};
+    if (existsSync(screenshotsDir)) {
+      for (const entry of readdirSync(screenshotsDir, { withFileTypes: true }).filter((item) => item.isDirectory()).sort((a, b) => (a.name < b.name ? -1 : 1))) {
+        const images = imagesIn(join(screenshotsDir, entry.name), `${relativeDir}/screenshots/${entry.name}`);
+        if (images.length) localizedScreenshots[entry.name] = images;
+      }
+    }
 
     const published = approved.first_published_at || approved.release.published_at || null;
     const updated = approved.release.published_at || approved.release.merged_at || null;
@@ -110,6 +117,7 @@ for (const owner of listDirs(PACKAGES_DIR)) {
       names: manifest.names,
       summaries: manifest.summaries,
       ...(manifest.descriptions !== undefined && { descriptions: manifest.descriptions }),
+      ...(manifest.default_locale !== undefined && { default_locale: manifest.default_locale }),
       version: manifest.version,
       ...(manifest.tags !== undefined && { tags: manifest.tags }),
       ...(manifest.homepage !== undefined && { homepage: manifest.homepage }),
@@ -138,6 +146,7 @@ for (const owner of listDirs(PACKAGES_DIR)) {
       ...(action.env_requires?.length && { env_requires: action.env_requires }),
       ...(action.kind === "shell" && { interpreter: action.interpreter ?? "shell" }),
       screenshots,
+      ...(Object.keys(localizedScreenshots).length && { localized_screenshots: localizedScreenshots }),
       published_at: published,
       updated_at: updated,
     };

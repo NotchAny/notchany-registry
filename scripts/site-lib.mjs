@@ -1,10 +1,12 @@
-export function pick(table, language) {
+// defaultLocale 为包的主语言：回落顺序与 App 的 MarketLocalization 一致——访客语言、英文、主语言、稳定首值。
+export function pick(table, language, defaultLocale) {
   if (!table || typeof table !== "object") return "";
   const stableFallback = Object.keys(table).sort().map((key) => table[key]).find((value) => typeof value === "string") ?? "";
+  const primary = typeof defaultLocale === "string" ? table[defaultLocale] : undefined;
   if (language === "zh") {
-    return table["zh-Hans"] ?? table.zh ?? table["zh-Hant"] ?? table.en ?? stableFallback;
+    return table["zh-Hans"] ?? table.zh ?? table["zh-Hant"] ?? table.en ?? primary ?? stableFallback;
   }
-  return table.en ?? table["zh-Hans"] ?? table.zh ?? stableFallback;
+  return table.en ?? primary ?? table["zh-Hans"] ?? table.zh ?? stableFallback;
 }
 
 export function validateCuration(curation, packages) {

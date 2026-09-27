@@ -323,12 +323,12 @@ function icon(item, root, className = "package-icon") {
 
 function profilePackageRow(item, lang, root) {
   const copy = COPY[lang];
-  const name = pick(item.names, lang);
+  const name = pick(item.names, lang, item.default_locale);
   const detailURL = `${root}${lang === "en" ? "en/" : ""}packages/${item.package_id}/`;
   const downloadURL = `${root}${lang === "en" ? "en/" : ""}download/`;
   return `<article class="package-row profile-package-row" data-profile-kind="${escapeHTML(item.kind)}">
     ${icon(item, root)}<div class="row-copy"><div class="row-title"><h3><a class="row-detail-link" href="${detailURL}">${escapeHTML(name)}</a></h3><span class="kind-mark">${escapeHTML(kindLabel(item, lang))}</span></div>
-    <p class="row-summary">${escapeHTML(pick(item.summaries, lang))}</p><div class="row-meta"><span>v${escapeHTML(item.version)}</span></div></div>
+    <p class="row-summary">${escapeHTML(pick(item.summaries, lang, item.default_locale))}</p><div class="row-meta"><span>v${escapeHTML(item.version)}</span></div></div>
     <a class="open-button install-button" href="notchany://market/package/${escapeHTML(item.package_id)}" data-fallback-url="${downloadURL}" aria-label="${escapeHTML(`${copy.install} ${name}`)}">${copy.install}</a>
   </article>`;
 }
@@ -440,8 +440,8 @@ function packageClientData(item, lang, root) {
     owner: item.package_id.split("/")[0],
     kind: item.kind,
     kind_label: kindLabel(item, lang),
-    name: pick(item.names, lang),
-    summary: pick(item.summaries, lang),
+    name: pick(item.names, lang, item.default_locale),
+    summary: pick(item.summaries, lang, item.default_locale),
     tags: item.tags || [],
     published_at: item.published_at,
     updated_at: item.updated_at,
@@ -454,7 +454,7 @@ function packageClientData(item, lang, root) {
 function featuredCards(featured, lang, root) {
   const copy = COPY[lang];
   return featured.map((item) => `<a class="featured-card" href="${root}${lang === "en" ? "en/" : ""}packages/${item.package_id}/">
-    ${icon(item, root)}<div><span class="eyebrow">${copy.featured_kind} · ${kindLabel(item, lang)}</span><h3>${escapeHTML(pick(item.names, lang))}</h3><p>${escapeHTML(pick(item.summaries, lang))}</p></div>
+    ${icon(item, root)}<div><span class="eyebrow">${copy.featured_kind} · ${kindLabel(item, lang)}</span><h3>${escapeHTML(pick(item.names, lang, item.default_locale))}</h3><p>${escapeHTML(pick(item.summaries, lang, item.default_locale))}</p></div>
   </a>`).join("");
 }
 
@@ -570,8 +570,8 @@ export function storePage({ lang, packages, featuredIDs, countsURL, css, js }) {
   const trayPackages = featured.length ? featured : [...packages].sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at)).slice(0, 3);
   const tags = [...new Set(packages.flatMap((item) => item.tags || []))].sort();
   const tray = trayPackages.length
-    ? trayPackages.map((item) => `<a class="demo-tray-item" href="${root}${lang === "en" ? "en/" : ""}packages/${item.package_id}/" title="${escapeHTML(pick(item.names, lang))}">
-    ${icon(item, root, "demo-tray-icon")}<span>${escapeHTML(pick(item.names, lang))}</span>
+    ? trayPackages.map((item) => `<a class="demo-tray-item" href="${root}${lang === "en" ? "en/" : ""}packages/${item.package_id}/" title="${escapeHTML(pick(item.names, lang, item.default_locale))}">
+    ${icon(item, root, "demo-tray-icon")}<span>${escapeHTML(pick(item.names, lang, item.default_locale))}</span>
   </a>`).join("")
     : `<p class="demo-tray-empty">${escapeHTML(copy.tray_empty)}</p>`;
   const search = (id, className, shortcut) => `<label class="search-box${className}"><span hidden>${copy.search}</span><input id="${id}" data-store-search type="search" autocomplete="off" aria-label="${escapeHTML(copy.search)}" placeholder="${escapeHTML(copy.search)}">${shortcut ? `<span class="search-key"><kbd>⌘ K</kbd> / <kbd>/</kbd></span>` : ""}</label>`;
@@ -669,15 +669,15 @@ export function detailPage({ lang, item, packages, history = { releases: [], con
   const root = lang === "zh" ? "../../../" : "../../../../";
   const path = `${lang === "zh" ? "" : "/en"}/packages/${item.package_id}/`;
   const alternate = `${lang === "zh" ? "/en" : ""}/packages/${item.package_id}/`;
-  const name = pick(item.names, lang);
-  const summary = pick(item.summaries, lang);
+  const name = pick(item.names, lang, item.default_locale);
+  const summary = pick(item.summaries, lang, item.default_locale);
   const owner = item.package_id.split("/")[0];
-  const related = relatedPackages(item, packages).map((other) => `<a class="related-item" href="${root}${lang === "en" ? "en/" : ""}packages/${other.package_id}/">${icon(other, root)}<span><strong>${escapeHTML(pick(other.names, lang))}</strong><span>${kindLabel(other, lang)}</span></span></a>`).join("");
+  const related = relatedPackages(item, packages).map((other) => `<a class="related-item" href="${root}${lang === "en" ? "en/" : ""}packages/${other.package_id}/">${icon(other, root)}<span><strong>${escapeHTML(pick(other.names, lang, other.default_locale))}</strong><span>${kindLabel(other, lang)}</span></span></a>`).join("");
   const requirements = item.requires?.length ? item.requires.map(escapeHTML).join(", ") : copy.none;
   const sourceURL = `${REPO_URL}/tree/main/published/${item.package_id}`;
   const issueURL = `${REPO_URL}/issues/new?title=${encodeURIComponent(`[${item.package_id}] `)}`;
   const download = `${root}${lang === "en" ? "en/" : ""}download/`;
-  const description = pick(item.descriptions, lang) || summary;
+  const description = pick(item.descriptions, lang, item.default_locale) || summary;
   const historyHTML = historySections(history, copy, lang);
   return `${pageHead({ lang, title: `${name} · NotchAny Store`, description: summary, canonicalPath: path, alternatePath: alternate, imagePath: item.icon_path ? `assets/${item.icon_path}` : APP_ICON_ASSET, css })}
 <body>
