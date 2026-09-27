@@ -8,9 +8,12 @@ npm run build:site
 python3 -m http.server 4173 --directory site/dist
 ```
 
-- 中文根路径与 `/en/` 英文镜像；首页先是产品落地段（首屏、宣传片、功能、购买、常见问题），
-  其后是 Store 段：精选、搜索、全部/最新/热门、类型/标签筛选与分页；⌘K 与 `/` 聚焦 Store 搜索。
-  Store 暂无作品时隐藏搜索，改为试用与提交作品入口
+- 中文根路径与 `/en/` 英文镜像；首页是产品落地段（首屏、宣传片、功能、购买、常见问题），
+  末尾为从纯黑升起的 Store 入口底板：标题、精选（有作品时）与「进入 Store」，导航的 Store 同样指向独立页
+- 独立 Store 页 `/store/`（英文 `/en/store/`）：首屏为可交互的模拟 MacBook（壁纸
+  `site/assets/macos-desktop-wallpaper.webp`、菜单栏时钟、刘海托盘演示精选或最新 3 个作品、Dock、键盘与触控板），
+  每个会话首次进入自动展开一次刘海，「减少动态效果」时跳过；其下为精选与完整内容库（搜索、全部/最新/热门、
+  类型/标签筛选与分页），⌘K 与 `/` 聚焦搜索。暂无作品时隐藏搜索，改为试用与提交作品入口
 - 落地素材放在 `site/assets/landing/`（宣传片 `video.mp4` / `video-en.mp4`、首屏海报、
   `loops/<zh|en>/` 功能循环与海报，由 NotchAny 仓库 `videos/notchany-promo/tools/render-loops.mjs` 生成）；
   构建时按内容哈希发布到 `assets/landing/<hash>/`，Worker 对其下发一年期 immutable 缓存。

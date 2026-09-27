@@ -86,7 +86,7 @@
     return `<article class="package-row">
       <img class="package-icon" src="${item.icon}" alt="" width="54" height="54">
       <div class="row-copy">
-        <div class="row-title"><h4>${escapeHTML(item.name)}</h4><span class="kind-mark">${escapeHTML(item.kind_label)}</span></div>
+        <div class="row-title"><h3>${escapeHTML(item.name)}</h3><span class="kind-mark">${escapeHTML(item.kind_label)}</span></div>
         <p class="row-summary">${escapeHTML(item.summary)}</p>
         <div class="row-meta"><a href="${escapeHTML(new URL('authors/' + encodeURIComponent(item.owner) + '/', document.querySelector('.brand').href).href)}">${escapeHTML(item.owner)}</a>${count === undefined ? "" : `<span>${formatCount(count)} ${escapeHTML(text.downloads)}</span>`}</div>
       </div>
@@ -195,7 +195,7 @@
   }
 
   const searches = [...document.querySelectorAll("[data-store-search]")];
-  const primarySearch = searches[0];
+  const primarySearch = byId("store-search") || searches[0];
   const revealCatalog = () => byId("catalog")?.scrollIntoView({
     behavior: reducedMotion ? "auto" : "smooth",
     block: "start",
@@ -261,7 +261,7 @@
       languageOptions[next]?.focus();
       return;
     }
-    // 搜索框在页面下方的 Store 段里，快捷键先把它滚到视口中央再取焦
+    // 页面已滚过顶部搜索框时，快捷键先把它滚到视口中央再取焦
     if (primarySearch && ((event.key === "/" && !/input|textarea|select/i.test(document.activeElement?.tagName)) || ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k"))) {
       event.preventDefault();
       primarySearch.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
@@ -279,6 +279,100 @@
     state = normalizeState();
     render();
   });
+
+  const menuDate = byId("mac-menu-date");
+  const menuTime = byId("mac-menu-time");
+  if (menuDate && menuTime) {
+    const dateFormatter = new Intl.DateTimeFormat(locale, { month: "short", day: "numeric", weekday: "short" });
+    const timeFormatter = new Intl.DateTimeFormat(locale, { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+    const updateClock = () => {
+      const now = new Date();
+      menuDate.textContent = dateFormatter.format(now);
+      menuTime.textContent = timeFormatter.format(now);
+    };
+    updateClock();
+    setInterval(updateClock, 1000);
+  }
+
+  const notch = byId("demo-notch");
+  if (notch) {
+    let engaged = false;
+    let introTimer;
+    let closeTimer;
+    const setOpen = (open) => {
+      notch.classList.toggle("is-open", open);
+      notch.setAttribute("aria-expanded", String(open));
+    };
+    const clearTimers = () => {
+      clearTimeout(introTimer);
+      clearTimeout(closeTimer);
+    };
+    const introStorageKey = "notchany-store-intro";
+    let shouldPlayIntro = !reducedMotion;
+    try {
+      shouldPlayIntro = shouldPlayIntro && sessionStorage.getItem(introStorageKey) !== "shown";
+      sessionStorage.setItem(introStorageKey, "shown");
+    } catch {
+      // sessionStorage 被禁用时，本次页面仍只自动演示一次。
+    }
+    if (shouldPlayIntro && !document.hidden) {
+      introTimer = setTimeout(() => {
+        if (engaged) return;
+        setOpen(true);
+        closeTimer = setTimeout(() => {
+          if (!engaged) setOpen(false);
+        }, 2600);
+      }, 900);
+    }
+    notch.addEventListener("pointerenter", () => {
+      engaged = true;
+      clearTimers();
+      setOpen(true);
+    });
+    notch.addEventListener("pointerleave", () => {
+      engaged = false;
+      clearTimers();
+      closeTimer = setTimeout(() => {
+        if (!engaged) setOpen(false);
+      }, 220);
+    });
+    notch.addEventListener("focusin", () => {
+      engaged = true;
+      clearTimers();
+      setOpen(true);
+    });
+    notch.addEventListener("focusout", (event) => {
+      if (notch.contains(event.relatedTarget)) return;
+      engaged = false;
+      clearTimers();
+      closeTimer = setTimeout(() => setOpen(false), 220);
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        clearTimers();
+        setOpen(false);
+      }
+    });
+  }
+
+  const demoKeys = [...document.querySelectorAll(".mac-key")];
+  const keysByCode = new Map(demoKeys.map((key) => [key.dataset.code, key]));
+  const releaseKey = (key) => key?.classList.remove("pressed");
+  demoKeys.forEach((key) => {
+    key.addEventListener("pointerdown", () => key.classList.add("pressed"));
+    key.addEventListener("pointerup", () => releaseKey(key));
+    key.addEventListener("pointercancel", () => releaseKey(key));
+    key.addEventListener("pointerleave", () => releaseKey(key));
+  });
+  document.addEventListener("keydown", (event) => keysByCode.get(event.code)?.classList.add("pressed"));
+  document.addEventListener("keyup", (event) => releaseKey(keysByCode.get(event.code)));
+  addEventListener("blur", () => demoKeys.forEach(releaseKey));
+
+  const trackpad = byId("trackpad");
+  trackpad?.addEventListener("pointerdown", () => trackpad.classList.add("pressed"));
+  for (const eventName of ["pointerup", "pointercancel", "pointerleave"]) {
+    trackpad?.addEventListener(eventName, () => trackpad.classList.remove("pressed"));
+  }
 
   // 宣传片只在点击后加载：preload="none" 且 src 延后到首次播放才写入
   const film = byId("film");
