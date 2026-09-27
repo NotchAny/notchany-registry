@@ -8,7 +8,7 @@ import { basename, dirname, join } from "node:path";
 import process from "node:process";
 
 import { validateCuration } from "./site-lib.mjs";
-import { authorPage, contributorPage, detailPage, downloadPage, homePage, notFoundPage } from "./site-template.mjs";
+import { authorPage, contributorPage, detailPage, downloadPage, homePage, notFoundPage, storePage } from "./site-template.mjs";
 import { verifyPublishedIndex } from "./publication-lib.mjs";
 
 const ROOT = process.cwd();
@@ -68,6 +68,10 @@ function copy(relativePath) {
 }
 
 copyFileSync(join(ROOT, "site", "assets", "app-icon.png"), join(DIST, "assets", "app-icon.png"));
+copyFileSync(
+  join(ROOT, "site", "assets", "macos-desktop-wallpaper.webp"),
+  join(DIST, "assets", "macos-desktop-wallpaper.webp")
+);
 
 // 落地页视频与海报按内容哈希分目录发布，Worker 对 /assets/landing/ 下发一年期 immutable 缓存；
 // 换素材即换目录，不会命中旧缓存。
@@ -91,8 +95,10 @@ for (const item of packages) {
   for (const screenshot of item.screenshots || []) copy(screenshot);
 }
 
-write("index.html", homePage({ lang: "zh", packages, featuredIDs, countsURL: COUNTS_URL, css, js, landingAssets: LANDING_ASSETS }));
-write("en/index.html", homePage({ lang: "en", packages, featuredIDs, countsURL: COUNTS_URL, css, js, landingAssets: LANDING_ASSETS }));
+write("index.html", homePage({ lang: "zh", packages, featuredIDs, css, js, landingAssets: LANDING_ASSETS }));
+write("en/index.html", homePage({ lang: "en", packages, featuredIDs, css, js, landingAssets: LANDING_ASSETS }));
+write("store/index.html", storePage({ lang: "zh", packages, featuredIDs, countsURL: COUNTS_URL, css, js }));
+write("en/store/index.html", storePage({ lang: "en", packages, featuredIDs, countsURL: COUNTS_URL, css, js }));
 write("download/index.html", downloadPage({ lang: "zh", css, js, downloadURL: APP_DOWNLOAD_URL }));
 write("en/download/index.html", downloadPage({ lang: "en", css, js, downloadURL: APP_DOWNLOAD_URL }));
 for (const item of packages) {
@@ -122,4 +128,4 @@ if (BUILD_COMMIT) {
 }
 if (process.env.NOTCHANY_SITE_URL === "https://notchany.com") write("CNAME", "notchany.com\n");
 write("404.html", notFoundPage({ css }));
-console.log(`已生成 site/dist（2 个首页，2 个下载页，${packages.length * 2} 个详情页，counts=${COUNTS_URL || "未配置"}，app=${APP_DOWNLOAD_URL || "未配置"}）`);
+console.log(`已生成 site/dist（2 个首页，2 个 Store 页，2 个下载页，${packages.length * 2} 个详情页，counts=${COUNTS_URL || "未配置"}，app=${APP_DOWNLOAD_URL || "未配置"}）`);

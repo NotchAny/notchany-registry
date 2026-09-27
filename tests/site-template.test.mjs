@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 
 import { readFileSync } from "node:fs";
 
-import { detailPage, downloadPage, homePage } from "../scripts/site-template.mjs";
+import { detailPage, downloadPage, homePage, storePage } from "../scripts/site-template.mjs";
 
 const packages = ["cpu", "image", "wifi"].map((slug, index) => ({
   package_id: `owner/${slug}`,
@@ -27,10 +27,19 @@ const home = (lang, overrides = {}) => homePage({
   lang,
   packages,
   featuredIDs: packages.map((item) => item.package_id),
-  countsURL: "",
   css: "",
   js: "",
   landingAssets: "assets/landing/0123456789",
+  ...overrides,
+});
+
+const store = (lang, overrides = {}) => storePage({
+  lang,
+  packages,
+  featuredIDs: packages.map((item) => item.package_id),
+  countsURL: "https://counts.example/downloads.json",
+  css: "",
+  js: "",
   ...overrides,
 });
 
@@ -87,38 +96,101 @@ test("home featured cards link to package detail pages", () => {
   }
 });
 
-test("home navigation uses text section links, a language menu, and one Store search", () => {
+test("home navigation uses text section links, a language menu, and links to the Store page", () => {
   const html = home("zh");
 
   assert.match(html, /<header class="site-nav" id="site-nav" data-tone="dark">/);
   assert.match(html, /class="nav-text optional" href="#features">功能<\/a>/);
-  assert.match(html, /class="nav-text" href="#store">Store<\/a>/);
+  assert.match(html, /class="nav-text" href="store\/">Store<\/a>/);
   assert.match(html, /class="nav-text optional" href="#buy">购买<\/a>/);
   assert.equal((html.match(/class="nav-icon-button/g) || []).length, 2);
   assert.match(html, /id="language-toggle"[^>]+aria-haspopup="menu"[^>]+aria-expanded="false"/);
   assert.match(html, /href="" role="menuitem" lang="zh-Hans" aria-current="page">中文<\/a>/);
   assert.match(html, /href="en\/" role="menuitem" lang="en">English<\/a>/);
-  assert.equal((html.match(/data-store-search/g) || []).length, 1);
-  assert.match(html, /id="library-search"/);
-  assert.match(html, /id="result-count" aria-live="polite"/);
   assert.match(html, /class="nav-download-button nav-trial" href="download\/">免费试用<\/a>/);
 });
 
-test("an empty Store hides search and points to the trial and submission", () => {
-  const html = home("zh", { packages: [], featuredIDs: [] });
+test("home Store panel is an entry to the Store page without search or catalog", () => {
+  for (const lang of ["zh", "en"]) {
+    const html = home(lang);
+    const sheet = html.slice(html.indexOf('id="store"'), html.indexOf("site-footer"));
+    const storeURL = lang === "zh" ? "store/" : "\\.\\./en/store/";
+
+    assert.equal((html.match(/data-store-search/g) || []).length, 0);
+    assert.doesNotMatch(html, /id="catalog-list"|id="catalog"/);
+    assert.match(sheet, new RegExp(`class="lp-btn primary store-enter" href="${storeURL}"`));
+    assert.match(html, new RegExp(`class="lp-link" href="${storeURL}"`));
+    assert.equal((sheet.match(/class="featured-card"/g) || []).length, 3);
+    assert.match(html, /"packages":\[\],"counts_url":""/);
+  }
+
+  const empty = home("zh", { packages: [], featuredIDs: [] });
+  assert.match(empty, /class="lp-btn primary store-enter" href="store\/"/);
+  assert.doesNotMatch(empty, /class="featured-grid"|class="store-empty"/);
+});
+
+test("Store page hero renders an interactive Mac desktop with live clock targets", () => {
+  const html = store("zh");
+
+  for (const marker of ["macbook", "mac-desktop", "keyboard-deck", "mac-menu-date", "mac-menu-time", "demo-notch"]) {
+    assert.match(html, new RegExp(`(?:class|id)=\"[^\"]*${marker}`));
+  }
+  assert.equal((html.match(/class="demo-tray-item"/g) || []).length, 3);
+  assert.equal((html.match(/class="mac-key"/g) || []).length, 77);
+  assert.match(html, /<link rel="canonical" href="https:\/\/notchany\.com\/store\/">/);
+  assert.match(html, /<link rel="alternate" hreflang="en" href="https:\/\/notchany\.com\/en\/store\/">/);
+  assert.match(html, /--desktop-wallpaper:url\('\.\.\/assets\/macos-desktop-wallpaper\.webp'\)/);
+  assert.match(html, /<a class="brand" href="\.\.\/">/);
+});
+
+test("each Store tray icon links to its package detail page", () => {
+  const html = store("en");
+
+  for (const item of packages) {
+    assert.match(html, new RegExp(`class="demo-tray-item" href=\"\\.\\./\\.\\./en/packages/${item.package_id}/\"`));
+    assert.match(html, new RegExp(`src=\"\\.\\./\\.\\./assets/${item.icon_path.replaceAll("/", "\\/")}\"`));
+  }
+});
+
+test("Store page tray falls back to the newest packages when nothing is featured", () => {
+  const dated = packages.concat({ ...packages[0], package_id: "owner/newest", published_at: "2026-09-01T00:00:00Z" });
+  const html = store("zh", { packages: dated, featuredIDs: [] });
+  const tray = [...html.matchAll(/class="demo-tray-item" href="\.\.\/packages\/([^"]+)\/"/g)].map((match) => match[1]);
+
+  assert.equal(tray.length, 3);
+  assert.equal(tray[0], "owner/newest");
+  assert.doesNotMatch(html, /id="featured-section"/);
+});
+
+test("Store page has a hero search and a catalog search kept in sync", () => {
+  const html = store("zh");
+
+  assert.equal((html.match(/data-store-search/g) || []).length, 2);
+  assert.match(html, /id="store-search"/);
+  assert.match(html, /id="library-search"/);
+  assert.match(html, /id="result-count" aria-live="polite"/);
+  assert.match(html, /"counts_url":"https:\/\/counts\.example\/downloads\.json"/);
+  assert.match(html, /class="nav-icon-button" href="\.\.\/store\/"/);
+  assert.match(html, /href="\.\.\/store\/" role="menuitem" lang="zh-Hans" aria-current="page">中文<\/a>/);
+  assert.match(html, /href="\.\.\/en\/store\/" role="menuitem" lang="en">English<\/a>/);
+});
+
+test("an empty Store page hides search and points to the trial and submission", () => {
+  const html = store("zh", { packages: [], featuredIDs: [] });
 
   assert.equal((html.match(/data-store-search/g) || []).length, 0);
-  assert.doesNotMatch(html, /id="catalog-list"/);
+  assert.doesNotMatch(html, /id="catalog-list"|class="demo-tray-item"|id="featured-section"/);
+  assert.match(html, /class="demo-tray-empty">第一批作品即将上架<\/p>/);
   assert.match(html, /class="store-empty"/);
-  assert.match(html, /class="store-button primary" href="download\/"/);
+  assert.match(html, /class="store-button primary" href="\.\.\/download\/"/);
   assert.match(html, /"counts_url":""/);
 });
 
-test("non-home navigation keeps the Store identity and browses to the home Store section", () => {
+test("non-home navigation keeps the Store identity and browses to the Store page", () => {
   const html = detailPage({ lang: "zh", item: packages[0], packages, countsURL: "", css: "", js: "" });
 
   assert.match(html, /<strong>NotchAny<\/strong><span>Store<\/span>/);
-  assert.match(html, /class="nav-icon-button" href="\.\.\/\.\.\/\.\.\/#store"/);
+  assert.match(html, /class="nav-icon-button" href="\.\.\/\.\.\/\.\.\/store\/"/);
   assert.match(html, /class="nav-download-button" href="\.\.\/\.\.\/\.\.\/download\/" aria-label="下载 App"/);
 });
 
@@ -249,7 +321,15 @@ test("landing film, loops and reveals respect reduced motion", () => {
   assert.match(styles, /\.js \.reveal \{ opacity: 1; transform: none; \}/);
 });
 
-test("pressing Enter in the Store search reveals the catalog", () => {
+test("notch intro is session-scoped and does not schedule repeating cycles", () => {
+  const source = readFileSync(new URL("../site/store.js", import.meta.url), "utf8");
+
+  assert.match(source, /sessionStorage\.getItem\(introStorageKey\)/);
+  assert.match(source, /notchany-store-intro/);
+  assert.doesNotMatch(source, /scheduleCycle/);
+});
+
+test("pressing Enter in either Store search reveals the catalog", () => {
   const source = readFileSync(new URL("../site/store.js", import.meta.url), "utf8");
 
   assert.match(source, /event\.key !== "Enter"/);

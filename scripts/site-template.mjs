@@ -9,6 +9,8 @@ const APP_ICON_ASSET = "assets/app-icon.png?v=balanced-20260925";
 
 const COPY = {
   zh: {
+    hero_kicker: "为 macOS 刘海而生", hero_title: "NotchAny Store", hero_body: "发现小组件与动作，把常用信息和工作流放进刘海。每个包都可检查、可调整、由你确认安装。",
+    tray_empty: "第一批作品即将上架",
     browse: "浏览内容库", submit: "提交作品", github: "GitHub 源码", language: "English", language_menu: "切换语言", download_app: "下载 App", featured: "精选", featured_note: "来自不同使用场景的三个起点。",
     search: "搜索名称、简介、作者、包 ID 或标签", all_packages: "内容库", all_packages_note: "浏览社区发布的小组件与动作。",
     sort: "排序", all: "全部", recent: "最新", popular: "热门", type: "类型", widget: "小组件", action: "动作", tags: "标签",
@@ -28,6 +30,8 @@ const COPY = {
     author_title: "作者", author_creator: "NotchAny Store 创作者", author_works: "作品", author_packages: "{count} 个包", author_github: "GitHub 主页", author_note: "这位作者发布的小组件与动作。", author_empty: "暂无该类型作品",
   },
   en: {
+    hero_kicker: "Built for the macOS notch", hero_title: "NotchAny Store", hero_body: "Discover widgets and actions that put useful information and workflows in the notch. Every package stays inspectable, editable, and yours to approve.",
+    tray_empty: "First packages arriving soon",
     browse: "Browse library", submit: "Submit a package", github: "GitHub source", language: "中文", language_menu: "Change language", download_app: "Download App", featured: "Featured", featured_note: "Three starting points for different workflows.",
     search: "Search names, descriptions, authors, package IDs, or tags", all_packages: "Library", all_packages_note: "Browse community widgets and actions.",
     sort: "Sort", all: "All", recent: "Latest", popular: "Popular", type: "Type", widget: "Widgets", action: "Actions", tags: "Tags",
@@ -99,6 +103,7 @@ const LANDING = {
     ],
     store_title: "社区的小组件与动作",
     store_body: "发现小组件与动作，把常用信息和工作流放进刘海。每个包都可检查、可调整、由你确认安装。",
+    store_enter: "进入 Store",
     store_empty_title: "Store 刚刚开放",
     store_empty_body: "第一批社区作品正在路上。你也可以在 App 里把自己的小组件或动作发布到这里。",
   },
@@ -150,6 +155,7 @@ const LANDING = {
     ],
     store_title: "Widgets and actions from the community",
     store_body: "Discover widgets and actions that put useful information and workflows in the notch. Every package stays inspectable, editable, and yours to approve.",
+    store_enter: "Explore the Store",
     store_empty_title: "The Store just opened",
     store_empty_body: "The first community packages are on their way. You can also publish your own widgets and actions here, right from the app.",
   },
@@ -279,10 +285,10 @@ function nav({ lang, root, detailPackageID = "", sectionPath = "", landing = fal
   const landingCopy = LANDING[lang];
   const leading = landing
     ? `<a class="nav-text optional" href="#features">${landingCopy.nav_features}</a>
-      <a class="nav-text" href="#store">Store</a>
+      <a class="nav-text" href="${home}store/">Store</a>
       <a class="nav-text optional" href="#buy">${landingCopy.nav_buy}</a>
       <span class="nav-sep" aria-hidden="true"></span>`
-    : `<a class="nav-icon-button" href="${home}#store" aria-label="${copy.browse}" title="${copy.browse}">${NAV_ICONS.browse}</a>
+    : `<a class="nav-icon-button" href="${home}store/" aria-label="${copy.browse}" title="${copy.browse}">${NAV_ICONS.browse}</a>
       <a class="nav-icon-button optional" href="${SUBMIT_URL}" aria-label="${copy.submit}" title="${copy.submit}">${NAV_ICONS.submit}</a>`;
   const cta = landing
     ? `<a class="nav-download-button nav-trial" href="${download}">${landingCopy.nav_trial}</a>`
@@ -382,11 +388,50 @@ export function notFoundPage({ css }) {
   return `<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>页面不存在 · NotchAny Store</title><style>${css}</style></head><body>
-<main class="shell detail-main"><div class="breadcrumbs"><a href="${SITE_URL}/">NotchAny Store</a></div>
+<main class="shell detail-main"><div class="breadcrumbs"><a href="${SITE_URL}/store/">NotchAny Store</a></div>
 <header class="detail-hero"><img class="package-icon" src="/${APP_ICON_ASSET}" alt="" width="54" height="54">
 <div class="detail-title"><h1>页面不存在</h1><p>地址可能已失效。请返回 Store 查找作品。</p><p lang="en">Page not found. Return to the Store to browse packages.</p>
-<div class="detail-meta"><a href="${SITE_URL}/">返回 Store</a><a href="${SITE_URL}/en/" lang="en">Browse in English</a></div></div></header>
+<div class="detail-meta"><a href="${SITE_URL}/store/">返回 Store</a><a href="${SITE_URL}/en/store/" lang="en">Browse in English</a></div></div></header>
 </main></body></html>`;
+}
+
+const KEYBOARD_ROWS = [
+  [
+    ["esc", "Escape", "escape"], ["F1", "F1"], ["F2", "F2"], ["F3", "F3"],
+    ["F4", "F4"], ["F5", "F5"], ["F6", "F6"], ["F7", "F7"],
+    ["F8", "F8"], ["F9", "F9"], ["F10", "F10"], ["F11", "F11"], ["F12", "F12"],
+  ],
+  [
+    ["`", "Backquote"], ["1", "Digit1"], ["2", "Digit2"], ["3", "Digit3"], ["4", "Digit4"],
+    ["5", "Digit5"], ["6", "Digit6"], ["7", "Digit7"], ["8", "Digit8"], ["9", "Digit9"],
+    ["0", "Digit0"], ["−", "Minus"], ["=", "Equal"], ["delete", "Backspace", "delete"],
+  ],
+  [
+    ["tab", "Tab", "tab"], ["Q", "KeyQ"], ["W", "KeyW"], ["E", "KeyE"], ["R", "KeyR"],
+    ["T", "KeyT"], ["Y", "KeyY"], ["U", "KeyU"], ["I", "KeyI"], ["O", "KeyO"],
+    ["P", "KeyP"], ["[", "BracketLeft"], ["]", "BracketRight"], ["\\", "Backslash", "backslash"],
+  ],
+  [
+    ["caps", "CapsLock", "caps"], ["A", "KeyA"], ["S", "KeyS"], ["D", "KeyD"], ["F", "KeyF"],
+    ["G", "KeyG"], ["H", "KeyH"], ["J", "KeyJ"], ["K", "KeyK"], ["L", "KeyL"],
+    [";", "Semicolon"], ["'", "Quote"], ["return", "Enter", "return"],
+  ],
+  [
+    ["shift", "ShiftLeft", "shift"], ["Z", "KeyZ"], ["X", "KeyX"], ["C", "KeyC"], ["V", "KeyV"],
+    ["B", "KeyB"], ["N", "KeyN"], ["M", "KeyM"], [",", "Comma"], [".", "Period"],
+    ["/", "Slash"], ["shift", "ShiftRight", "shift"],
+  ],
+  [
+    ["fn", "Fn"], ["control", "ControlLeft", "control"], ["option", "AltLeft", "option"],
+    ["command", "MetaLeft", "command"], ["", "Space", "space"], ["command", "MetaRight", "command"],
+    ["option", "AltRight", "option"], ["◀", "ArrowLeft"], ["▲", "ArrowUp"], ["▼", "ArrowDown"], ["▶", "ArrowRight"],
+  ],
+];
+
+function keyboard() {
+  return KEYBOARD_ROWS.map((row) => `<div class="keyboard-row">${row.map(([label, code, width = ""]) =>
+    `<button class="mac-key" type="button" data-code="${code}" data-width="${width}" aria-label="${label || "Space"}"><span>${label}</span></button>`
+  ).join("")}</div>`).join("");
 }
 
 function packageClientData(item, lang, root) {
@@ -406,8 +451,19 @@ function packageClientData(item, lang, root) {
   };
 }
 
-// 首页 = 产品落地段 + Store。落地素材按内容哈希落在 landingAssets 下，可长期缓存。
-export function homePage({ lang, packages, featuredIDs, countsURL, css, js, landingAssets = "assets/landing" }) {
+function featuredCards(featured, lang, root) {
+  const copy = COPY[lang];
+  return featured.map((item) => `<a class="featured-card" href="${root}${lang === "en" ? "en/" : ""}packages/${item.package_id}/">
+    ${icon(item, root)}<div><span class="eyebrow">${copy.featured_kind} · ${kindLabel(item, lang)}</span><h3>${escapeHTML(pick(item.names, lang))}</h3><p>${escapeHTML(pick(item.summaries, lang))}</p></div>
+  </a>`).join("");
+}
+
+function featuredPackages(packages, featuredIDs) {
+  return featuredIDs.map((id) => packages.find((item) => item.package_id === id)).filter(Boolean);
+}
+
+// 首页 = 产品落地段 + Store 入口底板；搜索与完整内容库只在 /store/。落地素材按内容哈希落在 landingAssets 下，可长期缓存。
+export function homePage({ lang, packages, featuredIDs, css, js, landingAssets = "assets/landing" }) {
   const copy = COPY[lang];
   const L = LANDING[lang];
   const root = lang === "zh" ? "" : "../";
@@ -415,10 +471,9 @@ export function homePage({ lang, packages, featuredIDs, countsURL, css, js, land
   const alternate = lang === "zh" ? "/en/" : "/";
   const assets = `${root}${landingAssets}`;
   const download = `${root}${lang === "en" ? "en/" : ""}download/`;
+  const store = `${root}${lang === "en" ? "en/" : ""}store/`;
   const buy = escapeHTML(`${ACCOUNT_URL}/buy?lang=${lang}`);
-  const featured = featuredIDs.map((id) => packages.find((item) => item.package_id === id)).filter(Boolean);
-  const tags = [...new Set(packages.flatMap((item) => item.tags || []))].sort();
-  const clientData = packages.map((item) => packageClientData(item, lang, root));
+  const featured = featuredPackages(packages, featuredIDs);
 
   const facts = (items) => items?.length ? `<ul class="lp-facts">${items.map((item) => `<li>${escapeHTML(item)}</li>`).join("")}</ul>` : "";
   const media = (name, reveal) => `<figure class="lp-media${reveal ? " reveal" : ""}"><video data-loop muted loop playsinline preload="none" aria-hidden="true" poster="${assets}/loops/${lang}/${name}.webp" src="${assets}/loops/${lang}/${name}.mp4"></video></figure>`;
@@ -438,30 +493,6 @@ export function homePage({ lang, packages, featuredIDs, countsURL, css, js, land
     return `<div class="tier${recommended ? " recommended" : ""}">${recommended ? `<span class="tier-badge">${escapeHTML(L.tier_badge)}</span>` : ""}<div class="tier-count display"><strong>${count}</strong><span>${escapeHTML(count === 1 ? L.tier_unit_1 : L.tier_unit_n)}</span></div><p>${escapeHTML(detail)}</p></div>`;
   }).join("");
   const faq = L.faq.map(([question, answer], index) => `<details${index === 0 ? " open" : ""}><summary>${escapeHTML(question)}</summary><p>${escapeHTML(answer)}</p></details>`).join("");
-
-  const search = packages.length
-    ? `<label class="search-box"><span hidden>${copy.search}</span><input id="library-search" data-store-search type="search" autocomplete="off" aria-label="${escapeHTML(copy.search)}" placeholder="${escapeHTML(copy.search)}"><span class="search-key"><kbd>⌘ K</kbd></span></label>`
-    : "";
-  const featuredCards = featured.map((item) => `<a class="featured-card" href="${root}${lang === "en" ? "en/" : ""}packages/${item.package_id}/">
-    ${icon(item, root)}<div><span class="eyebrow">${copy.featured_kind} · ${kindLabel(item, lang)}</span><h4>${escapeHTML(pick(item.names, lang))}</h4><p>${escapeHTML(pick(item.summaries, lang))}</p></div>
-  </a>`).join("");
-  const storeBody = packages.length
-    ? `${featured.length ? `<div class="store-block"><div class="section-head"><div><h3>${copy.featured}</h3><p>${copy.featured_note}</p></div></div><div class="featured-grid">${featuredCards}</div></div>` : ""}
-      <div class="store-block" id="catalog">
-        <div class="section-head"><div><h3>${copy.all_packages}</h3><p>${copy.all_packages_note}</p></div></div>
-        <div class="catalog-tools">
-          <div class="tool-row"><span class="tool-label">${copy.sort}</span><div class="segment" aria-label="${copy.sort}"><button type="button" data-sort="all">${copy.all}</button><button type="button" data-sort="recent">${copy.recent}</button><button type="button" data-sort="popular">${copy.popular}</button></div></div>
-          <div class="tool-row"><span class="tool-label">${copy.type}</span><div class="segment" aria-label="${copy.type}"><button type="button" data-kind="all">${copy.all}</button><button type="button" data-kind="widget">${copy.widget}</button><button type="button" data-kind="action">${copy.action}</button></div></div>
-          <div class="tool-row"><span class="tool-label">${copy.tags}</span>${tags.map((tag) => `<button class="chip" type="button" data-tag="${escapeHTML(tag)}">${escapeHTML(tag)}</button>`).join("")}<button class="clear-button" id="clear-filters" type="button">${copy.clear}</button></div>
-        </div>
-        <div class="result-line"><span id="result-count" aria-live="polite"></span><span class="popular-status" id="popular-status"></span></div>
-        <div class="catalog-list" id="catalog-list"></div><nav class="pagination" id="pagination" aria-label="${lang === "zh" ? "分页" : "Pagination"}"></nav>
-      </div>`
-    : `<div class="store-empty">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg>
-        <strong>${escapeHTML(L.store_empty_title)}</strong><p>${escapeHTML(L.store_empty_body)}</p>
-        <div class="store-links"><a class="store-button primary" href="${download}">${escapeHTML(L.cta_trial)}</a><a class="store-button" href="${SUBMIT_URL}">${copy.submit}</a></div>
-      </div>`;
 
   return `${pageHead({ lang, title: `NotchAny · ${L.hero_title}`, description: L.hero_lede, canonicalPath: current, alternatePath: alternate, imagePath: APP_ICON_ASSET, css,
     siteName: "NotchAny", extraHead: `<script>document.documentElement.classList.add("js")</script>` })}
@@ -498,7 +529,7 @@ ${nav({ lang, root, landing: true })}
       ${card("ai", "assist")}
     </div></section>
     ${feature("customize")}
-    ${feature("publish", `<a class="lp-link" href="#store">${escapeHTML(L.publish_link)}</a>`)}
+    ${feature("publish", `<a class="lp-link" href="${store}">${escapeHTML(L.publish_link)}</a>`)}
   </div>
   <section class="lp-buy" id="buy"><div class="shell">
     <header class="lp-center-head reveal"><p class="lp-eyebrow">${escapeHTML(L.buy_eyebrow)}</p><h2 class="display">${escapeHTML(L.buy_title)}</h2><p class="lp-body">${escapeHTML(L.buy_body)}</p></header>
@@ -512,12 +543,95 @@ ${nav({ lang, root, landing: true })}
     <div class="faq-list reveal">${faq}</div>
   </div></section>
   <section class="store-sheet" id="store"><div class="shell">
-    <header class="store-head"><div><p class="store-kicker">NotchAny Store</p><h2 class="display">${escapeHTML(L.store_title)}</h2><p class="sub">${escapeHTML(L.store_body)}</p></div>${search}</header>
-    ${storeBody}
+    <header class="store-head"><div><p class="store-kicker">NotchAny Store</p><h2 class="display">${escapeHTML(L.store_title)}</h2><p class="sub">${escapeHTML(L.store_body)}</p></div><a class="lp-btn primary store-enter" href="${store}">${escapeHTML(L.store_enter)}</a></header>
+    ${featured.length ? `<div class="featured-grid">${featuredCards(featured, lang, root)}</div>` : ""}
   </div></section>
 </main>
 ${footer({ lang, label: "NotchAny" })}
-<script>window.__NOTCHANY_STORE__=${inlineJSON({ language: lang, copy, packages: clientData, counts_url: packages.length ? countsURL || "" : "" })};</script>
+<script>window.__NOTCHANY_STORE__=${inlineJSON({ language: lang, copy, packages: [], counts_url: "" })};</script>
+<script>${js}</script>
+</body></html>`;
+}
+
+// 按句包成行内块：宽屏只在句间换行，避免中文逐字折行把「刘海」这类词拆开。
+function sentenceSpans(text, lang) {
+  return text.split(/(?<=[。！？])|(?<=[.!?])\s+/).map((sentence) => `<span>${escapeHTML(sentence)}</span>`).join(lang === "zh" ? "" : " ");
+}
+
+// 独立 Store 页：顶部模拟 MacBook，刘海托盘演示精选作品（无精选时取最新 3 个），下方为精选与完整内容库。
+export function storePage({ lang, packages, featuredIDs, countsURL, css, js }) {
+  const copy = COPY[lang];
+  const L = LANDING[lang];
+  const root = lang === "zh" ? "../" : "../../";
+  const current = `${lang === "zh" ? "" : "/en"}/store/`;
+  const alternate = `${lang === "zh" ? "/en" : ""}/store/`;
+  const download = `${root}${lang === "en" ? "en/" : ""}download/`;
+  const featured = featuredPackages(packages, featuredIDs);
+  const trayPackages = featured.length ? featured : [...packages].sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at)).slice(0, 3);
+  const tags = [...new Set(packages.flatMap((item) => item.tags || []))].sort();
+  const tray = trayPackages.length
+    ? trayPackages.map((item) => `<a class="demo-tray-item" href="${root}${lang === "en" ? "en/" : ""}packages/${item.package_id}/" title="${escapeHTML(pick(item.names, lang))}">
+    ${icon(item, root, "demo-tray-icon")}<span>${escapeHTML(pick(item.names, lang))}</span>
+  </a>`).join("")
+    : `<p class="demo-tray-empty">${escapeHTML(copy.tray_empty)}</p>`;
+  const search = (id, className, shortcut) => `<label class="search-box${className}"><span hidden>${copy.search}</span><input id="${id}" data-store-search type="search" autocomplete="off" aria-label="${escapeHTML(copy.search)}" placeholder="${escapeHTML(copy.search)}">${shortcut ? `<span class="search-key"><kbd>⌘ K</kbd> / <kbd>/</kbd></span>` : ""}</label>`;
+  const catalog = packages.length
+    ? `<div class="section-head"><div><h2>${copy.all_packages}</h2><p>${copy.all_packages_note}</p></div>${search("library-search", " catalog-search", false)}</div>
+    <div class="catalog-tools">
+      <div class="tool-row"><span class="tool-label">${copy.sort}</span><div class="segment" aria-label="${copy.sort}"><button type="button" data-sort="all">${copy.all}</button><button type="button" data-sort="recent">${copy.recent}</button><button type="button" data-sort="popular">${copy.popular}</button></div></div>
+      <div class="tool-row"><span class="tool-label">${copy.type}</span><div class="segment" aria-label="${copy.type}"><button type="button" data-kind="all">${copy.all}</button><button type="button" data-kind="widget">${copy.widget}</button><button type="button" data-kind="action">${copy.action}</button></div></div>
+      <div class="tool-row"><span class="tool-label">${copy.tags}</span>${tags.map((tag) => `<button class="chip" type="button" data-tag="${escapeHTML(tag)}">${escapeHTML(tag)}</button>`).join("")}<button class="clear-button" id="clear-filters" type="button">${copy.clear}</button></div>
+    </div>
+    <div class="result-line"><span id="result-count" aria-live="polite"></span><span class="popular-status" id="popular-status"></span></div>
+    <div class="catalog-list" id="catalog-list"></div><nav class="pagination" id="pagination" aria-label="${lang === "zh" ? "分页" : "Pagination"}"></nav>`
+    : `<div class="store-empty">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg>
+      <strong>${escapeHTML(L.store_empty_title)}</strong><p>${escapeHTML(L.store_empty_body)}</p>
+      <div class="store-links"><a class="store-button primary" href="${download}">${escapeHTML(L.cta_trial)}</a><a class="store-button" href="${SUBMIT_URL}">${copy.submit}</a></div>
+    </div>`;
+
+  return `${pageHead({ lang, title: copy.hero_title, description: copy.hero_body, canonicalPath: current, alternatePath: alternate, imagePath: APP_ICON_ASSET, css })}
+<body>
+${nav({ lang, root, sectionPath: "store/" })}
+<main>
+  <section class="hero-band"><div class="shell hero">
+    <div class="hero-copy"><p class="hero-kicker">${escapeHTML(copy.hero_kicker)}</p><h1>${escapeHTML(copy.hero_title)}</h1><p class="hero-subtitle">${sentenceSpans(copy.hero_body, lang)}</p>
+      ${packages.length ? search("store-search", "", true) : ""}
+    </div>
+    <div class="mac-scene" id="mac-scene">
+      <div class="macbook">
+        <div class="mac-display">
+          <div class="mac-desktop" style="--desktop-wallpaper:url('${root}assets/macos-desktop-wallpaper.webp')">
+            <div class="mac-menu-bar">
+              <div class="menu-left"><img src="${root}${APP_ICON_ASSET}" alt="" width="14" height="14"><strong>NotchAny</strong><span>${lang === "zh" ? "文件" : "File"}</span><span>${lang === "zh" ? "编辑" : "Edit"}</span><span>${lang === "zh" ? "显示" : "View"}</span></div>
+              <div class="menu-right"><span class="menu-control" aria-hidden="true"></span><span id="mac-menu-date"></span><strong id="mac-menu-time"></strong></div>
+            </div>
+            <div class="notch-hot-zone" id="notch-stage">
+              <div class="demo-notch" id="demo-notch" aria-expanded="false">
+                <span class="notch-camera" aria-hidden="true"></span>
+                <div class="demo-tray-items">${tray}</div>
+              </div>
+            </div>
+            <div class="desktop-dock" aria-hidden="true"><img src="${root}${APP_ICON_ASSET}" alt=""><span class="dock-app dock-app-coral"></span><span class="dock-app dock-app-paper"></span><span class="dock-divider"></span><span class="dock-trash"></span></div>
+          </div>
+        </div>
+        <div class="mac-hinge"></div>
+        <div class="keyboard-deck" id="keyboard-deck">
+          <div class="speaker speaker-left"></div><div class="speaker speaker-right"></div>
+          <div class="keyboard">${keyboard()}</div>
+          <button class="trackpad" id="trackpad" type="button" aria-label="${lang === "zh" ? "触控板" : "Trackpad"}"></button>
+        </div>
+        <div class="mac-lip"></div>
+      </div>
+    </div>
+  </div></section>
+  ${featured.length ? `<section class="section" id="featured-section"><div class="shell"><div class="section-head"><div><h2>${copy.featured}</h2><p>${copy.featured_note}</p></div></div><div class="featured-grid">${featuredCards(featured, lang, root)}</div></div></section>` : ""}
+  <section class="section" id="catalog"><div class="shell">
+    ${catalog}
+  </div></section>
+</main>
+${footer({ lang })}
+<script>window.__NOTCHANY_STORE__=${inlineJSON({ language: lang, copy, packages: packages.map((item) => packageClientData(item, lang, root)), counts_url: packages.length ? countsURL || "" : "" })};</script>
 <script>${js}</script>
 </body></html>`;
 }
