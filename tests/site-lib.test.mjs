@@ -45,6 +45,11 @@ test("pick follows zh then en fallback", () => {
   assert.equal(pick({ "zh-Hans": "中文", en: "English" }, "zh"), "中文");
   assert.equal(pick({ "zh-Hans": "中文", en: "English" }, "en"), "English");
   assert.equal(pick({ ja: "日本語" }, "en"), "日本語");
+  // 主语言：中英都缺时先于稳定首值，英文访客在英文之后、中文之前回落到它
+  assert.equal(pick({ fr: "Français", ja: "日本語" }, "zh", "ja"), "日本語");
+  assert.equal(pick({ "zh-Hans": "中文", ja: "日本語" }, "en", "ja"), "日本語");
+  assert.equal(pick({ "zh-Hans": "中文", ja: "日本語" }, "en"), "中文");
+  assert.equal(pick({ en: "English", ja: "日本語" }, "en", "ja"), "English");
 });
 
 test("curation rejects unknown, duplicate, and oversized featured lists", () => {

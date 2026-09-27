@@ -83,7 +83,8 @@ export function verifyPublishedIndex(index, root = process.cwd()) {
     const release = state.packages[id].release;
     if (entry.path !== `published/${id}/package.notchany.json` || entry.sha256 !== release.sha256 || entry.version !== release.version) throw new Error(`Index snapshot mismatch: ${id}`);
     if (entry.history_path && entry.history_path !== `history/v1/${id}.json`) throw new Error("Invalid published history path");
-    for (const path of [entry.icon_path, ...(entry.screenshots || [])].filter(Boolean)) {
+    const localized = Object.values(entry.localized_screenshots || {}).flat();
+    for (const path of [entry.icon_path, ...(entry.screenshots || []), ...localized].filter(Boolean)) {
       if (!path.startsWith(`published/${id}/`) || path.split("/").some(part => part === ".." || part === ".") || !existsSync(join(root, path))) throw new Error("Invalid published asset path");
     }
   }

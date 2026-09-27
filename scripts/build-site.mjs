@@ -92,7 +92,7 @@ cpSync(LANDING_PATH, join(DIST, LANDING_ASSETS), { recursive: true, filter: (sou
 const histories = {};
 for (const item of packages) {
   if (item.icon_path) copy(item.icon_path);
-  for (const screenshot of item.screenshots || []) copy(screenshot);
+  for (const screenshot of [...(item.screenshots || []), ...Object.values(item.localized_screenshots || {}).flat()]) copy(screenshot);
 }
 
 write("index.html", homePage({ lang: "zh", packages, featuredIDs, css, js, landingAssets: LANDING_ASSETS }));

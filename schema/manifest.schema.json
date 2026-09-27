@@ -49,6 +49,12 @@
       "description": "SPDX 许可证标识（如 MIT）",
       "minLength": 1
     },
+    "default_locale": {
+      "type": "string",
+      "description": "主语言码（可选）：summaries 必须含该语言的摘要，其他语言都可选。主语言截图平铺在 screenshots/，其他语言的截图放 screenshots/<语言码>/；出现语言子目录时必填",
+      "maxLength": 35,
+      "pattern": "^[A-Za-z]{2,8}(-[A-Za-z0-9]{1,8})*$"
+    },
     "min_app_version": {
       "type": "string",
       "description": "要求的最低 NotchAny 版本（可选，semver 三段式）",
