@@ -6,7 +6,6 @@ on:
 permissions:
   contents: read
   pull-requests: read
-  statuses: write
 concurrency:
   group: market-recheck-feed
   cancel-in-progress: false
@@ -33,6 +32,11 @@ jobs:
   check:
     needs: pending
     if: needs.pending.outputs.prs != '[]'
+    permissions:
+      contents: write
+      pull-requests: write
+      statuses: write
+      actions: write
     strategy:
       fail-fast: false
       matrix:

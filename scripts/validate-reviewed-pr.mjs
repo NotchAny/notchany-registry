@@ -5,6 +5,7 @@ import { join, resolve } from "node:path";
 import { execFileSync } from "node:child_process";
 import { github, pullRequest } from "./github-pr.mjs";
 import { signedMarketPost } from "./market-client.mjs";
+import { mergeApprovedPackagePullRequest } from "./approved-pr-merge.mjs";
 
 const number = Number(process.env.PR_NUMBER);
 const snapshot = await pullRequest(number);
@@ -27,6 +28,13 @@ try {
   const latest = await signedMarketPost("/internal/market/pr-evaluate", current.evaluation);
   if (current.pr.head.sha !== head || current.pr.base.sha !== snapshot.pr.base.sha || !latest.allowed || latest.policy_revision !== decision.policy_revision) throw new Error("PR or policy changed; retry");
   await status("success", "内容与当前维护权限校验通过");
+  const merged = await mergeApprovedPackagePullRequest({
+    number,
+    expectedHeadSHA: head,
+    expectedBaseSHA: snapshot.pr.base.sha,
+    expectedPolicyRevision: latest.policy_revision,
+  });
+  console.log(merged.merged ? `Merged approved package PR at ${merged.mergeSHA}` : `Restarted publication for ${merged.mergeSHA}`);
 } catch (error) {
   await status("failure", error.message);
   throw error;
