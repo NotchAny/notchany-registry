@@ -1,0 +1,38 @@
+{
+  "action" : {
+    "accepts" : {
+      "count" : "single",
+      "extensions" : [
+        "toml",
+        "env",
+        "lock",
+        "log",
+        "conf",
+        "ini",
+        "cfg",
+        "properties",
+        "tex",
+        "rst"
+      ],
+      "kinds" : [
+        "text"
+      ]
+    },
+    "default_locale" : "zh-Hans",
+    "icon_type" : "symbol",
+    "icon_value" : "note.text.badge.plus",
+    "id" : "notchany.custom.shell.af89a67c-27c5-40b4-8530-a9e813798ee9",
+    "input_kind" : "both",
+    "kind" : "shell",
+    "locales" : [
+      "zh-Hans"
+    ],
+    "names" : {
+      "zh-Hans" : "剪贴板\/文件到备忘录"
+    },
+    "presentation_mode" : "button",
+    "script" : "set -u\n\ninput_mode=\"clipboard\"\ninput_path=\"\"\nnote_title=\"剪贴板记录\"\n\nif (( ${NOTCH_COUNT:-0} > 0 )) && [[ -n \"${NOTCH_FILE:-}\" ]]; then\n  input_mode=\"file\"\n  input_path=\"$NOTCH_FILE\"\n  note_title=\"${input_path##*\/}\"\n\n  if [[ ! -f \"$input_path\" ]]; then\n    print -u2 -- \"只能读取单个普通文本文件：$input_path\"\n    exit 1\n  fi\nfi\n\nerror_file=\"${NOTCH_TEMP_DIR:-${TMPDIR:-\/tmp}}\/notes-action-error.txt\"\nosascript_bin=\"${NOTCH_OSASCRIPT_BIN:-\/usr\/bin\/osascript}\"\nresult=$(\"$osascript_bin\" - \"$input_mode\" \"$input_path\" \"$note_title\" 2>\"$error_file\" <<'APPLESCRIPT'\non replaceText(findText, replacementText, sourceText)\n  set previousDelimiters to AppleScript's text item delimiters\n  set AppleScript's text item delimiters to findText\n  set sourceParts to every text item of sourceText\n  set AppleScript's text item delimiters to replacementText\n  set replacedText to sourceParts as text\n  set AppleScript's text item delimiters to previousDelimiters\n  return replacedText\nend replaceText\n\non htmlEscape(sourceText)\n  set normalizedText to my replaceText(return & linefeed, linefeed, sourceText)\n  set normalizedText to my replaceText(return, linefeed, normalizedText)\n  set escapedText to my replaceText(\"&\", \"&amp;\", normalizedText)\n  set escapedText to my replaceText(\"<\", \"&lt;\", escapedText)\n  set escapedText to my replaceText(\">\", \"&gt;\", escapedText)\n  return my replaceText(linefeed, \"<br>\", escapedText)\nend htmlEscape\n\non readTextFile(inputPath)\n  set inputFile to POSIX file inputPath\n  try\n    return read inputFile as «class utf8»\n  on error\n    try\n      return read inputFile as Unicode text\n    on error\n      return read inputFile\n    end try\n  end try\nend readTextFile\n\non run argv\n  set inputMode to item 1 of argv\n  set inputPath to item 2 of argv\n  set noteTitle to item 3 of argv\n\n  if inputMode is \"file\" then\n    set sourceText to my readTextFile(inputPath)\n  else\n    try\n      set sourceText to the clipboard as text\n    on error\n      return \"__EMPTY__\"\n    end try\n\n    if sourceText is \"\" then return \"__EMPTY__\"\n\n    set previewText to sourceText\n    if (count characters of previewText) > 1200 then\n      set previewText to (characters 1 thru 1200 of previewText as text) & return & return & \"（内容较长，仅预览前 1200 个字符）\"\n    end if\n\n    try\n      display dialog \"剪贴板最近一条文本：\" & return & return & previewText with title \"写入备忘录\" buttons {\"取消\", \"写入备忘录\"} default button \"写入备忘录\" cancel button \"取消\" with icon note\n    on error number -128\n      return \"__CANCELLED__\"\n    end try\n  end if\n\n  if sourceText is \"\" then return \"__EMPTY__\"\n\n  set titleHTML to my htmlEscape(noteTitle)\n  set bodyHTML to my htmlEscape(sourceText)\n  set noteHTML to \"<div><b>\" & titleHTML & \"<\/b><\/div><div><br><\/div><div>\" & bodyHTML & \"<\/div>\"\n\n  tell application \"Notes\"\n    set targetFolder to default folder of default account\n    make new note at targetFolder with properties {name:noteTitle, body:noteHTML}\n  end tell\n\n  return \"__CREATED__:\" & noteTitle\nend run\nAPPLESCRIPT\n)\nexit_code=$?\n\nif (( exit_code != 0 )); then\n  error_text=\"$(<\"$error_file\")\"\n  if [[ \"$error_text\" == *\"-1743\"* || \"$error_text\" == *\"Not authorized to send Apple events\"* || \"$error_text\" == *\"不允许发送 Apple 事件\"* ]]; then\n    print -u2 -- \"需要自动化权限：请前往“系统设置 > 隐私与安全性 > 自动化”，允许 NotchAny 控制“备忘录”，然后重试。\"\n  else\n    print -u2 -- \"${error_text:-写入备忘录失败。}\"\n  fi\n  exit \"$exit_code\"\nfi\n\ncase \"$result\" in\n  \"__CANCELLED__\")\n    notch_result --summary \"已取消，未写入备忘录\"\n    ;;\n  \"__EMPTY__\")\n    notch_result --summary \"没有可写入的文本\" --details \"请先复制一段文本，或拖入一个文本文件。\"\n    ;;\n  \"__CREATED__:\"*)\n    created_title=\"${result#__CREATED__:}\"\n    notch_result --summary \"已写入备忘录\" --details \"$created_title\"\n    ;;\n  *)\n    print -u2 -- \"写入备忘录后收到未知结果：$result\"\n    exit 1\n    ;;\nesac",
+    "timeout_seconds" : 120
+  },
+  "notchany_export" : 9
+}
