@@ -9,6 +9,12 @@ export async function mergeApprovedPackagePullRequest({
   loadPullRequest = pullRequest,
   evaluate = evaluation => signedMarketPost("/internal/market/pr-evaluate", evaluation),
   githubRequest = github,
+  loadMainSHA = async () => {
+    const ref = await githubRequest("/git/ref/heads/main");
+    if (!ref?.object?.sha) throw new Error("GitHub main ref is missing its commit");
+    return ref.object.sha;
+  },
+  markReady = async () => {},
 }) {
   const current = await loadPullRequest(number);
   if (current.pr.head.sha !== expectedHeadSHA) throw new Error("PR head changed before merge");
@@ -18,17 +24,40 @@ export async function mergeApprovedPackagePullRequest({
     throw new Error("PR permission changed before merge");
   }
 
+  const updateBranch = async () => {
+    await githubRequest(`/pulls/${number}/update-branch`, {
+      method: "PUT",
+      body: JSON.stringify({ expected_head_sha: expectedHeadSHA }),
+    });
+    return { updated: true, merged: false, mergeSHA: null };
+  };
+  const branchIsBehind = (snapshot, mainSHA) =>
+    snapshot.pr.mergeable_state === "behind" || snapshot.pr.base.sha !== mainSHA;
+
   let merged = false;
   let mergeSHA = current.pr.merge_commit_sha;
   if (!current.pr.merged_at) {
     if (current.pr.state !== "open") throw new Error("Approved PR is not open");
-    const result = await githubRequest(`/pulls/${number}/merge`, {
-      method: "PUT",
-      body: JSON.stringify({ sha: expectedHeadSHA, merge_method: "squash" }),
-    });
-    if (!result?.merged || !result.sha) throw new Error("GitHub refused approved package merge");
-    merged = true;
-    mergeSHA = result.sha;
+    if (branchIsBehind(current, await loadMainSHA())) return updateBranch();
+
+    await markReady();
+    try {
+      const result = await githubRequest(`/pulls/${number}/merge`, {
+        method: "PUT",
+        body: JSON.stringify({ sha: expectedHeadSHA, merge_method: "squash" }),
+      });
+      if (!result?.merged || !result.sha) throw new Error("GitHub refused approved package merge");
+      merged = true;
+      mergeSHA = result.sha;
+    } catch (error) {
+      if (!String(error?.message).startsWith(`GitHub 405: /pulls/${number}/merge`)) throw error;
+      const refreshed = await loadPullRequest(number);
+      if (refreshed.pr.head.sha !== expectedHeadSHA || refreshed.pr.state !== "open") throw error;
+      if (!branchIsBehind(refreshed, await loadMainSHA())) throw error;
+      return updateBranch();
+    }
+  } else {
+    await markReady();
   }
   if (!mergeSHA) throw new Error("Merged PR is missing its merge commit");
 
@@ -37,5 +66,5 @@ export async function mergeApprovedPackagePullRequest({
     method: "POST",
     body: JSON.stringify({ ref: "main" }),
   });
-  return { merged, mergeSHA };
+  return { updated: false, merged, mergeSHA };
 }

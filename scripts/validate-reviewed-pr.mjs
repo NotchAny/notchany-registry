@@ -27,14 +27,15 @@ try {
   const current = await pullRequest(number);
   const latest = await signedMarketPost("/internal/market/pr-evaluate", current.evaluation);
   if (current.pr.head.sha !== head || current.pr.base.sha !== snapshot.pr.base.sha || !latest.allowed || latest.policy_revision !== decision.policy_revision) throw new Error("PR or policy changed; retry");
-  await status("success", "内容与当前维护权限校验通过");
   const merged = await mergeApprovedPackagePullRequest({
     number,
     expectedHeadSHA: head,
     expectedBaseSHA: snapshot.pr.base.sha,
     expectedPolicyRevision: latest.policy_revision,
+    markReady: () => status("success", "内容与当前维护权限校验通过"),
   });
-  console.log(merged.merged ? `Merged approved package PR at ${merged.mergeSHA}` : `Restarted publication for ${merged.mergeSHA}`);
+  if (merged.updated) console.log("Updated approved package PR with current main; waiting for the new head to be revalidated");
+  else console.log(merged.merged ? `Merged approved package PR at ${merged.mergeSHA}` : `Restarted publication for ${merged.mergeSHA}`);
 } catch (error) {
   await status("failure", error.message);
   throw error;
