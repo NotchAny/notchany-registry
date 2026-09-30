@@ -133,7 +133,7 @@ PR 授权、release 登记和 reconciliation 都使用带 5 分钟时间窗的 H
 
 默认分支必需状态为 `market/content-and-permission`，并要求分支与 main 同步。普通包 PR、生成发布 PR、仓库维护 PR 分别校验包权限、签名清单及当前管理员身份；维护 PR 不得夹带包或生成产物。
 `pr-validate.yml` 只运行 main 上的可信脚本；PR 内容作为数据。Review 事件通过无凭据工作流通知可信工作流；每五分钟重验公开 PR，覆盖撤回 Review、撤权及身份解绑。
-普通包 PR 在内容与权限校验通过后由可信 workflow 以受审 head SHA 自动 squash merge：首次创建要求作者已绑定 GitHub；Owner/共同维护者更新可直接合并；其他贡献必须先取得当前 Owner 或共同维护者对当前 head 的批准。合并前再次核对 head、base、Review 与 `policy_revision`；分支落后于 main 时由 workflow 先同步，新的 head 必须重新完成全套校验，其他变化则停止合并。
+普通包 PR 在内容与权限校验通过后由可信 workflow 以受审 head SHA 自动 squash merge：首次创建要求作者已绑定 GitHub；Owner/共同维护者更新可直接合并；其他贡献必须先取得当前 Owner 或共同维护者对当前 head 的批准。合并前再次核对 head、base、Review 与 `policy_revision`；分支落后于 main 时由 workflow 先同步并显式调度新 head 的全套校验，其他变化则停止合并。
 组织与仓库两级都需开启 Actions「允许创建和批准 PR」，并赋可信检查与发布工作流 contents、pull-requests、statuses、actions 写权限。机器人合并普通包 PR 后显式调度 `publish-index.yml`；机器人创建发布 PR 后显式调度 `validate-publication.yml`，成功合入后显式调度 `deploy-store-cloudflare.yml` 与 `reconcile-market.yml`，不依赖机器人触发 push 事件。
 
 Store 部署还需要仓库 secrets `CLOUDFLARE_API_TOKEN`（只授予 `notchany-store` Worker

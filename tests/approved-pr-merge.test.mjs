@@ -133,14 +133,19 @@ test("an approved PR behind main is updated and must be revalidated before merge
     githubRequest: async (path, options = {}) => {
       requests.push({ path, options });
       if (path === "/pulls/42/update-branch") return { message: "Updating pull request branch." };
+      if (path === "/actions/workflows/pr-validate.yml/dispatches") return null;
       throw new Error(`Unexpected GitHub request: ${path}`);
     },
   });
 
   assert.deepEqual(result, { updated: true, merged: false, mergeSHA: null });
   assert.equal(ready, false, "an updated head must pass validation again before success");
-  assert.deepEqual(requests.map(request => request.path), ["/pulls/42/update-branch"]);
+  assert.deepEqual(requests.map(request => request.path), [
+    "/pulls/42/update-branch",
+    "/actions/workflows/pr-validate.yml/dispatches",
+  ]);
   assert.deepEqual(JSON.parse(requests[0].options.body), { expected_head_sha: HEAD });
+  assert.deepEqual(JSON.parse(requests[1].options.body), { ref: "main", inputs: { pr_number: "42" } });
 });
 
 test("a merge race that makes the PR behind updates the branch instead of failing", async () => {
@@ -161,11 +166,16 @@ test("a merge race that makes the PR behind updates the branch instead of failin
       requests.push({ path, options });
       if (path === "/pulls/42/merge") throw new Error("GitHub 405: /pulls/42/merge");
       if (path === "/pulls/42/update-branch") return { message: "Updating pull request branch." };
+      if (path === "/actions/workflows/pr-validate.yml/dispatches") return null;
       throw new Error(`Unexpected GitHub request: ${path}`);
     },
   });
 
   assert.deepEqual(result, { updated: true, merged: false, mergeSHA: null });
   assert.equal(ready, true, "the race happens only after the reviewed status is posted");
-  assert.deepEqual(requests.map(request => request.path), ["/pulls/42/merge", "/pulls/42/update-branch"]);
+  assert.deepEqual(requests.map(request => request.path), [
+    "/pulls/42/merge",
+    "/pulls/42/update-branch",
+    "/actions/workflows/pr-validate.yml/dispatches",
+  ]);
 });
