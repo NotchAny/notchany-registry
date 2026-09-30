@@ -1,0 +1,49 @@
+{
+  "history_schema": 1,
+  "package_id": "glzlaohuai/clipboard-file-to-notes",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "sha256": "55322c50b319624cf5d854184d1513b047aa7d0c429c1444dba9348bb116dc45",
+      "source_commit": "9d870737f30930278c64ba25852cb1f06295a4e7",
+      "merged_at": "2026-09-30T14:18:30Z",
+      "published_at": "2026-09-30T14:18:30Z",
+      "pr": {
+        "number": 4,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/4",
+        "title": "新增 clipboard-file-to-notes v1.0.0",
+        "body": "首个版本：支持点击读取剪贴板并确认写入，以及拖入单个文本文件直接写入 macOS 备忘录。",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        },
+        {
+          "github_user_id": "41898282",
+          "login": "github-actions[bot]",
+          "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4"
+        }
+      ],
+      "approved_by": []
+    }
+  ],
+  "contributors": [
+    {
+      "github_user_id": "2596885",
+      "login": "glzlaohuai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+    },
+    {
+      "github_user_id": "41898282",
+      "login": "github-actions[bot]",
+      "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4"
+    }
+  ]
+}

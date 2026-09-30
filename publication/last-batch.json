@@ -1,0 +1,31 @@
+{
+  "payload": {
+    "schema": 1,
+    "candidate_commit": "9d870737f30930278c64ba25852cb1f06295a4e7",
+    "decision_id": "fae1940e-b50a-4858-a993-784bda176f2a",
+    "requests": [
+      {
+        "repository": "NotchAny/notchany-registry",
+        "pr_number": 4,
+        "head_sha": "7c74e1bba54c37d86e58e039ab33a46ed0f6399e",
+        "base_sha": "278b68036900a879d0c804d32df191e8fab782d6",
+        "package_id": "glzlaohuai/clipboard-file-to-notes",
+        "operation": "create",
+        "actor_github_user_id": "2596885",
+        "reviews": []
+      }
+    ],
+    "artifacts": {
+      "history/v1/glzlaohuai/clipboard-file-to-notes.json": "f0f1fe658fa7f6ef7984698092787092d3be5d50fbec97e851cbfe1e64357550",
+      "index/v1/index.json": "e1a4ddbcfa1c3b3c41c0ef0e3f01846dd1a34f19435dfda79916bdc1ed5e3c33",
+      "index/v2/index.json": "593ec7075f92e55786cf3645c66f67316a78df8fa422fc9e39f702f381250164",
+      "published/glzlaohuai/clipboard-file-to-notes/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
+      "published/glzlaohuai/clipboard-file-to-notes/icon.png": "7c5c7ef0418c62fa8e58b2f83ee581786c8740ceb3a05959c61bb8279fb86b6e",
+      "published/glzlaohuai/clipboard-file-to-notes/manifest.json": "d1f22a3ec2167a5bfaf848a798688a9e384b06be776783f6a067870ffb5cb49d",
+      "published/glzlaohuai/clipboard-file-to-notes/package.notchany.json": "55322c50b319624cf5d854184d1513b047aa7d0c429c1444dba9348bb116dc45",
+      "published/glzlaohuai/clipboard-file-to-notes/screenshots/1.png": "6760294cf87876bd0eac7631350fd7115fae3f4d9b8d39b60117177490081714",
+      "published/state.json": "b8f6f4392bd6899588f0224b50da1c16af2e720f3c7f24e54110e629be8e41c4"
+    }
+  },
+  "signature": "cbc7c7f1f214aa66bd6418e8978516c33daba7dd5d8c779ce32a1d51181c12e4"
+}

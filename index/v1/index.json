@@ -1,5 +1,63 @@
 {
   "index_schema": 1,
-  "generated_at": "2026-09-25T18:00:00+08:00",
-  "packages": []
+  "generated_at": "2026-09-30T14:18:30Z",
+  "packages": [
+    {
+      "names": {
+        "zh-Hans": "剪贴板/文件到备忘录"
+      },
+      "summaries": {
+        "zh-Hans": "将剪贴板文本或拖入的文本文件写入 macOS 备忘录"
+      },
+      "descriptions": {
+        "zh-Hans": "支持两种输入方式：\n\n- 点击按钮：读取当前文本剪贴板，先展示内容预览，用户确认后写入 macOS 备忘录。\n- 拖入文件：读取单个文本文件的内容并直接创建备忘录。\n\n写入时会保留换行并转义 HTML 特殊字符。首次使用时，macOS 可能要求允许 NotchAny 控制“备忘录”。"
+      },
+      "default_locale": "zh-Hans",
+      "version": "1.0.0",
+      "tags": [
+        "productivity",
+        "notes",
+        "clipboard",
+        "text"
+      ],
+      "license": "MIT",
+      "package_id": "glzlaohuai/clipboard-file-to-notes",
+      "path": "published/glzlaohuai/clipboard-file-to-notes/package.notchany.json",
+      "icon_path": "published/glzlaohuai/clipboard-file-to-notes/icon.png",
+      "id": "notchany.custom.shell.af89a67c-27c5-40b4-8530-a9e813798ee9",
+      "kind": "action",
+      "action_kind": "shell",
+      "input_kind": "both",
+      "envelope_version": 9,
+      "sha256": "55322c50b319624cf5d854184d1513b047aa7d0c429c1444dba9348bb116dc45",
+      "size_bytes": 5076,
+      "requires": [],
+      "has_parameters": false,
+      "has_notification": false,
+      "accepts": {
+        "count": "single",
+        "extensions": [
+          "toml",
+          "env",
+          "lock",
+          "log",
+          "conf",
+          "ini",
+          "cfg",
+          "properties",
+          "tex",
+          "rst"
+        ],
+        "kinds": [
+          "text"
+        ]
+      },
+      "interpreter": "shell",
+      "screenshots": [
+        "published/glzlaohuai/clipboard-file-to-notes/screenshots/1.png"
+      ],
+      "published_at": "2026-09-30T14:18:30Z",
+      "updated_at": "2026-09-30T14:18:30Z"
+    }
+  ]
 }
