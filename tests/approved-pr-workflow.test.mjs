@@ -29,4 +29,5 @@ test("approved package validation invokes the trusted merge boundary", () => {
   assert.match(source, /mergeApprovedPackagePullRequest/);
   assert.match(source, /expectedHeadSHA: head/);
   assert.match(source, /expectedPolicyRevision: latest\.policy_revision/);
+  assert.match(source, /markReady: \(\) => status\("success"/);
 });
