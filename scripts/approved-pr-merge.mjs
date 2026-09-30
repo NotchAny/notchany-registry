@@ -29,6 +29,11 @@ export async function mergeApprovedPackagePullRequest({
       method: "PUT",
       body: JSON.stringify({ expected_head_sha: expectedHeadSHA }),
     });
+    // GITHUB_TOKEN 触发的分支更新不会继续触发 Actions，显式启动新 head 的完整校验。
+    await githubRequest("/actions/workflows/pr-validate.yml/dispatches", {
+      method: "POST",
+      body: JSON.stringify({ ref: "main", inputs: { pr_number: String(number) } }),
+    });
     return { updated: true, merged: false, mergeSHA: null };
   };
   const branchIsBehind = (snapshot, mainSHA) =>
