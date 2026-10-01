@@ -37,12 +37,48 @@
         ],
         "approved_by": []
       }
+    },
+    "glzlaohuai/clipboard-to-file": {
+      "active": true,
+      "tree_hash": "eee05b2ef176df81b3041becebccfef421eb42e2e1a0553b7bc8baf5274a34cb",
+      "source_commit": "2329796062843445dfbe4f30b37252079bc6bdc7",
+      "first_published_at": "2026-10-01T03:57:41Z",
+      "release": {
+        "version": "1.0.0",
+        "sha256": "3f42ca43c8038b702108745ed632c68216845801f2bfec2f110d69f59500498e",
+        "source_commit": "2329796062843445dfbe4f30b37252079bc6bdc7",
+        "merged_at": "2026-10-01T03:57:41Z",
+        "published_at": "2026-10-01T03:57:41Z",
+        "pr": {
+          "number": 9,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/9",
+          "title": "Clipboard to File",
+          "body": "Save clipboard history items as files with auto format detection.\n\nPackage: `glzlaohuai/clipboard-to-file`",
+          "author": {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        },
+        "contributors": [
+          {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        ],
+        "approved_by": []
+      }
     }
   },
   "decisions": [
     {
       "id": "fae1940e-b50a-4858-a993-784bda176f2a",
       "candidate_commit": "9d870737f30930278c64ba25852cb1f06295a4e7"
+    },
+    {
+      "id": "c1c4731f-aac3-4301-9b30-7bc74e9a4d7d",
+      "candidate_commit": "2329796062843445dfbe4f30b37252079bc6bdc7"
     }
   ]
 }

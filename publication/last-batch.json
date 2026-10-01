@@ -1,31 +1,32 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "9d870737f30930278c64ba25852cb1f06295a4e7",
-    "decision_id": "fae1940e-b50a-4858-a993-784bda176f2a",
+    "candidate_commit": "2329796062843445dfbe4f30b37252079bc6bdc7",
+    "decision_id": "c1c4731f-aac3-4301-9b30-7bc74e9a4d7d",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 4,
-        "head_sha": "7c74e1bba54c37d86e58e039ab33a46ed0f6399e",
-        "base_sha": "278b68036900a879d0c804d32df191e8fab782d6",
-        "package_id": "glzlaohuai/clipboard-file-to-notes",
+        "pr_number": 9,
+        "head_sha": "ec7ee271e223c3d1f1a4bc871cad0219587fc3e6",
+        "base_sha": "ef66874a03675ab031e8f9ca9ea3223d54293942",
+        "package_id": "glzlaohuai/clipboard-to-file",
         "operation": "create",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/clipboard-file-to-notes.json": "f0f1fe658fa7f6ef7984698092787092d3be5d50fbec97e851cbfe1e64357550",
-      "index/v1/index.json": "e1a4ddbcfa1c3b3c41c0ef0e3f01846dd1a34f19435dfda79916bdc1ed5e3c33",
-      "index/v2/index.json": "593ec7075f92e55786cf3645c66f67316a78df8fa422fc9e39f702f381250164",
-      "published/glzlaohuai/clipboard-file-to-notes/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
-      "published/glzlaohuai/clipboard-file-to-notes/icon.png": "7c5c7ef0418c62fa8e58b2f83ee581786c8740ceb3a05959c61bb8279fb86b6e",
-      "published/glzlaohuai/clipboard-file-to-notes/manifest.json": "d1f22a3ec2167a5bfaf848a798688a9e384b06be776783f6a067870ffb5cb49d",
-      "published/glzlaohuai/clipboard-file-to-notes/package.notchany.json": "55322c50b319624cf5d854184d1513b047aa7d0c429c1444dba9348bb116dc45",
-      "published/glzlaohuai/clipboard-file-to-notes/screenshots/1.png": "6760294cf87876bd0eac7631350fd7115fae3f4d9b8d39b60117177490081714",
-      "published/state.json": "b8f6f4392bd6899588f0224b50da1c16af2e720f3c7f24e54110e629be8e41c4"
+      "history/v1/glzlaohuai/clipboard-to-file.json": "e94aefc70fe1213d76edda69b1018a9e3687c272b2b9c00617e8931887557909",
+      "index/v1/index.json": "d0c53c2d9eb9dab9346db98f908dcc57015e8273511db063d167b4248788ee3c",
+      "index/v2/index.json": "e73c193e25026338d48ff5e55f925fd2a86a68ec87a530828e1edcc1cad7178e",
+      "published/glzlaohuai/clipboard-to-file/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
+      "published/glzlaohuai/clipboard-to-file/icon.png": "c4cece683cc663f9f991ce66a3a5a08bab17e88b5cd099f98f91a056f2685ef1",
+      "published/glzlaohuai/clipboard-to-file/manifest.json": "31154cf13b5fbf9a51aafdc2b9a621d48bba51e283e078bcbcbb4cb82d94b3e7",
+      "published/glzlaohuai/clipboard-to-file/package.notchany.json": "3f42ca43c8038b702108745ed632c68216845801f2bfec2f110d69f59500498e",
+      "published/glzlaohuai/clipboard-to-file/screenshots/1.png": "8294d7e4da40c97f3cfabeb256c3d36608c89c92d4dc38873aa47897d2a17cf5",
+      "published/glzlaohuai/clipboard-to-file/screenshots/zh-Hans/1.png": "5ae14183163997da046c2fbb30814af46d644ceacc1552daaef78be6b9673cb3",
+      "published/state.json": "d05e79027853744ade53907d8416927701213bc2cdc6dad101af7c989db5b5d1"
     }
   },
-  "signature": "cbc7c7f1f214aa66bd6418e8978516c33daba7dd5d8c779ce32a1d51181c12e4"
+  "signature": "2896a372bd0039ac624636aec4dbcb2c8c935ce18780e8effc4978db319702ec"
 }
