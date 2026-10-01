@@ -1,0 +1,18 @@
+{
+  "default_locale" : "en",
+  "license" : "MIT",
+  "manifest_version" : 1,
+  "names" : {
+    "en" : "Clipboard to File",
+    "zh-Hans" : "剪贴板存文件"
+  },
+  "summaries" : {
+    "en" : "Pick text from clipboard history and save it as md, json, html, or txt.",
+    "zh-Hans" : "从剪贴板历史里选一段文本，存成 md、json、html 或 txt 文件。"
+  },
+  "tags" : [
+    "clipboard",
+    "productivity"
+  ],
+  "version" : "1.0.0"
+}

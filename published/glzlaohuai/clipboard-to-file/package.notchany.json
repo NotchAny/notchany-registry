@@ -1,0 +1,205 @@
+{
+  "action" : {
+    "default_locale" : "zh-Hans",
+    "i18n" : {
+      "cancel" : {
+        "en" : "Cancel",
+        "zh-Hans" : "取消"
+      },
+      "cancelled" : {
+        "en" : "Cancelled",
+        "zh-Hans" : "已取消"
+      },
+      "date_md" : {
+        "en" : "{m}\/{d}",
+        "zh-Hans" : "{m}月{d}日"
+      },
+      "empty" : {
+        "en" : "Clipboard is empty and no history text is available",
+        "zh-Hans" : "剪贴板是空的，也没有可用的历史文本"
+      },
+      "empty_ui" : {
+        "en" : "No text yet",
+        "zh-Hans" : "暂无文本"
+      },
+      "err_automation" : {
+        "en" : "Automation permission required: System Settings > Privacy & Security > Automation",
+        "zh-Hans" : "需要自动化权限：系统设置 > 隐私与安全性 > 自动化"
+      },
+      "err_gone" : {
+        "en" : "That item is no longer in history",
+        "zh-Hans" : "这条已经不在历史里了"
+      },
+      "err_no_dir" : {
+        "en" : "Save folder does not exist: {dir}",
+        "zh-Hans" : "保存目录不存在：{dir}"
+      },
+      "err_no_item" : {
+        "en" : "No item specified",
+        "zh-Hans" : "未指定要保存的条目"
+      },
+      "err_not_found" : {
+        "en" : "Selected item not found",
+        "zh-Hans" : "未找到所选条目"
+      },
+      "err_pick" : {
+        "en" : "Unable to show the picker",
+        "zh-Hans" : "无法弹出选择列表"
+      },
+      "err_timeout" : {
+        "en" : "Selection timed out",
+        "zh-Hans" : "选择超时"
+      },
+      "just_now" : {
+        "en" : "Just now",
+        "zh-Hans" : "刚刚"
+      },
+      "minutes_ago" : {
+        "en" : "{n} min ago",
+        "zh-Hans" : "{n}分钟前"
+      },
+      "ok" : {
+        "en" : "Save",
+        "zh-Hans" : "保存"
+      },
+      "pick" : {
+        "en" : "Pick from History",
+        "zh-Hans" : "选择历史"
+      },
+      "pick_prompt" : {
+        "en" : "Choose text to save as a file",
+        "zh-Hans" : "选择要保存为文件的文本"
+      },
+      "save_latest" : {
+        "en" : "Save Latest",
+        "zh-Hans" : "保存最近"
+      },
+      "saved" : {
+        "en" : "Saved {name}",
+        "zh-Hans" : "已保存 {name}"
+      },
+      "saved_short" : {
+        "en" : "Saved {name}",
+        "zh-Hans" : "已保存 {name}"
+      },
+      "title" : {
+        "en" : "Clipboard to File",
+        "zh-Hans" : "剪贴板转存"
+      },
+      "yesterday" : {
+        "en" : "Yesterday",
+        "zh-Hans" : "昨天"
+      }
+    },
+    "icon_type" : "symbol",
+    "icon_value" : "doc.on.clipboard",
+    "id" : "notchany.custom.shell.564a381f-4086-49a4-96cb-59a3b6650b73",
+    "input_kind" : "none",
+    "interpreter" : "python",
+    "kind" : "shell",
+    "locales" : [
+      "zh-Hans",
+      "en"
+    ],
+    "names" : {
+      "en" : "Clipboard to File",
+      "zh-Hans" : "剪贴板存文件"
+    },
+    "parameters" : [
+      {
+        "default" : "list",
+        "key" : "ui",
+        "labels" : {
+          "en" : "Interaction",
+          "zh-Hans" : "交互方式"
+        },
+        "options" : [
+          "list",
+          "dialog"
+        ],
+        "type" : "choice"
+      },
+      {
+        "default" : "auto",
+        "key" : "format",
+        "labels" : {
+          "en" : "File Format",
+          "zh-Hans" : "文件格式"
+        },
+        "options" : [
+          "auto",
+          "txt",
+          "md",
+          "html",
+          "json",
+          "csv",
+          "xml"
+        ],
+        "type" : "choice"
+      },
+      {
+        "default" : "auto",
+        "key" : "filename",
+        "labels" : {
+          "en" : "File Name",
+          "zh-Hans" : "文件名"
+        },
+        "options" : [
+          "auto",
+          "timestamp"
+        ],
+        "type" : "choice"
+      },
+      {
+        "default" : 12,
+        "key" : "history_n",
+        "labels" : {
+          "en" : "History Items",
+          "zh-Hans" : "历史条数"
+        },
+        "max" : 30,
+        "min" : 3,
+        "type" : "number"
+      },
+      {
+        "default" : "",
+        "key" : "save_dir",
+        "labels" : {
+          "en" : "Save Folder",
+          "zh-Hans" : "保存目录"
+        },
+        "placeholder" : "留空=输出目录或桌面 \/ Empty = output folder or Desktop",
+        "type" : "directory"
+      },
+      {
+        "default" : true,
+        "key" : "reveal",
+        "labels" : {
+          "en" : "Reveal in Finder",
+          "zh-Hans" : "在访达中显示"
+        },
+        "type" : "boolean"
+      },
+      {
+        "default" : false,
+        "key" : "open_file",
+        "labels" : {
+          "en" : "Open After Saving",
+          "zh-Hans" : "保存后打开文件"
+        },
+        "type" : "boolean"
+      }
+    ],
+    "presentation_mode" : "widget",
+    "script" : "import hashlib\nimport json\nimport os\nimport re\nimport subprocess\nimport sys\nimport time\nfrom datetime import datetime, timedelta\nfrom pathlib import Path\n\nCORE_DATA_EPOCH = 978307200\n\n\ndef env(key, default=\"\"):\n    return os.environ.get(key, default)\n\n\ndef param(key, default=\"\"):\n    return env(\"NOTCH_PARAM_\" + key.upper(), default)\n\n\ndef fail(msg):\n    print(msg, file=sys.stderr)\n    sys.exit(1)\n\n\ndef ui_mode():\n    raw = param(\"ui\", \"list\").strip()\n    if raw in (\"dialog\", \"弹窗\", \"button\", \"picker\"):\n        return \"dialog\"\n    return \"list\"\n\n\ndef current_clipboard():\n    try:\n        raw = subprocess.run([\"pbpaste\"], capture_output=True, timeout=3).stdout\n    except Exception:\n        return \"\"\n    if not raw or b\"\\x00\" in raw[:2048]:\n        return \"\"\n    text = raw.decode(\"utf-8\", \"replace\").replace(\"\\r\\n\", \"\\n\").replace(\"\\r\", \"\\n\")\n    return text if text.strip() else \"\"\n\n\ndef detect_ext(text, forced):\n    if forced and forced != \"auto\":\n        return forced\n    s = text.strip()\n    if not s:\n        return \"txt\"\n    if s[0] in \"{[\" and s[-1] in \"}]\":\n        try:\n            json.loads(s)\n            return \"json\"\n        except Exception:\n            pass\n    head = s[:5000]\n    low = head.lower()\n    html_hint = low.startswith(\"<!doctype html\") or low.startswith(\"<html\")\n    html_hint = html_hint or bool(\n        re.search(r\"<(html|head|body|div|span|p|table|article|section)\\b\", head, re.I)\n    )\n    if html_hint and re.search(r\"<\/[a-zA-Z][^>]*>\", head):\n        return \"html\"\n    xml_like = s.startswith(\"<?xml\") or re.match(\n        r\"<[A-Za-z][\\w:.-]*(\\s[^>]*)?>[\\s\\S]*<\/[A-Za-z]\", s\n    )\n    if xml_like and \"html\" not in low[:300]:\n        return \"xml\"\n    lines = [ln for ln in s.splitlines() if ln.strip()]\n    if len(lines) >= 3:\n        counts = [ln.count(\",\") for ln in lines[:30] if ln.count(\",\") >= 1]\n        if len(counts) >= 3 and len(set(counts)) == 1:\n            return \"csv\"\n    score = 0\n    if re.search(r\"^#{1,6}\\s+\\S\", s, re.M):\n        score += 2\n    if \"```\" in s:\n        score += 2\n    if re.search(r\"\\[[^\\]]+\\]\\([^)]+\\)\", s):\n        score += 1\n    if re.search(r\"^[-*+]\\s+\\S\", s, re.M):\n        score += 1\n    if re.search(r\"^\\d+\\.\\s+\\S\", s, re.M):\n        score += 1\n    if re.search(r\"^>\\s+\\S\", s, re.M):\n        score += 1\n    if re.search(r\"^\\|.+\\|\", s, re.M):\n        score += 1\n    if re.search(r\"\\*\\*[^*\\n]+\\*\\*\", s):\n        score += 1\n    if score >= 2:\n        return \"md\"\n    return \"txt\"\n\n\ndef sanitize_name(name):\n    name = re.sub(r\"[\\\\\/:*?\\\"<>|{}[\\]()\\x00-\\x1f]\", \"_\", name)\n    name = name.strip(\" ._\")\n    name = re.sub(r\"\\s+\", \" \", name)\n    name = re.sub(r\"_+\", \"_\", name)\n    return name[:60] if name else \"\"\n\n\ndef looks_like_title(line):\n    s = line.strip()\n    if not s or len(s) > 80:\n        return False\n    if s[0] in \"{[<\":\n        return False\n    if s.startswith(\"http:\/\/\") or s.startswith(\"https:\/\/\"):\n        return False\n    return True\n\n\ndef suggested_name(text, mode, ext):\n    stamp = datetime.now().strftime(\"clipboard-%Y%m%d-%H%M%S\")\n    if mode == \"timestamp\" or ext in (\"json\", \"html\", \"xml\", \"csv\"):\n        return stamp\n    m = re.search(r\"^#{1,6}\\s+(\\S.+)$\", text, re.M)\n    if m:\n        base = sanitize_name(m.group(1))\n        if base:\n            return base\n    for ln in text.splitlines():\n        ln = ln.strip().lstrip(\"#\").strip()\n        if looks_like_title(ln):\n            base = sanitize_name(ln)\n            if base:\n                return base\n    return stamp\n\n\ndef unique_path(folder, base, ext):\n    path = folder \/ f\"{base}.{ext}\"\n    n = 2\n    while path.exists():\n        path = folder \/ f\"{base}-{n}.{ext}\"\n        n += 1\n    return path\n\n\ndef preview_text(text):\n    one = re.sub(r\"\\s+\", \" \", text.strip())[:48]\n    if len(text.strip()) > 48:\n        one = one.rstrip() + \"…\"\n    return one\n\n\ndef item_id(text):\n    return hashlib.sha1(text.encode(\"utf-8\", \"replace\")).hexdigest()[:16]\n\n\ndef read_pastepal(limit):\n    db = os.path.expanduser(\n        \"~\/Library\/Containers\/com.onmyway133.PastePal\/Data\/Library\/Application Support\/PastePal\/PastePal2.sqlite\"\n    )\n    if not os.path.isfile(db):\n        return []\n    n = max(1, int(limit))\n    query = (\n        \"SELECT ZSTRING, ZCREATEDAT FROM ZCDCLIPBOARDITEM \"\n        \"WHERE ZSTRING IS NOT NULL AND length(ZSTRING) > 0 \"\n        \"AND IFNULL(ZMARKEDDELETE, 0) = 0 \"\n        \"AND ZITEMTYPE IN ('Text', 'Rich Text', 'Link', 'Email', 'Other') \"\n        \"ORDER BY ZCREATEDAT DESC \"\n        f\"LIMIT {n}\"\n    )\n    try:\n        r = subprocess.run(\n            [\"\/usr\/bin\/sqlite3\", \"-readonly\", \"-json\", db, query],\n            capture_output=True,\n            text=True,\n            timeout=2,\n        )\n    except (subprocess.TimeoutExpired, OSError):\n        return []\n    if r.returncode != 0 or not (r.stdout or \"\").strip():\n        return []\n    try:\n        rows = json.loads(r.stdout)\n    except json.JSONDecodeError:\n        return []\n    out = []\n    if not isinstance(rows, list):\n        return []\n    for row in rows:\n        if not isinstance(row, dict):\n            continue\n        val = row.get(\"ZSTRING\")\n        if isinstance(val, str) and val.strip():\n            try:\n                ts = int(float(row.get(\"ZCREATEDAT\") or 0) + CORE_DATA_EPOCH)\n            except (TypeError, ValueError):\n                ts = int(time.time())\n            out.append((val.replace(\"\\r\\n\", \"\\n\").replace(\"\\r\", \"\\n\"), ts))\n    return out\n\n\ndef collect_history(limit):\n    items = []\n    seen = set()\n\n    def add(text, ts):\n        key = text.strip()\n        if not key or key in seen:\n            return\n        seen.add(key)\n        items.append((text, int(ts) if ts else int(time.time())))\n\n    for text, ts in read_pastepal(max(limit * 3, limit)):\n        add(text, ts)\n        if len(items) >= limit:\n            break\n    clip = current_clipboard()\n    key = clip.strip()\n    if key:\n        for i, (text, ts) in enumerate(items):\n            if text.strip() == key:\n                items.insert(0, items.pop(i))\n                break\n        else:\n            items.insert(0, (clip, int(time.time())))\n    return items[:limit]\n\n\ndef history_limit():\n    try:\n        limit = int(float(param(\"history_n\", \"12\") or \"12\"))\n    except ValueError:\n        limit = 12\n    return max(3, min(limit, 30))\n\n\ndef forced_format():\n    return param(\"format\", \"auto\").strip().lower() or \"auto\"\n\n\ndef cache_path():\n    folder = Path.home() \/ \"Library\/Caches\/notchany.clipboard-save\"\n    folder.mkdir(parents=True, exist_ok=True)\n    return folder \/ \"items.json\"\n\n\ndef write_cache(records):\n    payload = [\n        {\"id\": r[\"id\"], \"text\": r[\"text\"], \"ext\": r[\"ext\"], \"ts\": r.get(\"ts\") or 0}\n        for r in records\n    ]\n    cache_path().write_text(json.dumps(payload, ensure_ascii=False), encoding=\"utf-8\")\n\n\ndef read_cache():\n    path = cache_path()\n    if not path.is_file():\n        return []\n    try:\n        data = json.loads(path.read_text(encoding=\"utf-8\"))\n    except Exception:\n        return []\n    if not isinstance(data, list):\n        return []\n    out = []\n    for row in data:\n        if not isinstance(row, dict):\n            continue\n        text = row.get(\"text\")\n        ident = row.get(\"id\")\n        if isinstance(text, str) and text.strip() and isinstance(ident, str):\n            try:\n                ts = int(row.get(\"ts\") or 0)\n            except (TypeError, ValueError):\n                ts = 0\n            out.append(\n                {\n                    \"id\": ident,\n                    \"text\": text,\n                    \"ext\": row.get(\"ext\") if isinstance(row.get(\"ext\"), str) else \"txt\",\n                    \"ts\": ts,\n                }\n            )\n    return out\n\n\ndef build_records():\n    forced = forced_format()\n    limit = history_limit()\n    seen = set()\n    records = []\n\n    def add(text, ts=0):\n        if not isinstance(text, str) or not text.strip():\n            return\n        ident = item_id(text)\n        if ident in seen:\n            return\n        seen.add(ident)\n        records.append(\n            {\n                \"id\": ident,\n                \"text\": text,\n                \"ext\": detect_ext(text, forced),\n                \"ts\": int(ts) if ts else int(time.time()),\n            }\n        )\n\n    for text, ts in collect_history(limit):\n        add(text, ts)\n    for row in read_cache():\n        add(row.get(\"text\"), row.get(\"ts\") or 0)\n        if len(records) >= limit:\n            break\n    records = records[:limit]\n    write_cache(records)\n    return records\n\n\ndef format_when(ts):\n    try:\n        ts = int(ts or 0)\n    except (TypeError, ValueError):\n        return \"\"\n    if ts <= 0:\n        return \"\"\n    now = datetime.now()\n    try:\n        local = datetime.fromtimestamp(ts)\n    except (OverflowError, OSError, ValueError):\n        return \"\"\n    delta = now - local\n    if delta < timedelta(seconds=45):\n        return notch_t(\"just_now\")\n    if delta < timedelta(hours=1):\n        return notch_t(\"minutes_ago\").format(n=max(1, int(delta.total_seconds() \/\/ 60)))\n    if local.date() == now.date():\n        return local.strftime(\"%H:%M\")\n    if local.date() == (now.date() - timedelta(days=1)):\n        return notch_t(\"yesterday\") + \" \" + local.strftime(\"%H:%M\")\n    if local.year == now.year:\n        return notch_t(\"date_md\").format(m=local.month, d=local.day)\n    return f\"{local.year}\/{local.month}\/{local.day}\"\n\n\ndef widget_state(records, saved=None, message=None):\n    items = [\n        {\n            \"id\": r[\"id\"],\n            \"ext\": r[\"ext\"],\n            \"preview\": preview_text(r[\"text\"]),\n            \"chars\": len(r[\"text\"]),\n            \"when\": format_when(r.get(\"ts\")),\n        }\n        for r in records\n    ]\n    return {\n        \"ui\": ui_mode(),\n        \"items\": items,\n        \"latest\": items[0] if items else None,\n        \"count\": len(items),\n        \"empty\": not items,\n        \"saved\": saved,\n        \"message\": message,\n    }\n\n\ndef apple_escape(s):\n    return s.replace(\"\\\\\", \"\\\\\\\\\").replace('\"', '\\\\\"')\n\n\ndef choose_item(labels):\n    items = \", \".join('\"' + apple_escape(x) + '\"' for x in labels)\n    script = (\n        \"set theList to {\" + items + \"}\\n\"\n        'set chosen to choose from list theList with prompt \"' + apple_escape(notch_t(\"pick_prompt\")) + '\" '\n        'OK button name \"' + apple_escape(notch_t(\"ok\")) + '\" cancel button name \"' + apple_escape(notch_t(\"cancel\")) + '\" default items {item 1 of theList}\\n'\n        \"if chosen is false then\\n\"\n        '    return \"__CANCEL__\"\\n'\n        \"end if\\n\"\n        \"return item 1 of chosen\\n\"\n    )\n    try:\n        r = subprocess.run(\n            [\"osascript\", \"-e\", script],\n            capture_output=True,\n            text=True,\n            timeout=170,\n        )\n    except subprocess.TimeoutExpired:\n        fail(notch_t(\"err_timeout\"))\n    if r.returncode != 0:\n        err = (r.stderr or \"\").strip()\n        if \"-1743\" in err or \"not authorized\" in err.lower():\n            fail(notch_t(\"err_automation\"))\n        fail(err or notch_t(\"err_pick\"))\n    return (r.stdout or \"\").rstrip(\"\\n\")\n\n\ndef output_dir():\n    custom = param(\"save_dir\", \"\").strip()\n    if custom:\n        folder = Path(os.path.expanduser(custom)).expanduser()\n        if not folder.is_dir():\n            fail(notch_t(\"err_no_dir\").format(dir=folder))\n        return folder\n    env_dir = env(\"NOTCH_OUTPUT_DIR\", \"\").strip()\n    if env_dir:\n        folder = Path(env_dir)\n        if folder.is_dir():\n            return folder\n    desktop = Path.home() \/ \"Desktop\"\n    desktop.mkdir(parents=True, exist_ok=True)\n    return desktop\n\n\ndef save_text(text, records=None):\n    name_mode = param(\"filename\", \"auto\").strip().lower() or \"auto\"\n    ext = detect_ext(text, forced_format())\n    folder = output_dir()\n    path = unique_path(folder, suggested_name(text, name_mode, ext), ext)\n    path.write_text(text, encoding=\"utf-8\")\n    if param(\"reveal\", \"1\") == \"1\":\n        subprocess.run([\"open\", \"-R\", str(path)], check=False)\n    if param(\"open_file\", \"0\") == \"1\":\n        subprocess.run([\"open\", str(path)], check=False)\n    if records is None:\n        records = read_cache() or build_records()\n    notch_result(\n        summary=notch_t(\"saved\").format(name=path.name),\n        details=str(path),\n        outputs=str(path),\n        widget=widget_state(records, saved=path.name),\n    )\n\n\ndef lookup_text(ident, records):\n    for row in records:\n        if row[\"id\"] == ident:\n            return row[\"text\"]\n    return None\n\n\ndef pick_from(records):\n    if not records:\n        fail(notch_t(\"empty\"))\n    if len(records) == 1:\n        save_text(records[0][\"text\"], records)\n        return\n    labels = []\n    mapping = {}\n    used = set()\n    for row in records:\n        label = f\"{row['ext']}  {preview_text(row['text'])}\"\n        base = label\n        n = 2\n        while label in used:\n            label = f\"{base} ·{n}\"\n            n += 1\n        used.add(label)\n        labels.append(label)\n        mapping[label] = row[\"text\"]\n    chosen = choose_item(labels)\n    if chosen in (\"__CANCEL__\", \"\"):\n        notch_result(\n            summary=notch_t(\"cancelled\"),\n            widget=widget_state(records, message=\"cancelled\"),\n        )\n        return\n    text = mapping.get(chosen)\n    if text is None:\n        fail(notch_t(\"err_not_found\"))\n    save_text(text, records)\n\n\ndef emit_list(records):\n    if env(\"NOTCH_WIDGET_VISIBLE\") or env(\"NOTCH_WIDGET_EVENT\"):\n        notch_result(widget=widget_state(records))\n        return\n    if not records:\n        fail(notch_t(\"empty\"))\n    pick_from(records)\n\n\ndef payload_json():\n    raw = env(\"NOTCH_WIDGET_PAYLOAD\", \"\").strip()\n    if not raw:\n        return {}\n    try:\n        data = json.loads(raw)\n        return data if isinstance(data, dict) else {}\n    except Exception:\n        return {}\n\n\ndef main():\n    event = env(\"NOTCH_WIDGET_EVENT\", \"\").strip()\n    payload = payload_json()\n    records = build_records() if event in (\"\", \"refresh\", \"trigger\", \"pick\", \"save_latest\") else (read_cache() or build_records())\n\n    if event in (\"refresh\", \"trigger\"):\n        notch_result(widget=widget_state(records))\n        return\n\n    if event == \"save\":\n        ident = payload.get(\"id\")\n        if not isinstance(ident, str) or not ident:\n            fail(notch_t(\"err_no_item\"))\n        text = lookup_text(ident, records)\n        if text is None:\n            records = build_records()\n            text = lookup_text(ident, records)\n        if text is None:\n            fail(notch_t(\"err_gone\"))\n        save_text(text, records)\n        return\n\n    if event == \"save_latest\":\n        if not records:\n            fail(notch_t(\"empty\"))\n        save_text(records[0][\"text\"], records)\n        return\n\n    if event == \"pick\":\n        pick_from(records)\n        return\n\n    emit_list(records)\n\n\nif __name__ == \"__main__\":\n    main()\n",
+    "timeout_seconds" : 180,
+    "widget" : {
+      "cols" : 3,
+      "css" : ":root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, \"SF Pro Text\", sans-serif; container-type: size; }\n* { box-sizing: border-box; }\nhtml, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: transparent; }\n.panel {\n  position: relative;\n  width: 100%; height: 100%;\n  padding: 8px 8px 7px;\n  border-radius: 13px;\n  background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.07));\n  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);\n  color: rgba(255,255,255,.92);\n  display: flex; flex-direction: column; gap: 6px; min-height: 0;\n}\n.head { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex: 0 0 auto; }\n.brand { display: flex; align-items: center; gap: 5px; min-width: 0; }\n.mark { width: 12px; height: 12px; color: rgba(255,255,255,.46); flex: 0 0 auto; }\n#title { font-size: 11px; font-weight: 600; letter-spacing: -.01em; color: rgba(255,255,255,.78); white-space: nowrap; }\n#count { margin-left: 1px; font: 510 10px\/1 ui-rounded, -apple-system, sans-serif; color: rgba(255,255,255,.38); }\n.icon-btn {\n  width: 24px; height: 24px; padding: 0; border: 0; border-radius: 8px;\n  background: rgba(255,255,255,.10); color: rgba(255,255,255,.82); cursor: pointer;\n  display: flex; align-items: center; justify-content: center; flex: 0 0 auto;\n}\n.icon-btn:hover { background: rgba(255,255,255,.16); color: #fff; }\n.icon-btn:active { background: rgba(255,255,255,.22); }\n.list { flex: 1; min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: 3px; }\n.list::-webkit-scrollbar { width: 0; height: 0; }\n.item {\n  display: flex; align-items: center; gap: 7px; width: 100%;\n  margin: 0; padding: 5px 7px; border: 0; border-radius: 8px;\n  background: rgba(255,255,255,.04); color: inherit; text-align: left; cursor: pointer;\n  font: 12px\/1.25 -apple-system, BlinkMacSystemFont, sans-serif;\n}\n.item:hover { background: rgba(255,255,255,.09); }\n.item:active { background: rgba(255,255,255,.14); }\n.item-body { min-width: 0; flex: 1; display: flex; align-items: center; gap: 6px; }\n.meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; }\n.when { display: block; flex: 0 0 auto; font-size: 10px; line-height: 1.2; color: rgba(255,255,255,.42); white-space: nowrap; word-break: keep-all; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }\n.when:empty { display: none; }\n.item.featured { background: rgba(255,255,255,.08); }\n.item.featured .preview-line { font-weight: 510; color: rgba(255,255,255,.94); }\n\n.badge {\n  flex: 0 0 auto; font: 600 8px\/1 -apple-system, sans-serif;\n  letter-spacing: .06em; text-transform: uppercase;\n  padding: 3px 5px; border-radius: 5px;\n  background: rgba(255,255,255,.08); color: rgba(255,255,255,.52);\n}\n.badge.md { background: rgba(90,168,255,.18); color: rgba(186,220,255,.95); }\n.badge.json { background: rgba(236,196,96,.18); color: rgba(255,226,150,.95); }\n.badge.html { background: rgba(255,138,114,.16); color: rgba(255,196,180,.95); }\n.badge.xml { background: rgba(110,196,150,.16); color: rgba(186,232,206,.95); }\n.badge.csv { background: rgba(154,176,255,.16); color: rgba(198,210,255,.95); }\n.preview-line { min-width: 0; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: rgba(255,255,255,.82); }\n.dialog { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 7px; }\n.hero {\n  flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;\n  padding: 8px; border-radius: 9px; background: rgba(255,255,255,.06);\n}\n.preview {\n  font-size: 12px; font-weight: 510; line-height: 1.35; color: rgba(255,255,255,.9);\n  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;\n}\n.text-btn {\n  height: 26px; margin: 0; padding: 0 10px; border: 0; border-radius: 8px;\n  background: rgba(255,255,255,.12); color: rgba(255,255,255,.92);\n  font: 600 11px\/1 -apple-system; cursor: pointer; letter-spacing: -.01em;\n}\n.text-btn:hover { background: rgba(255,255,255,.18); }\n.text-btn:active { background: rgba(255,255,255,.24); }\n.empty {\n  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;\n  gap: 6px; color: rgba(255,255,255,.34); font-size: 11px; text-align: center;\n}\n.empty svg { opacity: .55; }\n.toast {\n  flex: 0 0 auto;\n  padding: 4px 8px; border-radius: 8px;\n  background: rgba(255,255,255,.10); font-size: 10px; font-weight: 510;\n  color: rgba(255,255,255,.82); text-align: center; pointer-events: none;\n  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\n}\n.dialog[hidden], .list[hidden], .empty[hidden], .toast[hidden], .icon-btn[hidden], #count:empty { display: none !important; }\n@container (max-width: 96px) {\n  .mark, #count, .badge, .when { display: none; }\n  .item.featured { flex-direction: row; align-items: center; }\n  .item.featured .preview-line { -webkit-line-clamp: 1; white-space: nowrap; display: block; }\n}\n",
+      "html" : "<div class=\"panel\">\n  <div class=\"head\">\n    <div class=\"brand\">\n      <svg class=\"mark\" viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M6.25 1.5h3.5c.41 0 .75.34.75.75V3h1.25A1.75 1.75 0 0 1 13.5 4.75v8.5A1.75 1.75 0 0 1 11.75 15h-7.5A1.75 1.75 0 0 1 2.5 13.25v-8.5A1.75 1.75 0 0 1 4.25 3H5.5V2.25c0-.41.34-.75.75-.75Zm.75 1.5v.75h2V3H7Zm-2.75 1.5a.25.25 0 0 0-.25.25v8.5c0 .14.11.25.25.25h7.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H4.25Z\"\/><\/svg>\n      <span id=\"title\"><\/span>\n      <span id=\"count\"><\/span>\n    <\/div>\n    <button type=\"button\" id=\"latest\" class=\"icon-btn\" aria-label=\"保存最近\">\n      <svg viewBox=\"0 0 16 16\" width=\"13\" height=\"13\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M8.75 2.75a.75.75 0 0 0-1.5 0v5.19L5.53 6.22a.75.75 0 1 0-1.06 1.06l3.25 3.25c.3.3.77.3 1.06 0l3.25-3.25a.75.75 0 0 0-1.06-1.06L8.75 7.94V2.75ZM3.5 12.25c0-.41.34-.75.75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1-.75-.75Z\"\/><\/svg>\n    <\/button>\n  <\/div>\n  <div id=\"list\" class=\"list\"><\/div>\n  <div id=\"dialog\" class=\"dialog\" hidden>\n    <div class=\"hero\">\n      <div class=\"meta\">\n        <span id=\"dialogBadge\" class=\"badge txt\"><\/span>\n        <span id=\"dialogWhen\" class=\"when\"><\/span>\n      <\/div>\n      <div id=\"preview\" class=\"preview\"><\/div>\n    <\/div>\n    <button type=\"button\" id=\"pick\" class=\"text-btn\"><\/button>\n  <\/div>\n  <div id=\"empty\" class=\"empty\" hidden>\n    <svg viewBox=\"0 0 16 16\" width=\"18\" height=\"18\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M6.25 1.5h3.5c.41 0 .75.34.75.75V3h1.25A1.75 1.75 0 0 1 13.5 4.75v8.5A1.75 1.75 0 0 1 11.75 15h-7.5A1.75 1.75 0 0 1 2.5 13.25v-8.5A1.75 1.75 0 0 1 4.25 3H5.5V2.25c0-.41.34-.75.75-.75Zm.75 1.5v.75h2V3H7Zm-2.75 1.5a.25.25 0 0 0-.25.25v8.5c0 .14.11.25.25.25h7.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H4.25Z\"\/><\/svg>\n    <span id=\"emptyText\"><\/span>\n  <\/div>\n  <div id=\"toast\" class=\"toast\" hidden><\/div>\n<\/div>\n",
+      "javascript" : "const t = k => (window.__notchWidget.i18n || {})[k] ?? k;\nconst titleEl = document.getElementById('title');\nconst countEl = document.getElementById('count');\nconst listEl = document.getElementById('list');\nconst dialogEl = document.getElementById('dialog');\nconst emptyEl = document.getElementById('empty');\nconst emptyText = document.getElementById('emptyText');\nconst previewEl = document.getElementById('preview');\nconst dialogBadge = document.getElementById('dialogBadge');\nconst dialogWhen = document.getElementById('dialogWhen');\nconst pickBtn = document.getElementById('pick');\nconst latestBtn = document.getElementById('latest');\nconst toastEl = document.getElementById('toast');\ntitleEl.textContent = t('title');\npickBtn.textContent = t('pick');\nemptyText.textContent = t('empty_ui');\nlatestBtn.title = t('save_latest');\nlatestBtn.setAttribute('aria-label', t('save_latest'));\n\nfunction uiOf(state) {\n  const fromState = state && state.ui;\n  const fromParams = (window.__notchWidget.params || {}).ui;\n  const raw = fromState || fromParams || 'list';\n  if (raw === 'dialog' || raw === '弹窗' || raw === 'button' || raw === 'picker') return 'dialog';\n  return 'list';\n}\n\nfunction extClass(ext) {\n  const key = String(ext || 'txt').toLowerCase();\n  return ['md', 'json', 'html', 'xml', 'csv', 'txt'].includes(key) ? key : 'txt';\n}\n\nfunction badge(ext) {\n  const span = document.createElement('span');\n  const kind = extClass(ext);\n  span.className = 'badge ' + kind;\n  span.textContent = kind;\n  return span;\n}\n\nfunction whenEl(text) {\n  const span = document.createElement('span');\n  span.className = 'when';\n  span.textContent = text || '';\n  return span;\n}\n\nfunction render(result) {\n  if (!result || !result.ok || !result.state) return false;\n  const state = result.state;\n  const ui = uiOf(state);\n  const items = Array.isArray(state.items) ? state.items : [];\n  const empty = !items.length;\n  emptyEl.hidden = !empty;\n  listEl.hidden = empty || ui !== 'list';\n  dialogEl.hidden = empty || ui !== 'dialog';\n  latestBtn.hidden = empty;\n  countEl.textContent = empty ? '' : String(items.length);\n  if (empty) return true;\n  if (ui === 'dialog') {\n    const latest = state.latest || items[0];\n    const kind = extClass(latest && latest.ext);\n    dialogBadge.className = 'badge ' + kind;\n    dialogBadge.textContent = kind;\n    dialogWhen.textContent = (latest && latest.when) || '';\n    previewEl.textContent = (latest && latest.preview) || '';\n  } else {\n    listEl.replaceChildren(...items.map((item, index) => {\n      const btn = document.createElement('button');\n      btn.type = 'button';\n      btn.className = index === 0 ? 'item featured' : 'item';\n      btn.title = item.preview || '';\n      const preview = Object.assign(document.createElement('span'), {\n        className: 'preview-line',\n        textContent: item.preview || ''\n      });\n      const body = document.createElement('span');\n      body.className = 'item-body';\n      body.append(preview, whenEl(item.when));\n      btn.append(badge(item.ext), body);\n      btn.addEventListener('click', () => saveItem(item.id));\n      return btn;\n    }));\n  }\n  if (state.saved) showToast(t('saved_short').replace('{name}', state.saved));\n  return true;\n}\n\nfunction showToast(text) {\n  toastEl.textContent = text;\n  toastEl.hidden = false;\n  clearTimeout(showToast.timer);\n  showToast.timer = setTimeout(() => { toastEl.hidden = true; }, 1800);\n}\n\nasync function refresh() {\n  const result = await notchany.invoke('refresh', null);\n  if (!render(result) && !notchany.state) emptyEl.hidden = false;\n}\n\nasync function saveItem(id) {\n  const result = await notchany.execute('save', { id });\n  render(result);\n}\n\nasync function saveLatest() {\n  const result = await notchany.execute('save_latest', null);\n  render(result);\n}\n\nasync function pickHistory() {\n  const result = await notchany.execute('pick', null);\n  render(result);\n}\n\nlatestBtn.addEventListener('click', saveLatest);\npickBtn.addEventListener('click', pickHistory);\n\nlet timer;\nnotchany.addEventListener('visibilitychange', () => {\n  clearInterval(timer);\n  if (notchany.visible) {\n    refresh();\n    timer = setInterval(refresh, 2500);\n  }\n});\nnotchany.addEventListener('statechange', event => render(event.state));\nif (notchany.state) render(notchany.state);\nif (notchany.visible) {\n  refresh();\n  timer = setInterval(refresh, 2500);\n}\n",
+      "rows" : 2
+    }
+  },
+  "notchany_export" : 4
+}

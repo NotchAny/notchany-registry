@@ -1,6 +1,6 @@
 {
   "index_schema": 2,
-  "generated_at": "2026-09-30T14:18:30Z",
+  "generated_at": "2026-10-01T03:57:41Z",
   "packages": [
     {
       "names": {
@@ -59,6 +59,48 @@
       "published_at": "2026-09-30T14:18:30Z",
       "updated_at": "2026-09-30T14:18:30Z",
       "history_path": "history/v1/glzlaohuai/clipboard-file-to-notes.json"
+    },
+    {
+      "names": {
+        "en": "Clipboard to File",
+        "zh-Hans": "剪贴板存文件"
+      },
+      "summaries": {
+        "en": "Pick text from clipboard history and save it as md, json, html, or txt.",
+        "zh-Hans": "从剪贴板历史里选一段文本，存成 md、json、html 或 txt 文件。"
+      },
+      "default_locale": "en",
+      "version": "1.0.0",
+      "tags": [
+        "clipboard",
+        "productivity"
+      ],
+      "license": "MIT",
+      "package_id": "glzlaohuai/clipboard-to-file",
+      "path": "published/glzlaohuai/clipboard-to-file/package.notchany.json",
+      "icon_path": "published/glzlaohuai/clipboard-to-file/icon.png",
+      "id": "notchany.custom.shell.564a381f-4086-49a4-96cb-59a3b6650b73",
+      "kind": "widget",
+      "action_kind": "shell",
+      "input_kind": "none",
+      "envelope_version": 4,
+      "sha256": "3f42ca43c8038b702108745ed632c68216845801f2bfec2f110d69f59500498e",
+      "size_bytes": 32521,
+      "requires": [],
+      "has_parameters": true,
+      "has_notification": false,
+      "interpreter": "python",
+      "screenshots": [
+        "published/glzlaohuai/clipboard-to-file/screenshots/1.png"
+      ],
+      "localized_screenshots": {
+        "zh-Hans": [
+          "published/glzlaohuai/clipboard-to-file/screenshots/zh-Hans/1.png"
+        ]
+      },
+      "published_at": "2026-10-01T03:57:41Z",
+      "updated_at": "2026-10-01T03:57:41Z",
+      "history_path": "history/v1/glzlaohuai/clipboard-to-file.json"
     }
   ]
 }
