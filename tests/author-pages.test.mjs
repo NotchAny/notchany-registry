@@ -73,12 +73,14 @@ test('package authors and release identities link to distinct namespace and nume
   assert.match(html, /data-market-api="\/"/);
 });
 
-test('detail pages omit screenshots, show install counts and keep contributors in the sidebar', () => {
+test('detail pages show screenshots, install counts and contributors in the sidebar', () => {
   const html = detailPage({ lang: 'zh', item: { ...item, screenshots: ['screenshots/detail.png'] },
     packages: [item], marketAPIBase: '/', countsURL: 'https://counts.example/counts.json', css: '', js: '',
     history: { releases: [], contributors: [{ github_user_id: '12345', login: 'helper' }] } });
 
-  assert.doesNotMatch(html, /class="screenshots"|screenshots-title|screenshots\/detail\.png/);
+  assert.match(html, /class="screenshot-section"/);
+  assert.match(html, /class="screenshots"/);
+  assert.match(html, /src="\.\.\/\.\.\/\.\.\/assets\/screenshots\/detail\.png"/);
   assert.match(html, /class="detail-install-meta" data-download-count="owner\/tool" data-count-style="installs-inline"/);
   const aside = html.slice(html.indexOf('<aside class="side-info"'), html.indexOf('</aside>') + '</aside>'.length);
   assert.match(aside, /class="side-community"/);

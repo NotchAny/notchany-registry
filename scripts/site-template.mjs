@@ -22,7 +22,7 @@ const COPY = {
     open_app: "在 NotchAny 中打开", project_home: "项目主页",
     download_kicker: "NotchAny for Mac", download_title: "先安装 NotchAny", download_body: "NotchAny Store 中的小组件与动作需要通过 Mac App 查看和安装。安装完成后，返回 Store 再次打开即可。",
     download_now: "下载 NotchAny", download_pending: "下载地址准备中", download_pending_note: "正式版本开放下载后，此按钮会直接提供最新版 App。", download_requirement: "需要 macOS 15 Sequoia 或更高版本",
-    about: "关于这个包", safety: "运行与安全", safety_shell: "此包包含可执行脚本。NotchAny 会在安装前展示完整脚本，并要求你确认；请只运行你已阅读并信任的内容。",
+    about: "关于这个包", screenshots: "实际界面", safety: "运行与安全", safety_shell: "此包包含可执行脚本。NotchAny 会在安装前展示完整脚本，并要求你确认；请只运行你已阅读并信任的内容。",
     safety_plain: "安装前可检查包内容，NotchAny 仍会要求你确认安装。",
     info: "包信息", package_id: "包 ID", source_code: "查看包源码", report: "反馈问题", improve: "提出改进", related: "你可能也需要",
     community: "协作与贡献", owner: "Owner", maintainers: "共同维护者", contributors: "贡献者", verified: "已绑定 NotchAny", unclaimed: "待认领", community_unavailable: "协作身份暂不可用",
@@ -43,7 +43,7 @@ const COPY = {
     open_app: "Open in NotchAny", project_home: "Project page",
     download_kicker: "NotchAny for Mac", download_title: "Install NotchAny first", download_body: "Widgets and actions from NotchAny Store are viewed and installed through the Mac app. Once installed, return to the Store and open the package again.",
     download_now: "Download NotchAny", download_pending: "Download coming soon", download_pending_note: "This button will provide the latest app as soon as the release is available.", download_requirement: "Requires macOS 15 Sequoia or later",
-    about: "About this package", safety: "Runtime and safety", safety_shell: "This package contains an executable script. NotchAny shows the full script and asks for confirmation before installation. Run only code you have read and trust.",
+    about: "About this package", screenshots: "Actual interface", safety: "Runtime and safety", safety_shell: "This package contains an executable script. NotchAny shows the full script and asks for confirmation before installation. Run only code you have read and trust.",
     safety_plain: "You can inspect the package before installing, and NotchAny still asks you to confirm.",
     info: "Package information", package_id: "Package ID", source_code: "View package source", report: "Report an issue", improve: "Suggest an improvement", related: "You may also need",
     community: "Collaboration & contributions", owner: "Owner", maintainers: "Maintainers", contributors: "Contributors", verified: "Linked to NotchAny", unclaimed: "Unclaimed", community_unavailable: "Collaboration identity unavailable",
@@ -305,6 +305,20 @@ function renderMarkdown(value) {
     }
   }
   return output.join("\n");
+}
+
+function screenshotsFor(item, lang) {
+  const primary = item.screenshots || [];
+  const requested = lang === "zh" ? "zh-hans" : "en";
+  const defaultLocale = String(item.default_locale || "").replaceAll("_", "-").toLowerCase();
+  const localized = Object.entries(item.localized_screenshots || {})
+    .filter(([, paths]) => Array.isArray(paths) && paths.length)
+    .map(([locale, paths]) => ({ locale: locale.replaceAll("_", "-").toLowerCase(), paths }))
+    .filter((entry) => entry.locale !== defaultLocale);
+  const exact = localized.find((entry) => entry.locale === requested);
+  if (exact) return exact.paths;
+  if (defaultLocale === requested || defaultLocale.split("-")[0] === requested.split("-")[0]) return primary;
+  return localized.find((entry) => entry.locale.split("-")[0] === requested.split("-")[0])?.paths || primary;
 }
 
 function formatBytes(bytes) {
@@ -822,6 +836,7 @@ export function detailPage({ lang, item, packages, history = { releases: [], con
   const issueURL = `${REPO_URL}/issues/new?title=${encodeURIComponent(`[${item.package_id}] `)}`;
   const download = `${root}${lang === "en" ? "en/" : ""}download/`;
   const description = pick(item.descriptions, lang, item.default_locale) || summary;
+  const screenshots = screenshotsFor(item, lang).map((screenshot, index) => `<img class="screenshot" src="${root}assets/${escapeHTML(screenshot)}" alt="${escapeHTML(`${name} · ${copy.screenshots} ${index + 1}`)}" loading="lazy" decoding="async">`).join("");
   const historyHTML = historySections(history, copy, lang);
   return `${pageHead({ lang, title: `${name} · NotchAny Store`, description: summary, canonicalPath: path, alternatePath: alternate, imagePath: item.icon_path ? `assets/${item.icon_path}` : APP_ICON_ASSET, css })}
 <body>
@@ -833,6 +848,7 @@ ${nav({ lang, root, detailPackageID: item.package_id })}
     <div class="detail-action"><a class="primary-button" id="open-in-notchany" href="notchany://market/package/${escapeHTML(item.package_id)}" data-fallback-url="${download}">${copy.open_app}</a></div>
   </header>
   <div class="detail-layout"><article>
+    ${screenshots ? `<section class="screenshot-section"><h2>${copy.screenshots}</h2><div class="screenshots">${screenshots}</div></section>` : ""}
     <div class="prose"><h2>${copy.about}</h2>${renderMarkdown(description)}<h2>${copy.safety}</h2><p class="risk-note"><strong>${item.action_kind === "shell" ? copy.safety_shell : copy.safety_plain}</strong></p></div>
     ${historyHTML.releasesHTML ? `<section class="history-section"><h2>${copy.history}</h2><div class="release-list">${historyHTML.releasesHTML}</div></section>` : ""}
   </article>

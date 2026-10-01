@@ -245,6 +245,35 @@ test("package deep links include a local download fallback", () => {
   assert.doesNotMatch(html, /id="launch-help"/);
 });
 
+test("detail renders published screenshots and omits an empty screenshot section", () => {
+  const item = {
+    ...packages[0],
+    default_locale: "en",
+    screenshots: ["packages/owner/cpu/screenshots/1.png"],
+    localized_screenshots: {
+      "zh-Hans": ["packages/owner/cpu/screenshots/zh-Hans/1.png", "packages/owner/cpu/screenshots/zh-Hans/2.png"],
+    },
+  };
+  const chinese = detailPage({ lang: "zh", item, packages: [item, ...packages.slice(1)], countsURL: "", css: "", js: "" });
+  const english = detailPage({ lang: "en", item, packages: [item, ...packages.slice(1)], countsURL: "", css: "", js: "" });
+  const withoutScreenshots = detailPage({ lang: "zh", item: packages[0], packages, countsURL: "", css: "", js: "" });
+
+  assert.match(chinese, /<section class="screenshot-section"><h2>实际界面<\/h2>/);
+  assert.match(chinese, /src="\.\.\/\.\.\/\.\.\/assets\/packages\/owner\/cpu\/screenshots\/zh-Hans\/1\.png"/);
+  assert.match(chinese, /alt="包 1 · 实际界面 1" loading="lazy" decoding="async"/);
+  assert.equal((chinese.match(/class="screenshot"/g) || []).length, 2);
+  assert.doesNotMatch(chinese, /screenshots\/1\.png/);
+  assert.match(english, /src="\.\.\/\.\.\/\.\.\/\.\.\/assets\/packages\/owner\/cpu\/screenshots\/1\.png"/);
+  assert.equal((english.match(/class="screenshot"/g) || []).length, 1);
+  assert.doesNotMatch(withoutScreenshots, /class="screenshot-section"/);
+});
+
+test("site build copies every published screenshot into generated assets", () => {
+  const source = readFileSync(new URL("../scripts/build-site.mjs", import.meta.url), "utf8");
+
+  assert.match(source, /for \(const screenshot of \[\.\.\.\(item\.screenshots \|\| \[\]\), \.\.\.Object\.values\(item\.localized_screenshots \|\| \{\}\)\.flat\(\)\]\) copy\(screenshot\);/);
+});
+
 test("migrated releases without verified merge dates do not invent epoch dates", () => {
   for (const lang of ["zh", "en"]) {
     const html = detailPage({ lang, item: packages[0], packages,
