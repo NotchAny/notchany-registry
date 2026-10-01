@@ -670,6 +670,21 @@ body.landing { background: var(--lp-bg); color: var(--lp-ink); }
 .download-project-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .download-note { margin: 17px 0 0; color: var(--secondary); font-size: 12px; }
 .download-requirement { margin: 32px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--secondary); font-size: 12px; }
+.policy-main { padding-bottom: 96px; }
+.policy-hero { padding: 76px 0 58px; border-bottom: 1px solid var(--line); }
+.policy-kicker { margin: 0 0 10px; color: var(--signal); font-size: 13px; font-weight: 650; }
+.policy-hero h1 { max-width: 760px; margin: 0; font: 700 42px/1.1 -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", sans-serif; }
+.policy-lede { max-width: 720px; margin: 18px 0 0; color: var(--secondary); font-size: 17px; line-height: 1.7; }
+.policy-updated { margin: 20px 0 0; color: var(--secondary); font-size: 12px; }
+.policy-sections { max-width: 880px; }
+.policy-section { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 28px; padding: 42px 0; border-bottom: 1px solid var(--line); }
+.policy-index { padding-top: 3px; color: var(--secondary); font: 600 11px/1.4 ui-monospace, "SF Mono", Menlo, monospace; }
+.policy-copy h2 { margin: 0 0 14px; font-size: 20px; }
+.policy-copy p { margin: 0 0 16px; color: var(--secondary); line-height: 1.75; }
+.policy-copy ul { margin: 0; padding-left: 20px; color: var(--secondary); line-height: 1.7; }
+.policy-copy li + li { margin-top: 8px; }
+.policy-actions { padding-top: 28px; display: flex; flex-wrap: wrap; gap: 12px 24px; color: var(--signal); font-size: 13px; font-weight: 600; }
+.policy-actions a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 72px; padding-top: 52px; }
 .detail-layout > article { min-width: 0; }
 .prose h2 { margin: 36px 0 12px; font-size: 20px; }
@@ -875,6 +890,12 @@ body.landing { background: var(--lp-bg); color: var(--lp-ink); }
   .download-body { font-size: 15px; }
   .download-actions { width: 100%; flex-direction: column; gap: 14px; }
   .download-primary { width: min(100%, 320px); }
+  .policy-main { padding-bottom: 72px; }
+  .policy-hero { padding: 52px 0 40px; }
+  .policy-hero h1 { font-size: 34px; }
+  .policy-lede { font-size: 15px; }
+  .policy-section { grid-template-columns: minmax(0, 1fr); gap: 9px; padding: 34px 0; }
+  .policy-index { padding-top: 0; }
   .detail-layout { grid-template-columns: minmax(0, 1fr); gap: 38px; }
   .profile-main { padding: 42px 0 72px; }
   .profile-layout { grid-template-columns: minmax(0, 1fr); gap: 42px; }

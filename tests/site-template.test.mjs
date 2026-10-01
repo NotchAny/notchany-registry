@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 
 import { readFileSync } from "node:fs";
 
-import { detailPage, downloadPage, homePage, storePage } from "../scripts/site-template.mjs";
+import { detailPage, downloadPage, homePage, privacyPage, storePage } from "../scripts/site-template.mjs";
 
 const packages = ["cpu", "image", "wifi"].map((slug, index) => ({
   package_id: `owner/${slug}`,
@@ -211,6 +211,31 @@ test("download page keeps the release control disabled until a URL is configured
   assert.match(ready, /Download NotchAny/);
   assert.match(ready, /href="\.\.\/\.\.\/download\/" role="menuitem" lang="zh-Hans"/);
   assert.match(ready, /href="\.\.\/\.\.\/en\/download\/" role="menuitem" lang="en" aria-current="page"/);
+});
+
+test("privacy and publishing rules stay on notchany.com in both languages", () => {
+  const landing = home("zh");
+  const storePageHTML = store("en");
+  const detail = detailPage({ lang: "en", item: packages[0], packages, countsURL: "", css: "", js: "" });
+  const zh = privacyPage({ lang: "zh", css: "", js: "" });
+  const en = privacyPage({ lang: "en", css: "", js: "" });
+
+  assert.match(landing, /<a href="privacy\/">隐私与发布规则<\/a>/);
+  assert.match(storePageHTML, /<a href="\.\.\/\.\.\/en\/privacy\/">Privacy and publishing rules<\/a>/);
+  assert.match(detail, /<a href="\.\.\/\.\.\/\.\.\/\.\.\/en\/privacy\/">Privacy and publishing rules<\/a>/);
+  assert.doesNotMatch(landing, /notchany-registry[^"#]*#[^"<]*下载计数/);
+
+  assert.match(zh, /<link rel="canonical" href="https:\/\/notchany\.com\/privacy\/">/);
+  assert.match(zh, /href="\.\.\/en\/privacy\/" role="menuitem" lang="en">English<\/a>/);
+  assert.match(zh, /<h1>隐私与发布规则<\/h1>/);
+  assert.match(zh, /下载计数服务只保存每个包的聚合次数/);
+  assert.match(zh, /发布前校验与审核/);
+
+  assert.match(en, /<link rel="canonical" href="https:\/\/notchany\.com\/en\/privacy\/">/);
+  assert.match(en, /href="\.\.\/\.\.\/privacy\/" role="menuitem" lang="zh-Hans">中文<\/a>/);
+  assert.match(en, /<h1>Privacy and publishing rules<\/h1>/);
+  assert.match(en, /The download-count service stores aggregate counts per package only/);
+  assert.match(en, /Validation and review before publishing/);
 });
 
 test("package deep links include a local download fallback", () => {

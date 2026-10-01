@@ -8,7 +8,7 @@ import { basename, dirname, join } from "node:path";
 import process from "node:process";
 
 import { validateCuration } from "./site-lib.mjs";
-import { authorPage, contributorPage, detailPage, downloadPage, homePage, notFoundPage, storePage } from "./site-template.mjs";
+import { authorPage, contributorPage, detailPage, downloadPage, homePage, notFoundPage, privacyPage, storePage } from "./site-template.mjs";
 import { verifyPublishedIndex } from "./publication-lib.mjs";
 
 const ROOT = process.cwd();
@@ -101,6 +101,8 @@ write("store/index.html", storePage({ lang: "zh", packages, featuredIDs, countsU
 write("en/store/index.html", storePage({ lang: "en", packages, featuredIDs, countsURL: COUNTS_URL, css, js }));
 write("download/index.html", downloadPage({ lang: "zh", css, js, downloadURL: APP_DOWNLOAD_URL }));
 write("en/download/index.html", downloadPage({ lang: "en", css, js, downloadURL: APP_DOWNLOAD_URL }));
+write("privacy/index.html", privacyPage({ lang: "zh", css, js }));
+write("en/privacy/index.html", privacyPage({ lang: "en", css, js }));
 for (const item of packages) {
   const history = item.history_path && existsSync(join(ROOT, item.history_path))
     ? readJSON(join(ROOT, item.history_path), item.history_path)
@@ -128,4 +130,4 @@ if (BUILD_COMMIT) {
 }
 if (process.env.NOTCHANY_SITE_URL === "https://notchany.com") write("CNAME", "notchany.com\n");
 write("404.html", notFoundPage({ css }));
-console.log(`已生成 site/dist（2 个首页，2 个 Store 页，2 个下载页，${packages.length * 2} 个详情页，counts=${COUNTS_URL || "未配置"}，app=${APP_DOWNLOAD_URL || "未配置"}）`);
+console.log(`已生成 site/dist（2 个首页，2 个 Store 页，2 个下载页，2 个规则页，${packages.length * 2} 个详情页，counts=${COUNTS_URL || "未配置"}，app=${APP_DOWNLOAD_URL || "未配置"}）`);
