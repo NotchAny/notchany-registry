@@ -1,0 +1,39 @@
+{
+  "history_schema": 1,
+  "package_id": "glzlaohuai/netease-cloud-music",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "sha256": "a97db306f53bad6ea146fef42ff08b093ec60a86f4efea7644aab89e2f31d663",
+      "source_commit": "4e9b5944f4c43fab5c9244537737c1328b713a91",
+      "merged_at": "2026-10-01T12:59:27Z",
+      "published_at": "2026-10-01T12:59:27Z",
+      "pr": {
+        "number": 12,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/12",
+        "title": "Add NetEase Cloud Music widget",
+        "body": "Publish NetEase Cloud Music now-playing widget (glzlaohuai/netease-cloud-music v1.0.0).",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    }
+  ],
+  "contributors": [
+    {
+      "github_user_id": "2596885",
+      "login": "glzlaohuai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+    }
+  ]
+}

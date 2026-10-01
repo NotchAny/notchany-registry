@@ -1,0 +1,22 @@
+{
+  "default_locale" : "en",
+  "descriptions" : {
+    "en" : "Shows the current NetEase Cloud Music track in the notch tray: album art, scrolling lyrics, progress, and previous \/ play-pause \/ next controls. Optional online lyrics. Requires NetEase Cloud Music and macOS Automation permission.",
+    "zh-Hans" : "在刘海托盘显示网易云当前曲目：封面、滚动歌词、进度条和上一曲\/播放暂停\/下一曲。可选在线歌词。需要已安装网易云音乐并授予自动化权限。"
+  },
+  "license" : "MIT",
+  "manifest_version" : 1,
+  "names" : {
+    "en" : "NetEase Cloud Music",
+    "zh-Hans" : "网易云音乐"
+  },
+  "summaries" : {
+    "en" : "Now-playing widget for NetEase Cloud Music with lyrics and controls.",
+    "zh-Hans" : "刘海屏网易云音乐播放器：封面、同步歌词与播放控制。"
+  },
+  "tags" : [
+    "music",
+    "player"
+  ],
+  "version" : "1.0.0"
+}
