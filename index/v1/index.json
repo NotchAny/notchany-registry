@@ -1,6 +1,6 @@
 {
   "index_schema": 1,
-  "generated_at": "2026-10-01T03:57:41Z",
+  "generated_at": "2026-10-01T12:59:27Z",
   "packages": [
     {
       "names": {
@@ -99,6 +99,51 @@
       },
       "published_at": "2026-10-01T03:57:41Z",
       "updated_at": "2026-10-01T03:57:41Z"
+    },
+    {
+      "names": {
+        "en": "NetEase Cloud Music",
+        "zh-Hans": "网易云音乐"
+      },
+      "summaries": {
+        "en": "Now-playing widget for NetEase Cloud Music with lyrics and controls.",
+        "zh-Hans": "刘海屏网易云音乐播放器：封面、同步歌词与播放控制。"
+      },
+      "descriptions": {
+        "en": "Shows the current NetEase Cloud Music track in the notch tray: album art, scrolling lyrics, progress, and previous / play-pause / next controls. Optional online lyrics. Requires NetEase Cloud Music and macOS Automation permission.",
+        "zh-Hans": "在刘海托盘显示网易云当前曲目：封面、滚动歌词、进度条和上一曲/播放暂停/下一曲。可选在线歌词。需要已安装网易云音乐并授予自动化权限。"
+      },
+      "default_locale": "en",
+      "version": "1.0.0",
+      "tags": [
+        "music",
+        "player"
+      ],
+      "license": "MIT",
+      "package_id": "glzlaohuai/netease-cloud-music",
+      "path": "published/glzlaohuai/netease-cloud-music/package.notchany.json",
+      "icon_path": "published/glzlaohuai/netease-cloud-music/icon.png",
+      "id": "notchany.custom.shell.008bfb5c-f3bd-4795-bea5-8c7cb71701ef",
+      "kind": "widget",
+      "action_kind": "shell",
+      "input_kind": "none",
+      "envelope_version": 6,
+      "sha256": "a97db306f53bad6ea146fef42ff08b093ec60a86f4efea7644aab89e2f31d663",
+      "size_bytes": 232304,
+      "requires": [],
+      "has_parameters": true,
+      "has_notification": true,
+      "interpreter": "python",
+      "screenshots": [
+        "published/glzlaohuai/netease-cloud-music/screenshots/1.png"
+      ],
+      "localized_screenshots": {
+        "zh-Hans": [
+          "published/glzlaohuai/netease-cloud-music/screenshots/zh-Hans/1.png"
+        ]
+      },
+      "published_at": "2026-10-01T12:59:27Z",
+      "updated_at": "2026-10-01T12:59:27Z"
     }
   ]
 }
