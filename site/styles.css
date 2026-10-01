@@ -687,6 +687,10 @@ body.landing { background: var(--lp-bg); color: var(--lp-ink); }
 .policy-actions a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 72px; padding-top: 52px; }
 .detail-layout > article { min-width: 0; }
+.screenshot-section { margin-bottom: 38px; }
+.screenshot-section h2 { margin: 0 0 16px; font-size: 20px; }
+.screenshots { display: grid; gap: 14px; }
+.screenshot { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); }
 .prose h2 { margin: 36px 0 12px; font-size: 20px; }
 .prose h2:first-child { margin-top: 0; }
 .prose p { margin: 0 0 16px; color: var(--secondary); line-height: 1.75; }
