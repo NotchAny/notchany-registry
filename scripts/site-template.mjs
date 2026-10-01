@@ -52,6 +52,119 @@ const COPY = {
   },
 };
 
+const POLICY_COPY = {
+  zh: {
+    title: "隐私与发布规则",
+    description: "NotchAny Store 的数据使用、包发布审核与安装安全规则。",
+    kicker: "Store 规则",
+    intro: "这里说明公开 Store 如何处理数据，以及小组件与动作在发布前必须满足的要求。",
+    updated: "更新于 2026 年 10 月 1 日",
+    sections: [
+      {
+        title: "公开页面与数据",
+        paragraphs: [
+          "浏览 Store、包详情和公开贡献者资料不需要登录。公开身份来自 GitHub 公开资料和 Registry 已发布历史，不展示账号邮箱、设备、授权或待处理邀请。",
+        ],
+        items: [
+          "下载计数服务只保存每个包的聚合次数，不记录请求者的 IP、User-Agent 或设备画像。",
+          "账号与认证页面由独立服务处理；会话使用 host-only HttpOnly Cookie，私密响应禁止缓存。",
+          "Store 不会把包内脚本作为网页代码执行，也不会在浏览器中静默安装内容。",
+        ],
+      },
+      {
+        title: "发布前校验与审核",
+        paragraphs: [
+          "包通过 Registry Pull Request 提交。CI 负责结构、版本、权限和敏感内容校验，维护者在发布前人工检查说明与可执行脚本。合并候选内容不等于立即发布；只有可信发布流程生成的固定快照会进入 Store。",
+        ],
+        items: [
+          "脚本必须可读且不可混淆，不得执行与说明无关的上传、外部写入或系统修改。",
+          "第三方命令、联网服务、发送域名和发送字段必须如实声明。",
+          "名称、简介、版本、许可和实际行为必须一致，更新版本必须严格递增。",
+        ],
+      },
+      {
+        title: "隐私与脱敏要求",
+        paragraphs: [
+          "发布内容不得携带作者机器上的私密配置。校验发现下列内容时会拒绝发布。",
+        ],
+        items: [
+          "删除导出文件中的 action.parameter_values；默认值应写在参数声明中。",
+          "不得内嵌密钥、Token、账号信息或个人文件路径。",
+          "会把用户数据发送给第三方的包，必须在说明中写清服务名、域名和发送字段。",
+        ],
+      },
+      {
+        title: "下载与安装安全",
+        paragraphs: [
+          "Store 索引记录已发布包的 SHA-256 和文件大小。NotchAny 从任一下载来源取得包体后都会先校验摘要，不一致时拒绝解析和安装。",
+        ],
+        items: [
+          "包含可执行脚本的包会在安装前展示完整脚本、依赖和权限范围。",
+          "安装和更新始终需要用户确认，不提供静默安装或自动更新。",
+          "每个版本保留来源提交、摘要和发布记录；历史版本仅用于审计，不提供安装入口。",
+        ],
+      },
+    ],
+    source: "查看完整发布规范",
+    report: "报告 Store 问题",
+  },
+  en: {
+    title: "Privacy and publishing rules",
+    description: "How NotchAny Store handles data, reviews packages, and protects installation integrity.",
+    kicker: "Store rules",
+    intro: "This page explains how the public Store handles data and what widgets and actions must satisfy before publication.",
+    updated: "Updated October 1, 2026",
+    sections: [
+      {
+        title: "Public pages and data",
+        paragraphs: [
+          "Browsing the Store, package pages, and public contributor profiles does not require sign-in. Public identities come from GitHub public profiles and published Registry history. Account email, devices, licenses, and pending invitations are not exposed.",
+        ],
+        items: [
+          "The download-count service stores aggregate counts per package only. It does not retain requester IP addresses, User-Agent strings, or device profiles.",
+          "Account and authentication pages are handled by a separate service. Sessions use host-only HttpOnly cookies, and private responses are not cached.",
+          "The Store never executes package scripts as page code and never installs content silently from the browser.",
+        ],
+      },
+      {
+        title: "Validation and review before publishing",
+        paragraphs: [
+          "Packages are submitted through Registry pull requests. CI validates structure, versions, permissions, and sensitive content, while maintainers review descriptions and executable scripts before publication. Merging candidate content is not publication; only immutable snapshots produced by the trusted release flow appear in the Store.",
+        ],
+        items: [
+          "Scripts must remain readable and unobfuscated, with no undisclosed uploads, external writes, or system changes.",
+          "Third-party commands, network services, destination domains, and transmitted fields must be disclosed accurately.",
+          "Names, summaries, versions, licenses, and actual behavior must agree, and update versions must increase strictly.",
+        ],
+      },
+      {
+        title: "Privacy and redaction requirements",
+        paragraphs: [
+          "Published content must not carry private configuration from the author's Mac. Publication is rejected when the following material is present.",
+        ],
+        items: [
+          "Remove action.parameter_values from exported packages; defaults belong in parameter declarations.",
+          "Do not embed secrets, tokens, account information, or personal file paths.",
+          "Packages that send user data to third parties must identify the service, destination domains, and transmitted fields in their descriptions.",
+        ],
+      },
+      {
+        title: "Download and installation safety",
+        paragraphs: [
+          "The Store index records each published package's SHA-256 digest and byte size. NotchAny verifies the digest before parsing or installing bytes from any download source and rejects mismatches.",
+        ],
+        items: [
+          "Packages with executable scripts show the full script, dependencies, and permission surface before installation.",
+          "Installations and updates always require confirmation. Silent installation and automatic updates are not supported.",
+          "Each release keeps its source commit, digest, and publication record. Historical releases are audit-only and cannot be installed.",
+        ],
+      },
+    ],
+    source: "Read the full publishing guide",
+    report: "Report a Store issue",
+  },
+};
+
 // 首页产品段文案只在服务端渲染，不进入客户端 JSON。页面上的每个数字都须能在 App 或商业化规格中找到出处，
 // 价格只由选档页从 Lemon Squeezy 读取，这里不写。
 const LANDING = {
@@ -311,9 +424,10 @@ function nav({ lang, root, detailPackageID = "", sectionPath = "", landing = fal
   </nav></header>`;
 }
 
-function footer({ lang, label = COPY[lang].footer }) {
+function footer({ lang, root, label = COPY[lang].footer }) {
   const copy = COPY[lang];
-  return `<footer class="site-footer"><div class="shell footer-inner"><span>${label}</span><div class="footer-links"><a href="${REPO_URL}">${copy.source}</a><a href="${REPO_URL}#%E4%B8%8B%E8%BD%BD%E8%AE%A1%E6%95%B0">${copy.privacy}</a></div></div></footer>`;
+  const privacyURL = `${root}${lang === "en" ? "en/" : ""}privacy/`;
+  return `<footer class="site-footer"><div class="shell footer-inner"><span>${label}</span><div class="footer-links"><a href="${REPO_URL}">${copy.source}</a><a href="${privacyURL}">${copy.privacy}</a></div></div></footer>`;
 }
 
 function icon(item, root, className = "package-icon") {
@@ -358,7 +472,7 @@ export function authorPage({ lang, namespace, packages, css, js, histories = {},
     <div class="profile-package-list" id="profile-packages">${rows || `<p class="profile-empty">${lang === "zh" ? "暂无已发布作品" : "No published packages"}</p>`}</div><div id="profile-contributions" hidden></div><p id="profile-message" role="status" hidden></p>
   </section>
 </div>
-</main>${footer({ lang })}
+</main>${footer({ lang, root })}
 <script>window.__NOTCHANY_STORE__=${inlineJSON({ language: lang, copy, packages: [], counts_url: "", profile: { namespace, packages: packages.map(item => profilePackage(item, lang, root)), histories, market_api: marketAPIBase } })};</script><script>${js}</script></body></html>`;
 }
 
@@ -381,7 +495,7 @@ export function contributorPage({ lang, packages, histories, marketAPIBase, css,
 <body>${nav({ lang, root, sectionPath: "contributors/" })}<main class="shell profile-main" data-profile-page>
 <div class="profile-layout"><aside class="profile-sidebar"><span class="profile-avatar fallback" id="profile-avatar" aria-hidden="true">@</span><div class="profile-identity"><h1 id="profile-name">${copy.contributors}</h1><p id="profile-description">${copy.community}</p></div><div class="profile-actions"><a class="profile-github-link" id="profile-github" aria-label="${copy.author_github}" title="${copy.author_github}" hidden>${NAV_ICONS.github}</a><a id="profile-manage" href="${ACCOUNT_URL}?section=packages" hidden>${lang === "zh" ? "管理作品" : "Manage packages"}</a></div></aside>
 <section class="profile-content"><div class="profile-section-head"><h2>${copy.author_works}</h2></div>${profileControls(lang)}<div id="profile-directory"></div><div class="profile-package-list" id="profile-packages"></div><div id="profile-contributions" hidden></div><p id="profile-message" role="status" hidden></p><button id="profile-retry" type="button" class="open-button" hidden>${copy.retry}</button></section></div>
-</main>${footer({ lang })}<script>window.__NOTCHANY_STORE__=${inlineJSON({ language: lang, copy, packages: [], counts_url: "", profile: { packages: packages.map(item => profilePackage(item, lang, root)), histories, market_api: marketAPIBase } })};</script><script>${js}</script></body></html>`;
+</main>${footer({ lang, root })}<script>window.__NOTCHANY_STORE__=${inlineJSON({ language: lang, copy, packages: [], counts_url: "", profile: { packages: packages.map(item => profilePackage(item, lang, root)), histories, market_api: marketAPIBase } })};</script><script>${js}</script></body></html>`;
 }
 
 export function notFoundPage({ css }) {
@@ -547,7 +661,7 @@ ${nav({ lang, root, landing: true })}
     ${featured.length ? `<div class="featured-grid">${featuredCards(featured, lang, root)}</div>` : ""}
   </div></section>
 </main>
-${footer({ lang, label: "NotchAny" })}
+${footer({ lang, root, label: "NotchAny" })}
 <script>window.__NOTCHANY_STORE__=${inlineJSON({ language: lang, copy, packages: [], counts_url: "" })};</script>
 <script>${js}</script>
 </body></html>`;
@@ -630,7 +744,7 @@ ${nav({ lang, root, sectionPath: "store/" })}
     ${catalog}
   </div></section>
 </main>
-${footer({ lang })}
+${footer({ lang, root })}
 <script>window.__NOTCHANY_STORE__=${inlineJSON({ language: lang, copy, packages: packages.map((item) => packageClientData(item, lang, root)), counts_url: packages.length ? countsURL || "" : "" })};</script>
 <script>${js}</script>
 </body></html>`;
@@ -657,6 +771,36 @@ ${nav({ lang, root, sectionPath: "download/" })}
     <p class="download-note">${downloadURL ? copy.download_requirement : copy.download_pending_note}</p>
     <p class="download-requirement">${copy.download_requirement}</p>
   </section>
+</main>
+${footer({ lang, root })}
+<script>window.__NOTCHANY_STORE__=${inlineJSON({ language: lang, copy, packages: [], counts_url: "" })};</script>
+<script>${js}</script>
+</body></html>`;
+}
+
+export function privacyPage({ lang, css, js }) {
+  const copy = COPY[lang];
+  const policy = POLICY_COPY[lang];
+  const root = lang === "zh" ? "../" : "../../";
+  const current = `${lang === "zh" ? "" : "/en"}/privacy/`;
+  const alternate = `${lang === "zh" ? "/en" : ""}/privacy/`;
+  const sections = policy.sections.map((section, index) => `<section class="policy-section">
+    <span class="policy-index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
+    <div class="policy-copy"><h2>${section.title}</h2>${section.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}<ul>${section.items.map((item) => `<li>${item}</li>`).join("")}</ul></div>
+  </section>`).join("");
+  return `${pageHead({ lang, title: `${policy.title} · NotchAny Store`, description: policy.description, canonicalPath: current, alternatePath: alternate, imagePath: APP_ICON_ASSET, css })}
+<body>
+${nav({ lang, root, sectionPath: "privacy/" })}
+<main class="policy-main">
+  <header class="shell policy-hero">
+    <p class="policy-kicker">${policy.kicker}</p>
+    <h1>${policy.title}</h1>
+    <p class="policy-lede">${policy.intro}</p>
+    <p class="policy-updated">${policy.updated}</p>
+  </header>
+  <div class="shell policy-sections">${sections}
+    <div class="policy-actions"><a href="${REPO_URL}#readme">${policy.source}</a><a href="${REPO_URL}/issues/new">${policy.report}</a></div>
+  </div>
 </main>
 ${footer({ lang, root })}
 <script>window.__NOTCHANY_STORE__=${inlineJSON({ language: lang, copy, packages: [], counts_url: "" })};</script>
