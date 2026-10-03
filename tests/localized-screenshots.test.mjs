@@ -99,6 +99,9 @@ test("build-index publishes default_locale and localized_screenshots that pass s
   const index = JSON.parse(readFileSync(join(root, "index/v1/index.json"), "utf8"));
   const entry = index.packages.find(item => item.package_id === packageID);
   assert.equal(entry.default_locale, "ja");
+  // manifest 未写 tags：已发版 App 把 tags 按必填解码，双索引都必须落空数组。
+  assert.deepEqual(entry.tags, []);
+  assert.deepEqual(JSON.parse(readFileSync(join(root, "index/v2/index.json"), "utf8")).packages[0].tags, []);
   // 主语言组保持平铺，旧 App 照读
   assert.deepEqual(entry.screenshots, [`published/${packageID}/screenshots/1.png`, `published/${packageID}/screenshots/2.png`]);
   assert.deepEqual(entry.localized_screenshots, {

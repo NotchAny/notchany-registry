@@ -54,7 +54,7 @@ packages/
    `icon.png`；建议同时提供真实 NotchAny 运行界面截图。`icon.png` 与动作/小组件安装后
    的 `symbol`、文字或图片图标同源，不要另做一套市场封面。
 3. 提交 PR。CI（`scripts/check-pr.mjs`）自动校验，全绿后由 maintainer 审核合并。
-4. 合并进 main 后，可信工作流重验 Review 和维护权限，生成独立发布 PR。签名清单绑定候选提交和全部产物；合入前再次校验，成功后一次公开快照、双索引与历史，再显式调度 Market 对账。官网由独立私有仓库从固定 Registry commit 构建。
+4. 合并进 main 后，可信工作流重验 Review 和维护权限，生成独立发布 PR。签名清单绑定候选提交和全部产物；合入前再次校验，成功后一次公开快照、双索引与历史，再显式调度 Market 对账与官网部署。官网由独立私有仓库从固定 Registry commit 构建。
 5. 更新包 = 再次 PR 同一目录，`manifest.json` 的 `version` **必须严格递增**。
 
 每个 PR 只能改一个包且只能触及 `packages/**`。创建包要求 PR 作者已绑定 GitHub；更新允许 Owner
@@ -121,6 +121,11 @@ npm run build:index            # 重建 v1/v2 index 与 history（maintainer 用
 本公开仓库不再保存官网源码、Cloudflare 部署配置或生产凭据。社区贡献者可以审阅和修改包候选，
 但不能借包 PR 改动官网发布链。
 
+发布 PR 合入后，`validate-publication.yml` 用 repository secret `SITE_DEPLOY_TOKEN` 调度 Site 仓库的
+`deploy.yml`，新包即刻上架。该 token 是只授权 `NotchAny/notchany-site`、仅含 Actions 读写权限的
+fine-grained PAT，只能触发部署，不能读取 Cloudflare 凭据；Site 仓库只接受 Registry main 历史上的提交。
+未配置、过期或调度失败时发布照常完成，官网由 Site 仓库的整点 cron 兜底刷新。
+
 ## CI 与 Market 配置
 
 GitHub Actions 必须配置仓库 variable `MARKET_API_BASE`（如 `https://account.notchany.com`）和
@@ -131,7 +136,7 @@ PR 授权、release 登记和 reconciliation 都使用带 5 分钟时间窗的 H
 默认分支必需状态为 `market/content-and-permission`，并要求分支与 main 同步。普通包 PR、生成发布 PR、仓库维护 PR 分别校验包权限、签名清单及当前管理员身份；维护 PR 不得夹带包或生成产物。
 `pr-validate.yml` 只运行 main 上的可信脚本；PR 内容作为数据。Review 事件通过无凭据工作流通知可信工作流；每五分钟重验公开 PR，覆盖撤回 Review、撤权及身份解绑。
 普通包 PR 在内容与权限校验通过后由可信 workflow 以受审 head SHA 自动 squash merge：首次创建要求作者已绑定 GitHub；Owner/共同维护者更新可直接合并；其他贡献必须先取得当前 Owner 或共同维护者对当前 head 的批准。合并前再次核对 head、base、Review 与 `policy_revision`；分支落后于 main 时由 workflow 先同步并显式调度新 head 的全套校验，其他变化则停止合并。
-组织与仓库两级都需开启 Actions「允许创建和批准 PR」，并赋可信检查与发布工作流 contents、pull-requests、statuses、actions 写权限。机器人合并普通包 PR 后显式调度 `publish-index.yml`；机器人创建发布 PR 后显式调度 `validate-publication.yml`，成功合入后显式调度 `reconcile-market.yml`，不依赖机器人触发 push 事件。官网部署凭据只存在于私有 Site 仓库。
+组织与仓库两级都需开启 Actions「允许创建和批准 PR」，并赋可信检查与发布工作流 contents、pull-requests、statuses、actions 写权限。机器人合并普通包 PR 后显式调度 `publish-index.yml`；机器人创建发布 PR 后显式调度 `validate-publication.yml`，成功合入后显式调度 `reconcile-market.yml` 与 Site 仓库的 `deploy.yml`，不依赖机器人触发 push 事件。Cloudflare 部署凭据只存在于私有 Site 仓库。
 
 `main` 分支保护：必需状态 `market/content-and-permission`（strict）、管理员同样受限、线性历史、
 对话须解决，禁止强推与删除。

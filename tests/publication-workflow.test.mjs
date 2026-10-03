@@ -49,7 +49,7 @@ test("publication rehearsal: rejection preserves baseline, revoked review blocks
     globalThis.fetch = async (url, options = {}) => {
       const s=JSON.parse(readFileSync(process.env.DRILL_STATE)); const path=new URL(url).pathname;
       const body=options.body ? JSON.parse(options.body) : {};
-      appendFileSync(process.env.DRILL_LOG, JSON.stringify({path,body})+"\\n");
+      appendFileSync(process.env.DRILL_LOG, JSON.stringify({path,body,auth:options.headers?.Authorization})+"\\n");
       if(path.startsWith("/internal/")) {
         const signature=createHmac("sha256","drill-secret").update(options.headers["X-NotchAny-Timestamp"]+"."+options.body).digest("hex");
         if(signature!==options.headers["X-NotchAny-Signature"]) throw Error("signature");
@@ -59,6 +59,7 @@ test("publication rehearsal: rejection preserves baseline, revoked review blocks
         if(path.endsWith("publication-prepare")) return Response.json({decision_id:"00000000-0000-0000-0000-000000000001",decisions:[decision]});
         return Response.json({ok:true});
       }
+      if(path.includes("/notchany-site/")) return new Response(null,{status:s.siteDispatchStatus});
       if(path.endsWith("/dispatches")) return new Response(null,{status:204});
       if(path.includes("/statuses/")) return Response.json({});
       if(path.endsWith("/merge")) return Response.json({merged:true,sha:s.head});
@@ -87,15 +88,20 @@ test("publication rehearsal: rejection preserves baseline, revoked review blocks
   state.revoked = true; save();
   assert.notEqual(run("validate-publication.mjs").status, 0);
   assert.ok(!readFileSync(logPath, "utf8").includes(`"path":"/repos/${REGISTRY_REPOSITORY}/pulls/99/merge"`));
-  state.revoked = false; save();
+  state.revoked = false; state.siteDispatchStatus = 403; save();
+  env.SITE_DEPLOY_TOKEN = "site-token";
   const retry = run("validate-publication.mjs");
+  // 官网调度失败不得让已合入的发布报失败。
   assert.equal(retry.status, 0, retry.stderr);
+  assert.match(retry.stderr, /官网部署调度失败（GitHub 403）/);
   const log = readFileSync(logPath, "utf8").trim().split("\n").map(JSON.parse);
   assert.equal(log.filter(entry => entry.path.endsWith("/merge")).length, 1);
   assert.ok(log.some(entry => entry.path.endsWith("/publication-complete")));
   assert.ok(log.some(entry => entry.path === `/repos/${REGISTRY_REPOSITORY}/pulls/99/merge`));
   assert.ok(!log.some(entry => entry.path.endsWith("/deploy-pages.yml/dispatches")));
   assert.ok(!log.some(entry => entry.path.includes("deploy-store")));
+  const siteDispatch = log.filter(entry => entry.path.includes("/notchany-site/"));
+  assert.deepEqual(siteDispatch, [{ path: "/repos/NotchAny/notchany-site/actions/workflows/deploy.yml/dispatches", body: { ref: "main" }, auth: "Bearer site-token" }]);
   const index = JSON.parse(readFileSync(join(repo, "index/v1/index.json")));
   assert.equal(index.packages[0].version, "1.1.0");
   assert.equal(index.packages[0].path, "published/alice/example/package.notchany.json");

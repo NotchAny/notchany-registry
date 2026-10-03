@@ -119,7 +119,8 @@ for (const owner of listDirs(PACKAGES_DIR)) {
       ...(manifest.descriptions !== undefined && { descriptions: manifest.descriptions }),
       ...(manifest.default_locale !== undefined && { default_locale: manifest.default_locale }),
       version: manifest.version,
-      ...(manifest.tags !== undefined && { tags: manifest.tags }),
+      // 已发版 App（≤ 1.0.1）把 tags 按必填解码，缺键会让整个市场解码失败，manifest 未写时须落空数组。
+      tags: manifest.tags ?? [],
       ...(manifest.homepage !== undefined && { homepage: manifest.homepage }),
       license: manifest.license,
       ...(manifest.derived_from && { derived_from: manifest.derived_from }),
