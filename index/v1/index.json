@@ -1,6 +1,6 @@
 {
   "index_schema": 1,
-  "generated_at": "2026-10-01T12:59:27Z",
+  "generated_at": "2026-10-03T14:13:49Z",
   "packages": [
     {
       "names": {
@@ -99,6 +99,44 @@
       },
       "published_at": "2026-10-01T03:57:41Z",
       "updated_at": "2026-10-01T03:57:41Z"
+    },
+    {
+      "names": {
+        "en": "File to Base64",
+        "zh-Hans": "文件转 Base64"
+      },
+      "summaries": {
+        "en": "Drop files to convert to Base64 — a single file is copied to clipboard.",
+        "zh-Hans": "拖入文件即转为 Base64：单文件复制到剪贴板，多文件生成 .b64.txt。"
+      },
+      "default_locale": "en",
+      "version": "1.0.0",
+      "license": "MIT",
+      "package_id": "glzlaohuai/file-to-base64",
+      "path": "published/glzlaohuai/file-to-base64/package.notchany.json",
+      "icon_path": "published/glzlaohuai/file-to-base64/icon.png",
+      "id": "notchany.custom.shell.ad1b18b0-beb4-4724-a351-dff60be8d082",
+      "kind": "action",
+      "action_kind": "shell",
+      "input_kind": "filesOnly",
+      "envelope_version": 9,
+      "sha256": "77af6506a28e0d4a885432572bf1951b2e9641f3b1a5011c8d2932aa484b824e",
+      "size_bytes": 2003,
+      "requires": [],
+      "has_parameters": false,
+      "has_notification": false,
+      "accepts": {},
+      "interpreter": "shell",
+      "screenshots": [
+        "published/glzlaohuai/file-to-base64/screenshots/1.png"
+      ],
+      "localized_screenshots": {
+        "zh-Hans": [
+          "published/glzlaohuai/file-to-base64/screenshots/zh-Hans/1.png"
+        ]
+      },
+      "published_at": "2026-10-03T14:13:49Z",
+      "updated_at": "2026-10-03T14:13:49Z"
     },
     {
       "names": {
