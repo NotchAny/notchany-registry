@@ -1,0 +1,39 @@
+{
+  "history_schema": 1,
+  "package_id": "glzlaohuai/file-to-base64",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "sha256": "77af6506a28e0d4a885432572bf1951b2e9641f3b1a5011c8d2932aa484b824e",
+      "source_commit": "02b574db3d24e630704cc9e3a80161c622f768df",
+      "merged_at": "2026-10-03T14:13:50Z",
+      "published_at": "2026-10-03T14:13:49Z",
+      "pr": {
+        "number": 16,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/16",
+        "title": "新增 file-to-base64 v1.0.0",
+        "body": "新增包 glzlaohuai/file-to-base64 v1.0.0：拖入文件即转为 Base64（单文件复制到剪贴板，多文件生成 .b64.txt）。",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    }
+  ],
+  "contributors": [
+    {
+      "github_user_id": "2596885",
+      "login": "glzlaohuai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+    }
+  ]
+}
