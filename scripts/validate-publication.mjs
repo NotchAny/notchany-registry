@@ -8,6 +8,8 @@ import { verifyBatch } from "./publication-batch.mjs";
 import { signedMarketPost } from "./market-client.mjs";
 import { REGISTRY_REPOSITORY } from "./registry-repo.mjs";
 
+const SITE_REPOSITORY = "NotchAny/notchany-site";
+
 const number = Number(process.env.PR_NUMBER);
 if (!Number.isSafeInteger(number) || number <= 0) throw new Error("Invalid PR number");
 const pr = await github(`/pulls/${number}`);
@@ -56,6 +58,7 @@ try {
     if (!merged.merged) throw new Error("GitHub refused publication merge");
     await signedMarketPost("/internal/market/publication-complete", { decision_id: batch.decision_id, public_commit: merged.sha });
     await github("/actions/workflows/reconcile-market.yml/dispatches", { method: "POST", body: JSON.stringify({ ref: "main" }) });
+    await dispatchSiteDeploy();
     console.log(`Published ${merged.sha}`);
   }
 } catch (error) {
@@ -64,4 +67,22 @@ try {
 } finally {
   try { git("worktree", "remove", "--force", candidate); } catch { /* 校验可能早于工作树创建失败 */ }
   rmSync(root, { recursive: true, force: true });
+}
+
+// 官网在私有仓库，GITHUB_TOKEN 够不着；SITE_DEPLOY_TOKEN 只授该仓库 Actions 写权限，不带参数即构建 main 最新提交。
+// 走到这里发布已合入，调度失败只告警，由官网整点 cron 兜底。
+async function dispatchSiteDeploy() {
+  const token = process.env.SITE_DEPLOY_TOKEN;
+  if (!token) { console.warn("::warning::未配置 SITE_DEPLOY_TOKEN，官网等待整点 cron 刷新"); return; }
+  try {
+    const response = await fetch(`https://api.github.com/repos/${SITE_REPOSITORY}/actions/workflows/deploy.yml/dispatches`, {
+      method: "POST", body: JSON.stringify({ ref: "main" }),
+      headers: { Accept: "application/vnd.github+json", Authorization: `Bearer ${token}`,
+        "X-GitHub-Api-Version": "2022-11-28", "Content-Type": "application/json" },
+      signal: AbortSignal.timeout(30_000),
+    });
+    if (!response.ok) throw new Error(`GitHub ${response.status}`);
+  } catch (error) {
+    console.warn(`::warning::官网部署调度失败（${error.message}），等待整点 cron 刷新`);
+  }
 }
