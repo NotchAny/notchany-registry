@@ -1,6 +1,6 @@
 {
   "index_schema": 2,
-  "generated_at": "2026-10-03T14:13:49Z",
+  "generated_at": "2026-10-03T15:44:06Z",
   "packages": [
     {
       "names": {
@@ -112,7 +112,8 @@
         "zh-Hans": "拖入文件即转为 Base64：单文件复制到剪贴板，多文件生成 .b64.txt。"
       },
       "default_locale": "en",
-      "version": "1.0.0",
+      "version": "1.0.1",
+      "tags": [],
       "license": "MIT",
       "package_id": "glzlaohuai/file-to-base64",
       "path": "published/glzlaohuai/file-to-base64/package.notchany.json",
@@ -122,8 +123,8 @@
       "action_kind": "shell",
       "input_kind": "filesOnly",
       "envelope_version": 9,
-      "sha256": "77af6506a28e0d4a885432572bf1951b2e9641f3b1a5011c8d2932aa484b824e",
-      "size_bytes": 2003,
+      "sha256": "dacc0ef1761ea78d140f385b60913299b9408ed9944c985e2009440b7efecd8a",
+      "size_bytes": 2005,
       "requires": [],
       "has_parameters": false,
       "has_notification": false,
@@ -138,7 +139,7 @@
         ]
       },
       "published_at": "2026-10-03T14:13:49Z",
-      "updated_at": "2026-10-03T14:13:49Z",
+      "updated_at": "2026-10-03T15:44:06Z",
       "history_path": "history/v1/glzlaohuai/file-to-base64.json"
     },
     {

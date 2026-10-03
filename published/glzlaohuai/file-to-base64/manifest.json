@@ -10,5 +10,5 @@
     "en" : "Drop files to convert to Base64 — a single file is copied to clipboard.",
     "zh-Hans" : "拖入文件即转为 Base64：单文件复制到剪贴板，多文件生成 .b64.txt。"
   },
-  "version" : "1.0.0"
+  "version" : "1.0.1"
 }

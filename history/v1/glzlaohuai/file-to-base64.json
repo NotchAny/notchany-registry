@@ -3,6 +3,32 @@
   "package_id": "glzlaohuai/file-to-base64",
   "releases": [
     {
+      "version": "1.0.1",
+      "sha256": "dacc0ef1761ea78d140f385b60913299b9408ed9944c985e2009440b7efecd8a",
+      "source_commit": "5395ad9fab7a0e10fe02ecf9b7f725d191ea1ef8",
+      "merged_at": "2026-10-03T15:44:07Z",
+      "published_at": "2026-10-03T15:44:06Z",
+      "pr": {
+        "number": 19,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/19",
+        "title": "重新生成市场索引",
+        "body": "重新生成市场索引",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    },
+    {
       "version": "1.0.0",
       "sha256": "77af6506a28e0d4a885432572bf1951b2e9641f3b1a5011c8d2932aa484b824e",
       "source_commit": "02b574db3d24e630704cc9e3a80161c622f768df",
