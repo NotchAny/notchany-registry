@@ -3,6 +3,32 @@
   "package_id": "glzlaohuai/file-to-base64",
   "releases": [
     {
+      "version": "1.0.2",
+      "sha256": "77af6506a28e0d4a885432572bf1951b2e9641f3b1a5011c8d2932aa484b824e",
+      "source_commit": "fec7a55632c91af58c9e589bfcfc1c2d3073c08c",
+      "merged_at": "2026-10-03T16:00:30Z",
+      "published_at": "2026-10-03T16:00:30Z",
+      "pr": {
+        "number": 23,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/23",
+        "title": "test",
+        "body": "",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    },
+    {
       "version": "1.0.1",
       "sha256": "dacc0ef1761ea78d140f385b60913299b9408ed9944c985e2009440b7efecd8a",
       "source_commit": "5395ad9fab7a0e10fe02ecf9b7f725d191ea1ef8",
