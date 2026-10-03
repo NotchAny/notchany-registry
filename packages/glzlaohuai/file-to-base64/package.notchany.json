@@ -1,0 +1,39 @@
+{
+  "action" : {
+    "accepts" : {
+
+    },
+    "default_locale" : "zh-Hans",
+    "i18n" : {
+      "copied_details" : {
+        "en" : "%s bytes → %s Base64 characters, copied to clipboard",
+        "zh-Hans" : "原始 %s 字节 → Base64 %s 字符，已写入剪贴板"
+      },
+      "copied_summary" : {
+        "en" : "Copied Base64 of %s",
+        "zh-Hans" : "已复制 %s 的 Base64"
+      },
+      "saved_summary" : {
+        "en" : "Converted %s files to Base64",
+        "zh-Hans" : "已转换 %s 个文件为 Base64"
+      }
+    },
+    "icon_type" : "symbol",
+    "icon_value" : "chevron.left.forwardslash.chevron.right",
+    "id" : "notchany.custom.shell.ad1b18b0-beb4-4724-a351-dff60be8d082",
+    "input_kind" : "filesOnly",
+    "kind" : "shell",
+    "locales" : [
+      "zh-Hans",
+      "en"
+    ],
+    "names" : {
+      "en" : "File to Base64",
+      "zh-Hans" : "文件转 Base64"
+    },
+    "presentation_mode" : "button",
+    "script" : "set -e\ncount=${NOTCH_COUNT:-1}\nif [ \"$count\" -le 1 ]; then\n  f=\"$NOTCH_FILE\"\n  [ -f \"$f\" ] || { echo \"no input file\" >&2; exit 1; }\n  base64 < \"$f\" | tr -d '\\n' | pbcopy\n  size=$(stat -f%z \"$f\")\n  chars=$(( (size + 2) \/ 3 * 4 ))\n  notch_result --summary \"$(printf \"$(notch_t copied_summary)\" \"$(basename \"$f\")\")\" --details \"$(printf \"$(notch_t copied_details)\" \"$size\" \"$chars\")\"\nelse\n  outdir=\"$NOTCH_OUTPUT_DIR\"\n  [ -n \"$outdir\" ] || outdir=\"$NOTCH_DIR\"\n  outs=()\n  while IFS= read -r f; do\n    [ -f \"$f\" ] || continue\n    o=\"$outdir\/$(basename \"$f\").b64.txt\"\n    base64 < \"$f\" | tr -d '\\n' > \"$o\"\n    outs+=(\"$o\")\n  done <<< \"$NOTCH_FILES\"\n  [ \"${#outs[@]}\" -gt 0 ] || { echo \"no valid input\" >&2; exit 1; }\n  args=(--summary \"$(printf \"$(notch_t saved_summary)\" \"${#outs[@]}\")\" --details \"${outs[*]}\")\n  for o in \"${outs[@]}\"; do args+=(--output \"$o\"); done\n  notch_result \"${args[@]}\"\nfi",
+    "timeout_seconds" : 60
+  },
+  "notchany_export" : 9
+}
