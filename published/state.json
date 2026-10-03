@@ -104,20 +104,20 @@
     },
     "glzlaohuai/file-to-base64": {
       "active": true,
-      "tree_hash": "482e671e6417314aaa5b7c345644843da6db2384c8223d54675468c4c6493aa1",
-      "source_commit": "5395ad9fab7a0e10fe02ecf9b7f725d191ea1ef8",
+      "tree_hash": "f59a34184cd756532ae59a411544c8564c87d669d7572b307bfdf5df89d8bef8",
+      "source_commit": "fec7a55632c91af58c9e589bfcfc1c2d3073c08c",
       "first_published_at": "2026-10-03T14:13:49Z",
       "release": {
-        "version": "1.0.1",
-        "sha256": "dacc0ef1761ea78d140f385b60913299b9408ed9944c985e2009440b7efecd8a",
-        "source_commit": "5395ad9fab7a0e10fe02ecf9b7f725d191ea1ef8",
-        "merged_at": "2026-10-03T15:44:07Z",
-        "published_at": "2026-10-03T15:44:06Z",
+        "version": "1.0.2",
+        "sha256": "77af6506a28e0d4a885432572bf1951b2e9641f3b1a5011c8d2932aa484b824e",
+        "source_commit": "fec7a55632c91af58c9e589bfcfc1c2d3073c08c",
+        "merged_at": "2026-10-03T16:00:30Z",
+        "published_at": "2026-10-03T16:00:30Z",
         "pr": {
-          "number": 19,
-          "url": "https://github.com/NotchAny/notchany-registry/pull/19",
-          "title": "重新生成市场索引",
-          "body": "重新生成市场索引",
+          "number": 23,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/23",
+          "title": "test",
+          "body": "",
           "author": {
             "github_user_id": "2596885",
             "login": "glzlaohuai",
@@ -155,6 +155,10 @@
     {
       "id": "b994557d-8798-47a9-8b39-3e03e916c78d",
       "candidate_commit": "5395ad9fab7a0e10fe02ecf9b7f725d191ea1ef8"
+    },
+    {
+      "id": "a5eb4341-5326-4e51-827b-be3f0f834e99",
+      "candidate_commit": "fec7a55632c91af58c9e589bfcfc1c2d3073c08c"
     }
   ]
 }
