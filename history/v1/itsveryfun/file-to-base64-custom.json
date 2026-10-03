@@ -1,0 +1,44 @@
+{
+  "history_schema": 1,
+  "package_id": "itsveryfun/file-to-base64-custom",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "sha256": "8f53bc6f3e3b07eaf3317018ed541ca1202e8427514a9f9e05217032cc121d1a",
+      "source_commit": "4eb69643e56eb2646fadcc577e3fc202194fe552",
+      "merged_at": "2026-10-03T16:10:22Z",
+      "published_at": "2026-10-03T16:10:22Z",
+      "derived_from": {
+        "package_id": "glzlaohuai/file-to-base64",
+        "sha256": "dacc0ef1761ea78d140f385b60913299b9408ed9944c985e2009440b7efecd8a",
+        "version": "1.0.1"
+      },
+      "pr": {
+        "number": 25,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/25",
+        "title": "test",
+        "body": "",
+        "author": {
+          "github_user_id": "189571424",
+          "login": "itsveryfun",
+          "avatar_url": "https://avatars.githubusercontent.com/u/189571424?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "189571424",
+          "login": "itsveryfun",
+          "avatar_url": "https://avatars.githubusercontent.com/u/189571424?v=4"
+        }
+      ],
+      "approved_by": []
+    }
+  ],
+  "contributors": [
+    {
+      "github_user_id": "189571424",
+      "login": "itsveryfun",
+      "avatar_url": "https://avatars.githubusercontent.com/u/189571424?v=4"
+    }
+  ]
+}

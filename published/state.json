@@ -133,6 +133,43 @@
         ],
         "approved_by": []
       }
+    },
+    "itsveryfun/file-to-base64-custom": {
+      "active": true,
+      "tree_hash": "661196617cbc19dc8d96b0623714c27e33ddb950b0720b934dcaef8e4aac7bee",
+      "source_commit": "4eb69643e56eb2646fadcc577e3fc202194fe552",
+      "first_published_at": "2026-10-03T16:10:22Z",
+      "release": {
+        "version": "1.0.0",
+        "sha256": "8f53bc6f3e3b07eaf3317018ed541ca1202e8427514a9f9e05217032cc121d1a",
+        "source_commit": "4eb69643e56eb2646fadcc577e3fc202194fe552",
+        "merged_at": "2026-10-03T16:10:22Z",
+        "published_at": "2026-10-03T16:10:22Z",
+        "derived_from": {
+          "package_id": "glzlaohuai/file-to-base64",
+          "sha256": "dacc0ef1761ea78d140f385b60913299b9408ed9944c985e2009440b7efecd8a",
+          "version": "1.0.1"
+        },
+        "pr": {
+          "number": 25,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/25",
+          "title": "test",
+          "body": "",
+          "author": {
+            "github_user_id": "189571424",
+            "login": "itsveryfun",
+            "avatar_url": "https://avatars.githubusercontent.com/u/189571424?v=4"
+          }
+        },
+        "contributors": [
+          {
+            "github_user_id": "189571424",
+            "login": "itsveryfun",
+            "avatar_url": "https://avatars.githubusercontent.com/u/189571424?v=4"
+          }
+        ],
+        "approved_by": []
+      }
     }
   },
   "decisions": [
@@ -159,6 +196,10 @@
     {
       "id": "a5eb4341-5326-4e51-827b-be3f0f834e99",
       "candidate_commit": "fec7a55632c91af58c9e589bfcfc1c2d3073c08c"
+    },
+    {
+      "id": "ebc211e2-d1aa-4d6f-bbc0-0fd3c97c8904",
+      "candidate_commit": "4eb69643e56eb2646fadcc577e3fc202194fe552"
     }
   ]
 }
