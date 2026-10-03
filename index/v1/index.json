@@ -1,6 +1,6 @@
 {
   "index_schema": 1,
-  "generated_at": "2026-10-03T16:00:30Z",
+  "generated_at": "2026-10-03T16:10:22Z",
   "packages": [
     {
       "names": {
@@ -183,6 +183,50 @@
       },
       "published_at": "2026-10-01T12:59:27Z",
       "updated_at": "2026-10-01T12:59:27Z"
+    },
+    {
+      "names": {
+        "en": "File to Base64",
+        "zh-Hans": "文件转 Base64"
+      },
+      "summaries": {
+        "en": "Drop files to convert to Base64 — a single file is copied to clipboard.",
+        "zh-Hans": "拖入文件即转为 Base64：单文件复制到剪贴板，多文件生成 .b64.txt。"
+      },
+      "default_locale": "en",
+      "version": "1.0.0",
+      "tags": [],
+      "license": "MIT",
+      "derived_from": {
+        "package_id": "glzlaohuai/file-to-base64",
+        "sha256": "dacc0ef1761ea78d140f385b60913299b9408ed9944c985e2009440b7efecd8a",
+        "version": "1.0.1"
+      },
+      "package_id": "itsveryfun/file-to-base64-custom",
+      "path": "published/itsveryfun/file-to-base64-custom/package.notchany.json",
+      "icon_path": "published/itsveryfun/file-to-base64-custom/icon.png",
+      "id": "notchany.custom.shell.247a5a6e-f5b2-42cc-8d5b-5cd61697e40a",
+      "kind": "action",
+      "action_kind": "shell",
+      "input_kind": "filesOnly",
+      "envelope_version": 9,
+      "sha256": "8f53bc6f3e3b07eaf3317018ed541ca1202e8427514a9f9e05217032cc121d1a",
+      "size_bytes": 2005,
+      "requires": [],
+      "has_parameters": false,
+      "has_notification": false,
+      "accepts": {},
+      "interpreter": "shell",
+      "screenshots": [
+        "published/itsveryfun/file-to-base64-custom/screenshots/1.png"
+      ],
+      "localized_screenshots": {
+        "zh-Hans": [
+          "published/itsveryfun/file-to-base64-custom/screenshots/zh-Hans/1.png"
+        ]
+      },
+      "published_at": "2026-10-03T16:10:22Z",
+      "updated_at": "2026-10-03T16:10:22Z"
     }
   ]
 }
