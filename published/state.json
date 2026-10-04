@@ -170,6 +170,38 @@
         ],
         "approved_by": []
       }
+    },
+    "itsveryfun/seven-day-weather": {
+      "active": true,
+      "tree_hash": "06dcfa6abe36db690af4d20c5ec4a780395a05d4e3ebbd7a25777ec34f27bd2b",
+      "source_commit": "804abb103a2fb24db0ae1d6d9c548d3dbc3b7d5b",
+      "first_published_at": "2026-10-04T15:02:20Z",
+      "release": {
+        "version": "1.0.0",
+        "sha256": "85a9c3c7baa0e9ae844279f84f4a314f78f4d106486f873032c53df2379bdc2f",
+        "source_commit": "804abb103a2fb24db0ae1d6d9c548d3dbc3b7d5b",
+        "merged_at": "2026-10-04T15:02:20Z",
+        "published_at": "2026-10-04T15:02:20Z",
+        "pr": {
+          "number": 27,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/27",
+          "title": "新增 seven-day-weather v1.0.0",
+          "body": "首次发布：提供基于公网 IP 自动定位的七日天气预报，支持摄氏/华氏切换、手动刷新和定时更新，并明确展示定位与天气数据来源。",
+          "author": {
+            "github_user_id": "189571424",
+            "login": "itsveryfun",
+            "avatar_url": "https://avatars.githubusercontent.com/u/189571424?v=4"
+          }
+        },
+        "contributors": [
+          {
+            "github_user_id": "189571424",
+            "login": "itsveryfun",
+            "avatar_url": "https://avatars.githubusercontent.com/u/189571424?v=4"
+          }
+        ],
+        "approved_by": []
+      }
     }
   },
   "decisions": [
@@ -200,6 +232,10 @@
     {
       "id": "ebc211e2-d1aa-4d6f-bbc0-0fd3c97c8904",
       "candidate_commit": "4eb69643e56eb2646fadcc577e3fc202194fe552"
+    },
+    {
+      "id": "c5efdd43-a713-45b4-ab40-9007af035156",
+      "candidate_commit": "804abb103a2fb24db0ae1d6d9c548d3dbc3b7d5b"
     }
   ]
 }

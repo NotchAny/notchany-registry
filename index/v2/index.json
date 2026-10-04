@@ -1,6 +1,6 @@
 {
   "index_schema": 2,
-  "generated_at": "2026-10-03T16:10:22Z",
+  "generated_at": "2026-10-04T15:02:20Z",
   "packages": [
     {
       "names": {
@@ -232,6 +232,46 @@
       "published_at": "2026-10-03T16:10:22Z",
       "updated_at": "2026-10-03T16:10:22Z",
       "history_path": "history/v1/itsveryfun/file-to-base64-custom.json"
+    },
+    {
+      "names": {
+        "zh-Hans": "七日天气"
+      },
+      "summaries": {
+        "zh-Hans": "基于公网 IP 自动定位的七日天气预报小组件"
+      },
+      "descriptions": {
+        "zh-Hans": "自动根据公网 IP 定位，显示未来七天的天气、高低温和降雨概率。\n\n支持摄氏/华氏切换、手动刷新和每 30 分钟自动更新。悬停信息图标可查看当前定位与天气数据来源。"
+      },
+      "default_locale": "zh-Hans",
+      "version": "1.0.0",
+      "tags": [
+        "weather",
+        "forecast",
+        "widget",
+        "utility"
+      ],
+      "license": "MIT",
+      "package_id": "itsveryfun/seven-day-weather",
+      "path": "published/itsveryfun/seven-day-weather/package.notchany.json",
+      "icon_path": "published/itsveryfun/seven-day-weather/icon.png",
+      "id": "notchany.custom.shell.7474a4a6-7bcb-4d62-b925-b3c4ee586bd8",
+      "kind": "widget",
+      "action_kind": "shell",
+      "input_kind": "none",
+      "envelope_version": 4,
+      "sha256": "85a9c3c7baa0e9ae844279f84f4a314f78f4d106486f873032c53df2379bdc2f",
+      "size_bytes": 15394,
+      "requires": [],
+      "has_parameters": true,
+      "has_notification": false,
+      "interpreter": "python",
+      "screenshots": [
+        "published/itsveryfun/seven-day-weather/screenshots/1.png"
+      ],
+      "published_at": "2026-10-04T15:02:20Z",
+      "updated_at": "2026-10-04T15:02:20Z",
+      "history_path": "history/v1/itsveryfun/seven-day-weather.json"
     }
   ]
 }
