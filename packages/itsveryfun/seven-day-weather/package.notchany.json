@@ -1,6 +1,216 @@
 {
   "action" : {
     "default_locale" : "zh-Hans",
+    "i18n" : {
+      "aqi_detail" : {
+        "en" : "Air quality AQI {value}",
+        "zh-Hans" : "空气质量 AQI {value}"
+      },
+      "aqi_unavailable" : {
+        "en" : "Air quality unavailable",
+        "zh-Hans" : "空气质量暂无数据"
+      },
+      "cached" : {
+        "en" : "IP location · Cached {time}",
+        "zh-Hans" : "IP 定位 · 缓存 {time}"
+      },
+      "condition_clear" : {
+        "en" : "Clear",
+        "zh-Hans" : "晴"
+      },
+      "condition_cloudy" : {
+        "en" : "Cloudy",
+        "zh-Hans" : "阴"
+      },
+      "condition_drizzle" : {
+        "en" : "Drizzle",
+        "zh-Hans" : "毛毛雨"
+      },
+      "condition_fog" : {
+        "en" : "Fog",
+        "zh-Hans" : "雾"
+      },
+      "condition_partly_cloudy" : {
+        "en" : "Partly cloudy",
+        "zh-Hans" : "多云间晴"
+      },
+      "condition_rain" : {
+        "en" : "Rain",
+        "zh-Hans" : "雨"
+      },
+      "condition_showers" : {
+        "en" : "Showers",
+        "zh-Hans" : "阵雨"
+      },
+      "condition_snow" : {
+        "en" : "Snow",
+        "zh-Hans" : "雪"
+      },
+      "condition_snow_showers" : {
+        "en" : "Snow showers",
+        "zh-Hans" : "阵雪"
+      },
+      "condition_thunderstorm" : {
+        "en" : "Thunderstorm",
+        "zh-Hans" : "雷雨"
+      },
+      "condition_weather" : {
+        "en" : "Weather",
+        "zh-Hans" : "天气"
+      },
+      "dir_e" : {
+        "en" : "E",
+        "zh-Hans" : "东"
+      },
+      "dir_n" : {
+        "en" : "N",
+        "zh-Hans" : "北"
+      },
+      "dir_ne" : {
+        "en" : "NE",
+        "zh-Hans" : "东北"
+      },
+      "dir_nw" : {
+        "en" : "NW",
+        "zh-Hans" : "西北"
+      },
+      "dir_s" : {
+        "en" : "S",
+        "zh-Hans" : "南"
+      },
+      "dir_se" : {
+        "en" : "SE",
+        "zh-Hans" : "东南"
+      },
+      "dir_sw" : {
+        "en" : "SW",
+        "zh-Hans" : "西南"
+      },
+      "dir_w" : {
+        "en" : "W",
+        "zh-Hans" : "西"
+      },
+      "incomplete_data" : {
+        "en" : "The weather service returned incomplete data",
+        "zh-Hans" : "天气服务返回的数据不完整"
+      },
+      "ip_location" : {
+        "en" : "IP location",
+        "zh-Hans" : "IP 定位"
+      },
+      "ip_location_failed" : {
+        "en" : "IP location failed",
+        "zh-Hans" : "IP 定位失败"
+      },
+      "just_now" : {
+        "en" : "just now",
+        "zh-Hans" : "刚刚"
+      },
+      "no_data" : {
+        "en" : "No data",
+        "zh-Hans" : "暂无数据"
+      },
+      "rain_detail" : {
+        "en" : "Rain chance {value}%",
+        "zh-Hans" : "降雨概率 {value}%"
+      },
+      "refresh_failed" : {
+        "en" : "Refresh failed",
+        "zh-Hans" : "刷新失败"
+      },
+      "refresh_weather" : {
+        "en" : "Refresh weather",
+        "zh-Hans" : "刷新天气"
+      },
+      "retry_later" : {
+        "en" : "Please try again later",
+        "zh-Hans" : "请稍后重试"
+      },
+      "source_air" : {
+        "en" : "Air quality: {source}",
+        "zh-Hans" : "空气质量：{source}"
+      },
+      "source_location" : {
+        "en" : "Location: {source} (public IP)",
+        "zh-Hans" : "定位：{source}（公网 IP）"
+      },
+      "source_weather" : {
+        "en" : "Weather: {source}",
+        "zh-Hans" : "天气：{source}"
+      },
+      "sun_detail" : {
+        "en" : "Sunrise {sunrise} · Sunset {sunset}",
+        "zh-Hans" : "日出 {sunrise} · 日落 {sunset}"
+      },
+      "today" : {
+        "en" : "Today",
+        "zh-Hans" : "今天"
+      },
+      "updated" : {
+        "en" : "IP location · Updated {time}",
+        "zh-Hans" : "IP 定位 · 更新 {time}"
+      },
+      "updating" : {
+        "en" : "Updating",
+        "zh-Hans" : "正在更新"
+      },
+      "view_sources" : {
+        "en" : "View data sources",
+        "zh-Hans" : "查看数据来源"
+      },
+      "weather_data_failed" : {
+        "en" : "Unable to load weather data",
+        "zh-Hans" : "天气数据获取失败"
+      },
+      "weather_update_failed" : {
+        "en" : "Weather update failed",
+        "zh-Hans" : "天气获取失败"
+      },
+      "weather_updated" : {
+        "en" : "Weather updated",
+        "zh-Hans" : "天气已更新"
+      },
+      "weekday_fri" : {
+        "en" : "Fri",
+        "zh-Hans" : "周五"
+      },
+      "weekday_mon" : {
+        "en" : "Mon",
+        "zh-Hans" : "周一"
+      },
+      "weekday_sat" : {
+        "en" : "Sat",
+        "zh-Hans" : "周六"
+      },
+      "weekday_sun" : {
+        "en" : "Sun",
+        "zh-Hans" : "周日"
+      },
+      "weekday_thu" : {
+        "en" : "Thu",
+        "zh-Hans" : "周四"
+      },
+      "weekday_tue" : {
+        "en" : "Tue",
+        "zh-Hans" : "周二"
+      },
+      "weekday_wed" : {
+        "en" : "Wed",
+        "zh-Hans" : "周三"
+      },
+      "widget_label" : {
+        "en" : "Weather forecast",
+        "zh-Hans" : "天气预报"
+      },
+      "wind_detail" : {
+        "en" : "{direction} · Beaufort {level} · {speed} km\/h",
+        "zh-Hans" : "{direction}风 {level}级 · {speed} km\/h"
+      },
+      "wind_level_short" : {
+        "en" : "{direction} B{level}",
+        "zh-Hans" : "{direction} {level}级"
+      }
+    },
     "icon_type" : "symbol",
     "icon_value" : "cloud.sun.fill",
     "id" : "notchany.custom.shell.7474a4a6-7bcb-4d62-b925-b3c4ee586bd8",
@@ -8,9 +218,11 @@
     "interpreter" : "python",
     "kind" : "shell",
     "locales" : [
-      "zh-Hans"
+      "zh-Hans",
+      "en"
     ],
     "names" : {
+      "en" : "Seven-Day Weather",
       "zh-Hans" : "七日天气"
     },
     "parameters" : [
@@ -18,6 +230,7 @@
         "default" : "c",
         "key" : "unit",
         "labels" : {
+          "en" : "Temperature unit",
           "zh-Hans" : "温度单位"
         },
         "options" : [
@@ -25,17 +238,82 @@
           "f"
         ],
         "type" : "choice"
+      },
+      {
+        "default" : true,
+        "key" : "show_rain",
+        "labels" : {
+          "en" : "Show rain chance",
+          "zh-Hans" : "显示降雨概率"
+        },
+        "type" : "boolean"
+      },
+      {
+        "default" : true,
+        "key" : "show_sun",
+        "labels" : {
+          "en" : "Show sunrise and sunset",
+          "zh-Hans" : "显示日出日落"
+        },
+        "type" : "boolean"
+      },
+      {
+        "default" : true,
+        "key" : "show_wind",
+        "labels" : {
+          "en" : "Show wind force and direction",
+          "zh-Hans" : "显示风力风向"
+        },
+        "type" : "boolean"
+      },
+      {
+        "default" : true,
+        "key" : "show_aqi",
+        "labels" : {
+          "en" : "Show air quality",
+          "zh-Hans" : "显示空气质量"
+        },
+        "type" : "boolean"
+      },
+      {
+        "default" : "week",
+        "key" : "view_mode",
+        "labels" : {
+          "en" : "Forecast range (today\/week)",
+          "zh-Hans" : "显示范围（today\/week）"
+        },
+        "options" : [
+          "today",
+          "week"
+        ],
+        "type" : "choice"
+      },
+      {
+        "default" : "3h",
+        "key" : "refresh_interval",
+        "labels" : {
+          "en" : "Refresh interval (daily=next day)",
+          "zh-Hans" : "刷新间隔（daily=次日）"
+        },
+        "options" : [
+          "1h",
+          "3h",
+          "6h",
+          "12h",
+          "daily"
+        ],
+        "type" : "choice"
       }
     ],
     "presentation_mode" : "widget",
-    "script" : "import datetime\nimport json\nimport os\nimport urllib.parse\nimport urllib.request\n\n\ndef fetch_json(url):\n    request = urllib.request.Request(\n        url,\n        headers={\"User-Agent\": \"NotchAny-Weather\/1.0\"},\n    )\n    with urllib.request.urlopen(request, timeout=12) as response:\n        return json.load(response)\n\n\ndef location_label(location):\n    name = location.get(\"city\") or location.get(\"region\") or \"IP 位置\"\n    region = location.get(\"region\") or \"\"\n    country = location.get(\"country\") or \"\"\n    labels = [name]\n    if region and name not in region and region not in name:\n        labels.append(region)\n    if country and all(country not in value and value not in country for value in labels):\n        labels.append(country)\n    return \" · \".join(labels)\n\n\ndef ip_location():\n    location = fetch_json(\"https:\/\/ipwho.is\/?lang=zh-CN\")\n    if not location.get(\"success\"):\n        raise ValueError(location.get(\"message\") or \"IP 定位失败\")\n    return (\n        float(location[\"latitude\"]),\n        float(location[\"longitude\"]),\n        location_label(location),\n    )\n\n\ndef forecast_days(latitude, longitude, temperature_unit):\n    forecast_query = urllib.parse.urlencode(\n        {\n            \"latitude\": latitude,\n            \"longitude\": longitude,\n            \"daily\": (\n                \"weather_code,temperature_2m_max,temperature_2m_min,\"\n                \"precipitation_probability_max\"\n            ),\n            \"temperature_unit\": temperature_unit,\n            \"timezone\": \"auto\",\n            \"forecast_days\": 7,\n        }\n    )\n    forecast = fetch_json(\"https:\/\/api.open-meteo.com\/v1\/forecast?\" + forecast_query)\n    daily = forecast.get(\"daily\") or {}\n    dates = daily.get(\"time\") or []\n    codes = daily.get(\"weather_code\") or []\n    highs = daily.get(\"temperature_2m_max\") or []\n    lows = daily.get(\"temperature_2m_min\") or []\n    rain = daily.get(\"precipitation_probability_max\") or []\n    weekdays = [\"一\", \"二\", \"三\", \"四\", \"五\", \"六\", \"日\"]\n\n    days = []\n    for index, iso_date in enumerate(dates[:7]):\n        date_value = datetime.date.fromisoformat(iso_date)\n        days.append(\n            {\n                \"date\": f\"{date_value.month}\/{date_value.day}\",\n                \"weekday\": \"今天\" if index == 0 else \"周\" + weekdays[date_value.weekday()],\n                \"code\": int(codes[index]),\n                \"high\": round(float(highs[index])),\n                \"low\": round(float(lows[index])),\n                \"rain\": int(rain[index] or 0),\n            }\n        )\n    if len(days) != 7:\n        raise ValueError(\"天气服务返回的数据不完整\")\n    return days\n\n\nunit_choice = (os.environ.get(\"NOTCH_PARAM_UNIT\") or \"c\").lower()\ntemperature_unit = \"fahrenheit\" if unit_choice == \"f\" else \"celsius\"\nunit_symbol = \"°F\" if unit_choice == \"f\" else \"°\"\n\ntry:\n    latitude, longitude, location = ip_location()\n    state = {\n        \"city\": location,\n        \"location_mode\": \"IP 定位\",\n        \"unit\": unit_symbol,\n        \"updated\": datetime.datetime.now().strftime(\"%H:%M\"),\n        \"days\": forecast_days(latitude, longitude, temperature_unit),\n        \"sources\": {\n            \"location\": \"ipwho.is\",\n            \"weather\": \"Open-Meteo\",\n        },\n    }\n    notch_result(summary=\"天气已更新\", widget=state)\nexcept Exception as error:\n    state = {\n        \"city\": \"IP 定位\",\n        \"location_mode\": \"IP 定位\",\n        \"error\": \"天气数据获取失败\",\n        \"detail\": str(error)[:120],\n        \"days\": [],\n        \"sources\": {\n            \"location\": \"ipwho.is\",\n            \"weather\": \"Open-Meteo\",\n        },\n    }\n    notch_result(summary=\"天气获取失败\", widget=state)\n",
+    "script" : "import datetime\nimport json\nimport os\nimport pathlib\nimport time\nimport urllib.parse\nimport urllib.request\n\ntry:\n    from zoneinfo import ZoneInfo\nexcept ImportError:\n    ZoneInfo = None\n\n\nCACHE_VERSION = 2\nFORCE_COOLDOWN_SECONDS = 5 * 60\nRETRY_SECONDS = 15 * 60\nINTERVAL_SECONDS = {\n    \"1h\": 60 * 60,\n    \"3h\": 3 * 60 * 60,\n    \"6h\": 6 * 60 * 60,\n    \"12h\": 12 * 60 * 60,\n}\n\n\ndef fetch_json(url):\n    request = urllib.request.Request(\n        url,\n        headers={\"User-Agent\": \"NotchAny-Weather\/1.2\"},\n    )\n    with urllib.request.urlopen(request, timeout=12) as response:\n        return json.load(response)\n\n\ndef enabled(key, default=True):\n    value = os.environ.get(\"NOTCH_PARAM_\" + key.upper())\n    if value is None:\n        return default\n    return value == \"1\"\n\n\ndef value_at(values, index, default=None):\n    return values[index] if index < len(values) else default\n\n\ndef short_time(value):\n    if not value:\n        return None\n    return value.rsplit(\"T\", 1)[-1][:5]\n\n\ndef beaufort(speed_kmh):\n    if speed_kmh is None:\n        return None\n    thresholds = [1, 6, 12, 20, 29, 39, 50, 62, 75, 89, 103, 118]\n    for level, threshold in enumerate(thresholds):\n        if speed_kmh < threshold:\n            return level\n    return 12\n\n\ndef location_label(location):\n    name = location.get(\"city\") or location.get(\"region\") or notch_t(\"ip_location\")\n    region = location.get(\"region\") or \"\"\n    country = location.get(\"country\") or \"\"\n    labels = [name]\n    if region and name not in region and region not in name:\n        labels.append(region)\n    if country and all(country not in value and value not in country for value in labels):\n        labels.append(country)\n    return \" · \".join(labels)\n\n\ndef ip_location(locale):\n    language = \"zh-CN\" if locale.startswith(\"zh\") else \"en\"\n    location = fetch_json(\"https:\/\/ipwho.is\/?\" + urllib.parse.urlencode({\"lang\": language}))\n    if not location.get(\"success\"):\n        raise ValueError(location.get(\"message\") or notch_t(\"ip_location_failed\"))\n    return (\n        float(location[\"latitude\"]),\n        float(location[\"longitude\"]),\n        location_label(location),\n    )\n\n\ndef daily_aqi(latitude, longitude):\n    query = urllib.parse.urlencode(\n        {\n            \"latitude\": latitude,\n            \"longitude\": longitude,\n            \"hourly\": \"us_aqi\",\n            \"timezone\": \"auto\",\n            \"forecast_days\": 7,\n        }\n    )\n    response = fetch_json(\"https:\/\/air-quality-api.open-meteo.com\/v1\/air-quality?\" + query)\n    hourly = response.get(\"hourly\") or {}\n    times = hourly.get(\"time\") or []\n    values = hourly.get(\"us_aqi\") or []\n    maxima = {}\n    for timestamp, raw_value in zip(times, values):\n        if raw_value is None:\n            continue\n        date_key = timestamp.split(\"T\", 1)[0]\n        value = int(round(float(raw_value)))\n        maxima[date_key] = max(maxima.get(date_key, value), value)\n    return maxima\n\n\ndef fetch_forecast(latitude, longitude):\n    daily_fields = [\n        \"weather_code\",\n        \"temperature_2m_max\",\n        \"temperature_2m_min\",\n        \"precipitation_probability_max\",\n        \"sunrise\",\n        \"sunset\",\n        \"wind_speed_10m_max\",\n        \"wind_direction_10m_dominant\",\n    ]\n    forecast_query = urllib.parse.urlencode(\n        {\n            \"latitude\": latitude,\n            \"longitude\": longitude,\n            \"daily\": \",\".join(daily_fields),\n            \"temperature_unit\": \"celsius\",\n            \"wind_speed_unit\": \"kmh\",\n            \"timezone\": \"auto\",\n            \"forecast_days\": 7,\n        }\n    )\n    forecast = fetch_json(\"https:\/\/api.open-meteo.com\/v1\/forecast?\" + forecast_query)\n    daily = forecast.get(\"daily\") or {}\n    dates = daily.get(\"time\") or []\n    codes = daily.get(\"weather_code\") or []\n    highs = daily.get(\"temperature_2m_max\") or []\n    lows = daily.get(\"temperature_2m_min\") or []\n    rain = daily.get(\"precipitation_probability_max\") or []\n    sunrise = daily.get(\"sunrise\") or []\n    sunset = daily.get(\"sunset\") or []\n    wind_speed = daily.get(\"wind_speed_10m_max\") or []\n    wind_direction = daily.get(\"wind_direction_10m_dominant\") or []\n\n    try:\n        aqi = daily_aqi(latitude, longitude)\n    except Exception:\n        aqi = {}\n\n    days = []\n    for index, iso_date in enumerate(dates[:7]):\n        date_value = datetime.date.fromisoformat(iso_date)\n        speed = value_at(wind_speed, index)\n        speed = None if speed is None else round(float(speed))\n        direction = value_at(wind_direction, index)\n        direction = None if direction is None else round(float(direction)) % 360\n        days.append(\n            {\n                \"date_iso\": iso_date,\n                \"date\": f\"{date_value.month}\/{date_value.day}\",\n                \"code\": int(value_at(codes, index, 0)),\n                \"high_c\": round(float(value_at(highs, index, 0))),\n                \"low_c\": round(float(value_at(lows, index, 0))),\n                \"rain\": int(value_at(rain, index, 0) or 0),\n                \"sunrise\": short_time(value_at(sunrise, index)),\n                \"sunset\": short_time(value_at(sunset, index)),\n                \"wind_speed\": speed,\n                \"wind_level\": beaufort(speed),\n                \"wind_direction\": direction,\n                \"aqi\": aqi.get(iso_date),\n            }\n        )\n    if len(days) != 7:\n        raise ValueError(notch_t(\"incomplete_data\"))\n    return days, forecast.get(\"timezone\") or \"\"\n\n\ndef timezone_now(timezone_name):\n    if timezone_name and ZoneInfo is not None:\n        try:\n            return datetime.datetime.now(ZoneInfo(timezone_name))\n        except Exception:\n            pass\n    return datetime.datetime.now().astimezone()\n\n\ndef cache_path(locale):\n    safe_locale = \"zh-Hans\" if locale.startswith(\"zh\") else \"en\"\n    directory = pathlib.Path.home() \/ \"Library\" \/ \"Caches\" \/ \"NotchAny\" \/ \"seven-day-weather\"\n    directory.mkdir(parents=True, exist_ok=True)\n    return directory \/ (\"forecast-\" + safe_locale + \".json\")\n\n\ndef load_cache(path):\n    try:\n        with path.open(\"r\", encoding=\"utf-8\") as handle:\n            cache = json.load(handle)\n        if cache.get(\"version\") != CACHE_VERSION or len(cache.get(\"days\") or []) != 7:\n            return None\n        return cache\n    except Exception:\n        return None\n\n\ndef save_cache(path, cache):\n    temporary = path.with_suffix(\".\" + str(os.getpid()) + \".tmp\")\n    with temporary.open(\"w\", encoding=\"utf-8\") as handle:\n        json.dump(cache, handle, ensure_ascii=False, separators=(\",\", \":\"))\n    os.replace(temporary, path)\n\n\ndef next_refresh_at(cache, refresh_interval):\n    if refresh_interval == \"daily\":\n        current = timezone_now(cache.get(\"timezone\") or \"\")\n        tomorrow = current.date() + datetime.timedelta(days=1)\n        boundary = datetime.datetime.combine(tomorrow, datetime.time.min, tzinfo=current.tzinfo)\n        return boundary.timestamp()\n    seconds = INTERVAL_SECONDS.get(refresh_interval, INTERVAL_SECONDS[\"3h\"])\n    return float(cache.get(\"fetched_at\") or 0) + seconds\n\n\ndef cache_expired(cache, refresh_interval, now):\n    if cache is None:\n        return True\n    if refresh_interval == \"daily\":\n        current_date = timezone_now(cache.get(\"timezone\") or \"\").date().isoformat()\n        return current_date != cache.get(\"fetched_date\")\n    return now >= next_refresh_at(cache, refresh_interval)\n\n\ndef fetch_cache(locale):\n    latitude, longitude, location = ip_location(locale)\n    days, timezone_name = fetch_forecast(latitude, longitude)\n    current = timezone_now(timezone_name)\n    return {\n        \"version\": CACHE_VERSION,\n        \"city\": location,\n        \"days\": days,\n        \"timezone\": timezone_name,\n        \"fetched_at\": time.time(),\n        \"fetched_date\": current.date().isoformat(),\n        \"updated\": current.strftime(\"%H:%M\"),\n        \"sources\": {\n            \"location\": \"ipwho.is\",\n            \"weather\": \"Open-Meteo\",\n            \"air\": \"Open-Meteo\",\n        },\n    }\n\n\ndef display_temperature(value_c, unit_choice):\n    if unit_choice == \"f\":\n        return round(float(value_c) * 9 \/ 5 + 32)\n    return round(float(value_c))\n\n\nlocale = os.environ.get(\"NOTCH_LOCALE\") or \"zh-Hans\"\nunit_choice = (os.environ.get(\"NOTCH_PARAM_UNIT\") or \"c\").lower()\nunit_symbol = \"°F\" if unit_choice == \"f\" else \"°\"\nview_mode = (os.environ.get(\"NOTCH_PARAM_VIEW_MODE\") or \"week\").lower()\nrefresh_interval = (os.environ.get(\"NOTCH_PARAM_REFRESH_INTERVAL\") or \"3h\").lower()\nvisible = {\n    \"rain\": enabled(\"show_rain\"),\n    \"sun\": enabled(\"show_sun\"),\n    \"wind\": enabled(\"show_wind\"),\n    \"aqi\": enabled(\"show_aqi\"),\n}\n\npath = cache_path(locale)\ncache = load_cache(path)\nnow = time.time()\nevent = os.environ.get(\"NOTCH_WIDGET_EVENT\") or \"\"\nforce_requested = event == \"force_refresh\"\nage = now - float((cache or {}).get(\"fetched_at\") or 0)\nforce_allowed = force_requested and (cache is None or age >= FORCE_COOLDOWN_SECONDS)\nshould_fetch = cache_expired(cache, refresh_interval, now) or force_allowed\nfetched_now = False\nstale = False\n\nif should_fetch:\n    try:\n        cache = fetch_cache(locale)\n        save_cache(path, cache)\n        fetched_now = True\n    except Exception as error:\n        if cache is None:\n            state = {\n                \"city\": notch_t(\"ip_location\"),\n                \"error\": notch_t(\"weather_data_failed\"),\n                \"detail\": str(error)[:120],\n                \"visible\": visible,\n                \"view_mode\": view_mode,\n                \"days\": [],\n                \"next_refresh_at\": int((now + RETRY_SECONDS) * 1000),\n                \"sources\": {\n                    \"location\": \"ipwho.is\",\n                    \"weather\": \"Open-Meteo\",\n                    \"air\": \"Open-Meteo\",\n                },\n            }\n            notch_result(summary=notch_t(\"weather_update_failed\"), widget=state)\n            raise SystemExit(0)\n        stale = True\n\ndisplay_days = []\nfor day in cache[\"days\"][:1 if view_mode == \"today\" else 7]:\n    item = dict(day)\n    item[\"high\"] = display_temperature(item.pop(\"high_c\"), unit_choice)\n    item[\"low\"] = display_temperature(item.pop(\"low_c\"), unit_choice)\n    display_days.append(item)\n\nnext_refresh = now + RETRY_SECONDS if stale else next_refresh_at(cache, refresh_interval)\nstate = {\n    \"city\": cache[\"city\"],\n    \"unit\": unit_symbol,\n    \"updated\": cache[\"updated\"],\n    \"visible\": visible,\n    \"view_mode\": view_mode,\n    \"refresh_interval\": refresh_interval,\n    \"from_cache\": not fetched_now,\n    \"stale\": stale,\n    \"throttled\": force_requested and not force_allowed,\n    \"next_refresh_at\": int(next_refresh * 1000),\n    \"days\": display_days,\n    \"sources\": cache[\"sources\"],\n}\nnotch_result(summary=notch_t(\"weather_updated\"), widget=state)\n",
     "timeout_seconds" : 20,
     "widget" : {
-      "cols" : 7,
-      "css" : ":root {\n  color-scheme: dark;\n  font-family: -apple-system, BlinkMacSystemFont, \"PingFang SC\", sans-serif;\n  container-type: size;\n}\n\n* { box-sizing: border-box; }\n\nhtml, body {\n  width: 100%;\n  height: 100%;\n  margin: 0;\n  overflow: hidden;\n  background: transparent;\n  -webkit-user-select: none;\n  user-select: none;\n}\n\n.weather {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  padding: 8px 9px 9px;\n  border-radius: 13px;\n  background: rgba(255, 255, 255, .09);\n  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08);\n  color: rgba(255, 255, 255, .94);\n  display: grid;\n  grid-template-rows: 22px minmax(0, 1fr);\n  gap: 5px;\n}\n\n.topbar {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n}\n\n.location {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n}\n\n.location-mark {\n  width: 6px;\n  height: 6px;\n  flex: 0 0 auto;\n  border-radius: 50%;\n  background: #71c8ff;\n  box-shadow: 0 0 0 3px rgba(113, 200, 255, .12);\n}\n\n#city {\n  max-width: 170px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 11px;\n  font-weight: 650;\n}\n\n.updated {\n  font-size: 9px;\n  color: rgba(255, 255, 255, .42);\n  white-space: nowrap;\n}\n\n.toolbar {\n  flex: 0 0 auto;\n  display: flex;\n  align-items: center;\n  gap: 1px;\n}\n\n.source-info,\n.refresh {\n  width: 22px;\n  height: 22px;\n  flex: 0 0 auto;\n  padding: 0;\n  border: 0;\n  border-radius: 6px;\n  background: transparent;\n  color: rgba(255, 255, 255, .58);\n  cursor: pointer;\n}\n\n.source-info {\n  position: relative;\n  font: 13px\/22px -apple-system, BlinkMacSystemFont, sans-serif;\n}\n\n.source-info::after {\n  content: attr(data-tooltip);\n  position: absolute;\n  z-index: 5;\n  top: 25px;\n  right: 0;\n  width: 150px;\n  padding: 7px 8px;\n  border-radius: 7px;\n  background: rgb(35, 35, 38);\n  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .10), 0 5px 14px rgba(0, 0, 0, .35);\n  color: rgba(255, 255, 255, .86);\n  font: 9px\/1.45 -apple-system, BlinkMacSystemFont, \"PingFang SC\", sans-serif;\n  text-align: left;\n  white-space: pre-line;\n  pointer-events: none;\n  opacity: 0;\n  transform: translateY(-2px);\n}\n\n.source-info:hover::after,\n.source-info:focus::after,\n.source-info.show-source::after {\n  opacity: 1;\n  transform: translateY(0);\n}\n\n.source-info:hover,\n.source-info:focus,\n.source-info.show-source,\n.refresh:hover { background: rgba(255, 255, 255, .10); color: #fff; }\n\n.refresh {\n  font: 15px\/22px -apple-system, BlinkMacSystemFont, sans-serif;\n}\n\n.refresh:active { background: rgba(255, 255, 255, .17); }\n.refresh:disabled { cursor: default; opacity: .45; }\n.refresh.busy { animation: spin .8s linear infinite; }\n\n@keyframes spin { to { transform: rotate(360deg); } }\n\n.forecast {\n  min-width: 0;\n  min-height: 0;\n  display: grid;\n  grid-template-columns: repeat(7, minmax(0, 1fr));\n  align-items: stretch;\n}\n\n.day {\n  min-width: 0;\n  padding: 3px 5px 2px;\n  border-left: 1px solid rgba(255, 255, 255, .07);\n  display: grid;\n  grid-template-rows: 13px 11px minmax(23px, 1fr) 15px 12px;\n  align-items: center;\n  justify-items: center;\n  overflow: hidden;\n}\n\n.day:first-child { border-left: 0; }\n.day.today { background: rgba(113, 200, 255, .08); border-radius: 7px; }\n\n.weekday {\n  max-width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 9.5px;\n  font-weight: 650;\n  color: rgba(255, 255, 255, .78);\n}\n\n.date {\n  font-size: 8px;\n  color: rgba(255, 255, 255, .36);\n}\n\n.condition {\n  font-size: 20px;\n  line-height: 1;\n  filter: saturate(.9);\n}\n\n.temps {\n  display: flex;\n  align-items: baseline;\n  gap: 3px;\n  font-variant-numeric: tabular-nums;\n  white-space: nowrap;\n}\n\n.high { font-size: 11px; font-weight: 650; }\n.low { font-size: 9px; color: rgba(255, 255, 255, .42); }\n\n.rain {\n  font-size: 8px;\n  color: rgba(113, 200, 255, .78);\n  white-space: nowrap;\n}\n\n.message {\n  min-width: 0;\n  min-height: 0;\n  border-radius: 8px;\n  background: rgba(255, 255, 255, .05);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 4px;\n  text-align: center;\n  padding: 10px;\n}\n\n.message[hidden] { display: none; }\n.message strong { font-size: 11px; font-weight: 650; }\n.message span { max-width: 90%; font-size: 9px; color: rgba(255, 255, 255, .45); overflow-wrap: anywhere; }\n\n@container (max-width: 330px) {\n  .weather { padding-left: 6px; padding-right: 6px; }\n  .day { padding-left: 2px; padding-right: 2px; }\n  .condition { font-size: 17px; }\n  .rain { font-size: 7px; }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .refresh.busy { animation: none; }\n}\n",
-      "html" : "<section class=\"weather\" aria-label=\"未来七天天气\">\n  <header class=\"topbar\">\n    <div class=\"location\">\n      <span class=\"location-mark\" aria-hidden=\"true\"><\/span>\n      <strong id=\"city\">IP 定位<\/strong>\n      <span class=\"updated\" id=\"updated\">正在更新<\/span>\n    <\/div>\n    <div class=\"toolbar\">\n      <button class=\"source-info\" id=\"sourceInfo\" type=\"button\" aria-label=\"查看数据来源\" data-tooltip=\"定位：ipwho.is（公网 IP）&#10;天气：Open-Meteo\">ⓘ<\/button>\n      <button class=\"refresh\" id=\"refresh\" type=\"button\" aria-label=\"刷新天气\" title=\"刷新天气\">↻<\/button>\n    <\/div>\n  <\/header>\n  <div class=\"forecast\" id=\"forecast\" aria-live=\"polite\"><\/div>\n  <div class=\"message\" id=\"message\" hidden>\n    <strong id=\"messageTitle\"><\/strong>\n    <span id=\"messageDetail\"><\/span>\n  <\/div>\n<\/section>\n",
-      "javascript" : "(function () {\n  \"use strict\";\n\n  var city = document.getElementById(\"city\");\n  var updated = document.getElementById(\"updated\");\n  var forecast = document.getElementById(\"forecast\");\n  var sourceInfo = document.getElementById(\"sourceInfo\");\n  var refreshButton = document.getElementById(\"refresh\");\n  var message = document.getElementById(\"message\");\n  var messageTitle = document.getElementById(\"messageTitle\");\n  var messageDetail = document.getElementById(\"messageDetail\");\n  var timer = null;\n\n  function conditionFor(code) {\n    if (code === 0) return { icon: \"☀️\", label: \"晴\" };\n    if (code === 1 || code === 2) return { icon: \"🌤️\", label: \"多云间晴\" };\n    if (code === 3) return { icon: \"☁️\", label: \"阴\" };\n    if (code === 45 || code === 48) return { icon: \"🌫️\", label: \"雾\" };\n    if (code >= 51 && code <= 57) return { icon: \"🌦️\", label: \"毛毛雨\" };\n    if (code >= 61 && code <= 67) return { icon: \"🌧️\", label: \"雨\" };\n    if (code >= 71 && code <= 77) return { icon: \"🌨️\", label: \"雪\" };\n    if (code >= 80 && code <= 82) return { icon: \"🌦️\", label: \"阵雨\" };\n    if (code === 85 || code === 86) return { icon: \"🌨️\", label: \"阵雪\" };\n    if (code >= 95) return { icon: \"⛈️\", label: \"雷雨\" };\n    return { icon: \"☁️\", label: \"天气\" };\n  }\n\n  function textNode(className, value) {\n    var node = document.createElement(\"span\");\n    node.className = className;\n    node.textContent = value;\n    return node;\n  }\n\n  function render(result) {\n    var state = result && result.ok ? result.state : null;\n    if (!state) return false;\n\n    city.textContent = state.city || \"IP 定位\";\n    var sources = state.sources || {};\n    sourceInfo.dataset.tooltip =\n      \"定位：\" + (sources.location || \"ipwho.is\") + \"（公网 IP）\\n\" +\n      \"天气：\" + (sources.weather || \"Open-Meteo\");\n\n    if (state.error) {\n      forecast.hidden = true;\n      message.hidden = false;\n      messageTitle.textContent = state.error;\n      messageDetail.textContent = state.detail || \"请稍后重试\";\n      updated.textContent = \"\";\n      return true;\n    }\n\n    var days = state.days || [];\n    if (!days.length) return false;\n\n    var fragment = document.createDocumentFragment();\n    days.forEach(function (day, index) {\n      var info = conditionFor(day.code);\n      var item = document.createElement(\"article\");\n      item.className = \"day\" + (index === 0 ? \" today\" : \"\");\n      item.title = day.weekday + \" · \" + info.label + \" · \" + day.high + state.unit + \"\/\" + day.low + state.unit;\n      item.appendChild(textNode(\"weekday\", day.weekday));\n      item.appendChild(textNode(\"date\", day.date));\n      item.appendChild(textNode(\"condition\", info.icon));\n\n      var temps = document.createElement(\"div\");\n      temps.className = \"temps\";\n      temps.appendChild(textNode(\"high\", day.high + state.unit));\n      temps.appendChild(textNode(\"low\", day.low + state.unit));\n      item.appendChild(temps);\n      item.appendChild(textNode(\"rain\", \"降雨 \" + day.rain + \"%\"));\n      fragment.appendChild(item);\n    });\n\n    forecast.replaceChildren(fragment);\n    forecast.hidden = false;\n    message.hidden = true;\n    updated.textContent = \"IP 定位 · 更新 \" + (state.updated || \"刚刚\");\n    return true;\n  }\n\n  function setBusy(busy) {\n    refreshButton.disabled = busy;\n    refreshButton.classList.toggle(\"busy\", busy);\n  }\n\n  function refresh() {\n    if (!notchany.visible) return Promise.resolve();\n    setBusy(true);\n    return notchany.invoke(\"refresh\", null)\n      .then(function (result) {\n        if (!render(result) && !notchany.state) updated.textContent = \"暂无数据\";\n      })\n      .catch(function () {\n        updated.textContent = \"刷新失败\";\n      })\n      .finally(function () {\n        setBusy(false);\n      });\n  }\n\n  refreshButton.addEventListener(\"click\", refresh);\n  sourceInfo.addEventListener(\"click\", function () {\n    sourceInfo.classList.toggle(\"show-source\");\n  });\n  notchany.addEventListener(\"statechange\", function (event) {\n    render(event.state || notchany.state);\n  });\n  notchany.addEventListener(\"visibilitychange\", function () {\n    if (timer) {\n      clearInterval(timer);\n      timer = null;\n    }\n    if (notchany.visible) {\n      refresh();\n      timer = setInterval(refresh, 30 * 60 * 1000);\n    }\n  });\n\n  if (notchany.state) render(notchany.state);\n  if (notchany.visible) {\n    refresh();\n    timer = setInterval(refresh, 30 * 60 * 1000);\n  }\n})();\n",
-      "rows" : 2,
+      "cols" : 8,
+      "css" : ":root {\n  color-scheme: dark;\n  font-family: -apple-system, BlinkMacSystemFont, \"PingFang SC\", sans-serif;\n  container-type: size;\n}\n\n* { box-sizing: border-box; }\n\nhtml, body {\n  width: 100%;\n  height: 100%;\n  margin: 0;\n  overflow: hidden;\n  background: transparent;\n  -webkit-user-select: none;\n  user-select: none;\n}\n\n.weather {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  padding: 8px 9px 9px;\n  border-radius: 13px;\n  background: rgba(255, 255, 255, .09);\n  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08);\n  color: rgba(255, 255, 255, .94);\n  display: grid;\n  grid-template-rows: 22px minmax(0, 1fr);\n  gap: 5px;\n}\n\n.topbar {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n}\n\n.location {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n}\n\n.location-mark {\n  width: 6px;\n  height: 6px;\n  flex: 0 0 auto;\n  border-radius: 50%;\n  background: #71c8ff;\n  box-shadow: 0 0 0 3px rgba(113, 200, 255, .12);\n}\n\n#city {\n  max-width: 166px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 11px;\n  font-weight: 650;\n}\n\n.updated {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  font-size: 9px;\n  color: rgba(255, 255, 255, .42);\n  white-space: nowrap;\n}\n\n.toolbar {\n  flex: 0 0 auto;\n  display: flex;\n  align-items: center;\n  gap: 1px;\n}\n\n.source-info,\n.refresh {\n  width: 22px;\n  height: 22px;\n  flex: 0 0 auto;\n  padding: 0;\n  border: 0;\n  border-radius: 6px;\n  background: transparent;\n  color: rgba(255, 255, 255, .58);\n  cursor: pointer;\n}\n\n.source-info {\n  position: relative;\n  font: 13px\/22px -apple-system, BlinkMacSystemFont, sans-serif;\n}\n\n.source-info::after {\n  content: attr(data-tooltip);\n  position: absolute;\n  z-index: 5;\n  top: 25px;\n  right: 0;\n  width: 168px;\n  padding: 7px 8px;\n  border-radius: 7px;\n  background: rgb(35, 35, 38);\n  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .10), 0 5px 14px rgba(0, 0, 0, .35);\n  color: rgba(255, 255, 255, .86);\n  font: 9px\/1.45 -apple-system, BlinkMacSystemFont, \"PingFang SC\", sans-serif;\n  text-align: left;\n  white-space: pre-line;\n  pointer-events: none;\n  opacity: 0;\n  transform: translateY(-2px);\n}\n\n.source-info:hover::after,\n.source-info:focus::after,\n.source-info.show-source::after {\n  opacity: 1;\n  transform: translateY(0);\n}\n\n.source-info:hover,\n.source-info:focus,\n.source-info.show-source,\n.refresh:hover { background: rgba(255, 255, 255, .10); color: #fff; }\n\n.refresh { font: 15px\/22px -apple-system, BlinkMacSystemFont, sans-serif; }\n.refresh:active { background: rgba(255, 255, 255, .17); }\n.refresh:disabled { cursor: default; opacity: .45; }\n.refresh.busy { animation: spin .8s linear infinite; }\n\n@keyframes spin { to { transform: rotate(360deg); } }\n\n.forecast {\n  min-width: 0;\n  min-height: 0;\n  display: grid;\n  grid-template-columns: repeat(7, minmax(0, 1fr));\n  align-items: stretch;\n}\n\n.day {\n  min-width: 0;\n  padding: 2px 4px;\n  border-left: 1px solid rgba(255, 255, 255, .07);\n  display: grid;\n  grid-template-rows: 12px 25px minmax(0, 1fr);\n  align-items: center;\n  justify-items: center;\n  overflow: hidden;\n}\n\n.day:first-child { border-left: 0; }\n.day.today { background: rgba(113, 200, 255, .08); border-radius: 7px; }\n\n.day-head {\n  width: 100%;\n  min-width: 0;\n  display: flex;\n  align-items: baseline;\n  justify-content: center;\n  gap: 3px;\n  white-space: nowrap;\n}\n\n.weekday {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  font-size: 9px;\n  font-weight: 650;\n  color: rgba(255, 255, 255, .78);\n}\n\n.date { font-size: 7px; color: rgba(255, 255, 255, .36); }\n\n.summary {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 3px;\n  min-width: 0;\n}\n\n.condition {\n  flex: 0 0 auto;\n  font-size: 17px;\n  line-height: 1;\n  filter: saturate(.9);\n}\n\n.temps {\n  min-width: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  font-variant-numeric: tabular-nums;\n  white-space: nowrap;\n  line-height: 10px;\n}\n\n.high { font-size: 10px; font-weight: 650; }\n.low { font-size: 8px; color: rgba(255, 255, 255, .42); }\n.condition-label { display: none; }\n\n.metrics {\n  width: 100%;\n  min-height: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 0;\n  overflow: hidden;\n}\n\n.metric {\n  max-width: 100%;\n  height: 10px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: rgba(255, 255, 255, .54);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 1px;\n  font-size: 7px;\n  line-height: 10px;\n  font-variant-numeric: tabular-nums;\n  white-space: nowrap;\n}\n\n.metric::before {\n  width: 8px;\n  flex: 0 0 auto;\n  text-align: center;\n  font-size: 8px;\n}\n\n.metric.rain { color: rgba(113, 200, 255, .84); }\n.metric.rain::before { content: \"☂\"; }\n.metric.sun { color: rgba(255, 205, 107, .82); }\n.metric.sun::before { content: \"☀\"; }\n.metric.wind { color: rgba(188, 223, 236, .78); }\n.metric.wind::before { content: \"≋\"; }\n.metric.aqi::before { content: \"◉\"; }\n.metric.aqi.good { color: rgba(99, 214, 146, .86); }\n.metric.aqi.moderate { color: rgba(245, 201, 92, .88); }\n.metric.aqi.unhealthy { color: rgba(255, 139, 91, .90); }\n.metric.aqi.hazardous { color: rgba(224, 112, 160, .90); }\n\n.forecast.single {\n  grid-template-columns: minmax(0, 1fr);\n}\n\n.single-day {\n  padding: 4px 12px;\n  border-left: 0;\n  background: rgba(113, 200, 255, .055);\n  border-radius: 8px;\n  grid-template-columns: 68px 108px minmax(0, 1fr);\n  grid-template-rows: minmax(0, 1fr);\n  justify-items: stretch;\n}\n\n.single-day .day-head {\n  height: 100%;\n  padding-right: 12px;\n  border-right: 1px solid rgba(255, 255, 255, .08);\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: center;\n  gap: 3px;\n}\n\n.single-day .weekday { font-size: 13px; color: rgba(255, 255, 255, .94); }\n.single-day .date { display: block; font-size: 9px; }\n\n.single-day .summary {\n  justify-content: flex-start;\n  gap: 9px;\n  padding-left: 12px;\n}\n\n.single-day .condition { font-size: 36px; }\n.single-day .temps { line-height: 15px; }\n.single-day .high { font-size: 21px; }\n.single-day .low { font-size: 11px; }\n.single-day .condition-label {\n  display: block;\n  max-width: 82px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: rgba(255, 255, 255, .62);\n  font-size: 9px;\n  line-height: 11px;\n}\n\n.single-day .metrics {\n  padding-left: 14px;\n  border-left: 1px solid rgba(255, 255, 255, .08);\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  grid-auto-rows: 22px;\n  align-content: center;\n  gap: 1px 10px;\n}\n\n.single-day .metric {\n  max-width: none;\n  height: 22px;\n  justify-content: flex-start;\n  border-bottom: 1px solid rgba(255, 255, 255, .055);\n  font-size: 10px;\n  line-height: 22px;\n}\n\n.single-day .metric::before {\n  width: 14px;\n  font-size: 12px;\n}\n\n.single-day.no-metrics { grid-template-columns: 82px minmax(0, 1fr); }\n.single-day.no-metrics .summary { justify-content: center; }\n.single-day.no-metrics .metrics { display: none; }\n\n.message {\n  min-width: 0;\n  min-height: 0;\n  border-radius: 8px;\n  background: rgba(255, 255, 255, .05);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 4px;\n  text-align: center;\n  padding: 10px;\n}\n\n.message[hidden] { display: none; }\n.message strong { font-size: 11px; font-weight: 650; }\n.message span { max-width: 90%; font-size: 9px; color: rgba(255, 255, 255, .45); overflow-wrap: anywhere; }\n\n@container (min-height: 170px) {\n  .day:not(.single-day) {\n    grid-template-rows: 16px 40px auto;\n    align-content: center;\n    gap: 4px;\n  }\n\n  .day:not(.single-day) .weekday { font-size: 10px; }\n  .day:not(.single-day) .date { font-size: 8px; }\n  .day:not(.single-day) .condition { font-size: 22px; }\n  .day:not(.single-day) .temps { line-height: 12px; }\n  .day:not(.single-day) .high { font-size: 13px; }\n  .day:not(.single-day) .low { font-size: 10px; }\n  .day:not(.single-day) .metrics { gap: 1px; }\n  .day:not(.single-day) .metric {\n    height: 13px;\n    font-size: 8px;\n    line-height: 13px;\n  }\n}\n\n@container (max-width: 330px) {\n  .weather { padding-left: 6px; padding-right: 6px; }\n  .day { padding-left: 2px; padding-right: 2px; }\n  .condition { font-size: 15px; }\n  .metric { font-size: 6.5px; }\n  .date { display: none; }\n  .single-day { grid-template-columns: 56px 92px minmax(0, 1fr); }\n  .single-day .condition { font-size: 29px; }\n  .single-day .high { font-size: 18px; }\n  .single-day .metric { font-size: 9px; }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .refresh.busy { animation: none; }\n}\n",
+      "html" : "<section class=\"weather\" id=\"weather\">\n  <header class=\"topbar\">\n    <div class=\"location\">\n      <span class=\"location-mark\" aria-hidden=\"true\"><\/span>\n      <strong id=\"city\">--<\/strong>\n      <span class=\"updated\" id=\"updated\"><\/span>\n    <\/div>\n    <div class=\"toolbar\">\n      <button class=\"source-info\" id=\"sourceInfo\" type=\"button\">ⓘ<\/button>\n      <button class=\"refresh\" id=\"refresh\" type=\"button\">↻<\/button>\n    <\/div>\n  <\/header>\n  <div class=\"forecast\" id=\"forecast\" aria-live=\"polite\"><\/div>\n  <div class=\"message\" id=\"message\" hidden>\n    <strong id=\"messageTitle\"><\/strong>\n    <span id=\"messageDetail\"><\/span>\n  <\/div>\n<\/section>\n",
+      "javascript" : "(function () {\n  \"use strict\";\n\n  var i18n = (window.__notchWidget && window.__notchWidget.i18n) || {};\n  var weather = document.getElementById(\"weather\");\n  var city = document.getElementById(\"city\");\n  var updated = document.getElementById(\"updated\");\n  var forecast = document.getElementById(\"forecast\");\n  var sourceInfo = document.getElementById(\"sourceInfo\");\n  var refreshButton = document.getElementById(\"refresh\");\n  var message = document.getElementById(\"message\");\n  var messageTitle = document.getElementById(\"messageTitle\");\n  var messageDetail = document.getElementById(\"messageDetail\");\n  var timer = null;\n\n  function t(key) {\n    return i18n[key] || key;\n  }\n\n  function format(key, values) {\n    return t(key).replace(\/\\{([a-z_]+)\\}\/g, function (_, name) {\n      return values[name] === undefined || values[name] === null ? \"--\" : String(values[name]);\n    });\n  }\n\n  function applyStaticText() {\n    weather.setAttribute(\"aria-label\", t(\"widget_label\"));\n    city.textContent = t(\"ip_location\");\n    updated.textContent = t(\"updating\");\n    sourceInfo.setAttribute(\"aria-label\", t(\"view_sources\"));\n    sourceInfo.title = t(\"view_sources\");\n    refreshButton.setAttribute(\"aria-label\", t(\"refresh_weather\"));\n    refreshButton.title = t(\"refresh_weather\");\n  }\n\n  function conditionFor(code) {\n    if (code === 0) return { icon: \"☀️\", key: \"condition_clear\" };\n    if (code === 1 || code === 2) return { icon: \"🌤️\", key: \"condition_partly_cloudy\" };\n    if (code === 3) return { icon: \"☁️\", key: \"condition_cloudy\" };\n    if (code === 45 || code === 48) return { icon: \"🌫️\", key: \"condition_fog\" };\n    if (code >= 51 && code <= 57) return { icon: \"🌦️\", key: \"condition_drizzle\" };\n    if (code >= 61 && code <= 67) return { icon: \"🌧️\", key: \"condition_rain\" };\n    if (code >= 71 && code <= 77) return { icon: \"🌨️\", key: \"condition_snow\" };\n    if (code >= 80 && code <= 82) return { icon: \"🌦️\", key: \"condition_showers\" };\n    if (code === 85 || code === 86) return { icon: \"🌨️\", key: \"condition_snow_showers\" };\n    if (code >= 95) return { icon: \"⛈️\", key: \"condition_thunderstorm\" };\n    return { icon: \"☁️\", key: \"condition_weather\" };\n  }\n\n  function textNode(className, value, title) {\n    var node = document.createElement(\"span\");\n    node.className = className;\n    node.textContent = value;\n    if (title) node.title = title;\n    return node;\n  }\n\n  function weekdayFor(dateIso, index) {\n    if (index === 0) return t(\"today\");\n    var weekdayKeys = [\n      \"weekday_sun\", \"weekday_mon\", \"weekday_tue\", \"weekday_wed\",\n      \"weekday_thu\", \"weekday_fri\", \"weekday_sat\"\n    ];\n    var parts = String(dateIso || \"\").split(\"-\").map(Number);\n    if (parts.length !== 3) return \"--\";\n    var day = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2])).getUTCDay();\n    return t(weekdayKeys[day]);\n  }\n\n  function windDirection(degrees) {\n    if (degrees === null || degrees === undefined) return \"--\";\n    var keys = [\"dir_n\", \"dir_ne\", \"dir_e\", \"dir_se\", \"dir_s\", \"dir_sw\", \"dir_w\", \"dir_nw\"];\n    return t(keys[Math.round(Number(degrees) \/ 45) % 8]);\n  }\n\n  function aqiClass(value) {\n    if (value === null || value === undefined) return \"moderate\";\n    if (value <= 50) return \"good\";\n    if (value <= 100) return \"moderate\";\n    if (value <= 200) return \"unhealthy\";\n    return \"hazardous\";\n  }\n\n  function unwrap(value) {\n    if (!value) return null;\n    if (value.ok && value.state) return value.state;\n    if (value.state && (value.state.days || value.state.error)) return value.state;\n    if (value.days || value.error) return value;\n    return null;\n  }\n\n  function addMetric(container, className, text, title) {\n    container.appendChild(textNode(\"metric \" + className, text, title));\n  }\n\n  function clearTimer() {\n    if (timer) {\n      clearTimeout(timer);\n      timer = null;\n    }\n  }\n\n  function scheduleNext(state) {\n    clearTimer();\n    if (!notchany.visible || !state || !state.next_refresh_at) return;\n    var delay = Math.max(60 * 1000, Number(state.next_refresh_at) - Date.now());\n    timer = setTimeout(function () {\n      refresh(false);\n    }, delay);\n  }\n\n  function render(value) {\n    var state = unwrap(value);\n    if (!state) return false;\n\n    city.textContent = state.city || t(\"ip_location\");\n    var sources = state.sources || {};\n    var sourceLines = [\n      format(\"source_location\", { source: sources.location || \"ipwho.is\" }),\n      format(\"source_weather\", { source: sources.weather || \"Open-Meteo\" })\n    ];\n    if (state.visible && state.visible.aqi) {\n      sourceLines.push(format(\"source_air\", { source: sources.air || \"Open-Meteo\" }));\n    }\n    sourceInfo.dataset.tooltip = sourceLines.join(\"\\n\");\n\n    if (state.error) {\n      forecast.hidden = true;\n      message.hidden = false;\n      messageTitle.textContent = state.error;\n      messageDetail.textContent = state.detail || t(\"retry_later\");\n      updated.textContent = \"\";\n      scheduleNext(state);\n      return true;\n    }\n\n    var days = state.days || [];\n    if (!days.length) return false;\n\n    var visible = state.visible || {};\n    var metricCount = [visible.rain, visible.sun, visible.wind, visible.aqi].filter(Boolean).length;\n    var single = state.view_mode === \"today\" || days.length === 1;\n    forecast.classList.toggle(\"single\", single);\n    var fragment = document.createDocumentFragment();\n\n    days.forEach(function (day, index) {\n      var info = conditionFor(day.code);\n      var condition = t(info.key);\n      var weekday = weekdayFor(day.date_iso, index);\n      var item = document.createElement(\"article\");\n      item.className = \"day\" + (index === 0 ? \" today\" : \"\") + (single ? \" single-day\" : \"\");\n      if (single && metricCount === 0) item.classList.add(\"no-metrics\");\n\n      var head = document.createElement(\"div\");\n      head.className = \"day-head\";\n      head.appendChild(textNode(\"weekday\", weekday));\n      head.appendChild(textNode(\"date\", day.date));\n      item.appendChild(head);\n\n      var summary = document.createElement(\"div\");\n      summary.className = \"summary\";\n      summary.appendChild(textNode(\"condition\", info.icon, condition));\n      var temps = document.createElement(\"div\");\n      temps.className = \"temps\";\n      temps.appendChild(textNode(\"high\", day.high + state.unit));\n      temps.appendChild(textNode(\"low\", day.low + state.unit));\n      temps.appendChild(textNode(\"condition-label\", condition));\n      summary.appendChild(temps);\n      item.appendChild(summary);\n\n      var metrics = document.createElement(\"div\");\n      metrics.className = \"metrics\";\n      var details = [weekday, condition, day.high + state.unit + \"\/\" + day.low + state.unit];\n\n      if (visible.rain) {\n        var rainTitle = format(\"rain_detail\", { value: day.rain });\n        addMetric(metrics, \"rain\", day.rain + \"%\", rainTitle);\n        details.push(rainTitle);\n      }\n      if (visible.sun) {\n        var sunrise = day.sunrise || \"--\";\n        var sunset = day.sunset || \"--\";\n        var sunTitle = format(\"sun_detail\", { sunrise: sunrise, sunset: sunset });\n        addMetric(metrics, \"sun\", sunrise + \"\/\" + sunset, sunTitle);\n        details.push(sunTitle);\n      }\n      if (visible.wind) {\n        var direction = windDirection(day.wind_direction);\n        var windShort = format(\"wind_level_short\", { direction: direction, level: day.wind_level });\n        var windTitle = format(\"wind_detail\", {\n          direction: direction,\n          level: day.wind_level,\n          speed: day.wind_speed\n        });\n        addMetric(metrics, \"wind\", windShort, windTitle);\n        details.push(windTitle);\n      }\n      if (visible.aqi) {\n        var aqiValue = day.aqi === null || day.aqi === undefined ? \"--\" : day.aqi;\n        var aqiTitle = day.aqi === null || day.aqi === undefined\n          ? t(\"aqi_unavailable\")\n          : format(\"aqi_detail\", { value: day.aqi });\n        addMetric(metrics, \"aqi \" + aqiClass(day.aqi), \"AQI \" + aqiValue, aqiTitle);\n        details.push(aqiTitle);\n      }\n\n      item.appendChild(metrics);\n      item.title = details.join(\" · \");\n      fragment.appendChild(item);\n    });\n\n    forecast.replaceChildren(fragment);\n    forecast.hidden = false;\n    message.hidden = true;\n    updated.textContent = format(state.stale ? \"cached\" : \"updated\", {\n      time: state.updated || t(\"just_now\")\n    });\n    scheduleNext(state);\n    return true;\n  }\n\n  function setBusy(busy) {\n    refreshButton.disabled = busy;\n    refreshButton.classList.toggle(\"busy\", busy);\n  }\n\n  function refresh(force) {\n    if (!notchany.visible) return Promise.resolve();\n    setBusy(true);\n    return notchany.invoke(force ? \"force_refresh\" : \"refresh\", null)\n      .then(function (result) {\n        if (!render(result) && !notchany.state) updated.textContent = t(\"no_data\");\n      })\n      .catch(function () {\n        updated.textContent = t(\"refresh_failed\");\n      })\n      .finally(function () {\n        setBusy(false);\n      });\n  }\n\n  applyStaticText();\n  refreshButton.addEventListener(\"click\", function () {\n    refresh(true);\n  });\n  sourceInfo.addEventListener(\"click\", function () {\n    sourceInfo.classList.toggle(\"show-source\");\n  });\n  notchany.addEventListener(\"statechange\", function (event) {\n    render(event.state || notchany.state);\n  });\n  notchany.addEventListener(\"visibilitychange\", function () {\n    clearTimer();\n    if (notchany.visible) refresh(false);\n  });\n\n  if (notchany.state) render(notchany.state);\n  if (notchany.visible) refresh(false);\n})();\n",
+      "rows" : 3,
       "triggers" : [
         {
           "event" : "didWake",
