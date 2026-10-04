@@ -1,32 +1,31 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "4eb69643e56eb2646fadcc577e3fc202194fe552",
-    "decision_id": "ebc211e2-d1aa-4d6f-bbc0-0fd3c97c8904",
+    "candidate_commit": "804abb103a2fb24db0ae1d6d9c548d3dbc3b7d5b",
+    "decision_id": "c5efdd43-a713-45b4-ab40-9007af035156",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 25,
-        "head_sha": "f9fc9382e667f30a614e81a4a1c6f1007e1e2a63",
-        "base_sha": "8f0a87a843c458bcb8dca1e6e5864fc120be8c4d",
-        "package_id": "itsveryfun/file-to-base64-custom",
+        "pr_number": 27,
+        "head_sha": "63435bb411b54bb1c9bb6b08a5e97ce71f98b21d",
+        "base_sha": "dbb50450036ba4e00d99ac1224f5d1fadff5616b",
+        "package_id": "itsveryfun/seven-day-weather",
         "operation": "create",
         "actor_github_user_id": "189571424",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/itsveryfun/file-to-base64-custom.json": "570799ca0c21748ec2553fb1440a1ac621962e3a955ea98f9d2ce95de12daa5c",
-      "index/v1/index.json": "0d1b46014e3fcd2441f64bbd65733811a076822e76b2455b4380a5b32d9a2a0f",
-      "index/v2/index.json": "9cca80f86e382cd600ff35df2ebec44a9827e9117df1563d79b0554d5b2ea601",
-      "published/itsveryfun/file-to-base64-custom/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
-      "published/itsveryfun/file-to-base64-custom/icon.png": "3ef7710e37b48a98b67e5cecfe42ec8c498d4a275e9d0b3db9a1976ff1091aa6",
-      "published/itsveryfun/file-to-base64-custom/manifest.json": "ed4abb03e458be6ce2b0b2ffa1bca0252916ec1adb8a44cfbdc2106bdc8d26c8",
-      "published/itsveryfun/file-to-base64-custom/package.notchany.json": "8f53bc6f3e3b07eaf3317018ed541ca1202e8427514a9f9e05217032cc121d1a",
-      "published/itsveryfun/file-to-base64-custom/screenshots/1.png": "715e9b9506bb4dfc9fc9e0436cf85220a8eee3e30c9b89a38a390de4c8644b18",
-      "published/itsveryfun/file-to-base64-custom/screenshots/zh-Hans/1.png": "0978f9bd10fb066968e75caab628f6ade5cdb31f9226c03582db8f3ad74a1c78",
-      "published/state.json": "6c41ecdc4e79d9f6c531cf50c16be3a3156e96683b95443edb35888388669a5c"
+      "history/v1/itsveryfun/seven-day-weather.json": "a046899e8796ede5f05da26071dae2c56951c52b6a4261cc7d1d8e2b11c050c3",
+      "index/v1/index.json": "6b9c3e9bc0055b493fef70b851299681f6b0a885c01b43d184fa68b334a278b3",
+      "index/v2/index.json": "52248478e7e9c76ca74209edb16dd292d9f13c003331521fc17b021af7790a60",
+      "published/itsveryfun/seven-day-weather/LICENSE": "236b10093c6a5a77e78d7f03c1e959283f8b4da7c723c737a283e3e1996c8789",
+      "published/itsveryfun/seven-day-weather/icon.png": "f46dcb1b1fbcc5ab0f07d05dc346d6e8ba2ff4eb51d45910c92e9c73bbb08aea",
+      "published/itsveryfun/seven-day-weather/manifest.json": "13832176cdb7f558e235305dda93245c222f391b1fbc8a21096cebb0e91c4bab",
+      "published/itsveryfun/seven-day-weather/package.notchany.json": "85a9c3c7baa0e9ae844279f84f4a314f78f4d106486f873032c53df2379bdc2f",
+      "published/itsveryfun/seven-day-weather/screenshots/1.png": "9cf6f94e33401bd10d17f08cf5743b63c20b55e0e50cb9de1035d8de9e7fefcc",
+      "published/state.json": "e334ae4d580f14aa5d7004a7c0e557a84fcb280154be829faca6780147d03e67"
     }
   },
-  "signature": "e243b7c4f0cd2a3a33dc7ae4b36fec100017791152a543035f22a61f35549ec1"
+  "signature": "c1df5cf5b8b0c8fc88f77d296022a31c7e2c077b864378f88cf95da66b02b744"
 }
