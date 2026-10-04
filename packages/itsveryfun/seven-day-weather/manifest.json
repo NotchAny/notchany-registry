@@ -1,0 +1,21 @@
+{
+  "default_locale" : "zh-Hans",
+  "descriptions" : {
+    "zh-Hans" : "自动根据公网 IP 定位，显示未来七天的天气、高低温和降雨概率。\n\n支持摄氏\/华氏切换、手动刷新和每 30 分钟自动更新。悬停信息图标可查看当前定位与天气数据来源。"
+  },
+  "license" : "MIT",
+  "manifest_version" : 1,
+  "names" : {
+    "zh-Hans" : "七日天气"
+  },
+  "summaries" : {
+    "zh-Hans" : "基于公网 IP 自动定位的七日天气预报小组件"
+  },
+  "tags" : [
+    "weather",
+    "forecast",
+    "widget",
+    "utility"
+  ],
+  "version" : "1.0.0"
+}
