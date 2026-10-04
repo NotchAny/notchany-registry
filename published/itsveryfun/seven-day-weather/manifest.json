@@ -1,21 +1,25 @@
 {
-  "default_locale" : "zh-Hans",
+  "default_locale" : "en",
   "descriptions" : {
-    "zh-Hans" : "自动根据公网 IP 定位，显示未来七天的天气、高低温和降雨概率。\n\n支持摄氏\/华氏切换、手动刷新和每 30 分钟自动更新。悬停信息图标可查看当前定位与天气数据来源。"
+    "en" : "Automatically locates via public IP and shows either today's weather or a seven-day forecast.\n\nIncludes high and low temperatures, rain chance, sunrise and sunset, wind force and direction, and daily forecast US AQI. Rain, sun times, wind, and air quality can each be hidden independently.\n\nChoose a 1, 3, 6, or 12-hour refresh interval, or refresh on the next local calendar day. Persistent caching avoids unnecessary upstream requests, manual refresh has a five-minute cooldown, and stale cached weather remains available during temporary outages.",
+    "zh-Hans" : "根据公网 IP 自动定位，可选择突出显示当天信息，或查看完整七日天气预报。\n\n显示高低温、降雨概率、日出日落、风力风向和每日预测美国 AQI。降雨、日出日落、风力和空气质量均可独立关闭。\n\n支持 1、3、6、12 小时刷新，或在所在地进入下一个自然日后刷新。持久缓存会避免不必要的上游请求，手动刷新设有五分钟冷却，上游临时不可用时仍会展示缓存天气。"
   },
   "license" : "MIT",
   "manifest_version" : 1,
   "names" : {
+    "en" : "Seven-Day Weather",
     "zh-Hans" : "七日天气"
   },
   "summaries" : {
-    "zh-Hans" : "基于公网 IP 自动定位的七日天气预报小组件"
+    "en" : "Weather with today\/week views, AQI, wind, sun times, and smart refresh.",
+    "zh-Hans" : "支持当天\/一周、空气质量、风力、日出日落与智能刷新的天气组件"
   },
   "tags" : [
     "weather",
     "forecast",
     "widget",
-    "utility"
+    "utility",
+    "air-quality"
   ],
-  "version" : "1.0.0"
+  "version" : "1.1.0"
 }
