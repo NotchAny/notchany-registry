@@ -3,6 +3,32 @@
   "package_id": "itsveryfun/seven-day-weather",
   "releases": [
     {
+      "version": "1.1.0",
+      "sha256": "f21c36f54a001b02c496c0f8f805850acd347fdae1cd5c9386e2de89134136f8",
+      "source_commit": "90e0c7e7bc9779c5d5226f40584389ec34fbf3c8",
+      "merged_at": "2026-10-04T15:59:24Z",
+      "published_at": "2026-10-04T15:59:24Z",
+      "pr": {
+        "number": 29,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/29",
+        "title": "更新 seven-day-weather 至 v1.1.0",
+        "body": "新增当天与一周两种显示模式，并为当天视图提供重点布局。\n\n- 新增日出日落、风力风向与空气质量，并支持独立显示开关\n- 新增中英文界面、名称、参数标签与商店文案\n- 新增 1/3/6/12 小时及自然日刷新策略\n- 使用持久缓存、五分钟手动刷新冷却和失败时缓存回退，减少上游请求\n- 默认尺寸调整为 8×3，重新生成当天和一周的中英文商店截图",
+        "author": {
+          "github_user_id": "189571424",
+          "login": "itsveryfun",
+          "avatar_url": "https://avatars.githubusercontent.com/u/189571424?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "189571424",
+          "login": "itsveryfun",
+          "avatar_url": "https://avatars.githubusercontent.com/u/189571424?v=4"
+        }
+      ],
+      "approved_by": []
+    },
+    {
       "version": "1.0.0",
       "sha256": "85a9c3c7baa0e9ae844279f84f4a314f78f4d106486f873032c53df2379bdc2f",
       "source_commit": "804abb103a2fb24db0ae1d6d9c548d3dbc3b7d5b",

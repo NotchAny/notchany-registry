@@ -173,20 +173,20 @@
     },
     "itsveryfun/seven-day-weather": {
       "active": true,
-      "tree_hash": "06dcfa6abe36db690af4d20c5ec4a780395a05d4e3ebbd7a25777ec34f27bd2b",
-      "source_commit": "804abb103a2fb24db0ae1d6d9c548d3dbc3b7d5b",
+      "tree_hash": "2a6cc094b78b465c6cb1054223ba16bc619207097ab00988b0c15a783de94f21",
+      "source_commit": "90e0c7e7bc9779c5d5226f40584389ec34fbf3c8",
       "first_published_at": "2026-10-04T15:02:20Z",
       "release": {
-        "version": "1.0.0",
-        "sha256": "85a9c3c7baa0e9ae844279f84f4a314f78f4d106486f873032c53df2379bdc2f",
-        "source_commit": "804abb103a2fb24db0ae1d6d9c548d3dbc3b7d5b",
-        "merged_at": "2026-10-04T15:02:20Z",
-        "published_at": "2026-10-04T15:02:20Z",
+        "version": "1.1.0",
+        "sha256": "f21c36f54a001b02c496c0f8f805850acd347fdae1cd5c9386e2de89134136f8",
+        "source_commit": "90e0c7e7bc9779c5d5226f40584389ec34fbf3c8",
+        "merged_at": "2026-10-04T15:59:24Z",
+        "published_at": "2026-10-04T15:59:24Z",
         "pr": {
-          "number": 27,
-          "url": "https://github.com/NotchAny/notchany-registry/pull/27",
-          "title": "新增 seven-day-weather v1.0.0",
-          "body": "首次发布：提供基于公网 IP 自动定位的七日天气预报，支持摄氏/华氏切换、手动刷新和定时更新，并明确展示定位与天气数据来源。",
+          "number": 29,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/29",
+          "title": "更新 seven-day-weather 至 v1.1.0",
+          "body": "新增当天与一周两种显示模式，并为当天视图提供重点布局。\n\n- 新增日出日落、风力风向与空气质量，并支持独立显示开关\n- 新增中英文界面、名称、参数标签与商店文案\n- 新增 1/3/6/12 小时及自然日刷新策略\n- 使用持久缓存、五分钟手动刷新冷却和失败时缓存回退，减少上游请求\n- 默认尺寸调整为 8×3，重新生成当天和一周的中英文商店截图",
           "author": {
             "github_user_id": "189571424",
             "login": "itsveryfun",
@@ -236,6 +236,10 @@
     {
       "id": "c5efdd43-a713-45b4-ab40-9007af035156",
       "candidate_commit": "804abb103a2fb24db0ae1d6d9c548d3dbc3b7d5b"
+    },
+    {
+      "id": "c038e46c-6587-44c4-ac13-6d880f479000",
+      "candidate_commit": "90e0c7e7bc9779c5d5226f40584389ec34fbf3c8"
     }
   ]
 }
