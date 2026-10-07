@@ -1,32 +1,32 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "90e0c7e7bc9779c5d5226f40584389ec34fbf3c8",
-    "decision_id": "c038e46c-6587-44c4-ac13-6d880f479000",
+    "candidate_commit": "61e20947e3a30a166c3aed9f99f1b5a458f4cb03",
+    "decision_id": "88bfa157-d10c-44f5-9b51-4def882555c3",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 29,
-        "head_sha": "b3a2e0914c186de81e99f60a6f9b8c7dffefeb48",
-        "base_sha": "cdee29da0154b33d7ffb766a41f807a14bb3ef27",
-        "package_id": "itsveryfun/seven-day-weather",
-        "operation": "update",
-        "actor_github_user_id": "189571424",
+        "pr_number": 31,
+        "head_sha": "49e084b2bbb95f51a4e19971019c3ff4e87d2d11",
+        "base_sha": "aaeea30dbf6d7b0cfc98e8a34e0746c219e22ebd",
+        "package_id": "glzlaohuai/system-status",
+        "operation": "create",
+        "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/itsveryfun/seven-day-weather.json": "34b05254681c2b2e69f35b0660e1ad1038a0abf52c8fc4985d693daa7427c5b2",
-      "index/v1/index.json": "ccd837aabddf347fa584e9cfe563cfc47d6fc270a74ab452aec90bd2664d0257",
-      "index/v2/index.json": "a0bbfd57be927f00223e250984b9d09ffc67281a4975de41bb58f2e25a8dc37b",
-      "published/itsveryfun/seven-day-weather/manifest.json": "5a93a84c01fd0b2c81a0172787fcc0cfbb02b8096cf0fd47986b0178ce215493",
-      "published/itsveryfun/seven-day-weather/package.notchany.json": "f21c36f54a001b02c496c0f8f805850acd347fdae1cd5c9386e2de89134136f8",
-      "published/itsveryfun/seven-day-weather/screenshots/1.png": "55de2c9fe1fb70d233ee55b77fc8a1cc582c96a404d42b9669b8a348440ba440",
-      "published/itsveryfun/seven-day-weather/screenshots/2.png": "c7d60159212d09137f050848b1e7a38353d7006749dd565507dca6830600119b",
-      "published/itsveryfun/seven-day-weather/screenshots/3.png": "bd2294892f2319349248fd8f8c7e0b9cae739b7785f7e513bd72e762d6d8b86a",
-      "published/itsveryfun/seven-day-weather/screenshots/4.png": "7550f80d163288714aa216da601368a7fce04fa1f5b4553c6ff7e04f585b84b6",
-      "published/state.json": "62a01ae9e8841d4ded0973b2999aad375683031c4cee8d36f73b9039738d2aba"
+      "history/v1/glzlaohuai/system-status.json": "27b7fc5dd641be5cd25c819b6e2b8926b4075e57525f447c4a7d7c87e35355a1",
+      "index/v1/index.json": "8b268c35627b0fc2deb4c71af079698c524f80581a4a3a4adf9fcea8769c4243",
+      "index/v2/index.json": "e5edf14086ff3286408e1e5efe11592a9f65a19c0c153a6412887328c67e670b",
+      "published/glzlaohuai/system-status/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
+      "published/glzlaohuai/system-status/icon.png": "f60cd19eed22a0cbc92bfaa78fd40926b6367173c41eac2b54fd68ff22bbae4d",
+      "published/glzlaohuai/system-status/manifest.json": "a10991d361b35566d397b255d0752afec9acae231c573f1b08d16b1b12616b09",
+      "published/glzlaohuai/system-status/package.notchany.json": "2e630a816181b44fbf542fc5a7f938c168b6553af288f66850a386e611ed39c9",
+      "published/glzlaohuai/system-status/screenshots/1.png": "cd3d26a4cb180b8f583f3ad17e5c7638282b3da16277a7b57b4ff78bdac354d4",
+      "published/glzlaohuai/system-status/screenshots/zh-Hans/1.png": "e0ee0c458cefadd0925799e693bee7f9a7ef0fa63b47fc25ee28dff99537ccdc",
+      "published/state.json": "7de1d59c6bce27f27b247a48f927c86e11df2cde879be7c5f9218ca1b457b137"
     }
   },
-  "signature": "ac56211697c61971029a1d9346c372d8192debac01495f18dcf3803f8e40ebca"
+  "signature": "4712a0db4783e2ae246ea93beafa0a6cc5b60b840de10a4a7a8ed51116f82e69"
 }

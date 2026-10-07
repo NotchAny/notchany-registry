@@ -202,6 +202,38 @@
         ],
         "approved_by": []
       }
+    },
+    "glzlaohuai/system-status": {
+      "active": true,
+      "tree_hash": "c5cafc5f5365a54f2067a16348c57c610e20b4243b531726ccb4d56faa80dc97",
+      "source_commit": "61e20947e3a30a166c3aed9f99f1b5a458f4cb03",
+      "first_published_at": "2026-10-07T04:58:10Z",
+      "release": {
+        "version": "1.0.0",
+        "sha256": "2e630a816181b44fbf542fc5a7f938c168b6553af288f66850a386e611ed39c9",
+        "source_commit": "61e20947e3a30a166c3aed9f99f1b5a458f4cb03",
+        "merged_at": "2026-10-07T04:58:10Z",
+        "published_at": "2026-10-07T04:58:10Z",
+        "pr": {
+          "number": 31,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/31",
+          "title": "Add system-status widget",
+          "body": "Adds a bilingual compact system status widget powered entirely by built-in macOS tools.",
+          "author": {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        },
+        "contributors": [
+          {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        ],
+        "approved_by": []
+      }
     }
   },
   "decisions": [
@@ -240,6 +272,10 @@
     {
       "id": "c038e46c-6587-44c4-ac13-6d880f479000",
       "candidate_commit": "90e0c7e7bc9779c5d5226f40584389ec34fbf3c8"
+    },
+    {
+      "id": "88bfa157-d10c-44f5-9b51-4def882555c3",
+      "candidate_commit": "61e20947e3a30a166c3aed9f99f1b5a458f4cb03"
     }
   ]
 }
