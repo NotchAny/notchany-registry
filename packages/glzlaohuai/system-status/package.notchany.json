@@ -1,0 +1,142 @@
+{
+  "action" : {
+    "default_locale" : "zh-Hans",
+    "i18n" : {
+      "available" : {
+        "en" : "free",
+        "zh-Hans" : "可用"
+      },
+      "battery" : {
+        "en" : "Battery",
+        "zh-Hans" : "电池"
+      },
+      "battery_not_detected" : {
+        "en" : "Battery not detected",
+        "zh-Hans" : "未检测到电池"
+      },
+      "battery_temperature" : {
+        "en" : "Battery Temp",
+        "zh-Hans" : "电池温度"
+      },
+      "charged" : {
+        "en" : "Charged",
+        "zh-Hans" : "已充满"
+      },
+      "charging" : {
+        "en" : "Charging",
+        "zh-Hans" : "充电中"
+      },
+      "core_status" : {
+        "en" : "Core status",
+        "zh-Hans" : "核心状态"
+      },
+      "cpu" : {
+        "en" : "CPU",
+        "zh-Hans" : "CPU"
+      },
+      "cycles" : {
+        "en" : "×",
+        "zh-Hans" : "次"
+      },
+      "discharging" : {
+        "en" : "Discharging",
+        "zh-Hans" : "放电中"
+      },
+      "ethernet" : {
+        "en" : "Wired",
+        "zh-Hans" : "有线"
+      },
+      "health" : {
+        "en" : "Health",
+        "zh-Hans" : "健康"
+      },
+      "memory" : {
+        "en" : "Memory",
+        "zh-Hans" : "内存"
+      },
+      "network" : {
+        "en" : "Network",
+        "zh-Hans" : "网络"
+      },
+      "no_battery" : {
+        "en" : "No battery",
+        "zh-Hans" : "无电池"
+      },
+      "no_interface" : {
+        "en" : "No interface",
+        "zh-Hans" : "无接口"
+      },
+      "offline" : {
+        "en" : "Offline",
+        "zh-Hans" : "离线"
+      },
+      "on_ac" : {
+        "en" : "On AC",
+        "zh-Hans" : "接通电源"
+      },
+      "refresh" : {
+        "en" : "Refresh",
+        "zh-Hans" : "刷新"
+      },
+      "refresh_status" : {
+        "en" : "Refresh system status",
+        "zh-Hans" : "刷新系统状态"
+      },
+      "system_disk" : {
+        "en" : "System Disk",
+        "zh-Hans" : "系统盘"
+      },
+      "title" : {
+        "en" : "System Status",
+        "zh-Hans" : "系统状态"
+      },
+      "total" : {
+        "en" : "Total",
+        "zh-Hans" : "共"
+      },
+      "unavailable" : {
+        "en" : "Unavailable",
+        "zh-Hans" : "暂不可用"
+      },
+      "vpn" : {
+        "en" : "VPN",
+        "zh-Hans" : "VPN"
+      },
+      "wifi" : {
+        "en" : "Wi-Fi",
+        "zh-Hans" : "Wi-Fi"
+      }
+    },
+    "icon_type" : "symbol",
+    "icon_value" : "gauge.with.dots.needle.67percent",
+    "id" : "notchany.custom.shell.395ca661-73e3-4755-8824-a8fcaf9344f1",
+    "input_kind" : "none",
+    "interpreter" : "python",
+    "kind" : "shell",
+    "locales" : [
+      "zh-Hans",
+      "en"
+    ],
+    "names" : {
+      "en" : "System Status",
+      "zh-Hans" : "系统状态"
+    },
+    "presentation_mode" : "widget",
+    "script" : "import ctypes\nimport json\nimport os\nimport plistlib\nimport re\nimport subprocess\nimport time\nfrom pathlib import Path\n\n\nCACHE_DIR = Path.home() \/ \"Library\" \/ \"Caches\" \/ \"com.notchany.agent\"\nCACHE_FILE = CACHE_DIR \/ \"system-status-v1.json\"\n\n\nFALLBACK_TEXT = {\n    \"no_battery\": \"无电池\",\n    \"charging\": \"充电中\",\n    \"charged\": \"已充满\",\n    \"on_ac\": \"接通电源\",\n    \"discharging\": \"放电中\",\n    \"wifi\": \"Wi-Fi\",\n    \"ethernet\": \"有线\",\n    \"vpn\": \"VPN\",\n    \"offline\": \"离线\",\n}\n\n\ndef text(key):\n    try:\n        return notch_t(key)\n    except Exception:\n        return FALLBACK_TEXT.get(key, key)\n\n\ndef run(args, timeout=4, binary=False):\n    try:\n        result = subprocess.run(\n            args,\n            check=True,\n            capture_output=True,\n            timeout=timeout,\n        )\n        return result.stdout if binary else result.stdout.decode(\"utf-8\", \"replace\")\n    except Exception:\n        return b\"\" if binary else \"\"\n\n\ndef clamp(value, low=0.0, high=100.0):\n    return max(low, min(high, value))\n\n\ndef read_cache():\n    try:\n        return json.loads(CACHE_FILE.read_text(\"utf-8\"))\n    except Exception:\n        return {}\n\n\ndef write_cache(data):\n    try:\n        CACHE_DIR.mkdir(parents=True, exist_ok=True)\n        temp = CACHE_FILE.with_suffix(\".tmp\")\n        temp.write_text(json.dumps(data, separators=(\",\", \":\")), \"utf-8\")\n        os.replace(temp, CACHE_FILE)\n    except Exception:\n        pass\n\n\ndef cpu_ticks():\n    try:\n        lib = ctypes.CDLL(\"\/usr\/lib\/libSystem.B.dylib\")\n        lib.mach_host_self.restype = ctypes.c_uint\n        lib.host_processor_info.argtypes = [\n            ctypes.c_uint,\n            ctypes.c_int,\n            ctypes.POINTER(ctypes.c_uint),\n            ctypes.POINTER(ctypes.POINTER(ctypes.c_int)),\n            ctypes.POINTER(ctypes.c_uint),\n        ]\n        cpu_count = ctypes.c_uint()\n        info = ctypes.POINTER(ctypes.c_int)()\n        info_count = ctypes.c_uint()\n        result = lib.host_processor_info(\n            lib.mach_host_self(),\n            2,\n            ctypes.byref(cpu_count),\n            ctypes.byref(info),\n            ctypes.byref(info_count),\n        )\n        if result != 0 or info_count.value < 4:\n            return []\n        values = [int(info[index]) for index in range(info_count.value)]\n        return values[: int(cpu_count.value) * 4]\n    except Exception:\n        return []\n\n\ndef cpu_percent(previous, current):\n    if not previous or len(previous) != len(current):\n        return 0.0\n    used = 0\n    total = 0\n    for index in range(0, len(current), 4):\n        deltas = [max(0, current[index + part] - previous[index + part]) for part in range(4)]\n        used += deltas[0] + deltas[1] + deltas[3]\n        total += sum(deltas)\n    return clamp(used * 100.0 \/ total) if total else 0.0\n\n\ndef memory_status():\n    total = 0\n    try:\n        total = int(run([\"\/usr\/sbin\/sysctl\", \"-n\", \"hw.memsize\"]).strip())\n    except Exception:\n        pass\n    pressure = run([\"\/usr\/bin\/memory_pressure\", \"-Q\"], timeout=3)\n    match = re.search(r\"free percentage:\\s*(\\d+)%\", pressure)\n    used_percent = 100.0 - float(match.group(1)) if match else 0.0\n    used = total * used_percent \/ 100.0\n    return {\n        \"percent\": round(clamp(used_percent), 1),\n        \"used_bytes\": int(used),\n        \"total_bytes\": total,\n    }\n\n\ndef battery_status(cache):\n    battery = {}\n    raw = run([\"\/usr\/sbin\/ioreg\", \"-r\", \"-c\", \"AppleSmartBattery\", \"-a\"], binary=True)\n    if raw:\n        try:\n            values = plistlib.loads(raw)\n            battery = values[0] if values else {}\n        except Exception:\n            battery = {}\n    if not battery:\n        return {\n            \"present\": False,\n            \"percent\": 0,\n            \"state\": text(\"no_battery\"),\n            \"state_key\": \"absent\",\n            \"health\": None,\n            \"cycles\": None,\n            \"temperature\": None,\n        }\n\n    now = time.time()\n    health = cache.get(\"battery_health\")\n    health_checked = float(cache.get(\"battery_health_checked\", 0))\n    if health is None or now - health_checked > 1800:\n        profile = run([\"\/usr\/sbin\/system_profiler\", \"SPPowerDataType\", \"-json\"], timeout=6)\n        try:\n            items = json.loads(profile).get(\"SPPowerDataType\", [])\n            for item in items:\n                health_info = item.get(\"sppower_battery_health_info\") or {}\n                value = health_info.get(\"sppower_battery_health_maximum_capacity\")\n                if value:\n                    health = int(re.sub(r\"\\D\", \"\", str(value)))\n                    health_checked = now\n                    break\n        except Exception:\n            pass\n    if health is None:\n        design = float(battery.get(\"DesignCapacity\") or 0)\n        maximum = float(battery.get(\"NominalChargeCapacity\") or battery.get(\"AppleRawMaxCapacity\") or 0)\n        health = round(clamp(maximum * 100.0 \/ design)) if design else None\n\n    charging = bool(battery.get(\"IsCharging\"))\n    connected = bool(battery.get(\"ExternalConnected\"))\n    full = bool(battery.get(\"FullyCharged\"))\n    if charging:\n        state, state_key = text(\"charging\"), \"charging\"\n    elif full and connected:\n        state, state_key = text(\"charged\"), \"charged\"\n    elif connected:\n        state, state_key = text(\"on_ac\"), \"ac\"\n    else:\n        state, state_key = text(\"discharging\"), \"discharging\"\n\n    raw_temp = battery.get(\"Temperature\")\n    temperature = None\n    if isinstance(raw_temp, (int, float)) and raw_temp > 0:\n        temperature = round(raw_temp \/ 10.0 - 273.15, 1)\n\n    return {\n        \"present\": True,\n        \"percent\": int(battery.get(\"CurrentCapacity\") or 0),\n        \"state\": state,\n        \"state_key\": state_key,\n        \"health\": health,\n        \"health_checked\": health_checked,\n        \"cycles\": int(battery.get(\"CycleCount\") or 0),\n        \"temperature\": temperature,\n    }\n\n\ndef disk_capacity():\n    output = run([\"\/bin\/df\", \"-k\", \"\/System\/Volumes\/Data\"])\n    lines = [line for line in output.splitlines() if line.strip()]\n    if len(lines) < 2:\n        output = run([\"\/bin\/df\", \"-k\", \"\/\"])\n        lines = [line for line in output.splitlines() if line.strip()]\n    try:\n        parts = lines[-1].split()\n        total = int(parts[1]) * 1024\n        free = int(parts[3]) * 1024\n        used_percent = clamp((total - free) * 100.0 \/ total) if total else 0.0\n        return {\"total_bytes\": total, \"free_bytes\": free, \"used_percent\": round(used_percent, 1)}\n    except Exception:\n        return {\"total_bytes\": 0, \"free_bytes\": 0, \"used_percent\": 0}\n\n\ndef disk_counters():\n    raw = run([\"\/usr\/sbin\/ioreg\", \"-r\", \"-c\", \"IOBlockStorageDriver\", \"-a\"], binary=True)\n    try:\n        entries = plistlib.loads(raw)\n        read_bytes = 0\n        write_bytes = 0\n        for entry in entries:\n            stats = entry.get(\"Statistics\") or {}\n            read_bytes += int(stats.get(\"Bytes (Read)\") or 0)\n            write_bytes += int(stats.get(\"Bytes (Write)\") or 0)\n        return {\"read\": read_bytes, \"write\": write_bytes}\n    except Exception:\n        return {\"read\": 0, \"write\": 0}\n\n\ndef hardware_ports():\n    output = run([\"\/usr\/sbin\/networksetup\", \"-listallhardwareports\"])\n    wifi = None\n    wired = []\n    port = \"\"\n    for line in output.splitlines():\n        if line.startswith(\"Hardware Port:\"):\n            port = line.split(\":\", 1)[1].strip()\n        elif line.startswith(\"Device:\"):\n            device = line.split(\":\", 1)[1].strip()\n            if port == \"Wi-Fi\":\n                wifi = device\n            elif \"Ethernet\" in port:\n                wired.append(device)\n    return wifi, wired\n\n\ndef interface_active(interface):\n    if not interface:\n        return False\n    output = run([\"\/sbin\/ifconfig\", interface])\n    return \"status: active\" in output\n\n\ndef default_interface():\n    output = run([\"\/sbin\/route\", \"-n\", \"get\", \"default\"])\n    match = re.search(r\"^\\s*interface:\\s*(\\S+)\", output, re.MULTILINE)\n    return match.group(1) if match else \"\"\n\n\ndef network_counters(interface):\n    if not interface:\n        return {\"down\": 0, \"up\": 0}\n    output = run([\"\/usr\/sbin\/netstat\", \"-ibdn\"])\n    for line in output.splitlines():\n        parts = line.split()\n        if len(parts) >= 10 and parts[0] == interface and parts[2].startswith(\"<Link#\"):\n            try:\n                return {\"down\": int(parts[6]), \"up\": int(parts[9])}\n            except Exception:\n                break\n    return {\"down\": 0, \"up\": 0}\n\n\ndef delta_rate(previous, current, elapsed, key):\n    if elapsed <= 0 or not previous:\n        return 0.0\n    return max(0.0, (float(current.get(key, 0)) - float(previous.get(key, 0))) \/ elapsed)\n\n\ncache = read_cache()\nnow = time.time()\nwifi_device, wired_devices = hardware_ports()\nprimary_interface = default_interface()\nsample = {\n    \"timestamp\": now,\n    \"cpu\": cpu_ticks(),\n    \"disk\": disk_counters(),\n    \"network\": network_counters(primary_interface),\n    \"interface\": primary_interface,\n}\n\nprevious = cache.get(\"sample\") or {}\nelapsed = now - float(previous.get(\"timestamp\", 0))\nvalid_previous = 0.45 <= elapsed <= 10 and previous.get(\"interface\") == primary_interface\nif not valid_previous:\n    time.sleep(0.45)\n    previous = sample\n    now = time.time()\n    sample = {\n        \"timestamp\": now,\n        \"cpu\": cpu_ticks(),\n        \"disk\": disk_counters(),\n        \"network\": network_counters(primary_interface),\n        \"interface\": primary_interface,\n    }\n    elapsed = max(0.001, now - float(previous.get(\"timestamp\", now)))\n\nbattery = battery_status(cache)\ncpu = cpu_percent(previous.get(\"cpu\"), sample.get(\"cpu\"))\nmemory = memory_status()\ndisk = disk_capacity()\ndisk[\"read_bps\"] = delta_rate(previous.get(\"disk\"), sample[\"disk\"], elapsed, \"read\")\ndisk[\"write_bps\"] = delta_rate(previous.get(\"disk\"), sample[\"disk\"], elapsed, \"write\")\n\nwifi_active = interface_active(wifi_device)\nwired_active = any(interface_active(device) for device in wired_devices)\nif primary_interface == wifi_device:\n    connection = text(\"wifi\")\nelif primary_interface in wired_devices:\n    connection = text(\"ethernet\")\nelif primary_interface.startswith(\"utun\"):\n    connection = text(\"vpn\")\nelif primary_interface:\n    connection = primary_interface\nelse:\n    connection = text(\"offline\")\n\nnetwork = {\n    \"interface\": primary_interface,\n    \"connection\": connection,\n    \"online\": bool(primary_interface),\n    \"wifi\": wifi_active,\n    \"wired\": wired_active,\n    \"down_bps\": delta_rate(previous.get(\"network\"), sample[\"network\"], elapsed, \"down\"),\n    \"up_bps\": delta_rate(previous.get(\"network\"), sample[\"network\"], elapsed, \"up\"),\n}\n\ncache_out = {\n    \"sample\": sample,\n    \"battery_health\": battery.get(\"health\"),\n    \"battery_health_checked\": battery.get(\"health_checked\", cache.get(\"battery_health_checked\", 0)),\n}\nwrite_cache(cache_out)\n\nstate = {\n    \"cpu\": {\"percent\": round(cpu, 1)},\n    \"memory\": memory,\n    \"battery\": battery,\n    \"disk\": disk,\n    \"network\": network,\n    \"updated_at\": int(now * 1000),\n}\nnotch_result(widget=state)\n",
+    "timeout_seconds" : 8,
+    "widget" : {
+      "cols" : 6,
+      "css" : ":root {\n  color-scheme: dark;\n  font-family: -apple-system, BlinkMacSystemFont, \"PingFang SC\", \"SF Pro Text\", sans-serif;\n}\n* { box-sizing: border-box; }\nhtml, body {\n  width: 100%;\n  height: 100%;\n  margin: 0;\n  overflow: hidden;\n  background: transparent;\n  -webkit-user-select: none;\n  user-select: none;\n}\n.panel {\n  width: 100%;\n  height: 100%;\n  padding: 7px 9px 8px;\n  border-radius: 13px;\n  background: rgba(21, 22, 25, .96);\n  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12), 0 4px 16px rgba(0, 0, 0, .22);\n  color: rgba(255, 255, 255, .94);\n  display: grid;\n  grid-template-rows: 20px 43px 1fr;\n  gap: 4px;\n}\nsvg {\n  fill: none;\n  stroke: currentColor;\n  stroke-width: 1.8;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n}\n.header, .heading, .metric-title, .detail-head, .detail-label, .rates, .rates span, .links, .links span {\n  display: flex;\n  align-items: center;\n}\n.header { justify-content: space-between; min-width: 0; }\n.heading { gap: 6px; min-width: 0; font-size: 10.5px; font-weight: 650; }\n.brand-icon { width: 13px; height: 13px; color: #7dd3fc; }\n.connection {\n  max-width: 76px;\n  padding: 2px 5px;\n  border-radius: 5px;\n  background: rgba(125, 211, 252, .12);\n  color: #bae6fd;\n  font-size: 8.5px;\n  font-weight: 600;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.icon-button {\n  width: 21px;\n  height: 21px;\n  padding: 4px;\n  border: 0;\n  border-radius: 6px;\n  background: transparent;\n  color: rgba(255, 255, 255, .48);\n  cursor: pointer;\n}\n.icon-button svg { width: 100%; height: 100%; }\n.icon-button:hover { background: rgba(255, 255, 255, .10); color: rgba(255, 255, 255, .9); }\n.icon-button:active { background: rgba(255, 255, 255, .16); }\n.icon-button.busy svg { animation: spin .7s linear infinite; }\n@keyframes spin { to { transform: rotate(360deg); } }\n\n.quick {\n  display: grid;\n  grid-template-columns: repeat(4, minmax(0, 1fr));\n  border-top: 1px solid rgba(255, 255, 255, .07);\n  border-bottom: 1px solid rgba(255, 255, 255, .07);\n}\n.metric {\n  min-width: 0;\n  padding: 4px 8px 3px;\n  border-right: 1px solid rgba(255, 255, 255, .07);\n  position: relative;\n}\n.metric:first-child { padding-left: 1px; }\n.metric.last { border-right: 0; padding-right: 1px; }\n.metric-title { gap: 4px; color: rgba(255, 255, 255, .45); font-size: 8.5px; white-space: nowrap; }\n.metric-title svg { width: 10px; height: 10px; }\n.metric strong {\n  display: block;\n  margin-top: 2px;\n  font: 650 15px\/1 ui-monospace, SFMono-Regular, Menlo, monospace;\n  letter-spacing: 0;\n  white-space: nowrap;\n}\n.metric small {\n  display: block;\n  margin-top: 2px;\n  color: rgba(255, 255, 255, .43);\n  font-size: 7.5px;\n  line-height: 1;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.track { height: 2px; margin-top: 4px; border-radius: 2px; background: rgba(255, 255, 255, .10); overflow: hidden; }\n.track i { display: block; width: 0; height: 100%; border-radius: inherit; background: #7dd3fc; }\n\n.details { display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }\n.detail-group { min-width: 0; padding: 2px 9px 0 1px; }\n.network-group { padding-left: 10px; padding-right: 1px; border-left: 1px solid rgba(255, 255, 255, .08); }\n.detail-head { justify-content: space-between; gap: 6px; min-width: 0; }\n.detail-label { gap: 4px; font-size: 8.5px; font-weight: 650; color: rgba(255, 255, 255, .67); }\n.detail-label svg { width: 10px; height: 10px; color: #a7f3d0; }\n.network-group .detail-label svg { color: #c4b5fd; }\n.muted { min-width: 0; font-size: 7.5px; color: rgba(255, 255, 255, .34); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n.capacity { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 7px; margin-top: 3px; }\n.capacity strong { font: 600 9px\/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0; white-space: nowrap; }\n.disk-track { margin: 0; }\n.disk-track i { background: #a7f3d0; }\n.rates { gap: 10px; margin-top: 4px; }\n.rates span { min-width: 0; gap: 3px; color: rgba(255, 255, 255, .38); font-size: 7.5px; }\n.rates svg { width: 9px; height: 9px; flex: 0 0 auto; }\n.rates b { color: rgba(255, 255, 255, .76); font: 560 8.5px\/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0; white-space: nowrap; }\n.down { color: #67e8f9; }\n.up { color: #f9a8d4; }\n.network-rates { justify-content: space-between; margin-top: 5px; }\n.links { gap: 10px; margin-top: 5px; }\n.links span { gap: 3px; color: rgba(255, 255, 255, .34); font-size: 7.5px; }\n.links em { font-style: normal; }\n.links span > i { width: 5px; height: 5px; border-radius: 50%; background: rgba(255, 255, 255, .20); }\n.links span.on { color: rgba(255, 255, 255, .72); }\n.links span.on > i { background: #34d399; box-shadow: 0 0 5px rgba(52, 211, 153, .55); }\n.links svg { width: 9px; height: 9px; }\n",
+      "html" : "<div class=\"panel\">\n  <header class=\"header\">\n    <div class=\"heading\">\n      <svg class=\"brand-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 13h3l2-7 4 12 2-7 2 2h3\"\/><\/svg>\n      <span id=\"title\"><\/span>\n      <span id=\"connection\" class=\"connection\">--<\/span>\n    <\/div>\n    <button id=\"refresh\" class=\"icon-button\" type=\"button\">\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 12a8 8 0 1 1-2.34-5.66L20 8.68M20 4v4.68h-4.68\"\/><\/svg>\n    <\/button>\n  <\/header>\n\n  <section id=\"quick\" class=\"quick\">\n    <div class=\"metric\">\n      <div class=\"metric-title\"><svg viewBox=\"0 0 24 24\"><rect x=\"7\" y=\"7\" width=\"10\" height=\"10\" rx=\"2\"\/><path d=\"M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3\"\/><\/svg><span id=\"cpuLabel\"><\/span><\/div>\n      <strong id=\"cpuValue\">--%<\/strong>\n      <div class=\"track\"><i id=\"cpuBar\"><\/i><\/div>\n    <\/div>\n    <div class=\"metric\">\n      <div class=\"metric-title\"><svg viewBox=\"0 0 24 24\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"16\" rx=\"2\"\/><path d=\"M9 8h6M9 12h6M9 16h4\"\/><\/svg><span id=\"memoryLabel\"><\/span><\/div>\n      <strong id=\"memValue\">--%<\/strong>\n      <small id=\"memDetail\">-- \/ --<\/small>\n    <\/div>\n    <div class=\"metric battery-metric\">\n      <div class=\"metric-title\"><svg viewBox=\"0 0 24 24\"><rect x=\"2\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\"\/><path d=\"M22 10v4M6 10h7\"\/><\/svg><span id=\"batteryLabel\"><\/span><\/div>\n      <strong id=\"batteryValue\">--%<\/strong>\n      <small id=\"batteryDetail\">--<\/small>\n    <\/div>\n    <div class=\"metric last\">\n      <div class=\"metric-title\"><svg viewBox=\"0 0 24 24\"><path d=\"M14 14.76V5a4 4 0 0 0-8 0v9.76a6 6 0 1 0 8 0Z\"\/><path d=\"M10 6v9\"\/><\/svg><span id=\"temperatureLabel\"><\/span><\/div>\n      <strong id=\"tempValue\">--°<\/strong>\n      <small id=\"healthDetail\">--<\/small>\n    <\/div>\n  <\/section>\n\n  <section class=\"details\">\n    <div class=\"detail-group disk-group\">\n      <div class=\"detail-head\">\n        <span class=\"detail-label\"><svg viewBox=\"0 0 24 24\"><ellipse cx=\"12\" cy=\"6\" rx=\"8\" ry=\"3\"\/><path d=\"M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6\"\/><\/svg><span id=\"diskLabel\"><\/span><\/span>\n        <span id=\"diskTotal\" class=\"muted\">--<\/span>\n      <\/div>\n      <div class=\"capacity\"><strong id=\"diskFree\">--<\/strong><div class=\"track disk-track\"><i id=\"diskBar\"><\/i><\/div><\/div>\n      <div class=\"rates\">\n        <span><svg class=\"down\" viewBox=\"0 0 24 24\"><path d=\"M12 3v14M6 11l6 6 6-6M5 21h14\"\/><\/svg><b id=\"diskRead\">--<\/b><\/span>\n        <span><svg class=\"up\" viewBox=\"0 0 24 24\"><path d=\"M12 21V7M6 13l6-6 6 6M5 3h14\"\/><\/svg><b id=\"diskWrite\">--<\/b><\/span>\n      <\/div>\n    <\/div>\n\n    <div class=\"detail-group network-group\">\n      <div class=\"detail-head\">\n        <span class=\"detail-label\"><svg viewBox=\"0 0 24 24\"><path d=\"M5 12.55a11 11 0 0 1 14 0M8.5 16a6 6 0 0 1 7 0M12 20h.01\"\/><\/svg><span id=\"networkLabel\"><\/span><\/span>\n        <span id=\"interfaceName\" class=\"muted\">--<\/span>\n      <\/div>\n      <div class=\"rates network-rates\">\n        <span><svg class=\"down\" viewBox=\"0 0 24 24\"><path d=\"M12 3v14M6 11l6 6 6-6\"\/><\/svg><b id=\"netDown\">--<\/b><\/span>\n        <span><svg class=\"up\" viewBox=\"0 0 24 24\"><path d=\"M12 21V7M6 13l6-6 6 6\"\/><\/svg><b id=\"netUp\">--<\/b><\/span>\n      <\/div>\n      <div class=\"links\">\n        <span id=\"wifiState\"><i><\/i><svg viewBox=\"0 0 24 24\"><path d=\"M5 12.55a11 11 0 0 1 14 0M8.5 16a6 6 0 0 1 7 0M12 20h.01\"\/><\/svg><em id=\"wifiLabel\"><\/em><\/span>\n        <span id=\"wiredState\"><i><\/i><svg viewBox=\"0 0 24 24\"><path d=\"M8 2v5M16 2v5M6 7h12v4a6 6 0 0 1-6 6v5M9 2h6\"\/><\/svg><em id=\"wiredLabel\"><\/em><\/span>\n      <\/div>\n    <\/div>\n  <\/section>\n<\/div>\n",
+      "javascript" : "const $ = id => document.getElementById(id);\nconst t = key => (window.__notchWidget.i18n || {})[key] ?? key;\n\n$('title').textContent = t('title');\n$('cpuLabel').textContent = t('cpu');\n$('memoryLabel').textContent = t('memory');\n$('batteryLabel').textContent = t('battery');\n$('temperatureLabel').textContent = t('battery_temperature');\n$('diskLabel').textContent = t('system_disk');\n$('networkLabel').textContent = t('network');\n$('wifiLabel').textContent = t('wifi');\n$('wiredLabel').textContent = t('ethernet');\n$('quick').setAttribute('aria-label', t('core_status'));\n$('refresh').title = t('refresh');\n$('refresh').setAttribute('aria-label', t('refresh_status'));\n\nfunction percent(value) {\n  const number = Number(value);\n  return Number.isFinite(number) ? Math.max(0, Math.min(100, number)) : 0;\n}\n\nfunction bytes(value, rate = false) {\n  const number = Math.max(0, Number(value) || 0);\n  const units = ['B', 'KB', 'MB', 'GB', 'TB'];\n  let size = number;\n  let unit = 0;\n  while (size >= 1024 && unit < units.length - 1) {\n    size \/= 1024;\n    unit += 1;\n  }\n  const digits = size >= 100 || unit === 0 ? 0 : size >= 10 ? 1 : 1;\n  return size.toFixed(digits) + ' ' + units[unit] + (rate ? '\/s' : '');\n}\n\nfunction bar(id, value, warning = false) {\n  const amount = percent(value);\n  const element = $(id);\n  element.style.width = amount + '%';\n  element.style.background = warning && amount >= 90 ? '#fb7185' : warning && amount >= 75 ? '#fbbf24' : '';\n}\n\nfunction batteryColor(state) {\n  if (state === 'charging') return '#34d399';\n  if (state === 'discharging') return '#fbbf24';\n  return 'rgba(255,255,255,.94)';\n}\n\nfunction render(result) {\n  if (!result || !result.ok || !result.state) return false;\n  const state = result.state;\n  const cpu = state.cpu || {};\n  const memory = state.memory || {};\n  const battery = state.battery || {};\n  const disk = state.disk || {};\n  const network = state.network || {};\n\n  $('cpuValue').textContent = Math.round(percent(cpu.percent)) + '%';\n  bar('cpuBar', cpu.percent, true);\n\n  $('memValue').textContent = Math.round(percent(memory.percent)) + '%';\n  $('memDetail').textContent = bytes(memory.used_bytes) + ' \/ ' + bytes(memory.total_bytes);\n\n  if (battery.present) {\n    $('batteryValue').textContent = Math.round(percent(battery.percent)) + '%';\n    $('batteryValue').style.color = batteryColor(battery.state_key);\n    $('batteryDetail').textContent = battery.state + ' · ' + (battery.cycles ?? '--') + ' ' + t('cycles');\n    $('tempValue').textContent = battery.temperature == null ? '--°' : Number(battery.temperature).toFixed(1) + '°';\n    $('healthDetail').textContent = t('health') + ' ' + (battery.health == null ? '--' : battery.health + '%');\n  } else {\n    $('batteryValue').textContent = 'N\/A';\n    $('batteryValue').style.color = 'rgba(255,255,255,.45)';\n    $('batteryDetail').textContent = t('battery_not_detected');\n    $('tempValue').textContent = '--°';\n    $('healthDetail').textContent = t('health') + ' --';\n  }\n\n  $('diskFree').textContent = bytes(disk.free_bytes) + ' ' + t('available');\n  $('diskTotal').textContent = t('total') + ' ' + bytes(disk.total_bytes);\n  $('diskRead').textContent = bytes(disk.read_bps, true);\n  $('diskWrite').textContent = bytes(disk.write_bps, true);\n  bar('diskBar', disk.used_percent, true);\n\n  $('connection').textContent = network.connection || t('offline');\n  $('connection').style.color = network.online ? '#bae6fd' : 'rgba(255,255,255,.42)';\n  $('interfaceName').textContent = network.interface || t('no_interface');\n  $('netDown').textContent = bytes(network.down_bps, true);\n  $('netUp').textContent = bytes(network.up_bps, true);\n  $('wifiState').classList.toggle('on', Boolean(network.wifi));\n  $('wiredState').classList.toggle('on', Boolean(network.wired));\n  return true;\n}\n\nasync function refresh() {\n  const button = $('refresh');\n  button.classList.add('busy');\n  const result = await notchany.invoke('refresh', null);\n  button.classList.remove('busy');\n  if (!render(result) && !notchany.state) $('connection').textContent = t('unavailable');\n}\n\n$('refresh').addEventListener('click', refresh);\nlet timer = 0;\nnotchany.addEventListener('visibilitychange', () => {\n  clearInterval(timer);\n  timer = 0;\n  if (notchany.visible) {\n    refresh();\n    timer = setInterval(refresh, 3000);\n  }\n});\nnotchany.addEventListener('statechange', event => render(event.state));\nif (notchany.state) render(notchany.state);\nif (notchany.visible) {\n  refresh();\n  timer = setInterval(refresh, 3000);\n}\n",
+      "rows" : 2,
+      "triggers" : [
+        {
+          "event" : "didWake",
+          "kind" : "workspace"
+        }
+      ]
+    }
+  },
+  "notchany_export" : 4
+}

@@ -1,0 +1,23 @@
+{
+  "default_locale" : "en",
+  "descriptions" : {
+    "en" : "A compact macOS status dashboard for the NotchAny tray. Monitor CPU and memory usage, battery charge state, health, cycles and temperature, system disk capacity and read\/write throughput, plus network upload\/download rates and Wi-Fi or wired connectivity.",
+    "zh-Hans" : "适用于 NotchAny 托盘的紧凑型 macOS 状态面板。实时监控 CPU 与内存占用、电池充放电状态、健康度、循环次数和温度、系统盘容量与读写速度，以及网络上下行和 Wi-Fi\/有线连接。"
+  },
+  "license" : "MIT",
+  "manifest_version" : 1,
+  "names" : {
+    "en" : "System Status",
+    "zh-Hans" : "系统状态"
+  },
+  "summaries" : {
+    "en" : "Live CPU, memory, battery, disk, and network status at a glance.",
+    "zh-Hans" : "一眼查看 CPU、内存、电池、磁盘与网络实时状态。"
+  },
+  "tags" : [
+    "system",
+    "monitoring",
+    "battery"
+  ],
+  "version" : "1.0.0"
+}
