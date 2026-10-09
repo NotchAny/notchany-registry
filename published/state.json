@@ -234,6 +234,38 @@
         ],
         "approved_by": []
       }
+    },
+    "glzlaohuai/rainbow-praise": {
+      "active": true,
+      "tree_hash": "272d8ada06c86731a350be7182b7f513e20bcf042d44881c4fae94da645b345b",
+      "source_commit": "35477f4ddf4e41834251ef146b814f222a2f260c",
+      "first_published_at": "2026-10-09T04:14:15Z",
+      "release": {
+        "version": "1.0.0",
+        "sha256": "3638c484a46394abe59ee1fd609b99dd67a0294e2495f8456bde3198006d81f2",
+        "source_commit": "35477f4ddf4e41834251ef146b814f222a2f260c",
+        "merged_at": "2026-10-09T04:14:16Z",
+        "published_at": "2026-10-09T04:14:15Z",
+        "pr": {
+          "number": 33,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/33",
+          "title": "新增 Rainbow Praise v1.0.0",
+          "body": "首次发布彩虹屁发射器：内置多种夸赞风格，支持 OpenAI 兼容接口生成文案，提供 AI 配置测试，并随机播放烟花、彩纸、彩虹、霓虹、金光和激光全屏特效。",
+          "author": {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        },
+        "contributors": [
+          {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        ],
+        "approved_by": []
+      }
     }
   },
   "decisions": [
@@ -276,6 +308,10 @@
     {
       "id": "88bfa157-d10c-44f5-9b51-4def882555c3",
       "candidate_commit": "61e20947e3a30a166c3aed9f99f1b5a458f4cb03"
+    },
+    {
+      "id": "e4629fc0-df8a-42dc-96f2-75f95db09187",
+      "candidate_commit": "35477f4ddf4e41834251ef146b814f222a2f260c"
     }
   ]
 }

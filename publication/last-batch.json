@@ -1,32 +1,31 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "61e20947e3a30a166c3aed9f99f1b5a458f4cb03",
-    "decision_id": "88bfa157-d10c-44f5-9b51-4def882555c3",
+    "candidate_commit": "35477f4ddf4e41834251ef146b814f222a2f260c",
+    "decision_id": "e4629fc0-df8a-42dc-96f2-75f95db09187",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 31,
-        "head_sha": "49e084b2bbb95f51a4e19971019c3ff4e87d2d11",
-        "base_sha": "aaeea30dbf6d7b0cfc98e8a34e0746c219e22ebd",
-        "package_id": "glzlaohuai/system-status",
+        "pr_number": 33,
+        "head_sha": "7f681fb4140710514143501fbd7138057c13ac8b",
+        "base_sha": "9ef958ffa67cbfc37a21a2462d59a3c9e5a33277",
+        "package_id": "glzlaohuai/rainbow-praise",
         "operation": "create",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/system-status.json": "27b7fc5dd641be5cd25c819b6e2b8926b4075e57525f447c4a7d7c87e35355a1",
-      "index/v1/index.json": "8b268c35627b0fc2deb4c71af079698c524f80581a4a3a4adf9fcea8769c4243",
-      "index/v2/index.json": "e5edf14086ff3286408e1e5efe11592a9f65a19c0c153a6412887328c67e670b",
-      "published/glzlaohuai/system-status/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
-      "published/glzlaohuai/system-status/icon.png": "f60cd19eed22a0cbc92bfaa78fd40926b6367173c41eac2b54fd68ff22bbae4d",
-      "published/glzlaohuai/system-status/manifest.json": "a10991d361b35566d397b255d0752afec9acae231c573f1b08d16b1b12616b09",
-      "published/glzlaohuai/system-status/package.notchany.json": "2e630a816181b44fbf542fc5a7f938c168b6553af288f66850a386e611ed39c9",
-      "published/glzlaohuai/system-status/screenshots/1.png": "cd3d26a4cb180b8f583f3ad17e5c7638282b3da16277a7b57b4ff78bdac354d4",
-      "published/glzlaohuai/system-status/screenshots/zh-Hans/1.png": "e0ee0c458cefadd0925799e693bee7f9a7ef0fa63b47fc25ee28dff99537ccdc",
-      "published/state.json": "7de1d59c6bce27f27b247a48f927c86e11df2cde879be7c5f9218ca1b457b137"
+      "history/v1/glzlaohuai/rainbow-praise.json": "4d62cf9adbb59d3e36f19350e3eb86478c44f348215bbce64df4f034596d876b",
+      "index/v1/index.json": "b203f4331532044e85c53061a0b378cb95dc1a018d3786990eaf4539dd1e67a1",
+      "index/v2/index.json": "f246baae6c3cdcc6da54c862cfb7ae36b34907214befd733474297743b547e44",
+      "published/glzlaohuai/rainbow-praise/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
+      "published/glzlaohuai/rainbow-praise/icon.png": "09784cdc32d07c1e2013706bbfade579b9b97593d5a4496c5e04b79a6f1f5d51",
+      "published/glzlaohuai/rainbow-praise/manifest.json": "a98df26bf0ef932b3f74cae22bad88396a4170cc26be7c982a60a0a19c722bae",
+      "published/glzlaohuai/rainbow-praise/package.notchany.json": "3638c484a46394abe59ee1fd609b99dd67a0294e2495f8456bde3198006d81f2",
+      "published/glzlaohuai/rainbow-praise/screenshots/1.png": "cf445cd5f89a699e43f0e86c23f6e43ce1246d11ea822c843e111a456c95d21c",
+      "published/state.json": "dc00b33ded421bd5518b24f1685ba8b80b7d1034b88bde0c9a3849593b59eecf"
     }
   },
-  "signature": "4712a0db4783e2ae246ea93beafa0a6cc5b60b840de10a4a7a8ed51116f82e69"
+  "signature": "c0d71b98f05d5a20f12d280d1e8af1dd9e764a11c0448b017dd11bc5759bc17b"
 }
