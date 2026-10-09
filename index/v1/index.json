@@ -1,6 +1,6 @@
 {
   "index_schema": 1,
-  "generated_at": "2026-10-09T09:20:25Z",
+  "generated_at": "2026-10-09T09:22:41Z",
   "packages": [
     {
       "names": {
@@ -278,6 +278,60 @@
       ],
       "published_at": "2026-10-09T04:14:15Z",
       "updated_at": "2026-10-09T04:14:15Z"
+    },
+    {
+      "names": {
+        "en": "Sign PDF",
+        "zh-Hans": "PDF 手写签名"
+      },
+      "summaries": {
+        "en": "Create a safe PDF copy and open it in Preview for handwritten signing.",
+        "zh-Hans": "创建 PDF 副本并在“预览”中打开，用触控板或 iPhone 手写签名。"
+      },
+      "descriptions": {
+        "en": "Drop a single PDF onto NotchAny. The action creates a non-destructive copy next to the original and opens the copy in macOS Preview. Use Preview's Markup > Signature tool with a trackpad, camera, or iPhone/iPad, then save normally.\n\nExisting files are never overwritten. If a signature copy already exists, the action creates a numbered copy automatically.",
+        "zh-Hans": "将单个 PDF 拖入 NotchAny。动作会在原文件旁创建一份不覆盖原件的副本，并使用 macOS“预览”打开。通过“标记”>“签名”，可使用触控板、摄像头或 iPhone/iPad 创建手写签名，完成后正常保存。\n\n动作不会覆盖已有文件；如果签名副本已经存在，会自动创建带序号的新副本。"
+      },
+      "default_locale": "en",
+      "version": "1.0.0",
+      "tags": [],
+      "license": "MIT",
+      "package_id": "glzlaohuai/sign-pdf",
+      "path": "published/glzlaohuai/sign-pdf/package.notchany.json",
+      "icon_path": "published/glzlaohuai/sign-pdf/icon.png",
+      "id": "notchany.custom.shell.pdf-signature-copy",
+      "kind": "action",
+      "action_kind": "shell",
+      "input_kind": "filesOnly",
+      "envelope_version": 9,
+      "sha256": "26a97da0602c2dabe2ffa5ee14789f65cfe94eaee3e7371595bce5b567bf6ffe",
+      "size_bytes": 2419,
+      "requires": [],
+      "has_parameters": false,
+      "has_notification": false,
+      "accepts": {
+        "count": "single",
+        "extensions": [
+          "pdf"
+        ],
+        "kinds": [
+          "pdf"
+        ],
+        "types": [
+          "com.adobe.pdf"
+        ]
+      },
+      "interpreter": "shell",
+      "screenshots": [
+        "published/glzlaohuai/sign-pdf/screenshots/1.png"
+      ],
+      "localized_screenshots": {
+        "zh-Hans": [
+          "published/glzlaohuai/sign-pdf/screenshots/zh-Hans/1.png"
+        ]
+      },
+      "published_at": "2026-10-09T09:22:41Z",
+      "updated_at": "2026-10-09T09:22:41Z"
     },
     {
       "names": {
