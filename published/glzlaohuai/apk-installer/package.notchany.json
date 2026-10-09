@@ -1,0 +1,154 @@
+{
+  "action" : {
+    "accepts" : {
+      "count" : "single",
+      "extensions" : [
+        "apk"
+      ]
+    },
+    "default_locale" : "zh-Hans",
+    "i18n" : {
+      "adb_devices_failed" : {
+        "en" : "Could not read adb devices: {message}",
+        "zh-Hans" : "读取 adb 设备失败：{message}"
+      },
+      "adb_no_details" : {
+        "en" : "adb did not return details",
+        "zh-Hans" : "adb 未返回详情"
+      },
+      "adb_not_found" : {
+        "en" : "adb was not found. Install Android Platform Tools and confirm adb is available in NotchAny Environment Diagnostics.",
+        "zh-Hans" : "未找到 adb。请先安装 Android Platform Tools，并在 NotchAny 环境诊断中确认 adb 可用。"
+      },
+      "apk_missing" : {
+        "en" : "The APK file does not exist",
+        "zh-Hans" : "APK 文件不存在"
+      },
+      "apk_only" : {
+        "en" : "Only .apk files are supported",
+        "zh-Hans" : "仅支持 .apk 文件"
+      },
+      "cancel_button" : {
+        "en" : "Cancel",
+        "zh-Hans" : "取消"
+      },
+      "choose_device_prompt" : {
+        "en" : "Multiple Android devices are connected. Choose an installation target.",
+        "zh-Hans" : "检测到多个 Android 设备，请选择安装目标"
+      },
+      "current_devices" : {
+        "en" : " Current devices: {details}",
+        "zh-Hans" : " 当前设备：{details}"
+      },
+      "debug_confirm_message" : {
+        "en" : "A debug\/test APK was detected ({reason}).\n\nFile: {apk}\nDevice: {device}\n\nInstall it with adb install -t?",
+        "zh-Hans" : "检测到调试\/测试 APK（{reason}）。\n\n文件：{apk}\n设备：{device}\n\n是否使用 adb install -t 安装？"
+      },
+      "debug_install_title" : {
+        "en" : "Install Debug APK",
+        "zh-Hans" : "安装调试 APK"
+      },
+      "generic_device" : {
+        "en" : "Android device",
+        "zh-Hans" : "Android 设备"
+      },
+      "install_apk_title" : {
+        "en" : "Install APK",
+        "zh-Hans" : "安装 APK"
+      },
+      "install_button" : {
+        "en" : "Install",
+        "zh-Hans" : "安装"
+      },
+      "install_cancelled" : {
+        "en" : "Installation cancelled",
+        "zh-Hans" : "已取消安装"
+      },
+      "install_failed" : {
+        "en" : "APK installation failed\nDevice: {device}\n\n{output}",
+        "zh-Hans" : "APK 安装失败\n设备：{device}\n\n{output}"
+      },
+      "install_success" : {
+        "en" : "APK installed successfully",
+        "zh-Hans" : "APK 安装成功"
+      },
+      "manifest_attribute_out_of_bounds" : {
+        "en" : "AndroidManifest.xml contains an out-of-bounds attribute",
+        "zh-Hans" : "AndroidManifest.xml 属性越界"
+      },
+      "manifest_attribute_size_invalid" : {
+        "en" : "AndroidManifest.xml contains an invalid attribute size",
+        "zh-Hans" : "AndroidManifest.xml 属性大小无效"
+      },
+      "manifest_binary_unrecognized" : {
+        "en" : "AndroidManifest.xml is not a recognized binary manifest",
+        "zh-Hans" : "不是可识别的二进制 AndroidManifest.xml"
+      },
+      "manifest_chunk_corrupt" : {
+        "en" : "AndroidManifest.xml contains a corrupt chunk",
+        "zh-Hans" : "AndroidManifest.xml chunk 损坏"
+      },
+      "manifest_element_index_invalid" : {
+        "en" : "AndroidManifest.xml contains an invalid element-name index",
+        "zh-Hans" : "AndroidManifest.xml 元素名索引无效"
+      },
+      "manifest_elements_missing" : {
+        "en" : "The APK manifest does not contain manifest\/application elements",
+        "zh-Hans" : "APK Manifest 中未找到 manifest\/application"
+      },
+      "manifest_read_failed" : {
+        "en" : "Could not read the APK manifest: {error}",
+        "zh-Hans" : "无法读取 APK Manifest：{error}"
+      },
+      "manifest_string_offset_invalid" : {
+        "en" : "The APK string-pool offset is invalid",
+        "zh-Hans" : "APK 字符串池偏移无效"
+      },
+      "manifest_string_pool_missing" : {
+        "en" : "AndroidManifest.xml is missing its string pool",
+        "zh-Hans" : "AndroidManifest.xml 缺少字符串池"
+      },
+      "mode_debug" : {
+        "en" : "Debug\/test install (-t)",
+        "zh-Hans" : "调试\/测试安装（-t）"
+      },
+      "mode_normal" : {
+        "en" : "Standard install",
+        "zh-Hans" : "普通安装"
+      },
+      "no_apk_received" : {
+        "en" : "No APK file was received",
+        "zh-Hans" : "没有收到 APK 文件"
+      },
+      "no_ready_devices" : {
+        "en" : "No installable Android device is available. Connect a device and approve USB debugging.",
+        "zh-Hans" : "没有可安装的 Android 设备。请连接设备并确认 USB 调试授权。"
+      },
+      "success_details" : {
+        "en" : "File: {apk}\nDevice: {device}\nMode: {mode}\n\n{output}",
+        "zh-Hans" : "文件：{apk}\n设备：{device}\n模式：{mode}\n\n{output}"
+      }
+    },
+    "icon_type" : "symbol",
+    "icon_value" : "arrow.down.app.fill",
+    "id" : "notchany.custom.shell.3dd2da74-c280-40d4-bafb-80a3d07c625c",
+    "input_kind" : "filesOnly",
+    "interpreter" : "python",
+    "kind" : "shell",
+    "locales" : [
+      "zh-Hans",
+      "en"
+    ],
+    "names" : {
+      "en" : "Install APK",
+      "zh-Hans" : "安装 APK"
+    },
+    "presentation_mode" : "button",
+    "requires" : [
+      "adb"
+    ],
+    "script" : "import os\nimport shutil\nimport struct\nimport subprocess\nimport xml.etree.ElementTree as ET\nimport zipfile\nfrom pathlib import Path\n\n\nANDROID_NS = \"http:\/\/schemas.android.com\/apk\/res\/android\"\nNO_INDEX = 0xFFFFFFFF\n\n\ndef tr(key, **values):\n    return notch_t(key).format(**values)\n\n\ndef _u16(data, offset):\n    return struct.unpack_from(\"<H\", data, offset)[0]\n\n\ndef _u32(data, offset):\n    return struct.unpack_from(\"<I\", data, offset)[0]\n\n\ndef _decode_length8(data, offset):\n    first = data[offset]\n    if first & 0x80:\n        return ((first & 0x7F) << 8) | data[offset + 1], offset + 2\n    return first, offset + 1\n\n\ndef _decode_length16(data, offset):\n    first = _u16(data, offset)\n    if first & 0x8000:\n        return ((first & 0x7FFF) << 16) | _u16(data, offset + 2), offset + 4\n    return first, offset + 2\n\n\ndef _read_string_pool(data, chunk_offset):\n    header_size = _u16(data, chunk_offset + 2)\n    chunk_size = _u32(data, chunk_offset + 4)\n    string_count = _u32(data, chunk_offset + 8)\n    flags = _u32(data, chunk_offset + 16)\n    strings_start = _u32(data, chunk_offset + 20)\n    offsets_start = chunk_offset + header_size\n    strings_base = chunk_offset + strings_start\n    chunk_end = chunk_offset + chunk_size\n    is_utf8 = bool(flags & 0x100)\n    strings = []\n\n    for index in range(string_count):\n        relative = _u32(data, offsets_start + index * 4)\n        cursor = strings_base + relative\n        if cursor >= chunk_end:\n            raise ValueError(tr(\"manifest_string_offset_invalid\"))\n\n        if is_utf8:\n            _, cursor = _decode_length8(data, cursor)\n            byte_length, cursor = _decode_length8(data, cursor)\n            value = data[cursor : cursor + byte_length].decode(\"utf-8\", errors=\"replace\")\n        else:\n            char_length, cursor = _decode_length16(data, cursor)\n            byte_length = char_length * 2\n            value = data[cursor : cursor + byte_length].decode(\"utf-16le\", errors=\"replace\")\n        strings.append(value)\n\n    return strings\n\n\ndef _typed_value(strings, raw_index, value_type, value_data):\n    if raw_index != NO_INDEX and raw_index < len(strings):\n        return strings[raw_index]\n    if value_type == 0x03 and value_data < len(strings):\n        return strings[value_data]\n    if value_type == 0x12:\n        return bool(value_data)\n    if value_type in (0x10, 0x11):\n        return value_data\n    return value_data\n\n\ndef _binary_manifest_elements(data):\n    if len(data) < 8 or _u16(data, 0) != 0x0003:\n        raise ValueError(tr(\"manifest_binary_unrecognized\"))\n\n    root_header_size = _u16(data, 2)\n    root_size = min(_u32(data, 4), len(data))\n    offset = root_header_size\n    strings = None\n    elements = []\n\n    while offset + 8 <= root_size:\n        chunk_type = _u16(data, offset)\n        header_size = _u16(data, offset + 2)\n        chunk_size = _u32(data, offset + 4)\n        if header_size < 8 or chunk_size < header_size or offset + chunk_size > root_size:\n            raise ValueError(tr(\"manifest_chunk_corrupt\"))\n\n        if chunk_type == 0x0001:\n            strings = _read_string_pool(data, offset)\n        elif chunk_type == 0x0102:\n            if strings is None or chunk_size < 36:\n                raise ValueError(tr(\"manifest_string_pool_missing\"))\n\n            element_name_index = _u32(data, offset + 20)\n            if element_name_index >= len(strings):\n                raise ValueError(tr(\"manifest_element_index_invalid\"))\n            element_name = strings[element_name_index]\n            attribute_start = _u16(data, offset + 24)\n            attribute_size = _u16(data, offset + 26)\n            attribute_count = _u16(data, offset + 28)\n            if attribute_size < 20:\n                raise ValueError(tr(\"manifest_attribute_size_invalid\"))\n\n            attributes = {}\n            attributes_offset = offset + 16 + attribute_start\n            for index in range(attribute_count):\n                attr_offset = attributes_offset + index * attribute_size\n                if attr_offset + 20 > offset + chunk_size:\n                    raise ValueError(tr(\"manifest_attribute_out_of_bounds\"))\n                name_index = _u32(data, attr_offset + 4)\n                raw_index = _u32(data, attr_offset + 8)\n                if name_index >= len(strings):\n                    continue\n                value_type = data[attr_offset + 15]\n                value_data = _u32(data, attr_offset + 16)\n                attributes[strings[name_index]] = _typed_value(\n                    strings, raw_index, value_type, value_data\n                )\n            elements.append((element_name, attributes))\n\n        offset += chunk_size\n\n    return elements\n\n\ndef _text_manifest_elements(data):\n    root = ET.fromstring(data)\n    elements = []\n    for element in root.iter():\n        attributes = {}\n        for key, value in element.attrib.items():\n            if key.startswith(\"{\" + ANDROID_NS + \"}\"):\n                key = key.split(\"}\", 1)[1]\n            elif \":\" in key:\n                key = key.rsplit(\":\", 1)[1]\n            attributes[key] = value\n        tag = element.tag.rsplit(\"}\", 1)[-1]\n        elements.append((tag, attributes))\n    return elements\n\n\ndef _as_bool(value):\n    if isinstance(value, bool):\n        return value\n    if isinstance(value, int):\n        return value != 0\n    return str(value).strip().lower() in {\"1\", \"true\", \"yes\"}\n\n\ndef inspect_apk(apk_path):\n    try:\n        with zipfile.ZipFile(apk_path) as archive:\n            manifest = archive.read(\"AndroidManifest.xml\")\n    except (OSError, zipfile.BadZipFile, KeyError) as error:\n        raise ValueError(tr(\"manifest_read_failed\", error=error)) from error\n\n    stripped = manifest.lstrip()\n    elements = (\n        _text_manifest_elements(manifest)\n        if stripped.startswith(b\"<\")\n        else _binary_manifest_elements(manifest)\n    )\n    relevant = [(name, attrs) for name, attrs in elements if name in {\"manifest\", \"application\"}]\n    if not relevant:\n        raise ValueError(tr(\"manifest_elements_missing\"))\n\n    flags = {\"debuggable\": False, \"testOnly\": False}\n    for _, attributes in relevant:\n        for key in flags:\n            if key in attributes:\n                flags[key] = flags[key] or _as_bool(attributes[key])\n    flags[\"is_debug\"] = flags[\"debuggable\"] or flags[\"testOnly\"]\n    return flags\n\n\ndef find_adb():\n    candidates = [shutil.which(\"adb\")]\n    for variable in (\"ANDROID_SDK_ROOT\", \"ANDROID_HOME\"):\n        if os.environ.get(variable):\n            candidates.append(str(Path(os.environ[variable]) \/ \"platform-tools\" \/ \"adb\"))\n    candidates.extend(\n        [\n            str(Path.home() \/ \"Library\" \/ \"Android\" \/ \"sdk\" \/ \"platform-tools\" \/ \"adb\"),\n            \"\/opt\/homebrew\/bin\/adb\",\n            \"\/usr\/local\/bin\/adb\",\n        ]\n    )\n    for candidate in candidates:\n        if candidate and os.path.isfile(candidate) and os.access(candidate, os.X_OK):\n            return candidate\n    raise RuntimeError(tr(\"adb_not_found\"))\n\n\ndef list_devices(adb):\n    process = subprocess.run(\n        [adb, \"devices\", \"-l\"], capture_output=True, text=True, timeout=15\n    )\n    if process.returncode != 0:\n        message = (process.stderr or process.stdout).strip()\n        raise RuntimeError(tr(\"adb_devices_failed\", message=message))\n\n    ready = []\n    unavailable = []\n    for raw_line in process.stdout.splitlines()[1:]:\n        line = raw_line.strip()\n        if not line:\n            continue\n        parts = line.split()\n        if len(parts) < 2:\n            continue\n        serial, state = parts[0], parts[1]\n        properties = {}\n        for token in parts[2:]:\n            if \":\" in token:\n                key, value = token.split(\":\", 1)\n                properties[key] = value\n        model = properties.get(\"model\") or properties.get(\"device\") or properties.get(\"product\") or tr(\"generic_device\")\n        label = f\"{model.replace('_', ' ')} · {serial}\"\n        device = {\"serial\": serial, \"state\": state, \"label\": label}\n        if state == \"device\":\n            ready.append(device)\n        else:\n            unavailable.append(device)\n    return ready, unavailable\n\n\ndef choose_device(devices):\n    if len(devices) == 1:\n        return devices[0]\n\n    script = \"\"\"\non run argv\n    set dialogTitle to item 1 of argv\n    set dialogPrompt to item 2 of argv\n    set installLabel to item 3 of argv\n    set cancelLabel to item 4 of argv\n    set deviceChoices to items 5 thru -1 of argv\n    set selectedDevice to choose from list deviceChoices with title dialogTitle with prompt dialogPrompt OK button name installLabel cancel button name cancelLabel without multiple selections allowed and empty selection allowed\n    if selectedDevice is false then return \"\"\n    return item 1 of selectedDevice\nend run\n\"\"\"\n    process = subprocess.run(\n        [\n            \"\/usr\/bin\/osascript\",\n            \"-e\",\n            script,\n            \"--\",\n            tr(\"install_apk_title\"),\n            tr(\"choose_device_prompt\"),\n            tr(\"install_button\"),\n            tr(\"cancel_button\"),\n            *[item[\"label\"] for item in devices],\n        ],\n        capture_output=True,\n        text=True,\n        timeout=120,\n    )\n    if process.returncode != 0 or not process.stdout.strip():\n        return None\n    selected = process.stdout.strip()\n    return next((item for item in devices if item[\"label\"] == selected), None)\n\n\ndef confirm_debug_install(apk_name, device_label, flags):\n    reasons = []\n    if flags.get(\"debuggable\"):\n        reasons.append(\"debuggable\")\n    if flags.get(\"testOnly\"):\n        reasons.append(\"testOnly\")\n    reason = \"、\".join(reasons) or \"debug\"\n    message = tr(\"debug_confirm_message\", reason=reason, apk=apk_name, device=device_label)\n    script = \"\"\"\non run argv\n    set dialogMessage to item 1 of argv\n    set dialogTitle to item 2 of argv\n    set cancelLabel to item 3 of argv\n    set installLabel to item 4 of argv\n    display dialog dialogMessage with title dialogTitle buttons {cancelLabel, installLabel} default button installLabel cancel button cancelLabel with icon caution\n    return button returned of result\nend run\n\"\"\"\n    process = subprocess.run(\n        [\n            \"\/usr\/bin\/osascript\",\n            \"-e\",\n            script,\n            \"--\",\n            message,\n            tr(\"debug_install_title\"),\n            tr(\"cancel_button\"),\n            tr(\"install_button\"),\n        ],\n        capture_output=True,\n        text=True,\n        timeout=120,\n    )\n    return process.returncode == 0 and process.stdout.strip() == tr(\"install_button\")\n\n\ndef install_apk(adb, device, apk_path, allow_test):\n    command = [adb, \"-s\", device[\"serial\"], \"install\", \"-r\"]\n    if allow_test:\n        command.append(\"-t\")\n    command.append(apk_path)\n    process = subprocess.run(command, capture_output=True, text=True, timeout=240)\n    output = \"\\n\".join(\n        part.strip() for part in (process.stdout, process.stderr) if part and part.strip()\n    )\n    if process.returncode != 0 or \"Success\" not in output:\n        raise RuntimeError(\n            tr(\n                \"install_failed\",\n                device=device[\"label\"],\n                output=output or tr(\"adb_no_details\"),\n            )\n        )\n    return output\n\n\ndef main():\n    apk_path = os.environ.get(\"NOTCH_FILE\", \"\").strip()\n    if not apk_path:\n        raise RuntimeError(tr(\"no_apk_received\"))\n    if Path(apk_path).suffix.lower() != \".apk\":\n        raise RuntimeError(tr(\"apk_only\"))\n    if not os.path.isfile(apk_path):\n        raise RuntimeError(tr(\"apk_missing\"))\n\n    flags = inspect_apk(apk_path)\n    adb = find_adb()\n    devices, unavailable = list_devices(adb)\n    if not devices:\n        details = \", \".join(f\"{item['serial']} ({item['state']})\" for item in unavailable)\n        suffix = tr(\"current_devices\", details=details) if details else \"\"\n        raise RuntimeError(tr(\"no_ready_devices\") + suffix)\n\n    device = choose_device(devices)\n    if device is None:\n        notch_result(summary=tr(\"install_cancelled\"), details=Path(apk_path).name)\n        return\n\n    use_test_flag = False\n    if flags[\"is_debug\"]:\n        if not confirm_debug_install(Path(apk_path).name, device[\"label\"], flags):\n            notch_result(\n                summary=tr(\"install_cancelled\"),\n                details=f\"{Path(apk_path).name}\\n{device['label']}\",\n            )\n            return\n        use_test_flag = True\n\n    output = install_apk(adb, device, apk_path, use_test_flag)\n    mode = tr(\"mode_debug\") if use_test_flag else tr(\"mode_normal\")\n    notch_result(\n        summary=tr(\"install_success\"),\n        details=tr(\n            \"success_details\",\n            apk=Path(apk_path).name,\n            device=device[\"label\"],\n            mode=mode,\n            output=output,\n        ),\n    )\n\n\nif __name__ == \"__main__\":\n    main()\n",
+    "timeout_seconds" : 360
+  },
+  "notchany_export" : 9
+}
