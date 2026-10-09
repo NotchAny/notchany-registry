@@ -142,6 +142,7 @@ for (const owner of listDirs(PACKAGES_DIR)) {
       has_parameters: Array.isArray(action.parameters) && action.parameters.length > 0,
       has_notification: action.notification !== undefined && action.notification !== null,
       ...(action.widget?.wants_text_input === true && { has_text_input: true }),
+      ...(action.fullscreen_effect != null && { has_fullscreen_effect: true }),
       ...(action.accepts != null && { accepts: action.accepts }),
       ...(action.dependency_hints && { dependency_hints: action.dependency_hints }),
       ...(action.env_requires?.length && { env_requires: action.env_requires }),

@@ -5,10 +5,10 @@ export function packageContractProblems(envelope) {
   if (!object(envelope) || !object(envelope.action)) return ["封套与 action 必须是对象"];
   const action = envelope.action;
   const version = envelope.notchany_export;
-  if (!Number.isInteger(version) || version < 2 || version > 9) problems.push("notchany_export 必须为 2–9");
+  if (!Number.isInteger(version) || version < 2 || version > 10) problems.push("notchany_export 必须为 2–10");
   const hints = action.dependency_hints;
   const env = action.env_requires;
-  const required = action.accepts != null ? 9 : action.widget?.wants_text_input === true ? 8
+  const required = action.fullscreen_effect != null ? 10 : action.accepts != null ? 9 : action.widget?.wants_text_input === true ? 8
     : Object.values(hints || {}).some(hint => hint?.brew) || env?.length ? 7 : action.notification != null ? 6
     : action.interpreter != null || action.requires?.length ? 4 : Object.keys(action.icons || {}).length || Object.keys(envelope.state_icon_images || {}).length ? 3 : 2;
   if (version < required) problems.push(`声明字段至少需要封套 v${required}`);
@@ -54,5 +54,43 @@ export function packageContractProblems(envelope) {
       ]) if (accepts[key] != null && (!Array.isArray(accepts[key]) || accepts[key].length > limit || accepts[key].some(item => typeof item !== "string" || !predicate(item)))) problems.push(`无效 accepts.${key}`);
     }
   }
+  validateFullscreenEffect(action.fullscreen_effect, problems, object);
   return problems;
+}
+
+function validateFullscreenEffect(effect, problems, object) {
+  if (effect == null) return;
+  if (!object(effect)) {
+    problems.push("fullscreen_effect 必须是对象");
+    return;
+  }
+  const source = effect.source;
+  if (source != null) {
+    if (!object(source)) problems.push("fullscreen_effect.source 必须是对象");
+    else {
+      const sourceFields = ["html", "css", "javascript"];
+      if (sourceFields.some(key => typeof source[key] !== "string")) problems.push("fullscreen_effect.source 源码字段必须是字符串");
+      else if (Buffer.byteLength(sourceFields.map(key => source[key]).join(""), "utf8") > 256 * 1024) problems.push("fullscreen_effect.source 源码总量不能超过 256 KiB");
+      if (!Number.isInteger(source.default_duration_ms) || source.default_duration_ms < 400 || source.default_duration_ms > 10000) {
+        problems.push("fullscreen_effect.source.default_duration_ms 必须为 400–10000");
+      }
+    }
+  }
+  const request = effect.on_success;
+  if (request == null) return;
+  if (!object(request)) {
+    problems.push("fullscreen_effect.on_success 必须是对象");
+    return;
+  }
+  const presets = new Set(["confetti", "warning-edge", "success-glow", "attention-pulse", "fireworks"]);
+  if (request.preset != null && (typeof request.preset !== "string" || !presets.has(request.preset))) problems.push("fullscreen_effect.on_success.preset 无效");
+  if (request.custom != null && typeof request.custom !== "boolean") problems.push("fullscreen_effect.on_success.custom 必须是布尔值");
+  const targetCount = (request.preset != null ? 1 : 0) + (request.custom === true ? 1 : 0);
+  if (targetCount !== 1) problems.push("fullscreen_effect.on_success 必须且只能指定一个预置或自定义目标");
+  if (request.custom === true && source == null) problems.push("自定义 fullscreen_effect.on_success 缺少 source");
+  if (request.duration_ms != null && !Number.isInteger(request.duration_ms)) problems.push("fullscreen_effect.on_success.duration_ms 必须是整数");
+  if (request.params != null) {
+    if (!object(request.params)) problems.push("fullscreen_effect.on_success.params 必须是对象");
+    else if (Buffer.byteLength(JSON.stringify(request.params), "utf8") > 16 * 1024) problems.push("fullscreen_effect.on_success.params 不能超过 16 KiB");
+  }
 }
