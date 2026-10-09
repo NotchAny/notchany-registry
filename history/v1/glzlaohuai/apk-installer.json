@@ -1,0 +1,39 @@
+{
+  "history_schema": 1,
+  "package_id": "glzlaohuai/apk-installer",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "sha256": "c717f845851706dbf5eb3845303286bf0d7245055af2badc7ca2a0711235a983",
+      "source_commit": "f3afb4566588d2f3816aa0a7c25a2313498d8fac",
+      "merged_at": "2026-10-09T09:20:26Z",
+      "published_at": "2026-10-09T09:20:25Z",
+      "pr": {
+        "number": 36,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/36",
+        "title": "Add Install APK action",
+        "body": "Adds an APK installer action for Android developers. Drop one APK onto the NotchAny notch to detect connected ADB devices, choose a target when multiple devices are available, and confirm debug or test APKs before installing with `adb install -t`.",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    }
+  ],
+  "contributors": [
+    {
+      "github_user_id": "2596885",
+      "login": "glzlaohuai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+    }
+  ]
+}

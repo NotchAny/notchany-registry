@@ -1,7 +1,63 @@
 {
   "index_schema": 2,
-  "generated_at": "2026-10-09T04:14:15Z",
+  "generated_at": "2026-10-09T09:20:25Z",
   "packages": [
+    {
+      "names": {
+        "en": "Install APK",
+        "zh-Hans": "安装 APK"
+      },
+      "summaries": {
+        "en": "Drop an APK, choose an Android device, and install it through ADB.",
+        "zh-Hans": "拖入 APK，选择 Android 设备并自动完成 ADB 安装。"
+      },
+      "descriptions": {
+        "en": "Drop a single APK file onto the NotchAny notch to install it on a connected Android device. The action reads the APK manifest to detect `debuggable` and `testOnly`; debug or test APKs require confirmation before `adb install -t` is used. When multiple eligible devices are connected, a target picker appears. Offline and unauthorized devices are excluded. Standard installations use `adb install -r` so existing apps can be replaced. Requires `adb` from Android Platform Tools.",
+        "zh-Hans": "把单个 APK 文件拖入 NotchAny 刘海，即可安装到已连接的 Android 设备。动作会自动读取 APK Manifest，识别 `debuggable` 和 `testOnly`；遇到调试或测试包时先请求确认，再追加 `adb install -t`。连接多台可用设备时会显示目标选择框，并过滤 offline 或 unauthorized 设备。默认使用 `adb install -r`，支持覆盖安装。依赖 Android Platform Tools 中的 `adb`。"
+      },
+      "default_locale": "en",
+      "version": "1.0.0",
+      "tags": [
+        "android",
+        "adb",
+        "developer-tools",
+        "apk"
+      ],
+      "license": "MIT",
+      "package_id": "glzlaohuai/apk-installer",
+      "path": "published/glzlaohuai/apk-installer/package.notchany.json",
+      "icon_path": "published/glzlaohuai/apk-installer/icon.png",
+      "id": "notchany.custom.shell.3dd2da74-c280-40d4-bafb-80a3d07c625c",
+      "kind": "action",
+      "action_kind": "shell",
+      "input_kind": "filesOnly",
+      "envelope_version": 9,
+      "sha256": "c717f845851706dbf5eb3845303286bf0d7245055af2badc7ca2a0711235a983",
+      "size_bytes": 18916,
+      "requires": [
+        "adb"
+      ],
+      "has_parameters": false,
+      "has_notification": false,
+      "accepts": {
+        "count": "single",
+        "extensions": [
+          "apk"
+        ]
+      },
+      "interpreter": "python",
+      "screenshots": [
+        "published/glzlaohuai/apk-installer/screenshots/1.png"
+      ],
+      "localized_screenshots": {
+        "zh-Hans": [
+          "published/glzlaohuai/apk-installer/screenshots/zh-Hans/1.png"
+        ]
+      },
+      "published_at": "2026-10-09T09:20:25Z",
+      "updated_at": "2026-10-09T09:20:25Z",
+      "history_path": "history/v1/glzlaohuai/apk-installer.json"
+    },
     {
       "names": {
         "zh-Hans": "剪贴板/文件到备忘录"
