@@ -7,6 +7,7 @@ import { join } from "node:path";
 import process from "node:process";
 
 import { signedMarketPost } from "./market-client.mjs";
+import { publicCommitForDecision } from "./reconcile-history.mjs";
 import { verifyPublished } from "./publication-lib.mjs";
 
 const ROOT = process.cwd();
@@ -101,8 +102,6 @@ console.log(
 );
 for (const decision of publication.decisions) {
   // 状态文件首次记录该决定的 Git 提交即公开提交，重复回填幂等。
-  const { execFileSync } = await import("node:child_process");
-  const commit = execFileSync("git",["log","--reverse","--format=%H",`-S${decision.id}`,"--","published/state.json"],{ encoding: "utf8" }).trim().split("\n")[0];
-  if (!/^[a-f0-9]{40}$/.test(commit || "")) throw new Error("Missing public commit");
+  const commit = publicCommitForDecision(decision.id, ROOT);
   await signedMarketPost("/internal/market/publication-complete",{ decision_id: decision.id, public_commit: commit });
 }
