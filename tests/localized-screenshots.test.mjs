@@ -79,8 +79,12 @@ test("build-index publishes default_locale and localized_screenshots that pass s
   const { root, put, git } = drillRepo(t, "market-localized-index-");
   const packageID = "alice/localized";
   const manifest = { manifest_version: 1, names: { ja: "ローカライズ", en: "Localized" }, summaries: { ja: "概要" }, version: "1.0.0", license: "MIT", default_locale: "ja" };
+  const packageAction = JSON.stringify({ notchany_export: 10, action: {
+    id: "notchany.custom.shell.localized", name: "Localized", kind: "shell", input_kind: "none", script: "true",
+    fullscreen_effect: { source: { html: "<main></main>", css: "", javascript: "", default_duration_ms: 2300 } },
+  } });
   const files = {
-    "package.notchany.json": Buffer.from(action),
+    "package.notchany.json": Buffer.from(packageAction),
     "manifest.json": Buffer.from(JSON.stringify(manifest)),
     "icon.png": icon,
     "screenshots/1.png": icon,
@@ -90,7 +94,7 @@ test("build-index publishes default_locale and localized_screenshots that pass s
   };
   for (const [path, bytes] of Object.entries(files)) put(`packages/${packageID}/${path}`, bytes);
   git("init", "-b", "main"); git("config", "user.name", "Test"); git("config", "user.email", "test@example.com"); git("add", "."); git("commit", "-m", "source");
-  const release = { version: "1.0.0", sha256: hash(action), source_commit: git("rev-parse", "HEAD"), merged_at: null, pr: null, contributors: [] };
+  const release = { version: "1.0.0", sha256: hash(packageAction), source_commit: git("rev-parse", "HEAD"), merged_at: null, pr: null, contributors: [] };
   for (const [path, bytes] of Object.entries(files)) put(`published/${packageID}/${path}`, bytes);
   put("published/state.json", JSON.stringify({ schema: 1, packages: { [packageID]: { active: true, source_commit: release.source_commit, tree_hash: treeHash(files), release } }, decisions: [] }));
   put(`history/v1/${packageID}.json`, JSON.stringify({ history_schema: 1, package_id: packageID, releases: [release], contributors: [] }));
@@ -99,6 +103,7 @@ test("build-index publishes default_locale and localized_screenshots that pass s
   const index = JSON.parse(readFileSync(join(root, "index/v1/index.json"), "utf8"));
   const entry = index.packages.find(item => item.package_id === packageID);
   assert.equal(entry.default_locale, "ja");
+  assert.equal(entry.has_fullscreen_effect, true);
   // manifest 未写 tags：已发版 App 把 tags 按必填解码，双索引都必须落空数组。
   assert.deepEqual(entry.tags, []);
   assert.deepEqual(JSON.parse(readFileSync(join(root, "index/v2/index.json"), "utf8")).packages[0].tags, []);
