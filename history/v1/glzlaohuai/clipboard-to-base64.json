@@ -1,0 +1,39 @@
+{
+  "history_schema": 1,
+  "package_id": "glzlaohuai/clipboard-to-base64",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "sha256": "e8a7e0d355f6ae8709d1113e00ef07a8849fe890336a546c83f2ea66185dbb4d",
+      "source_commit": "682b8304086b7988db8e68af0726c1912fafac9c",
+      "merged_at": "2026-10-09T10:12:03Z",
+      "published_at": "2026-10-09T10:12:03Z",
+      "pr": {
+        "number": 40,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/40",
+        "title": "Add Clipboard to Base64 v1.0.0",
+        "body": "Add a bilingual one-click action that converts clipboard text to Base64 and copies the encoded result back to the clipboard. Includes English and Simplified Chinese Store metadata and screenshots.",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    }
+  ],
+  "contributors": [
+    {
+      "github_user_id": "2596885",
+      "login": "glzlaohuai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+    }
+  ]
+}

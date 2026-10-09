@@ -1,0 +1,24 @@
+{
+  "default_locale" : "en",
+  "descriptions" : {
+    "en" : "Convert the current clipboard text to a single-line Base64 value with one click.\n\n- Reads text directly from the clipboard\n- Copies the encoded result back to the clipboard\n- Runs locally using macOS system tools\n- No file drop or external service required",
+    "zh-Hans" : "点击一次，将当前剪贴板中的文本转换为单行 Base64。\n\n- 直接读取剪贴板文本\n- 自动将编码结果复制回剪贴板\n- 使用 macOS 系统工具在本地运行\n- 无需拖入文件或调用外部服务"
+  },
+  "license" : "MIT",
+  "manifest_version" : 1,
+  "names" : {
+    "en" : "Clipboard to Base64",
+    "zh-Hans" : "剪贴板文本转 Base64"
+  },
+  "summaries" : {
+    "en" : "Convert clipboard text to Base64 and copy the result in one click.",
+    "zh-Hans" : "一键将剪贴板文本转换为 Base64，并复制编码结果。"
+  },
+  "tags" : [
+    "clipboard",
+    "base64",
+    "developer-tools",
+    "productivity"
+  ],
+  "version" : "1.0.0"
+}

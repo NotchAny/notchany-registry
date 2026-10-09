@@ -1,32 +1,32 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "f35c6ca1cb4513ee2db6d9bb4934472e3cd8a567",
-    "decision_id": "09490c58-c57d-46d0-9701-9323e0c4d05f",
+    "candidate_commit": "682b8304086b7988db8e68af0726c1912fafac9c",
+    "decision_id": "cd4a4ae9-a221-4e3e-81e8-60fd0cbe742c",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 38,
-        "head_sha": "813e94d6fa210eabe4c7d81020b2c07d1e3263db",
-        "base_sha": "bdddadfb94cbc4ac9d760e2624b4893d02c6669b",
-        "package_id": "glzlaohuai/sign-pdf",
+        "pr_number": 40,
+        "head_sha": "dc2979790c8a44c4030d70ca479e06a10d3cb100",
+        "base_sha": "0cae4e0fe22708f6bb29207c8692c1446e76524e",
+        "package_id": "glzlaohuai/clipboard-to-base64",
         "operation": "create",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/sign-pdf.json": "ce2d9433ca069fbf0d95354dfb04e01f6bdecc70d534a96e9788b324860a688f",
-      "index/v1/index.json": "fbe9b19c9c98ba6aab1babe66382c8529c845161deadc65517684117ae389cbe",
-      "index/v2/index.json": "750fb852cfd3a4a0282003c3ddd99c50efdc1e91354b781518885af086d1e000",
-      "published/glzlaohuai/sign-pdf/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
-      "published/glzlaohuai/sign-pdf/icon.png": "306d45aedc6ed641b34feabd5b18d3c0999fe33250d38db67f544acfde51fb18",
-      "published/glzlaohuai/sign-pdf/manifest.json": "c472e9c833606b59c79f4d82c06502ad51f5a27d36a5e337e6f0a87902e27c6b",
-      "published/glzlaohuai/sign-pdf/package.notchany.json": "26a97da0602c2dabe2ffa5ee14789f65cfe94eaee3e7371595bce5b567bf6ffe",
-      "published/glzlaohuai/sign-pdf/screenshots/1.png": "f130052d91ccea3008d5ce687acb0ae26170ce0df1a398267aa991fd587c87f1",
-      "published/glzlaohuai/sign-pdf/screenshots/zh-Hans/1.png": "3afb1d02ad204615d92ccf1cc68b4b5be40156a987a2f3643de95446deb679fa",
-      "published/state.json": "92174d451c241b2818d7e42e507c8bb29b5f82b854b0cae17a6b37558a5b6f4c"
+      "history/v1/glzlaohuai/clipboard-to-base64.json": "caf2ab6edab19160609c2453f371251505786741cdc266f2908cd164785e0dae",
+      "index/v1/index.json": "1230bddbf5d0a79d17f2fc65426e66f9c4701a317d67b5d50f236abc74507c77",
+      "index/v2/index.json": "f03892b66b305edbe16f8bd8e0cf280d9d50fba139c00a1005b6892c0505b0b1",
+      "published/glzlaohuai/clipboard-to-base64/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
+      "published/glzlaohuai/clipboard-to-base64/icon.png": "0cfe51dc04adb2e31e5586bb1be1cc242f1aca4ae2925df8fad39187adaf4271",
+      "published/glzlaohuai/clipboard-to-base64/manifest.json": "57be2afdd54421056e716ccb7df0610bd3c822616ac2d8cc285a5a1f6f715e84",
+      "published/glzlaohuai/clipboard-to-base64/package.notchany.json": "e8a7e0d355f6ae8709d1113e00ef07a8849fe890336a546c83f2ea66185dbb4d",
+      "published/glzlaohuai/clipboard-to-base64/screenshots/1.png": "fbcedacbf170a4c75a4b40fee10264614fca3126c3b322f8a753b4fb17e0a0e7",
+      "published/glzlaohuai/clipboard-to-base64/screenshots/zh-Hans/1.png": "ec5a15b14942893c6cefb7e617117ac9f9ad7f9ba424d7a04c598d2efa2bea19",
+      "published/state.json": "2f68a02a92d8ebd3269ee1f4943df35cb5fce27a5f65281af57a2a8972409963"
     }
   },
-  "signature": "79e5ca9e198144c446ebd901884eeae80f91e8050f069869e4e3a14acc8b11e5"
+  "signature": "11bb0e946d68f59a9881e3c5eaf2e0eea72b6a1e6774dbef8977c6b09690b353"
 }
