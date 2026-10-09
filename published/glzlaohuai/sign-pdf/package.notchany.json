@@ -1,0 +1,56 @@
+{
+  "action" : {
+    "accepts" : {
+      "count" : "single",
+      "extensions" : [
+        "pdf"
+      ],
+      "kinds" : [
+        "pdf"
+      ],
+      "types" : [
+        "com.adobe.pdf"
+      ]
+    },
+    "default_locale" : "zh-Hans",
+    "i18n" : {
+      "copy_suffix" : {
+        "en" : "signature-copy",
+        "zh-Hans" : "签名副本"
+      },
+      "invalid_input" : {
+        "en" : "Drop one PDF file.",
+        "zh-Hans" : "请拖入一个 PDF 文件"
+      },
+      "opened_detail" : {
+        "en" : "Copy: %s\nIn Preview, open Markup > Signature. Create a handwritten signature with the trackpad, camera, or iPhone\/iPad, then press Command-S to save.",
+        "zh-Hans" : "副本：%s\n在“预览”中打开“标记”→“签名”，可用触控板、摄像头或 iPhone\/iPad 创建手写签名；完成后按 Command-S 保存。"
+      },
+      "opened_summary" : {
+        "en" : "Signature copy opened",
+        "zh-Hans" : "签名副本已打开"
+      },
+      "preview_failed" : {
+        "en" : "Could not open the signature copy in Preview.",
+        "zh-Hans" : "无法用“预览”打开签名副本"
+      }
+    },
+    "icon_type" : "symbol",
+    "icon_value" : "signature",
+    "id" : "notchany.custom.shell.pdf-signature-copy",
+    "input_kind" : "filesOnly",
+    "kind" : "shell",
+    "locales" : [
+      "zh-Hans",
+      "en"
+    ],
+    "names" : {
+      "en" : "Sign PDF",
+      "zh-Hans" : "PDF 手写签名"
+    },
+    "presentation_mode" : "button",
+    "script" : "set -euo pipefail\n\nsrc=\"${NOTCH_FILE:-}\"\nif [[ -z \"$src\" || ! -f \"$src\" || \"${src:e:l}\" != \"pdf\" ]]; then\n  print -u2 -- \"$(notch_t invalid_input)\"\n  exit 1\nfi\n\ndir=\"${src:h}\"\nfilename=\"${src:t}\"\nstem=\"${filename:r}\"\nsuffix=\"$(notch_t copy_suffix)\"\ndest=\"$dir\/${stem}-${suffix}.pdf\"\nindex=2\nwhile [[ -e \"$dest\" ]]; do\n  dest=\"$dir\/${stem}-${suffix}-${index}.pdf\"\n  (( index += 1 ))\ndone\n\n\/bin\/cp -p \"$src\" \"$dest\"\nif ! \/usr\/bin\/open -b com.apple.Preview \"$dest\"; then\n  \/bin\/rm -f \"$dest\"\n  print -u2 -- \"$(notch_t preview_failed)\"\n  exit 1\nfi\n\ndetail=\"$(printf \"$(notch_t opened_detail)\" \"${dest:t}\")\"\nnotch_result \\\n  --summary \"$(notch_t opened_summary)\" \\\n  --details \"$detail\" \\\n  --output \"$dest\" \\\n  --effect-json '{\"preset\":\"success-glow\"}'",
+    "timeout_seconds" : 30
+  },
+  "notchany_export" : 9
+}

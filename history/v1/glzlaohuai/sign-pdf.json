@@ -1,0 +1,39 @@
+{
+  "history_schema": 1,
+  "package_id": "glzlaohuai/sign-pdf",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "sha256": "26a97da0602c2dabe2ffa5ee14789f65cfe94eaee3e7371595bce5b567bf6ffe",
+      "source_commit": "f35c6ca1cb4513ee2db6d9bb4934472e3cd8a567",
+      "merged_at": "2026-10-09T09:22:42Z",
+      "published_at": "2026-10-09T09:22:41Z",
+      "pr": {
+        "number": 38,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/38",
+        "title": "新增 sign-pdf v1.0.0",
+        "body": "Adds a bilingual PDF signing action that preserves the original, creates a localized signature copy, and opens it in macOS Preview for handwritten signing.",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    }
+  ],
+  "contributors": [
+    {
+      "github_user_id": "2596885",
+      "login": "glzlaohuai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+    }
+  ]
+}
