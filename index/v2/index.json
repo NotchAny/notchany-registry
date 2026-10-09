@@ -1,6 +1,6 @@
 {
   "index_schema": 2,
-  "generated_at": "2026-10-09T09:22:41Z",
+  "generated_at": "2026-10-09T10:12:03Z",
   "packages": [
     {
       "names": {
@@ -115,6 +115,54 @@
       "published_at": "2026-09-30T14:18:30Z",
       "updated_at": "2026-09-30T14:18:30Z",
       "history_path": "history/v1/glzlaohuai/clipboard-file-to-notes.json"
+    },
+    {
+      "names": {
+        "en": "Clipboard to Base64",
+        "zh-Hans": "剪贴板文本转 Base64"
+      },
+      "summaries": {
+        "en": "Convert clipboard text to Base64 and copy the result in one click.",
+        "zh-Hans": "一键将剪贴板文本转换为 Base64，并复制编码结果。"
+      },
+      "descriptions": {
+        "en": "Convert the current clipboard text to a single-line Base64 value with one click.\n\n- Reads text directly from the clipboard\n- Copies the encoded result back to the clipboard\n- Runs locally using macOS system tools\n- No file drop or external service required",
+        "zh-Hans": "点击一次，将当前剪贴板中的文本转换为单行 Base64。\n\n- 直接读取剪贴板文本\n- 自动将编码结果复制回剪贴板\n- 使用 macOS 系统工具在本地运行\n- 无需拖入文件或调用外部服务"
+      },
+      "default_locale": "en",
+      "version": "1.0.0",
+      "tags": [
+        "clipboard",
+        "base64",
+        "developer-tools",
+        "productivity"
+      ],
+      "license": "MIT",
+      "package_id": "glzlaohuai/clipboard-to-base64",
+      "path": "published/glzlaohuai/clipboard-to-base64/package.notchany.json",
+      "icon_path": "published/glzlaohuai/clipboard-to-base64/icon.png",
+      "id": "notchany.custom.shell.4dae2a9d-efb1-487a-977c-cac766bfc0df",
+      "kind": "action",
+      "action_kind": "shell",
+      "input_kind": "none",
+      "envelope_version": 2,
+      "sha256": "e8a7e0d355f6ae8709d1113e00ef07a8849fe890336a546c83f2ea66185dbb4d",
+      "size_bytes": 67595,
+      "requires": [],
+      "has_parameters": false,
+      "has_notification": false,
+      "interpreter": "shell",
+      "screenshots": [
+        "published/glzlaohuai/clipboard-to-base64/screenshots/1.png"
+      ],
+      "localized_screenshots": {
+        "zh-Hans": [
+          "published/glzlaohuai/clipboard-to-base64/screenshots/zh-Hans/1.png"
+        ]
+      },
+      "published_at": "2026-10-09T10:12:03Z",
+      "updated_at": "2026-10-09T10:12:03Z",
+      "history_path": "history/v1/glzlaohuai/clipboard-to-base64.json"
     },
     {
       "names": {
