@@ -1,0 +1,21 @@
+{
+  "default_locale" : "zh-Hans",
+  "descriptions" : {
+    "zh-Hans" : "点击组件即可领取一条彩虹屁，并随机播放全屏庆祝特效。\n\n功能包括：\n- 内置热血、温柔、离谱、江湖和职场五种夸赞风格\n- 支持 OpenAI 兼容的 Chat Completions 接口\n- 可编辑 AI 提示词模板，支持 `{name}` 和 `{style}` 变量\n- 内置 AI 配置连通性测试，明确显示成功与错误原因\n- 随机播放烟花、彩纸、彩虹、霓虹、金光和激光效果\n- AI 请求失败时自动回退到内置词库\n\nAPI Key 作为普通参数保存在动作配置中，请仅在自己的设备上使用可信密钥。"
+  },
+  "license" : "MIT",
+  "manifest_version" : 1,
+  "names" : {
+    "zh-Hans" : "彩虹屁发射器"
+  },
+  "summaries" : {
+    "zh-Hans" : "点击生成彩虹屁，并随机播放烟花、彩虹等全屏庆祝特效"
+  },
+  "tags" : [
+    "entertainment",
+    "ai",
+    "widget",
+    "fullscreen-effect"
+  ],
+  "version" : "1.0.0"
+}
