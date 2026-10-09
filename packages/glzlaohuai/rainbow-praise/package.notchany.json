@@ -1,0 +1,126 @@
+{
+  "action" : {
+    "default_locale" : "zh-Hans",
+    "fullscreen_effect" : {
+      "source" : {
+        "css" : "html, body {\n  width: 100%;\n  height: 100%;\n  margin: 0;\n  overflow: hidden;\n  background: transparent;\n  font-family: -apple-system, BlinkMacSystemFont, \"PingFang SC\", sans-serif;\n}\n.stage {\n  position: fixed;\n  inset: 0;\n  display: grid;\n  place-items: center;\n  color: #fff;\n  opacity: 1;\n  animation: stage 2.3s ease both;\n}\n.wash, .rays, .particles { position: absolute; inset: 0; overflow: hidden; }\n.wash { background: rgba(8, 8, 14, .72); }\n.stage.rainbow .wash {\n  background: linear-gradient(112deg, rgba(255,44,105,.86), rgba(255,201,61,.78), rgba(62,220,145,.78), rgba(47,157,255,.82), rgba(145,73,255,.86));\n  background-size: 240% 100%;\n  animation: rainbow 1.4s ease-in-out both;\n}\n.stage.neon .wash { background: rgba(8, 7, 24, .9); }\n.stage.gold .wash { background: radial-gradient(circle at center, rgba(128,77,0,.88), rgba(9,7,4,.94) 68%); }\n.stage.laser .wash { background: rgba(3, 13, 18, .9); }\n.rays { opacity: .72; }\n.stage.gold .rays {\n  background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,214,91,.26) 0 5deg, transparent 5deg 16deg);\n  animation: rays 7s linear infinite;\n}\n.stage.neon .rays::before, .stage.neon .rays::after,\n.stage.laser .rays::before, .stage.laser .rays::after {\n  content: \"\";\n  position: absolute;\n  left: -10%;\n  width: 120%;\n  height: 3px;\n  background: #41f3ff;\n  box-shadow: 0 0 18px #41f3ff, 0 0 44px rgba(65,243,255,.75);\n  transform: rotate(-12deg);\n  animation: scan 1.1s ease-in-out both;\n}\n.stage.neon .rays::after, .stage.laser .rays::after {\n  background: #ff4fa3;\n  box-shadow: 0 0 18px #ff4fa3, 0 0 44px rgba(255,79,163,.75);\n  transform: rotate(14deg);\n  animation-delay: .16s;\n}\n.copy {\n  position: relative;\n  z-index: 2;\n  width: min(82%, 980px);\n  text-align: center;\n  padding: 34px 44px 38px;\n  border-top: 1px solid rgba(255,255,255,.4);\n  border-bottom: 1px solid rgba(255,255,255,.28);\n  text-shadow: 0 3px 22px rgba(0,0,0,.48);\n  animation: copy 2.3s cubic-bezier(.2,.8,.2,1) both;\n}\n.kicker { font-size: 14px; font-weight: 700; letter-spacing: 0; opacity: .75; }\n.message {\n  margin: 20px auto 18px;\n  font-size: 54px;\n  line-height: 1.2;\n  font-weight: 850;\n  letter-spacing: 0;\n  text-wrap: balance;\n}\n.seal { font-size: 16px; font-weight: 650; letter-spacing: 0; opacity: .82; }\n.particle {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  width: var(--size);\n  height: var(--size);\n  border-radius: 2px;\n  background: var(--color);\n  box-shadow: 0 0 12px var(--color);\n  animation: particle 1.35s cubic-bezier(.12,.66,.24,1) var(--delay) both;\n}\n@keyframes stage {\n  0%, 78% { opacity: 1; }\n  100% { opacity: 0; }\n}\n@keyframes rainbow {\n  0% { background-position: 0 0; filter: saturate(.8) brightness(.7); }\n  45% { background-position: 100% 0; filter: saturate(1.25) brightness(1.12); }\n  100% { background-position: 10% 0; filter: saturate(.9) brightness(.72); }\n}\n@keyframes copy {\n  0% { transform: scale(.92); opacity: 1; }\n  18% { transform: scale(1.04); opacity: 1; }\n  32%, 78% { transform: scale(1); opacity: 1; }\n  100% { transform: scale(1.08); opacity: 0; }\n}\n@keyframes particle {\n  0% { transform: translate(-50%, -50%) scale(.2) rotate(0deg); opacity: 0; }\n  15% { opacity: 1; }\n  100% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1) rotate(var(--rot)); opacity: 0; }\n}\n@keyframes rays { to { transform: rotate(360deg); } }\n@keyframes scan {\n  0% { top: -20%; opacity: 0; }\n  18% { opacity: 1; }\n  82% { opacity: 1; }\n  100% { top: 120%; opacity: 0; }\n}\n",
+        "default_duration_ms" : 2300,
+        "html" : "<div id=\"stage\" class=\"stage\">\n  <div class=\"wash\"><\/div>\n  <div class=\"rays\" aria-hidden=\"true\"><\/div>\n  <div id=\"particles\" class=\"particles\" aria-hidden=\"true\"><\/div>\n  <div class=\"copy\">\n    <div class=\"kicker\">NOTCHANY 超级夸夸认证<\/div>\n    <div id=\"message\" class=\"message\">老铁牛逼666<\/div>\n    <div class=\"seal\">含金量 100% · 今日状态已封神<\/div>\n  <\/div>\n<\/div>",
+        "javascript" : "const config = window.__notchEffect || {};\nconst params = config.params || {};\nconst allowed = ['rainbow', 'neon', 'gold', 'laser'];\nconst variant = allowed.includes(params.variant) ? params.variant : 'rainbow';\nconst stage = document.getElementById('stage');\nconst message = document.getElementById('message');\nconst particles = document.getElementById('particles');\nstage.classList.add(variant);\nmessage.textContent = String(params.message || '老铁牛逼666').slice(0, 72);\nif (message.textContent.length > 34) message.style.fontSize = '38px';\nelse if (message.textContent.length > 24) message.style.fontSize = '44px';\n\nconst colors = variant === 'gold'\n  ? ['#fff3b0', '#ffd05a', '#ff9f1c', '#ffffff']\n  : ['#ff4f8b', '#ffd166', '#54e6a5', '#4cc9f0', '#a78bfa', '#ffffff'];\nconst count = config.intensity === 'reduced' ? 18 : 42;\nfor (let i = 0; i < count; i += 1) {\n  const bit = document.createElement('i');\n  bit.className = 'particle';\n  const angle = Math.random() * Math.PI * 2;\n  const distance = 130 + Math.random() * 420;\n  bit.style.setProperty('--x', Math.cos(angle) * distance + 'px');\n  bit.style.setProperty('--y', Math.sin(angle) * distance + 'px');\n  bit.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');\n  bit.style.setProperty('--size', (3 + Math.random() * 8) + 'px');\n  bit.style.setProperty('--delay', (Math.random() * .32) + 's');\n  bit.style.setProperty('--color', colors[i % colors.length]);\n  particles.appendChild(bit);\n}\nsetTimeout(() => notchany.finish(), 2200);\n"
+      }
+    },
+    "icon_type" : "emoji",
+    "icon_value" : "🌈",
+    "id" : "notchany.custom.shell.f630a297-de0e-4f85-b5cc-a573b81f443f",
+    "input_kind" : "none",
+    "interpreter" : "python",
+    "kind" : "shell",
+    "locales" : [
+      "zh-Hans"
+    ],
+    "names" : {
+      "zh-Hans" : "彩虹屁发射器"
+    },
+    "parameters" : [
+      {
+        "default" : "老铁",
+        "key" : "target_name",
+        "labels" : {
+          "zh-Hans" : "怎么称呼你"
+        },
+        "placeholder" : "老铁 \/ 老板 \/ 自己的名字",
+        "type" : "string"
+      },
+      {
+        "default" : "热血",
+        "key" : "style",
+        "labels" : {
+          "zh-Hans" : "夸赞风格"
+        },
+        "options" : [
+          "热血",
+          "温柔",
+          "离谱",
+          "江湖",
+          "职场"
+        ],
+        "type" : "choice"
+      },
+      {
+        "default" : "随机",
+        "key" : "effect",
+        "labels" : {
+          "zh-Hans" : "全屏特效"
+        },
+        "options" : [
+          "随机",
+          "烟花",
+          "彩纸",
+          "彩虹",
+          "霓虹",
+          "金光",
+          "激光"
+        ],
+        "type" : "choice"
+      },
+      {
+        "default" : false,
+        "key" : "use_ai",
+        "labels" : {
+          "zh-Hans" : "启用 AI 即兴夸赞"
+        },
+        "type" : "boolean"
+      },
+      {
+        "default" : "",
+        "key" : "api_key",
+        "labels" : {
+          "zh-Hans" : "AI API Key"
+        },
+        "placeholder" : "普通参数，内容会明文保存",
+        "type" : "string"
+      },
+      {
+        "default" : "https:\/\/api.openai.com\/v1\/chat\/completions",
+        "key" : "ai_endpoint",
+        "labels" : {
+          "zh-Hans" : "AI 接口地址"
+        },
+        "placeholder" : "OpenAI 兼容的 chat\/completions 地址",
+        "type" : "string"
+      },
+      {
+        "default" : "gpt-4.1-mini",
+        "key" : "ai_model",
+        "labels" : {
+          "zh-Hans" : "AI 模型"
+        },
+        "placeholder" : "例如 gpt-4.1-mini",
+        "type" : "string"
+      },
+      {
+        "default" : "给一个叫“{name}”的人写一句中文彩虹屁，风格是“{style}”。要求积极、好玩、有画面感，像朋友当面夸人；一句话，最好不超过32个汉字；不要解释，不要加引号，不要涉及攻击、色情、政治或歧视。",
+        "key" : "ai_prompt",
+        "labels" : {
+          "zh-Hans" : "AI 提示词模板"
+        },
+        "placeholder" : "支持 {name} 称呼和 {style} 风格变量",
+        "type" : "string"
+      }
+    ],
+    "presentation_mode" : "widget",
+    "script" : "import json\nimport os\nimport random\nimport re\nimport urllib.error\nimport urllib.request\n\n\nPRAISES = {\n    \"热血\": [\n        \"{name}一出手，含金量直接拉满！\",\n        \"别人是发挥稳定，{name}是稳定超神！\",\n        \"{name}这波操作，教科书看了都得改版！\",\n        \"全场请注意，{name}又开始不讲道理地优秀了！\",\n        \"{name}今天这个状态，冠军见了都得递水！\",\n        \"这不是高光时刻，这是{name}的日常水平！\",\n        \"{name}负责出手，剩下的人负责喊666！\",\n    ],\n    \"温柔\": [\n        \"{name}认真生活的样子，本身就很闪亮。\",\n        \"今天也要记得，{name}已经做得很好了。\",\n        \"{name}身上那股靠谱劲儿，让人特别安心。\",\n        \"世界有点吵，但{name}的光一直很稳。\",\n        \"{name}不用刻意证明，优秀早就藏不住了。\",\n        \"遇见{name}这种宝藏，是今天的小幸运。\",\n    ],\n    \"离谱\": [\n        \"建议给{name}单独开个段位，普通王者装不下！\",\n        \"{name}这实力，导航看了都说您已超出地图范围！\",\n        \"科学家连夜研究：{name}到底怎么能这么顶？\",\n        \"{name}一认真，困难自己就开始写检讨了！\",\n        \"听说天花板很高，{name}抬手就给掀了！\",\n        \"{name}不是来参与的，是来刷新纪录的！\",\n    ],\n    \"江湖\": [\n        \"江湖路远，{name}一出场就是定海神针！\",\n        \"这一局有{name}坐镇，稳得像祖传招牌！\",\n        \"各路豪杰先别争，{name}的排面已经到位！\",\n        \"{name}这身本事，放哪儿都是镇场子的存在！\",\n        \"今日江湖头条：{name}又帅气地解决了一切！\",\n        \"有{name}在，难题见面都得先抱拳！\",\n    ],\n    \"职场\": [\n        \"{name}这执行力，待办列表看了都自动清空！\",\n        \"关键时刻还得看{name}，稳准狠全占了！\",\n        \"{name}交付的不是结果，是行业标杆！\",\n        \"会议可以少开，但{name}的掌声不能少！\",\n        \"{name}这思路一打开，问题就只剩下配合！\",\n        \"靠谱这两个字，今天建议直接改名叫{name}！\",\n    ],\n}\n\nBADGES = [\"牛逼\", \"封神\", \"太顶\", \"666\", \"无敌\", \"天秀\", \"稳了\", \"靠谱\"]\nRANDOM_EFFECTS = [\n    \"fireworks\", \"fireworks\", \"confetti\", \"confetti\",\n    \"rainbow\", \"rainbow\", \"neon\", \"gold\", \"laser\",\n]\nDEFAULT_AI_PROMPT = (\n    \"给一个叫“{name}”的人写一句中文彩虹屁，风格是“{style}”。\"\n    \"要求积极、好玩、有画面感，像朋友当面夸人；一句话，最好不超过32个汉字；\"\n    \"不要解释，不要加引号，不要涉及攻击、色情、政治或歧视。\"\n)\n\n\ndef param(key, default=\"\"):\n    return os.environ.get(\"NOTCH_PARAM_\" + key.upper(), default)\n\n\ndef payload():\n    raw = os.environ.get(\"NOTCH_WIDGET_PAYLOAD\", \"\").strip()\n    if not raw:\n        return {}\n    try:\n        value = json.loads(raw)\n        return value if isinstance(value, dict) else {}\n    except Exception:\n        return {}\n\n\ndef clean_name(value):\n    value = re.sub(r\"\\s+\", \" \", (value or \"\").strip())\n    return value[:16] or \"老铁\"\n\n\ndef clean_praise(value):\n    value = re.sub(r\"\\s+\", \" \", (value or \"\").strip())\n    value = value.strip(\"\\\"'“”‘’ \")\n    if not value:\n        return \"\"\n    return value[:72]\n\n\ndef built_in_praise(name, style):\n    choices = PRAISES.get(style) or PRAISES[\"热血\"]\n    return random.choice(choices).format(name=name)\n\n\ndef api_request(messages, max_tokens=100, temperature=1.15):\n    key = param(\"api_key\", \"\").strip()\n    endpoint = param(\"ai_endpoint\", \"https:\/\/api.openai.com\/v1\/chat\/completions\").strip()\n    model = param(\"ai_model\", \"gpt-4.1-mini\").strip()\n    if not key:\n        return \"\", \"请先在参数里填写 AI API Key\"\n    if not endpoint:\n        return \"\", \"AI 接口地址不能为空\"\n    if not model:\n        return \"\", \"AI 模型不能为空\"\n\n    body = {\n        \"model\": model,\n        \"messages\": messages,\n        \"temperature\": temperature,\n        \"max_tokens\": max_tokens,\n    }\n    request = urllib.request.Request(\n        endpoint,\n        data=json.dumps(body, ensure_ascii=False).encode(\"utf-8\"),\n        headers={\n            \"Authorization\": \"Bearer \" + key,\n            \"Content-Type\": \"application\/json\",\n        },\n        method=\"POST\",\n    )\n    try:\n        with urllib.request.urlopen(request, timeout=9) as response:\n            data = json.load(response)\n    except urllib.error.HTTPError as error:\n        detail = \"\"\n        try:\n            raw = error.read().decode(\"utf-8\", \"replace\")\n            data = json.loads(raw)\n            payload = data.get(\"error\") if isinstance(data, dict) else None\n            detail = payload.get(\"message\", \"\") if isinstance(payload, dict) else \"\"\n        except Exception:\n            detail = \"\"\n        detail = re.sub(r\"\\s+\", \" \", detail).strip()[:180]\n        return \"\", f\"HTTP {error.code}\" + (f\"：{detail}\" if detail else \"\")\n    except urllib.error.URLError as error:\n        reason = re.sub(r\"\\s+\", \" \", str(error.reason)).strip()[:180]\n        return \"\", \"网络连接失败\" + (f\"：{reason}\" if reason else \"\")\n    except (OSError, ValueError, KeyError) as error:\n        detail = re.sub(r\"\\s+\", \" \", str(error)).strip()[:180]\n        return \"\", \"请求失败\" + (f\"：{detail}\" if detail else \"\")\n\n    choices = data.get(\"choices\") if isinstance(data, dict) else None\n    if not isinstance(choices, list) or not choices:\n        return \"\", \"接口已响应，但返回格式不是兼容的 chat\/completions\"\n    message = choices[0].get(\"message\") if isinstance(choices[0], dict) else None\n    content = message.get(\"content\") if isinstance(message, dict) else \"\"\n    content = clean_praise(content)\n    if not content:\n        return \"\", \"接口已响应，但没有返回文本内容\"\n    return content, \"\"\n\n\ndef ai_praise(name, style):\n    if param(\"use_ai\", \"0\") != \"1\":\n        return \"\"\n    template = param(\"ai_prompt\", DEFAULT_AI_PROMPT).strip() or DEFAULT_AI_PROMPT\n    prompt = template.replace(\"{name}\", name).replace(\"{style}\", style)[:1200]\n    content, _ = api_request(\n        [\n            {\"role\": \"system\", \"content\": \"你是一个有分寸、脑洞大、绝不重复套话的夸夸搭子。\"},\n            {\"role\": \"user\", \"content\": prompt},\n        ]\n    )\n    return content\n\n\ndef test_ai_connection():\n    content, error = api_request(\n        [\n            {\"role\": \"system\", \"content\": \"你正在进行 API 连通性测试。\"},\n            {\"role\": \"user\", \"content\": \"只回复：连接成功\"},\n        ],\n        max_tokens=20,\n        temperature=0,\n    )\n    if error:\n        state = {\n            \"badge\": \"失败\",\n            \"phrase\": error,\n            \"effect\": \"idle\",\n            \"source\": \"test\",\n            \"connection\": \"failed\",\n        }\n        notch_result(summary=\"AI 连接失败\", details=error, widget=state)\n        return\n    model = param(\"ai_model\", \"gpt-4.1-mini\").strip()\n    state = {\n        \"badge\": \"已连\",\n        \"phrase\": f\"{model} 连接正常\",\n        \"effect\": \"idle\",\n        \"source\": \"test\",\n        \"connection\": \"ok\",\n    }\n    notch_result(summary=\"AI 连接成功\", details=f\"{model} · {content}\", widget=state)\n\n\ndef choose_effect(phrase):\n    selected = param(\"effect\", \"随机\").strip() or \"随机\"\n    mapping = {\n        \"烟花\": \"fireworks\",\n        \"彩纸\": \"confetti\",\n        \"彩虹\": \"rainbow\",\n        \"霓虹\": \"neon\",\n        \"金光\": \"gold\",\n        \"激光\": \"laser\",\n    }\n    effect = random.choice(RANDOM_EFFECTS) if selected == \"随机\" else mapping.get(selected, \"rainbow\")\n    if effect in (\"fireworks\", \"confetti\"):\n        return effect, {\"preset\": effect}\n    return effect, {\n        \"custom\": True,\n        \"duration_ms\": 2300,\n        \"params\": {\"variant\": effect, \"message\": phrase},\n    }\n\n\ndef idle_state():\n    return {\n        \"badge\": \"夸我\",\n        \"phrase\": \"点击领取今日份彩虹屁\",\n        \"effect\": \"idle\",\n        \"source\": \"ready\",\n        \"connection\": \"idle\",\n    }\n\n\ndef main():\n    event = os.environ.get(\"NOTCH_WIDGET_EVENT\", \"\").strip()\n    if event in (\"refresh\", \"trigger\"):\n        notch_result(widget=idle_state())\n        return\n    if event == \"test_ai\":\n        test_ai_connection()\n        return\n\n    data = payload()\n    name = clean_name(data.get(\"name\") if isinstance(data.get(\"name\"), str) else param(\"target_name\", \"老铁\"))\n    style = param(\"style\", \"热血\").strip() or \"热血\"\n    phrase = ai_praise(name, style)\n    source = \"AI\" if phrase else \"内置\"\n    if not phrase:\n        phrase = built_in_praise(name, style)\n    badge = random.choice(BADGES)\n    effect_name, effect_request = choose_effect(phrase)\n    state = {\n        \"badge\": badge,\n        \"phrase\": phrase,\n        \"effect\": effect_name,\n        \"source\": source,\n    }\n    notch_result(\n        summary=phrase,\n        details=f\"{source}彩虹屁 · {style}模式 · 再点一次继续夸\",\n        widget=state,\n        effect=effect_request,\n    )\n\n\nif __name__ == \"__main__\":\n    main()\n",
+    "timeout_seconds" : 15,
+    "widget" : {
+      "cols" : 4,
+      "css" : ":root {\n  color-scheme: dark;\n  font-family: -apple-system, BlinkMacSystemFont, \"PingFang SC\", sans-serif;\n}\n* { box-sizing: border-box; }\nhtml, body {\n  width: 100%;\n  height: 100%;\n  margin: 0;\n  overflow: hidden;\n  background: transparent;\n  -webkit-user-select: none;\n  user-select: none;\n}\n.panel {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  container-type: size;\n}\n.praise {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  margin: 0;\n  padding: 5px 3px 4px;\n  border: 0;\n  border-radius: 13px;\n  overflow: hidden;\n  cursor: pointer;\n  color: #fff;\n  background:\n    linear-gradient(145deg, rgba(255, 75, 132, .82), rgba(114, 90, 255, .76) 48%, rgba(19, 183, 210, .76));\n  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22), 0 3px 12px rgba(0, 0, 0, .24);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 2px;\n}\n.praise::after {\n  content: \"\";\n  position: absolute;\n  inset: 1px;\n  border-radius: 12px;\n  background: rgba(12, 12, 18, .12);\n  pointer-events: none;\n}\n.praise > * { position: relative; z-index: 1; }\n.spark { font-size: 11px; line-height: 1; color: rgba(255,255,255,.85); }\nstrong {\n  max-width: 100%;\n  font-size: 14px;\n  line-height: 1;\n  font-weight: 750;\n  letter-spacing: 0;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.phrase {\n  display: none;\n  max-width: 88%;\n  color: rgba(255,255,255,.84);\n  text-align: center;\n}\nsmall { font-size: 8px; line-height: 1; color: rgba(255,255,255,.68); white-space: nowrap; }\n.praise:hover { filter: brightness(1.12); }\n.praise:active { transform: scale(.96); filter: brightness(1.2); }\n.praise.busy { cursor: wait; filter: saturate(.7); }\n.praise.busy .spark { animation: spin .6s linear infinite; }\n.test {\n  position: absolute;\n  z-index: 3;\n  top: 5px;\n  right: 5px;\n  min-width: 30px;\n  height: 18px;\n  padding: 0;\n  border: 1px solid rgba(255,255,255,.22);\n  border-radius: 5px;\n  background: rgba(7,8,16,.34);\n  color: rgba(255,255,255,.82);\n  font: 700 7.5px\/1 -apple-system, sans-serif;\n  letter-spacing: 0;\n  cursor: pointer;\n}\n.test:hover { background: rgba(7,8,16,.58); color: #fff; }\n.test:active { transform: scale(.92); }\n.test.busy { cursor: wait; opacity: .68; }\n.test.ok { color: #d8ffe9; border-color: rgba(110,255,174,.55); background: rgba(8,88,52,.5); }\n.test.bad { color: #ffe1e7; border-color: rgba(255,117,142,.6); background: rgba(116,18,42,.54); }\n.test-wide { display: none; }\n@container (min-width: 130px) and (min-height: 100px) {\n  .praise { padding: 14px 18px 12px; gap: 7px; }\n  .spark { font-size: 18px; }\n  strong { font-size: 28px; }\n  .phrase {\n    display: -webkit-box;\n    font-size: 13px;\n    line-height: 1.45;\n    -webkit-line-clamp: 3;\n    -webkit-box-orient: vertical;\n    overflow: hidden;\n  }\n  small { font-size: 10px; }\n  .test { top: 10px; right: 10px; min-width: 68px; height: 26px; padding: 0 10px; border-radius: 7px; font-size: 10px; }\n  .test-compact { display: none; }\n  .test-wide { display: inline; }\n}\n@keyframes spin { to { transform: rotate(360deg); } }\n",
+      "html" : "<div class=\"panel\">\n  <button id=\"praise\" class=\"praise\" type=\"button\" aria-label=\"来句彩虹屁\">\n    <span class=\"spark\" aria-hidden=\"true\">✦<\/span>\n    <strong id=\"badge\">夸我<\/strong>\n    <span id=\"phrase\" class=\"phrase\">点击领取今日份彩虹屁<\/span>\n    <small id=\"hint\">点一下<\/small>\n  <\/button>\n  <button id=\"test\" class=\"test\" type=\"button\" aria-label=\"验证 AI 接口、模型与 API Key 配置\" title=\"验证 AI 接口、模型与 API Key 配置\">\n    <span id=\"testCompact\" class=\"test-compact\">测试<\/span>\n    <span id=\"testWide\" class=\"test-wide\">测试 AI<\/span>\n  <\/button>\n<\/div>",
+      "javascript" : "const button = document.getElementById('praise');\nconst testButton = document.getElementById('test');\nconst testCompact = document.getElementById('testCompact');\nconst testWide = document.getElementById('testWide');\nconst badge = document.getElementById('badge');\nconst phrase = document.getElementById('phrase');\nconst hint = document.getElementById('hint');\n\nfunction render(result) {\n  if (!result || !result.ok || !result.state) return false;\n  const state = result.state;\n  badge.textContent = state.badge || '666';\n  phrase.textContent = state.phrase || '点击领取今日份彩虹屁';\n  hint.textContent = state.source === 'AI' ? 'AI 夸的' : state.source === '内置' ? '再来一句' : '点一下';\n  button.title = state.phrase || '来句彩虹屁';\n  button.setAttribute('aria-label', state.phrase || '来句彩虹屁');\n  button.dataset.effect = state.effect || '';\n  testButton.classList.toggle('ok', state.connection === 'ok');\n  testButton.classList.toggle('bad', state.connection === 'failed');\n  testCompact.textContent = state.connection === 'ok' ? '已连' : state.connection === 'failed' ? '重试' : '测试';\n  testWide.textContent = state.connection === 'ok' ? '✓ 已连接' : state.connection === 'failed' ? '! 配置错误' : '测试 AI';\n  testButton.title = state.connection === 'ok'\n    ? 'AI 配置验证通过，点击可重新测试'\n    : state.connection === 'failed'\n      ? (state.phrase || 'AI 配置验证失败，点击重试')\n      : '验证 AI 接口、模型与 API Key 配置';\n  if (state.source === 'test') hint.textContent = state.connection === 'ok' ? 'AI 正常' : '检查配置';\n  return true;\n}\n\nasync function praise() {\n  if (button.classList.contains('busy')) return;\n  button.classList.add('busy');\n  hint.textContent = '酝酿中';\n  const result = await notchany.execute('praise', null);\n  button.classList.remove('busy');\n  if (!render(result)) hint.textContent = '再点一次';\n}\n\nasync function refresh() {\n  const result = await notchany.invoke('refresh', null);\n  render(result);\n}\n\nasync function testConnection() {\n  if (testButton.classList.contains('busy')) return;\n  testButton.classList.add('busy');\n  testCompact.textContent = '测试中';\n  testWide.textContent = '正在验证…';\n  hint.textContent = '测试中';\n  const result = await notchany.execute('test_ai', null);\n  testButton.classList.remove('busy');\n  if (!render(result)) {\n    testCompact.textContent = '重试';\n    testWide.textContent = '! 测试失败';\n    testButton.classList.add('bad');\n    hint.textContent = '测试失败';\n  }\n}\n\nbutton.addEventListener('click', praise);\ntestButton.addEventListener('click', testConnection);\nnotchany.addEventListener('statechange', event => render(event.state));\nnotchany.addEventListener('visibilitychange', () => {\n  if (notchany.visible && !notchany.state) refresh();\n});\nif (notchany.state) render(notchany.state);\nif (notchany.visible && !notchany.state) refresh();\n",
+      "rows" : 3,
+      "triggers" : [
+
+      ]
+    }
+  },
+  "notchany_export" : 10
+}
