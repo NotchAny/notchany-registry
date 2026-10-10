@@ -1,8 +1,8 @@
 {
   "default_locale" : "en",
   "descriptions" : {
-    "en" : "Drop a single APK file onto the NotchAny notch to install it on a connected Android device. The action reads the APK manifest to detect `debuggable` and `testOnly`; debug or test APKs require confirmation before `adb install -t` is used. When multiple eligible devices are connected, a target picker appears. Offline and unauthorized devices are excluded. Standard installations use `adb install -r` so existing apps can be replaced. Requires `adb` from Android Platform Tools.",
-    "zh-Hans" : "把单个 APK 文件拖入 NotchAny 刘海，即可安装到已连接的 Android 设备。动作会自动读取 APK Manifest，识别 `debuggable` 和 `testOnly`；遇到调试或测试包时先请求确认，再追加 `adb install -t`。连接多台可用设备时会显示目标选择框，并过滤 offline 或 unauthorized 设备。默认使用 `adb install -r`，支持覆盖安装。依赖 Android Platform Tools 中的 `adb`。"
+    "en" : "Drop a single APK or APKM file onto the NotchAny notch to install it on a connected Android device. APKM split bundles are extracted and installed with `adb install-multiple`; single APKs use `adb install -r` so existing apps can be replaced. The action reads the base APK manifest to detect `debuggable` and `testOnly`; debug or test packages require confirmation before `-t` is used. When multiple eligible devices are connected, a target picker appears. Offline and unauthorized devices are excluded. Requires `adb` from Android Platform Tools.",
+    "zh-Hans" : "把单个 APK 或 APKM 文件拖入 NotchAny 刘海，即可安装到已连接的 Android 设备。APKM 分包会自动解包并通过 `adb install-multiple` 安装；单个 APK 使用 `adb install -r`，支持覆盖安装。动作会读取 base APK 的 Manifest，识别 `debuggable` 和 `testOnly`；遇到调试或测试包时先请求确认，再追加 `-t`。连接多台可用设备时会显示目标选择框，并过滤 offline 或 unauthorized 设备。依赖 Android Platform Tools 中的 `adb`。"
   },
   "license" : "MIT",
   "manifest_version" : 1,
@@ -11,14 +11,15 @@
     "zh-Hans" : "安装 APK"
   },
   "summaries" : {
-    "en" : "Drop an APK, choose an Android device, and install it through ADB.",
-    "zh-Hans" : "拖入 APK，选择 Android 设备并自动完成 ADB 安装。"
+    "en" : "Drop an APK or APKM, choose an Android device, and install it through ADB.",
+    "zh-Hans" : "拖入 APK 或 APKM，选择 Android 设备并自动完成 ADB 安装。"
   },
   "tags" : [
     "android",
     "adb",
     "developer-tools",
-    "apk"
+    "apk",
+    "apkm"
   ],
-  "version" : "1.0.0"
+  "version" : "1.0.1"
 }
