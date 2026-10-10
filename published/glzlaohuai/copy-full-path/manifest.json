@@ -1,0 +1,18 @@
+{
+  "default_locale" : "en",
+  "descriptions" : {
+    "en" : "Drop one or more files or folders onto NotchAny to copy their absolute paths to the clipboard. Multiple paths are separated by newlines. Supports all file types and folders.",
+    "zh-Hans" : "将一个或多个文件、文件夹拖入 NotchAny，即可把它们的绝对路径复制到剪贴板。多个路径按行分隔，支持所有文件类型和文件夹。"
+  },
+  "license" : "MIT",
+  "manifest_version" : 1,
+  "names" : {
+    "en" : "Copy Full Path",
+    "zh-Hans" : "复制完整路径"
+  },
+  "summaries" : {
+    "en" : "Copy full paths from dropped files and folders to the clipboard.",
+    "zh-Hans" : "将拖入的文件和文件夹完整路径复制到剪贴板。"
+  },
+  "version" : "1.0.0"
+}
