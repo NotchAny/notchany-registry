@@ -269,20 +269,20 @@
     },
     "glzlaohuai/apk-installer": {
       "active": true,
-      "tree_hash": "4883aac979d87f9927870038f4531e2def21114410c930240ec073107461604f",
-      "source_commit": "f3afb4566588d2f3816aa0a7c25a2313498d8fac",
+      "tree_hash": "74cdd281cc43828fee839787cd2dcb4ea9cca0a15e272f3854f38c0af088d467",
+      "source_commit": "df8a31f8f70b4cfe3d2d3222dfa7a140d0b0b837",
       "first_published_at": "2026-10-09T09:20:25Z",
       "release": {
-        "version": "1.0.0",
-        "sha256": "c717f845851706dbf5eb3845303286bf0d7245055af2badc7ca2a0711235a983",
-        "source_commit": "f3afb4566588d2f3816aa0a7c25a2313498d8fac",
-        "merged_at": "2026-10-09T09:20:26Z",
-        "published_at": "2026-10-09T09:20:25Z",
+        "version": "1.0.1",
+        "sha256": "dac70124490c7f5d605e0010e9292003634dd2fea98110334b9ac0b4fcf7c31e",
+        "source_commit": "df8a31f8f70b4cfe3d2d3222dfa7a140d0b0b837",
+        "merged_at": "2026-10-10T10:50:34Z",
+        "published_at": "2026-10-10T10:50:34Z",
         "pr": {
-          "number": 36,
-          "url": "https://github.com/NotchAny/notchany-registry/pull/36",
-          "title": "Add Install APK action",
-          "body": "Adds an APK installer action for Android developers. Drop one APK onto the NotchAny notch to detect connected ADB devices, choose a target when multiple devices are available, and confirm debug or test APKs before installing with `adb install -t`.",
+          "number": 44,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/44",
+          "title": "Support .apkm split bundles (adb install-multiple)",
+          "body": "## What changed\n\n- Accept `.apkm` (APKMIRROR split bundle) files in addition to `.apk`, both in the action's `accepts` declaration and the drop rule.\n- `.apkm` files are ZIP archives: the action extracts the contained split APKs (`base.apk` first) into the per-execution temp directory and installs them with `adb install-multiple -r`. Single `.apk` files keep the original `adb install -r` path.\n- Debug/test detection (`debuggable` / `testOnly`) now inspects the base APK of the bundle, and the `-t` confirmation flow applies to bundles too.\n- New i18n strings (zh-Hans/en): APKM extraction failure and empty-bundle errors; generalized the file-missing wording.\n\nVerified end-to-end on a real device: extension check, extraction, manifest parse, device selection and `install-multiple` invocation all work.\n\n## 中文说明\n\n- 支持拖入 `.apkm` 分包（APKMirror  bundle），自动解压后用 `adb install-multiple -r` 安装，`base.apk` 排最前。\n- 调试/测试包检测作用于 bundle 的 base APK，`-t` 确认流程同样适用。\n- 新增两条中英文词条，微调文件不存在文案。\n",
           "author": {
             "github_user_id": "2596885",
             "login": "glzlaohuai",
@@ -456,6 +456,10 @@
     {
       "id": "239725b9-4143-4c65-bb98-2ecb8eef10e4",
       "candidate_commit": "60f907e5ad65270eba6ee95f59f260f893c8c5fe"
+    },
+    {
+      "id": "b7e2210e-bb15-4e37-8d9d-d489a39e5a19",
+      "candidate_commit": "df8a31f8f70b4cfe3d2d3222dfa7a140d0b0b837"
     }
   ]
 }
