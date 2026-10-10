@@ -1,0 +1,48 @@
+{
+  "action" : {
+    "accepts" : {
+      "kinds" : [
+        "image",
+        "video",
+        "audio",
+        "pdf",
+        "text",
+        "archive",
+        "folder",
+        "other"
+      ]
+    },
+    "default_locale" : "zh-Hans",
+    "i18n" : {
+      "copied_many" : {
+        "en" : "Copied %s full paths",
+        "zh-Hans" : "已复制 %s 个完整路径"
+      },
+      "copied_one" : {
+        "en" : "Full path copied",
+        "zh-Hans" : "已复制完整路径"
+      },
+      "no_input" : {
+        "en" : "No files or folders received",
+        "zh-Hans" : "未收到文件或文件夹"
+      }
+    },
+    "icon_type" : "symbol",
+    "icon_value" : "link",
+    "id" : "notchany.custom.shell.copy-full-path",
+    "input_kind" : "filesOnly",
+    "kind" : "shell",
+    "locales" : [
+      "zh-Hans",
+      "en"
+    ],
+    "names" : {
+      "en" : "Copy Full Path",
+      "zh-Hans" : "复制完整路径"
+    },
+    "presentation_mode" : "button",
+    "script" : "if [[ -z \"${NOTCH_FILES:-}\" ]]; then\n  print -u2 \"$(notch_t no_input)\"\n  exit 1\nfi\n\ncount=\"${NOTCH_COUNT:-1}\"\nif [[ \"$count\" == \"1\" ]]; then\n  summary=\"$(notch_t copied_one)\"\nelse\n  summary=\"$(printf \"$(notch_t copied_many)\" \"$count\")\"\nfi\n\nnotch_result \\\n  --summary \"$summary\" \\\n  --details \"$NOTCH_FILES\" \\\n  --copy-text \"$NOTCH_FILES\"",
+    "timeout_seconds" : 10
+  },
+  "notchany_export" : 9
+}
