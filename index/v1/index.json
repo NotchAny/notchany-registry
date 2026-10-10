@@ -1,6 +1,6 @@
 {
   "index_schema": 1,
-  "generated_at": "2026-10-09T10:12:03Z",
+  "generated_at": "2026-10-10T08:48:03Z",
   "packages": [
     {
       "names": {
@@ -201,6 +201,60 @@
       },
       "published_at": "2026-10-01T03:57:41Z",
       "updated_at": "2026-10-01T03:57:41Z"
+    },
+    {
+      "names": {
+        "en": "Copy Full Path",
+        "zh-Hans": "复制完整路径"
+      },
+      "summaries": {
+        "en": "Copy full paths from dropped files and folders to the clipboard.",
+        "zh-Hans": "将拖入的文件和文件夹完整路径复制到剪贴板。"
+      },
+      "descriptions": {
+        "en": "Drop one or more files or folders onto NotchAny to copy their absolute paths to the clipboard. Multiple paths are separated by newlines. Supports all file types and folders.",
+        "zh-Hans": "将一个或多个文件、文件夹拖入 NotchAny，即可把它们的绝对路径复制到剪贴板。多个路径按行分隔，支持所有文件类型和文件夹。"
+      },
+      "default_locale": "en",
+      "version": "1.0.0",
+      "tags": [],
+      "license": "MIT",
+      "package_id": "glzlaohuai/copy-full-path",
+      "path": "published/glzlaohuai/copy-full-path/package.notchany.json",
+      "icon_path": "published/glzlaohuai/copy-full-path/icon.png",
+      "id": "notchany.custom.shell.copy-full-path",
+      "kind": "action",
+      "action_kind": "shell",
+      "input_kind": "filesOnly",
+      "envelope_version": 9,
+      "sha256": "8b2666d5bb7ee67f885d2338c49a280c7b296ac0b96d7b880b28befd833cf0fa",
+      "size_bytes": 1416,
+      "requires": [],
+      "has_parameters": false,
+      "has_notification": false,
+      "accepts": {
+        "kinds": [
+          "image",
+          "video",
+          "audio",
+          "pdf",
+          "text",
+          "archive",
+          "folder",
+          "other"
+        ]
+      },
+      "interpreter": "shell",
+      "screenshots": [
+        "published/glzlaohuai/copy-full-path/screenshots/1.png"
+      ],
+      "localized_screenshots": {
+        "zh-Hans": [
+          "published/glzlaohuai/copy-full-path/screenshots/zh-Hans/1.png"
+        ]
+      },
+      "published_at": "2026-10-10T08:48:03Z",
+      "updated_at": "2026-10-10T08:48:03Z"
     },
     {
       "names": {

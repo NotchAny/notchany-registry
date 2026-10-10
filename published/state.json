@@ -362,6 +362,38 @@
         ],
         "approved_by": []
       }
+    },
+    "glzlaohuai/copy-full-path": {
+      "active": true,
+      "tree_hash": "b05b5a2c38305db7c18c025dc3b9c7dfa10bb705249cc0b3db57007c9f5ff9a6",
+      "source_commit": "60f907e5ad65270eba6ee95f59f260f893c8c5fe",
+      "first_published_at": "2026-10-10T08:48:03Z",
+      "release": {
+        "version": "1.0.0",
+        "sha256": "8b2666d5bb7ee67f885d2338c49a280c7b296ac0b96d7b880b28befd833cf0fa",
+        "source_commit": "60f907e5ad65270eba6ee95f59f260f893c8c5fe",
+        "merged_at": "2026-10-10T08:48:04Z",
+        "published_at": "2026-10-10T08:48:03Z",
+        "pr": {
+          "number": 42,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/42",
+          "title": "新增 copy-full-path v1.0.0",
+          "body": "Initial release of Copy Full Path. Supports single or multiple files and folders, copies absolute paths to the clipboard, and includes English and Simplified Chinese localization.",
+          "author": {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        },
+        "contributors": [
+          {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        ],
+        "approved_by": []
+      }
     }
   },
   "decisions": [
@@ -420,6 +452,10 @@
     {
       "id": "cd4a4ae9-a221-4e3e-81e8-60fd0cbe742c",
       "candidate_commit": "682b8304086b7988db8e68af0726c1912fafac9c"
+    },
+    {
+      "id": "239725b9-4143-4c65-bb98-2ecb8eef10e4",
+      "candidate_commit": "60f907e5ad65270eba6ee95f59f260f893c8c5fe"
     }
   ]
 }
