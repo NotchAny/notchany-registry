@@ -1,32 +1,28 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "60f907e5ad65270eba6ee95f59f260f893c8c5fe",
-    "decision_id": "239725b9-4143-4c65-bb98-2ecb8eef10e4",
+    "candidate_commit": "df8a31f8f70b4cfe3d2d3222dfa7a140d0b0b837",
+    "decision_id": "b7e2210e-bb15-4e37-8d9d-d489a39e5a19",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 42,
-        "head_sha": "49c5d7bacad187a1ee54569583b199520ae16b8f",
-        "base_sha": "cd65cb4cb069565b12d8c1a4defeb91d5b783eeb",
-        "package_id": "glzlaohuai/copy-full-path",
-        "operation": "create",
+        "pr_number": 44,
+        "head_sha": "6677fb09fe35d00cc782696aa0b3145bee2fd08b",
+        "base_sha": "d2c63197b536dfb119d2a675b78dc6cf2c0b7f72",
+        "package_id": "glzlaohuai/apk-installer",
+        "operation": "update",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/copy-full-path.json": "3fa6865f6300d183d0d5a5c2c5636b9d15cf4021a4ef9a3cbb252a07fcd351b9",
-      "index/v1/index.json": "4c86af13fc6a73233f972aecaa4a1beaeac0f7640b71ac8a81032623173a2df9",
-      "index/v2/index.json": "25dde8b713b43bae86c77e9f8c05dc9ca95f43bda8d78e11992f5f477e64e4f6",
-      "published/glzlaohuai/copy-full-path/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
-      "published/glzlaohuai/copy-full-path/icon.png": "83c296d70867523faea90f9dce65dfd4e432ffe88e5405cf0750b7b98c5aec36",
-      "published/glzlaohuai/copy-full-path/manifest.json": "87ad801fa8826022c4c0622f24c5063ffc25fd360672781fbb46ffde71fe3d1f",
-      "published/glzlaohuai/copy-full-path/package.notchany.json": "8b2666d5bb7ee67f885d2338c49a280c7b296ac0b96d7b880b28befd833cf0fa",
-      "published/glzlaohuai/copy-full-path/screenshots/1.png": "e23d9db827c7b8b76211348d1282366f0c680e62bab6695bf99526de528578d7",
-      "published/glzlaohuai/copy-full-path/screenshots/zh-Hans/1.png": "a215862d96488635e225131790a63433129ca894998cb15c8084c2d47c693f71",
-      "published/state.json": "d485eb8c3220480f2cb84187c1f4023e547b1f01f1b3b3e3ec1a613d00b5f767"
+      "history/v1/glzlaohuai/apk-installer.json": "21210b1a751f9751f8f66af80c2e210aee599e9e3c2068eed3abe15a80d22f72",
+      "index/v1/index.json": "9d635c28020ab84dec4b111b219ad7b06920fdc42d559e5842d7685d3a3d3d34",
+      "index/v2/index.json": "c3cc3c2baf4bead8ed41ed253f9f56990fa8645da797a98b17d97e4548545a22",
+      "published/glzlaohuai/apk-installer/manifest.json": "14c8a028e679e6de3c9221ace069825586d85fc8d78149e2e20f238435c37ad1",
+      "published/glzlaohuai/apk-installer/package.notchany.json": "dac70124490c7f5d605e0010e9292003634dd2fea98110334b9ac0b4fcf7c31e",
+      "published/state.json": "704d69533191e2c3b403659cd4d56efbcfacc99a1a91f68af1b8af72d54d0927"
     }
   },
-  "signature": "e826d463b8da6ad910fe9b48d64314646275ae285157e1dfc0bb36aaba6272b7"
+  "signature": "00187d922cdce42592a5a2905aff7baae6b6a58b82bbed61e8a0383a9f9e2393"
 }
