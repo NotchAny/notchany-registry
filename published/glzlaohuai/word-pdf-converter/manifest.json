@@ -1,0 +1,22 @@
+{
+  "default_locale" : "zh-Hans",
+  "descriptions" : {
+    "zh-Hans" : "将 Word 与 PDF 文件直接拖到 NotchAny，即可在原文件夹中完成格式转换。\n\n- 支持 DOC、DOCX 转 PDF\n- 支持 PDF 转 DOCX，并逐页保留图表、表格、图片与原始排版\n- 能识别部分以 `.doc` 扩展名保存的网页封装文档\n- 批量拖入多个文件时可连续处理\n- 文件名冲突时自动添加数字后缀，不覆盖原文件\n\nPDF 转 DOCX 采用逐页高清图片嵌入，以版式保真为优先，因此页面内文字和图表不能直接编辑。\n\n依赖：LibreOffice、Poppler、Python 3。"
+  },
+  "license" : "MIT",
+  "manifest_version" : 1,
+  "names" : {
+    "zh-Hans" : "Word ↔ PDF 互转"
+  },
+  "summaries" : {
+    "zh-Hans" : "拖放 DOC、DOCX 或 PDF，快速完成 Word 与 PDF 双向转换"
+  },
+  "tags" : [
+    "pdf",
+    "word",
+    "documents",
+    "conversion",
+    "productivity"
+  ],
+  "version" : "1.0.0"
+}
