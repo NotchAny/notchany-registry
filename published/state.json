@@ -394,6 +394,38 @@
         ],
         "approved_by": []
       }
+    },
+    "glzlaohuai/word-pdf-converter": {
+      "active": true,
+      "tree_hash": "beca5166f28030870241bbbded64517239199af13ebd4bfa85e1cc9fc466221f",
+      "source_commit": "87f2c4419a1ba3bcb765c05f7541c00c28db892c",
+      "first_published_at": "2026-10-20T07:24:09Z",
+      "release": {
+        "version": "1.0.0",
+        "sha256": "86c23b834da1cf9085b6a1c64c5b69720add5c0324a787cd6bf619b4786cae68",
+        "source_commit": "87f2c4419a1ba3bcb765c05f7541c00c28db892c",
+        "merged_at": "2026-10-20T07:24:10Z",
+        "published_at": "2026-10-20T07:24:09Z",
+        "pr": {
+          "number": 46,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/46",
+          "title": "新增 word-pdf-converter v1.0.0",
+          "body": "首次发布 Word ↔ PDF 互转动作。\n\n- 支持 DOC、DOCX、PDF 拖放转换\n- PDF 转 DOCX 保留图表、表格、图片与分页\n- 修复伪 DOC 网页封装文件的转换问题\n- 自动处理同名输出文件\n- 使用 Python 标准库生成 DOCX，无额外 Python 包依赖",
+          "author": {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        },
+        "contributors": [
+          {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        ],
+        "approved_by": []
+      }
     }
   },
   "decisions": [
@@ -460,6 +492,10 @@
     {
       "id": "b7e2210e-bb15-4e37-8d9d-d489a39e5a19",
       "candidate_commit": "df8a31f8f70b4cfe3d2d3222dfa7a140d0b0b837"
+    },
+    {
+      "id": "e0e0a265-cc6d-40fc-b817-52517703fdb1",
+      "candidate_commit": "87f2c4419a1ba3bcb765c05f7541c00c28db892c"
     }
   ]
 }

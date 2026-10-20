@@ -1,6 +1,6 @@
 {
   "index_schema": 1,
-  "generated_at": "2026-10-10T10:50:34Z",
+  "generated_at": "2026-10-20T07:24:09Z",
   "packages": [
     {
       "names": {
@@ -481,6 +481,69 @@
       },
       "published_at": "2026-10-07T04:58:10Z",
       "updated_at": "2026-10-07T04:58:10Z"
+    },
+    {
+      "names": {
+        "zh-Hans": "Word ↔ PDF 互转"
+      },
+      "summaries": {
+        "zh-Hans": "拖放 DOC、DOCX 或 PDF，快速完成 Word 与 PDF 双向转换"
+      },
+      "descriptions": {
+        "zh-Hans": "将 Word 与 PDF 文件直接拖到 NotchAny，即可在原文件夹中完成格式转换。\n\n- 支持 DOC、DOCX 转 PDF\n- 支持 PDF 转 DOCX，并逐页保留图表、表格、图片与原始排版\n- 能识别部分以 `.doc` 扩展名保存的网页封装文档\n- 批量拖入多个文件时可连续处理\n- 文件名冲突时自动添加数字后缀，不覆盖原文件\n\nPDF 转 DOCX 采用逐页高清图片嵌入，以版式保真为优先，因此页面内文字和图表不能直接编辑。\n\n依赖：LibreOffice、Poppler、Python 3。"
+      },
+      "default_locale": "zh-Hans",
+      "version": "1.0.0",
+      "tags": [
+        "pdf",
+        "word",
+        "documents",
+        "conversion",
+        "productivity"
+      ],
+      "license": "MIT",
+      "package_id": "glzlaohuai/word-pdf-converter",
+      "path": "published/glzlaohuai/word-pdf-converter/package.notchany.json",
+      "icon_path": "published/glzlaohuai/word-pdf-converter/icon.png",
+      "id": "notchany.custom.shell.word-pdf-converter",
+      "kind": "action",
+      "action_kind": "shell",
+      "input_kind": "filesOnly",
+      "envelope_version": 9,
+      "sha256": "86c23b834da1cf9085b6a1c64c5b69720add5c0324a787cd6bf619b4786cae68",
+      "size_bytes": 377869,
+      "requires": [
+        "soffice",
+        "python3",
+        "pdftoppm",
+        "pdfinfo"
+      ],
+      "has_parameters": false,
+      "has_notification": false,
+      "accepts": {
+        "extensions": [
+          "doc",
+          "docx",
+          "pdf"
+        ]
+      },
+      "dependency_hints": {
+        "pdfinfo": {
+          "brew": "poppler"
+        },
+        "pdftoppm": {
+          "brew": "poppler"
+        },
+        "python3": {
+          "brew": "python"
+        }
+      },
+      "interpreter": "shell",
+      "screenshots": [
+        "published/glzlaohuai/word-pdf-converter/screenshots/1.png"
+      ],
+      "published_at": "2026-10-20T07:24:09Z",
+      "updated_at": "2026-10-20T07:24:09Z"
     },
     {
       "names": {

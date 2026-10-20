@@ -1,28 +1,31 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "df8a31f8f70b4cfe3d2d3222dfa7a140d0b0b837",
-    "decision_id": "b7e2210e-bb15-4e37-8d9d-d489a39e5a19",
+    "candidate_commit": "87f2c4419a1ba3bcb765c05f7541c00c28db892c",
+    "decision_id": "e0e0a265-cc6d-40fc-b817-52517703fdb1",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 44,
-        "head_sha": "6677fb09fe35d00cc782696aa0b3145bee2fd08b",
-        "base_sha": "d2c63197b536dfb119d2a675b78dc6cf2c0b7f72",
-        "package_id": "glzlaohuai/apk-installer",
-        "operation": "update",
+        "pr_number": 46,
+        "head_sha": "6883b9464b75bf164d9f84386cf4028641cceb46",
+        "base_sha": "31e5ac1394a87840339e7227e6d7f979f47720ee",
+        "package_id": "glzlaohuai/word-pdf-converter",
+        "operation": "create",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/apk-installer.json": "21210b1a751f9751f8f66af80c2e210aee599e9e3c2068eed3abe15a80d22f72",
-      "index/v1/index.json": "9d635c28020ab84dec4b111b219ad7b06920fdc42d559e5842d7685d3a3d3d34",
-      "index/v2/index.json": "c3cc3c2baf4bead8ed41ed253f9f56990fa8645da797a98b17d97e4548545a22",
-      "published/glzlaohuai/apk-installer/manifest.json": "14c8a028e679e6de3c9221ace069825586d85fc8d78149e2e20f238435c37ad1",
-      "published/glzlaohuai/apk-installer/package.notchany.json": "dac70124490c7f5d605e0010e9292003634dd2fea98110334b9ac0b4fcf7c31e",
-      "published/state.json": "704d69533191e2c3b403659cd4d56efbcfacc99a1a91f68af1b8af72d54d0927"
+      "history/v1/glzlaohuai/word-pdf-converter.json": "82a75e2ec7ab01d8e43b5e219ca134819517509d2668f9d8a95e7bccced9d47c",
+      "index/v1/index.json": "30f11b259784ea31714e40ecd0a26d2ed05d6c0cfd33c25124b478f3bbec4f6c",
+      "index/v2/index.json": "96ea6e756d5fc03218b0faaa9514be86985a384d38ab59ff646d2015c6f35d16",
+      "published/glzlaohuai/word-pdf-converter/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
+      "published/glzlaohuai/word-pdf-converter/icon.png": "b898fe0bd956c161e81e7bd282415a1b97d2371f603c57bd3241b05da57773c4",
+      "published/glzlaohuai/word-pdf-converter/manifest.json": "aa178d1f65a1b8319c6e4f34337f6b4142023a9ab848c9c36bf067b919dd306e",
+      "published/glzlaohuai/word-pdf-converter/package.notchany.json": "86c23b834da1cf9085b6a1c64c5b69720add5c0324a787cd6bf619b4786cae68",
+      "published/glzlaohuai/word-pdf-converter/screenshots/1.png": "a69417b3b5cdc0001ea7d189a6e22b0e079e406565db5034d5272c9a8e4cc86d",
+      "published/state.json": "23168882073ff26f637a78abe979961d8cd1ac0d7e5d8c39250f2c24c4824205"
     }
   },
-  "signature": "00187d922cdce42592a5a2905aff7baae6b6a58b82bbed61e8a0383a9f9e2393"
+  "signature": "9b681f3f02903fb2b08d995485e3c464b717e2f1051b2dac4170f3d1784154ac"
 }
