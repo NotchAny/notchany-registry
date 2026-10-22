@@ -1,6 +1,6 @@
 {
   "index_schema": 2,
-  "generated_at": "2026-10-22T06:54:52Z",
+  "generated_at": "2026-10-22T08:39:19Z",
   "packages": [
     {
       "names": {
@@ -353,6 +353,55 @@
       "published_at": "2026-10-22T06:54:52Z",
       "updated_at": "2026-10-22T06:54:52Z",
       "history_path": "history/v1/glzlaohuai/grand-fireworks.json"
+    },
+    {
+      "names": {
+        "en": "Menu Bar Mirror",
+        "zh-Hans": "菜单栏镜像"
+      },
+      "summaries": {
+        "en": "Mirror and click third-party macOS menu bar items from the notch.",
+        "zh-Hans": "在刘海中镜像并点击第三方 macOS 菜单栏状态项。"
+      },
+      "descriptions": {
+        "en": "Mirror non-system menu bar status items inside NotchAny. It preserves the live order and visual appearance, supports standard clicks, adapts from one row to multi-row layouts, and refreshes on workspace events with a polling fallback.\n\nRequires Accessibility and Screen Recording permissions. All processing stays on your Mac.",
+        "zh-Hans": "在 NotchAny 刘海中镜像非系统菜单栏状态项，保留实时顺序和图标外观，支持标准单击，并会根据组件尺寸从单行自动调整为多行布局。应用启动、退出、唤醒和空间切换会触发刷新，同时保留低频轮询兜底。\n\n需要辅助功能与屏幕录制权限，所有处理均在本机完成。"
+      },
+      "default_locale": "en",
+      "version": "1.0.0",
+      "tags": [],
+      "license": "MIT",
+      "package_id": "glzlaohuai/menu-bar-mirror",
+      "path": "published/glzlaohuai/menu-bar-mirror/package.notchany.json",
+      "icon_path": "published/glzlaohuai/menu-bar-mirror/icon.png",
+      "id": "notchany.custom.shell.menu-bar-mirror",
+      "kind": "widget",
+      "action_kind": "shell",
+      "input_kind": "none",
+      "envelope_version": 4,
+      "sha256": "84fe0f95b0b3002726e6ae2710ec6ec299c09613b258781aa3ea5091eaf7f895",
+      "size_bytes": 45965,
+      "requires": [
+        "swiftc"
+      ],
+      "has_parameters": false,
+      "has_notification": false,
+      "interpreter": "shell",
+      "screenshots": [
+        "published/glzlaohuai/menu-bar-mirror/screenshots/1.png",
+        "published/glzlaohuai/menu-bar-mirror/screenshots/2.png",
+        "published/glzlaohuai/menu-bar-mirror/screenshots/3.png"
+      ],
+      "localized_screenshots": {
+        "zh-Hans": [
+          "published/glzlaohuai/menu-bar-mirror/screenshots/zh-Hans/1.png",
+          "published/glzlaohuai/menu-bar-mirror/screenshots/zh-Hans/2.png",
+          "published/glzlaohuai/menu-bar-mirror/screenshots/zh-Hans/3.png"
+        ]
+      },
+      "published_at": "2026-10-22T08:39:19Z",
+      "updated_at": "2026-10-22T08:39:19Z",
+      "history_path": "history/v1/glzlaohuai/menu-bar-mirror.json"
     },
     {
       "names": {

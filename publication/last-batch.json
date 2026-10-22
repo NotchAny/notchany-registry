@@ -1,34 +1,36 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "7b80f848dbbd6e368dd0265d67211fa0a083a2d3",
-    "decision_id": "4705c85f-9172-4ce7-83e3-d0e23b9eb101",
+    "candidate_commit": "b4b44d3b11a4f0d8039612d19130600e375c087a",
+    "decision_id": "0757f89f-145b-48ce-8187-a153eb1b1b14",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 48,
-        "head_sha": "b8f138d4fd456973886f015c36fcec8b5454f61d",
-        "base_sha": "8e5dd9a245854acc986964d4d0f418405748693c",
-        "package_id": "glzlaohuai/grand-fireworks",
+        "pr_number": 50,
+        "head_sha": "0d7fbd6382598d0141d180acab94cd7e9303f100",
+        "base_sha": "2a97fe08e6de88b5e1a352abd5988fc737a7c930",
+        "package_id": "glzlaohuai/menu-bar-mirror",
         "operation": "create",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/grand-fireworks.json": "62c2f7e4e2a21dc95a75f305b5c7801e6790696869434ed959c5d922a853a885",
-      "index/v1/index.json": "1743ac5c879485de6a7fbe44bad104abd5d263d9216a8d5486a9ff1bfd6931e6",
-      "index/v2/index.json": "9e1fe69591d9187db1b0c74739b1a5d3fd320cf3b1ced4aef050e1fa6df9dcde",
-      "published/glzlaohuai/grand-fireworks/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
-      "published/glzlaohuai/grand-fireworks/icon.png": "c2abcbebce2bdb36cac48cc22c2c66fcc3959005032bb8ccee5b3fd73a2ae145",
-      "published/glzlaohuai/grand-fireworks/manifest.json": "4907166a3f27b7c206ffe83471373bc32fb3dd41c982145f1826a12e23dd127d",
-      "published/glzlaohuai/grand-fireworks/package.notchany.json": "b01ce3735b394af6158f284abd7bc5e90f166905193c99ab836fed0551059e43",
-      "published/glzlaohuai/grand-fireworks/screenshots/1.png": "8a449bb410649e7cf2ecf04467f4474848a66e77318835aec4e6cf51d3c558d7",
-      "published/glzlaohuai/grand-fireworks/screenshots/2.png": "544149176912f7525dfc76a9285cc319a31d06af5e048b693f64bf85759bac7d",
-      "published/glzlaohuai/grand-fireworks/screenshots/zh-Hans/1.png": "c48c6b29f2c71036df0b3bef355b57092c94d15f7262eba5c6839b152f9ab0e8",
-      "published/glzlaohuai/grand-fireworks/screenshots/zh-Hans/2.png": "544149176912f7525dfc76a9285cc319a31d06af5e048b693f64bf85759bac7d",
-      "published/state.json": "014fe428ad7220628fc7b768404ee7e2be2ba5943577d0668384ae1e954ea920"
+      "history/v1/glzlaohuai/menu-bar-mirror.json": "dd28f57bc314acc1aef064205831bd65f923ce760823730dda02eec1af5b8422",
+      "index/v1/index.json": "a62e36cb14f261d8e2b9881f100aa2d7bfe142654801e7aec6e2886eb8214c3a",
+      "index/v2/index.json": "f517e83a800513b085847d2592c6d5c77b291de069fa7a092d34c51354149147",
+      "published/glzlaohuai/menu-bar-mirror/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
+      "published/glzlaohuai/menu-bar-mirror/icon.png": "94d01815a31e33636d944b5eb836f17ce8a311d74c90dca4e79faa0622f96558",
+      "published/glzlaohuai/menu-bar-mirror/manifest.json": "b3ad272374adf390a41919aec848c9d2f05a4b448831a7a1251a24a64eece1ce",
+      "published/glzlaohuai/menu-bar-mirror/package.notchany.json": "84fe0f95b0b3002726e6ae2710ec6ec299c09613b258781aa3ea5091eaf7f895",
+      "published/glzlaohuai/menu-bar-mirror/screenshots/1.png": "51e9aeaad40fee0fe4543d1939198edcc4529764a4bf680accf3a8a233b51de3",
+      "published/glzlaohuai/menu-bar-mirror/screenshots/2.png": "70f350ff1a36b05ce683351d0f76cd3b05447755169110c29c405bef589e3f02",
+      "published/glzlaohuai/menu-bar-mirror/screenshots/3.png": "e4ae33fa4a70cc5973000d077298c3f59077b16e8f080071c873b9be69b6e27c",
+      "published/glzlaohuai/menu-bar-mirror/screenshots/zh-Hans/1.png": "51e9aeaad40fee0fe4543d1939198edcc4529764a4bf680accf3a8a233b51de3",
+      "published/glzlaohuai/menu-bar-mirror/screenshots/zh-Hans/2.png": "70f350ff1a36b05ce683351d0f76cd3b05447755169110c29c405bef589e3f02",
+      "published/glzlaohuai/menu-bar-mirror/screenshots/zh-Hans/3.png": "e4ae33fa4a70cc5973000d077298c3f59077b16e8f080071c873b9be69b6e27c",
+      "published/state.json": "df29c3acc1a01becd1051ed0897217b4cecee03c6c4ee97c528cacf670a5deda"
     }
   },
-  "signature": "97072f0ef1476049e5c0a2e1007538101965b084a7adc55d47595747ed92f5ca"
+  "signature": "8a0f71f451f78594f76c4389467a6a400c7da18da1477df4142a081acd5ef7a4"
 }

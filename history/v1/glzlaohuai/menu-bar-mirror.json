@@ -1,0 +1,39 @@
+{
+  "history_schema": 1,
+  "package_id": "glzlaohuai/menu-bar-mirror",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "sha256": "84fe0f95b0b3002726e6ae2710ec6ec299c09613b258781aa3ea5091eaf7f895",
+      "source_commit": "b4b44d3b11a4f0d8039612d19130600e375c087a",
+      "merged_at": "2026-10-22T08:39:20Z",
+      "published_at": "2026-10-22T08:39:19Z",
+      "pr": {
+        "number": 50,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/50",
+        "title": "Add Menu Bar Mirror v1.0.0",
+        "body": "Initial release of Menu Bar Mirror.\n\n- Mirrors non-system macOS menu bar status items in NotchAny\n- Preserves live order and current icon appearance\n- Supports standard AXPress clicks\n- Adapts between single-row and multi-row layouts\n- Refreshes on workspace events with a polling fallback\n- Keeps all processing local",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    }
+  ],
+  "contributors": [
+    {
+      "github_user_id": "2596885",
+      "login": "glzlaohuai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+    }
+  ]
+}
