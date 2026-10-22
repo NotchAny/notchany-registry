@@ -1,31 +1,34 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "87f2c4419a1ba3bcb765c05f7541c00c28db892c",
-    "decision_id": "e0e0a265-cc6d-40fc-b817-52517703fdb1",
+    "candidate_commit": "7b80f848dbbd6e368dd0265d67211fa0a083a2d3",
+    "decision_id": "4705c85f-9172-4ce7-83e3-d0e23b9eb101",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 46,
-        "head_sha": "6883b9464b75bf164d9f84386cf4028641cceb46",
-        "base_sha": "31e5ac1394a87840339e7227e6d7f979f47720ee",
-        "package_id": "glzlaohuai/word-pdf-converter",
+        "pr_number": 48,
+        "head_sha": "b8f138d4fd456973886f015c36fcec8b5454f61d",
+        "base_sha": "8e5dd9a245854acc986964d4d0f418405748693c",
+        "package_id": "glzlaohuai/grand-fireworks",
         "operation": "create",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/word-pdf-converter.json": "82a75e2ec7ab01d8e43b5e219ca134819517509d2668f9d8a95e7bccced9d47c",
-      "index/v1/index.json": "30f11b259784ea31714e40ecd0a26d2ed05d6c0cfd33c25124b478f3bbec4f6c",
-      "index/v2/index.json": "96ea6e756d5fc03218b0faaa9514be86985a384d38ab59ff646d2015c6f35d16",
-      "published/glzlaohuai/word-pdf-converter/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
-      "published/glzlaohuai/word-pdf-converter/icon.png": "b898fe0bd956c161e81e7bd282415a1b97d2371f603c57bd3241b05da57773c4",
-      "published/glzlaohuai/word-pdf-converter/manifest.json": "aa178d1f65a1b8319c6e4f34337f6b4142023a9ab848c9c36bf067b919dd306e",
-      "published/glzlaohuai/word-pdf-converter/package.notchany.json": "86c23b834da1cf9085b6a1c64c5b69720add5c0324a787cd6bf619b4786cae68",
-      "published/glzlaohuai/word-pdf-converter/screenshots/1.png": "a69417b3b5cdc0001ea7d189a6e22b0e079e406565db5034d5272c9a8e4cc86d",
-      "published/state.json": "23168882073ff26f637a78abe979961d8cd1ac0d7e5d8c39250f2c24c4824205"
+      "history/v1/glzlaohuai/grand-fireworks.json": "62c2f7e4e2a21dc95a75f305b5c7801e6790696869434ed959c5d922a853a885",
+      "index/v1/index.json": "1743ac5c879485de6a7fbe44bad104abd5d263d9216a8d5486a9ff1bfd6931e6",
+      "index/v2/index.json": "9e1fe69591d9187db1b0c74739b1a5d3fd320cf3b1ced4aef050e1fa6df9dcde",
+      "published/glzlaohuai/grand-fireworks/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
+      "published/glzlaohuai/grand-fireworks/icon.png": "c2abcbebce2bdb36cac48cc22c2c66fcc3959005032bb8ccee5b3fd73a2ae145",
+      "published/glzlaohuai/grand-fireworks/manifest.json": "4907166a3f27b7c206ffe83471373bc32fb3dd41c982145f1826a12e23dd127d",
+      "published/glzlaohuai/grand-fireworks/package.notchany.json": "b01ce3735b394af6158f284abd7bc5e90f166905193c99ab836fed0551059e43",
+      "published/glzlaohuai/grand-fireworks/screenshots/1.png": "8a449bb410649e7cf2ecf04467f4474848a66e77318835aec4e6cf51d3c558d7",
+      "published/glzlaohuai/grand-fireworks/screenshots/2.png": "544149176912f7525dfc76a9285cc319a31d06af5e048b693f64bf85759bac7d",
+      "published/glzlaohuai/grand-fireworks/screenshots/zh-Hans/1.png": "c48c6b29f2c71036df0b3bef355b57092c94d15f7262eba5c6839b152f9ab0e8",
+      "published/glzlaohuai/grand-fireworks/screenshots/zh-Hans/2.png": "544149176912f7525dfc76a9285cc319a31d06af5e048b693f64bf85759bac7d",
+      "published/state.json": "014fe428ad7220628fc7b768404ee7e2be2ba5943577d0668384ae1e954ea920"
     }
   },
-  "signature": "9b681f3f02903fb2b08d995485e3c464b717e2f1051b2dac4170f3d1784154ac"
+  "signature": "97072f0ef1476049e5c0a2e1007538101965b084a7adc55d47595747ed92f5ca"
 }

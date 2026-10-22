@@ -1,0 +1,24 @@
+{
+  "default_locale" : "en",
+  "descriptions" : {
+    "en" : "Click the action to launch an approximately 10-second fullscreen fireworks show.\\n\\nThe sequence combines flowers, butterflies, hearts, stars, geometric patterns, willows, palms, and crackling bursts with layered particles, launch trails, flashes, and haze. Device pixel ratio and particle counts are capped to preserve the grand scale while reducing performance pressure, and the action supports repeated triggering.",
+    "zh-Hans" : "点击动作即可播放约 10 秒的全屏烟花秀。\\n\\n包含花朵、蝴蝶、爱心、星形、几何、柳条、棕榈和爆裂等多种造型，以多层粒子、升空轨迹、闪光与烟雾组成密集高潮。动画限制设备像素比与粒子总量，在保持规模感的同时降低性能压力，并支持重复点击触发。"
+  },
+  "license" : "MIT",
+  "manifest_version" : 1,
+  "names" : {
+    "en" : "Grand Fireworks",
+    "zh-Hans" : "盛大烟花"
+  },
+  "summaries" : {
+    "en" : "Launch a vivid, dense fullscreen fireworks show with one click",
+    "zh-Hans" : "点击即播放绚丽、密集的全屏烟花秀"
+  },
+  "tags" : [
+    "fireworks",
+    "celebration",
+    "fullscreen",
+    "visual-effects"
+  ],
+  "version" : "1.0.0"
+}
