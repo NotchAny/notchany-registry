@@ -7,12 +7,12 @@
   "license" : "MIT",
   "manifest_version" : 1,
   "names" : {
-    "en" : "Menu Bar Mirror",
-    "zh-Hans" : "菜单栏镜像"
+    "en" : "Menu Bar Control Center",
+    "zh-Hans" : "菜单栏控制中心"
   },
   "summaries" : {
     "en" : "Mirror and click third-party macOS menu bar items from the notch.",
     "zh-Hans" : "在刘海中镜像并点击第三方 macOS 菜单栏状态项。"
   },
-  "version" : "1.0.0"
+  "version" : "1.0.1"
 }
