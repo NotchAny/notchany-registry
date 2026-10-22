@@ -1,0 +1,39 @@
+{
+  "history_schema": 1,
+  "package_id": "glzlaohuai/grand-fireworks",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "sha256": "b01ce3735b394af6158f284abd7bc5e90f166905193c99ab836fed0551059e43",
+      "source_commit": "7b80f848dbbd6e368dd0265d67211fa0a083a2d3",
+      "merged_at": "2026-10-22T06:54:53Z",
+      "published_at": "2026-10-22T06:54:52Z",
+      "pr": {
+        "number": 48,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/48",
+        "title": "Add Grand Fireworks v1.0.0",
+        "body": "Initial release: adds a one-click fullscreen fireworks show with flowers, butterflies, hearts, stars, geometric patterns, willows, palms, and crackling bursts. Performance and repeat triggering have been optimized.",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    }
+  ],
+  "contributors": [
+    {
+      "github_user_id": "2596885",
+      "login": "glzlaohuai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+    }
+  ]
+}
