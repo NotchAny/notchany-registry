@@ -3,6 +3,32 @@
   "package_id": "glzlaohuai/menu-bar-mirror",
   "releases": [
     {
+      "version": "1.0.1",
+      "sha256": "1253a9f1903eb27b7cc6d31dc16efb8dba98add4b67fe95e786d583d788a6e41",
+      "source_commit": "027fb5b41d5e1e17f600a9b979a3a55e3d389c5f",
+      "merged_at": "2026-10-22T09:58:46Z",
+      "published_at": "2026-10-22T09:58:46Z",
+      "pr": {
+        "number": 52,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/52",
+        "title": "Rename to Menu Bar Control Center v1.0.1",
+        "body": "Rename the widget to Menu Bar Control Center and align its icon with the macOS Control Center visual language.\n\n- Renames the widget to Menu Bar Control Center / 菜单栏控制中心\n- Uses the native switch.2 system symbol\n- Continues to list only non-system menu bar items\n- Updates helper permission labels in English and Simplified Chinese\n- Keeps the existing responsive layout, live refresh, and click behavior",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    },
+    {
       "version": "1.0.0",
       "sha256": "84fe0f95b0b3002726e6ae2710ec6ec299c09613b258781aa3ea5091eaf7f895",
       "source_commit": "b4b44d3b11a4f0d8039612d19130600e375c087a",
