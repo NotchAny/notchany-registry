@@ -1,0 +1,18 @@
+{
+  "default_locale" : "en",
+  "descriptions" : {
+    "en" : "Mirror non-system menu bar status items inside NotchAny. It preserves the live order and visual appearance, supports standard clicks, adapts from one row to multi-row layouts, and refreshes on workspace events with a polling fallback.\n\nRequires Accessibility and Screen Recording permissions. All processing stays on your Mac.",
+    "zh-Hans" : "在 NotchAny 刘海中镜像非系统菜单栏状态项，保留实时顺序和图标外观，支持标准单击，并会根据组件尺寸从单行自动调整为多行布局。应用启动、退出、唤醒和空间切换会触发刷新，同时保留低频轮询兜底。\n\n需要辅助功能与屏幕录制权限，所有处理均在本机完成。"
+  },
+  "license" : "MIT",
+  "manifest_version" : 1,
+  "names" : {
+    "en" : "Menu Bar Mirror",
+    "zh-Hans" : "菜单栏镜像"
+  },
+  "summaries" : {
+    "en" : "Mirror and click third-party macOS menu bar items from the notch.",
+    "zh-Hans" : "在刘海中镜像并点击第三方 macOS 菜单栏状态项。"
+  },
+  "version" : "1.0.0"
+}
