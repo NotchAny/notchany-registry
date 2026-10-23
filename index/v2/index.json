@@ -1,6 +1,6 @@
 {
   "index_schema": 2,
-  "generated_at": "2026-10-22T09:58:46Z",
+  "generated_at": "2026-10-23T08:49:58Z",
   "packages": [
     {
       "names": {
@@ -489,6 +489,57 @@
       "published_at": "2026-10-09T04:14:15Z",
       "updated_at": "2026-10-09T04:14:15Z",
       "history_path": "history/v1/glzlaohuai/rainbow-praise.json"
+    },
+    {
+      "names": {
+        "en": "Screenshot Markup",
+        "zh-Hans": "截图标注"
+      },
+      "summaries": {
+        "en": "Capture and annotate screenshots in a native macOS editor.",
+        "zh-Hans": "使用原生 macOS 编辑器截图、标注并保护敏感信息。"
+      },
+      "descriptions": {
+        "en": "Capture a screen region or open an image in a native macOS editor.\n\nUse a contextual inspector that shows only the settings for the active tool or selected object. Add text with optional custom backgrounds, five speech-bubble styles, arrows, shapes, highlights, magnifiers, mosaic, strong blur, privacy redaction, adjustable watermarks, preset frames, and stickers. Copy the finished image or export it as PNG. No browser or external service is used.",
+        "zh-Hans": "截取屏幕区域或打开图片，在原生 macOS 编辑器中完成标注。\n\n右侧上下文属性面板只显示当前工具或已选对象可用的设置。支持可关闭或自定义颜色的文字背景、5 种对话气泡、箭头、图形、高亮、圈选放大、马赛克、强模糊、隐私遮盖、可调透明度和角度的水印、预设边框和贴纸。完成后可复制图片或导出 PNG，全程不使用浏览器或外部服务。"
+      },
+      "default_locale": "en",
+      "version": "1.0.0",
+      "tags": [],
+      "license": "MIT",
+      "package_id": "glzlaohuai/screenshot-markup-editor",
+      "path": "published/glzlaohuai/screenshot-markup-editor/package.notchany.json",
+      "icon_path": "published/glzlaohuai/screenshot-markup-editor/icon.png",
+      "id": "notchany.custom.shell.screenshot-markup-editor",
+      "kind": "action",
+      "action_kind": "shell",
+      "input_kind": "both",
+      "envelope_version": 9,
+      "sha256": "3be3fb73dd9aa180fa3c6abe3ff36a42a68de4301f9fd28ed5a8e9282a132aad",
+      "size_bytes": 2401452,
+      "requires": [],
+      "has_parameters": false,
+      "has_notification": false,
+      "accepts": {
+        "count": "single",
+        "kinds": [
+          "image"
+        ]
+      },
+      "interpreter": "python",
+      "screenshots": [
+        "published/glzlaohuai/screenshot-markup-editor/screenshots/1.png",
+        "published/glzlaohuai/screenshot-markup-editor/screenshots/2.png"
+      ],
+      "localized_screenshots": {
+        "zh-Hans": [
+          "published/glzlaohuai/screenshot-markup-editor/screenshots/zh-Hans/1.png",
+          "published/glzlaohuai/screenshot-markup-editor/screenshots/zh-Hans/2.png"
+        ]
+      },
+      "published_at": "2026-10-23T08:49:58Z",
+      "updated_at": "2026-10-23T08:49:58Z",
+      "history_path": "history/v1/glzlaohuai/screenshot-markup-editor.json"
     },
     {
       "names": {
