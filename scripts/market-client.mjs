@@ -15,7 +15,7 @@ export async function signedMarketPost(path, body, env = process.env, options = 
       "X-NotchAny-Signature": signature,
     },
     body: bodyText,
-    signal: AbortSignal.timeout(10_000),
+    signal: AbortSignal.timeout(30_000),
   });
   const result = await response.json().catch(() => ({}));
   if (!response.ok) {
