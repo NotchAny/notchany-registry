@@ -490,6 +490,38 @@
         ],
         "approved_by": []
       }
+    },
+    "glzlaohuai/screenshot-markup-editor": {
+      "active": true,
+      "tree_hash": "8663f39434537d5c0d7ebf2593401bf7b840c513c4e12ac352fca2f70e4ff7e9",
+      "source_commit": "94995b5959af50227f23938b73a99e63ba7081c5",
+      "first_published_at": "2026-10-23T08:49:58Z",
+      "release": {
+        "version": "1.0.0",
+        "sha256": "3be3fb73dd9aa180fa3c6abe3ff36a42a68de4301f9fd28ed5a8e9282a132aad",
+        "source_commit": "94995b5959af50227f23938b73a99e63ba7081c5",
+        "merged_at": "2026-10-23T08:49:58Z",
+        "published_at": "2026-10-23T08:49:58Z",
+        "pr": {
+          "number": 54,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/54",
+          "title": "Add screenshot-markup-editor v1.0.0",
+          "body": "Initial release of the native screenshot capture and annotation editor with complete English and Simplified Chinese support, contextual tool settings, speech-bubble presets, customizable text backgrounds, and adjustable watermarks.",
+          "author": {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        },
+        "contributors": [
+          {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        ],
+        "approved_by": []
+      }
     }
   },
   "decisions": [
@@ -572,6 +604,10 @@
     {
       "id": "903983fd-d60f-4fe7-9660-2124686a80c2",
       "candidate_commit": "027fb5b41d5e1e17f600a9b979a3a55e3d389c5f"
+    },
+    {
+      "id": "931b391a-1236-46ad-833f-0a93968aad10",
+      "candidate_commit": "94995b5959af50227f23938b73a99e63ba7081c5"
     }
   ]
 }
