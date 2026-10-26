@@ -1,34 +1,34 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "94995b5959af50227f23938b73a99e63ba7081c5",
-    "decision_id": "931b391a-1236-46ad-833f-0a93968aad10",
+    "candidate_commit": "48373dfcfcefe423db5bb52c1897fe0dc253dc79",
+    "decision_id": "121a51fb-66e4-41f4-9fc3-21b817b56061",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 54,
-        "head_sha": "9b10c0c506e9552b0f03aa0796867e96ff7d8846",
-        "base_sha": "18b8eb39a7548c69c85aa40fd6559ee3b29f1424",
-        "package_id": "glzlaohuai/screenshot-markup-editor",
+        "pr_number": 58,
+        "head_sha": "cf9f9825a4f792fcd034c9b00cc71a9de7950e4c",
+        "base_sha": "37c16c03598607ca7ab979d9305132eb7731ec2c",
+        "package_id": "glzlaohuai/keyboard-mouse-cleaning",
         "operation": "create",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/screenshot-markup-editor.json": "2ea64a21a503cca3bd7e6fb8fef927b3266c055bc3151eea52f8ff64213f3233",
-      "index/v1/index.json": "49aee0388ccb2b1c84f9a07a04d094d45ada80e0547fde11d77361ca6f5f0641",
-      "index/v2/index.json": "ee8a37519036eb1ce71e168464c6f8f845456caf1a28df8b27f052c92f88461d",
-      "published/glzlaohuai/screenshot-markup-editor/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
-      "published/glzlaohuai/screenshot-markup-editor/icon.png": "48230fc6e03a77a89d8e48e08dde5235d5775dd0b61446a49966779823bd94d4",
-      "published/glzlaohuai/screenshot-markup-editor/manifest.json": "c54081ed4179e27dcd5fca2fc6e2246b97dd22fbe47a4be73e961a56c037284c",
-      "published/glzlaohuai/screenshot-markup-editor/package.notchany.json": "3be3fb73dd9aa180fa3c6abe3ff36a42a68de4301f9fd28ed5a8e9282a132aad",
-      "published/glzlaohuai/screenshot-markup-editor/screenshots/1.png": "80553e79fba5b7a2a4b5c8e0f6ba2b22096e420d474c46422942feae1610433c",
-      "published/glzlaohuai/screenshot-markup-editor/screenshots/2.png": "f218ecda2f69eaf6b690922412f7c45b0d8b619d0eaf1030ca46743120f76a40",
-      "published/glzlaohuai/screenshot-markup-editor/screenshots/zh-Hans/1.png": "4d398f693b50c7b1060afbf5e6185ce7e4ad2da0d0dd207e9cf0951dd4e521aa",
-      "published/glzlaohuai/screenshot-markup-editor/screenshots/zh-Hans/2.png": "ca0a0172bdb2e018fd4c01a36d862deb6afda44234f93d97118c17e733160090",
-      "published/state.json": "8b5bbe6d268e41d7d9be5cdf281e7211940786130a2deffc6bf2862c39a5e702"
+      "history/v1/glzlaohuai/keyboard-mouse-cleaning.json": "754bf18cc72d951aab2a466fa5fa52867cffe014c8137ae6b6be6c58bae90b1f",
+      "index/v1/index.json": "d86749bc304235c695add76e6688d3560292d9753a0c4af3b156549e52421718",
+      "index/v2/index.json": "75b8421af8064bfe9257dad85760d043893cd474274fc3ae96efa6d675053c89",
+      "published/glzlaohuai/keyboard-mouse-cleaning/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
+      "published/glzlaohuai/keyboard-mouse-cleaning/icon.png": "bac2961a29f82992ad51cf058d3e81f5d19ff0f0de1bc9b3e138e7d5dcc72934",
+      "published/glzlaohuai/keyboard-mouse-cleaning/manifest.json": "548d1d55d24992e5c7e33205dc5d266a62a96c8a640cfdd0694ad59530ad98db",
+      "published/glzlaohuai/keyboard-mouse-cleaning/package.notchany.json": "594e617b88c02be300b0f6c6556cbb4a446cf9b8ae8ea6eff25378b421f69e9f",
+      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/1.png": "d7cdb69c9184b8ea821a4229f744051343ce9d6a3c5cde72d5b98ddcf925dfdc",
+      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/2.png": "e391070d992f64bf628d630110b6acd8d42de625a7da813740a1b4b3c8eafbc1",
+      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/zh-Hans/1.png": "1f8edff8eec24be36cb9f8820becdb3c1d050abadad48a6c3ba52b679f68881b",
+      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/zh-Hans/2.png": "76e5b601b42f99311859d6e91128531f59a0df6647e8217ca06db382744f206b",
+      "published/state.json": "6eb28e622013393552cbfc8bad1a35d7bed019310bd490f42b6c5ca9d31855b6"
     }
   },
-  "signature": "ad04c7bc8618031ee7a28596aa2a0de010c67be6ea862c9d759375a8c224947a"
+  "signature": "7ca99834458e8ec52c225c092acebc3ac34e27352bd2d44a67e70cce7472758d"
 }

@@ -522,6 +522,38 @@
         ],
         "approved_by": []
       }
+    },
+    "glzlaohuai/keyboard-mouse-cleaning": {
+      "active": true,
+      "tree_hash": "249209c073b6162468daab75c2a92cb09b4355469a98ec694796b3a336516035",
+      "source_commit": "48373dfcfcefe423db5bb52c1897fe0dc253dc79",
+      "first_published_at": "2026-10-26T04:09:36Z",
+      "release": {
+        "version": "1.0.0",
+        "sha256": "594e617b88c02be300b0f6c6556cbb4a446cf9b8ae8ea6eff25378b421f69e9f",
+        "source_commit": "48373dfcfcefe423db5bb52c1897fe0dc253dc79",
+        "merged_at": "2026-10-26T04:09:37Z",
+        "published_at": "2026-10-26T04:09:36Z",
+        "pr": {
+          "number": 58,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/58",
+          "title": "Add Keyboard & Mouse Cleaning v1.0.0",
+          "body": "Add an English and Simplified Chinese keyboard/mouse cleaning action. It blocks keyboard input, mouse buttons, dragging and scrolling, with a dedicated unlock button, a 10-minute automatic release and an emergency shortcut. A red fullscreen glow marks activation; confetti plays after input is restored.\n\nThe action carries its Swift helper source, compiles locally on first use and caches the executable. It requires Apple Command Line Tools or Xcode and uses NotchAny's existing Accessibility authorization when launched from NotchAny. There are no user-specific paths, external binary downloads, login items or input recording.\n\nValidation: 17 input-filter checks; first-use cache compilation; English and Chinese permission probes; real start/unlock runs for both languages; bilingual native UI previews and action demo captures.\n",
+          "author": {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        },
+        "contributors": [
+          {
+            "github_user_id": "2596885",
+            "login": "glzlaohuai",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          }
+        ],
+        "approved_by": []
+      }
     }
   },
   "decisions": [
@@ -608,6 +640,10 @@
     {
       "id": "931b391a-1236-46ad-833f-0a93968aad10",
       "candidate_commit": "94995b5959af50227f23938b73a99e63ba7081c5"
+    },
+    {
+      "id": "121a51fb-66e4-41f4-9fc3-21b817b56061",
+      "candidate_commit": "48373dfcfcefe423db5bb52c1897fe0dc253dc79"
     }
   ]
 }
