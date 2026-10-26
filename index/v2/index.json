@@ -1,6 +1,6 @@
 {
   "index_schema": 2,
-  "generated_at": "2026-10-23T08:49:58Z",
+  "generated_at": "2026-10-26T04:09:36Z",
   "packages": [
     {
       "names": {
@@ -353,6 +353,59 @@
       "published_at": "2026-10-22T06:54:52Z",
       "updated_at": "2026-10-22T06:54:52Z",
       "history_path": "history/v1/glzlaohuai/grand-fireworks.json"
+    },
+    {
+      "names": {
+        "zh-Hans": "键鼠清洁",
+        "en": "Keyboard & Mouse Cleaning"
+      },
+      "summaries": {
+        "en": "Lock keyboard and mouse input for cleaning, then click to unlock.",
+        "zh-Hans": "一键锁住键盘与鼠标输入，清洁完点击解除，附红光提醒与彩纸庆祝。"
+      },
+      "descriptions": {
+        "en": "Temporarily block keyboard input, mouse buttons, dragging, and scrolling while you wipe your keyboard and mouse. Pointer movement stays available so you can click **Finish Cleaning**.\n\nA fullscreen red glow marks the start. Confetti plays after input is restored. Click Finish Cleaning when done; held keys or mouse buttons must be released before input resumes. Input unlocks automatically after 10 minutes. Emergency exit: **Control + Option + Command + Esc**, then release all keys.\n\nEnglish and Simplified Chinese names, feedback, and native cleaning screens follow NotchAny's language. The action uses NotchAny's existing Accessibility authorization when launched through NotchAny. Effects respect NotchAny's fullscreen-effect setting and Reduce Motion.\n\n**Requirements:** macOS 13+, NotchAny with Accessibility permission, and Apple Command Line Tools or Xcode (`swiftc`). If tools are missing, run `xcode-select --install` in Terminal and complete installation. The action bundles its Swift source, compiles a helper locally on first use, and caches it for subsequent runs. It does not download an external helper binary, install a login item, record keyboard contents, or transmit mouse/keyboard input.\n\nHardware power buttons, Touch ID, and macOS-reserved system behavior cannot be guaranteed to be blocked.",
+        "zh-Hans": "擦拭键盘、鼠标时，临时屏蔽键盘输入、鼠标按键、拖拽和滚轮。保留指针移动，以便点击画面中央的“结束清洁”。\n\n开启时显示全屏红光，输入恢复后播放彩纸庆祝。结束时需松开所有按键及鼠标按钮，解除点击不会穿透至下方应用。10 分钟后自动解除；紧急解除可按 **Control + Option + Command + Esc**，然后松开所有按键。\n\n动作名称、执行提示和原生清洁画面支持中文与 English，跟随 NotchAny 语言。通过 NotchAny 启动时沿用其辅助功能权限。特效遵循 NotchAny 全屏特效开关与系统“减少动态效果”设置。\n\n**运行要求：** macOS 13 或更新版本、NotchAny 辅助功能权限，以及 Apple 命令行工具或 Xcode（`swiftc`）。缺少工具时，请在终端运行 `xcode-select --install` 并完成安装。动作附带完整 Swift 源码，首次运行在本机编译并缓存，不下载外部辅助程序，不安装登录启动项，不记录或上传键鼠输入。\n\n硬件电源键、Touch ID 和 macOS 保留的系统行为不能保证被屏蔽。"
+      },
+      "default_locale": "en",
+      "version": "1.0.0",
+      "tags": [
+        "utilities",
+        "productivity",
+        "keyboard",
+        "mouse"
+      ],
+      "license": "MIT",
+      "min_app_version": "1.0.16",
+      "package_id": "glzlaohuai/keyboard-mouse-cleaning",
+      "path": "published/glzlaohuai/keyboard-mouse-cleaning/package.notchany.json",
+      "icon_path": "published/glzlaohuai/keyboard-mouse-cleaning/icon.png",
+      "id": "notchany.custom.open.keyboard-mouse-cleaning",
+      "kind": "action",
+      "action_kind": "shell",
+      "input_kind": "none",
+      "envelope_version": 4,
+      "sha256": "594e617b88c02be300b0f6c6556cbb4a446cf9b8ae8ea6eff25378b421f69e9f",
+      "size_bytes": 32364,
+      "requires": [
+        "swiftc"
+      ],
+      "has_parameters": false,
+      "has_notification": false,
+      "interpreter": "shell",
+      "screenshots": [
+        "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/1.png",
+        "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/2.png"
+      ],
+      "localized_screenshots": {
+        "zh-Hans": [
+          "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/zh-Hans/1.png",
+          "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/zh-Hans/2.png"
+        ]
+      },
+      "published_at": "2026-10-26T04:09:36Z",
+      "updated_at": "2026-10-26T04:09:36Z",
+      "history_path": "history/v1/glzlaohuai/keyboard-mouse-cleaning.json"
     },
     {
       "names": {
