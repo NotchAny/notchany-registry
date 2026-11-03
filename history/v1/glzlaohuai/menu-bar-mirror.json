@@ -3,6 +3,37 @@
   "package_id": "glzlaohuai/menu-bar-mirror",
   "releases": [
     {
+      "version": "1.0.2",
+      "sha256": "83b038e2c0bbd0484a53e53be69129a28ff88f3553421612a034df4c615159ca",
+      "source_commit": "581915241d7304a88dbb2ca07eecf0c15f252b53",
+      "merged_at": "2026-11-03T08:07:56Z",
+      "published_at": "2026-11-03T08:07:55Z",
+      "pr": {
+        "number": 68,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/68",
+        "title": "Menu Bar Mirror 1.0.2: native feedback and permission explanations",
+        "body": "Replace the widget's custom toasts with native notch alerts for explicit menu-click failures and permission explanations. Background refresh remains silent and keeps errors inline; successful menu opening adds no feedback that could cover the opened menu. Dismissing the explanation stops the permission request. macOS continues to grant all system permissions.\n\nReserve space for the refresh button beside the permission row: the Chinese grant button was partially covered at the default size. English/Chinese screenshots use the actual App widget renderer with a permission fixture. Existing layout and menu-icon reconciliation remain intact. Requires NotchAny 1.0.19.\n\nValidation: three JavaScript tests cover click errors, transport rejection/busy reset, silent refresh/state updates and cancelled explanations. Three App widget tests cover English, Chinese and fallback French, including the grant button hit target. CLI and registry content checks passed. No third-party menu was clicked and no system permission was requested during testing. Real menus, system permission approval and multi-display/Space behavior remain manual checks.\n",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        },
+        {
+          "github_user_id": "41898282",
+          "login": "github-actions[bot]",
+          "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4"
+        }
+      ],
+      "approved_by": []
+    },
+    {
       "version": "1.0.1",
       "sha256": "1253a9f1903eb27b7cc6d31dc16efb8dba98add4b67fe95e786d583d788a6e41",
       "source_commit": "027fb5b41d5e1e17f600a9b979a3a55e3d389c5f",
@@ -60,6 +91,11 @@
       "github_user_id": "2596885",
       "login": "glzlaohuai",
       "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+    },
+    {
+      "github_user_id": "41898282",
+      "login": "github-actions[bot]",
+      "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4"
     }
   ]
 }

@@ -461,20 +461,20 @@
     },
     "glzlaohuai/menu-bar-mirror": {
       "active": true,
-      "tree_hash": "b708e9ad9c3d72b9d17779d706b25a0cdbe37f7ab0308967e5e19fba265cc6f0",
-      "source_commit": "027fb5b41d5e1e17f600a9b979a3a55e3d389c5f",
+      "tree_hash": "b3b85beaa608c4bffb13b56be535ddffc2cd3f57604304cb512bd1c7ce0c8347",
+      "source_commit": "581915241d7304a88dbb2ca07eecf0c15f252b53",
       "first_published_at": "2026-10-22T08:39:19Z",
       "release": {
-        "version": "1.0.1",
-        "sha256": "1253a9f1903eb27b7cc6d31dc16efb8dba98add4b67fe95e786d583d788a6e41",
-        "source_commit": "027fb5b41d5e1e17f600a9b979a3a55e3d389c5f",
-        "merged_at": "2026-10-22T09:58:46Z",
-        "published_at": "2026-10-22T09:58:46Z",
+        "version": "1.0.2",
+        "sha256": "83b038e2c0bbd0484a53e53be69129a28ff88f3553421612a034df4c615159ca",
+        "source_commit": "581915241d7304a88dbb2ca07eecf0c15f252b53",
+        "merged_at": "2026-11-03T08:07:56Z",
+        "published_at": "2026-11-03T08:07:55Z",
         "pr": {
-          "number": 52,
-          "url": "https://github.com/NotchAny/notchany-registry/pull/52",
-          "title": "Rename to Menu Bar Control Center v1.0.1",
-          "body": "Rename the widget to Menu Bar Control Center and align its icon with the macOS Control Center visual language.\n\n- Renames the widget to Menu Bar Control Center / 菜单栏控制中心\n- Uses the native switch.2 system symbol\n- Continues to list only non-system menu bar items\n- Updates helper permission labels in English and Simplified Chinese\n- Keeps the existing responsive layout, live refresh, and click behavior",
+          "number": 68,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/68",
+          "title": "Menu Bar Mirror 1.0.2: native feedback and permission explanations",
+          "body": "Replace the widget's custom toasts with native notch alerts for explicit menu-click failures and permission explanations. Background refresh remains silent and keeps errors inline; successful menu opening adds no feedback that could cover the opened menu. Dismissing the explanation stops the permission request. macOS continues to grant all system permissions.\n\nReserve space for the refresh button beside the permission row: the Chinese grant button was partially covered at the default size. English/Chinese screenshots use the actual App widget renderer with a permission fixture. Existing layout and menu-icon reconciliation remain intact. Requires NotchAny 1.0.19.\n\nValidation: three JavaScript tests cover click errors, transport rejection/busy reset, silent refresh/state updates and cancelled explanations. Three App widget tests cover English, Chinese and fallback French, including the grant button hit target. CLI and registry content checks passed. No third-party menu was clicked and no system permission was requested during testing. Real menus, system permission approval and multi-display/Space behavior remain manual checks.\n",
           "author": {
             "github_user_id": "2596885",
             "login": "glzlaohuai",
@@ -486,6 +486,11 @@
             "github_user_id": "2596885",
             "login": "glzlaohuai",
             "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          },
+          {
+            "github_user_id": "41898282",
+            "login": "github-actions[bot]",
+            "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4"
           }
         ],
         "approved_by": []
@@ -660,6 +665,10 @@
     {
       "id": "366adf31-c63d-40d8-8f8c-608ccc04b78c",
       "candidate_commit": "747479c52cba3c20d7547a389b6865bf0a650d58"
+    },
+    {
+      "id": "6459ce29-9ff2-4502-9d12-92997ca4ba1f",
+      "candidate_commit": "581915241d7304a88dbb2ca07eecf0c15f252b53"
     }
   ]
 }
