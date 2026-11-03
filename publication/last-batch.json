@@ -1,34 +1,30 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "48373dfcfcefe423db5bb52c1897fe0dc253dc79",
-    "decision_id": "121a51fb-66e4-41f4-9fc3-21b817b56061",
+    "candidate_commit": "7bf0f40c4c10d81620f339eb8d99e8a78ff70a97",
+    "decision_id": "a582f4c2-2889-4829-99b2-7af8b7755c39",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 58,
-        "head_sha": "cf9f9825a4f792fcd034c9b00cc71a9de7950e4c",
-        "base_sha": "37c16c03598607ca7ab979d9305132eb7731ec2c",
-        "package_id": "glzlaohuai/keyboard-mouse-cleaning",
-        "operation": "create",
+        "pr_number": 60,
+        "head_sha": "892bc51db8417f57b4a241a990c86791974deeab",
+        "base_sha": "5ffb5f0dcea64262df4732e13c8d85f3551c8f9f",
+        "package_id": "glzlaohuai/apk-installer",
+        "operation": "update",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/keyboard-mouse-cleaning.json": "754bf18cc72d951aab2a466fa5fa52867cffe014c8137ae6b6be6c58bae90b1f",
-      "index/v1/index.json": "d86749bc304235c695add76e6688d3560292d9753a0c4af3b156549e52421718",
-      "index/v2/index.json": "75b8421af8064bfe9257dad85760d043893cd474274fc3ae96efa6d675053c89",
-      "published/glzlaohuai/keyboard-mouse-cleaning/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
-      "published/glzlaohuai/keyboard-mouse-cleaning/icon.png": "bac2961a29f82992ad51cf058d3e81f5d19ff0f0de1bc9b3e138e7d5dcc72934",
-      "published/glzlaohuai/keyboard-mouse-cleaning/manifest.json": "548d1d55d24992e5c7e33205dc5d266a62a96c8a640cfdd0694ad59530ad98db",
-      "published/glzlaohuai/keyboard-mouse-cleaning/package.notchany.json": "594e617b88c02be300b0f6c6556cbb4a446cf9b8ae8ea6eff25378b421f69e9f",
-      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/1.png": "d7cdb69c9184b8ea821a4229f744051343ce9d6a3c5cde72d5b98ddcf925dfdc",
-      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/2.png": "e391070d992f64bf628d630110b6acd8d42de625a7da813740a1b4b3c8eafbc1",
-      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/zh-Hans/1.png": "1f8edff8eec24be36cb9f8820becdb3c1d050abadad48a6c3ba52b679f68881b",
-      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/zh-Hans/2.png": "76e5b601b42f99311859d6e91128531f59a0df6647e8217ca06db382744f206b",
-      "published/state.json": "6eb28e622013393552cbfc8bad1a35d7bed019310bd490f42b6c5ca9d31855b6"
+      "history/v1/glzlaohuai/apk-installer.json": "ce5315cf7316dc1bc37008d5ced93c4c2a4d19bff4c32af4a0e486f01587d0b4",
+      "index/v1/index.json": "a0157ae9a92a401cb3c0926ed02f62e4c9838772746e8cf5ddeff57ce27d8ecd",
+      "index/v2/index.json": "7a6942f19f51d745a9859a441a6f84884a4d5cbbc097500108b28a0a86fb3f09",
+      "published/glzlaohuai/apk-installer/manifest.json": "baed4e21eee18d4db5c753294dc06e7571cb54d691ae82495dc24c6e303cad07",
+      "published/glzlaohuai/apk-installer/package.notchany.json": "f8a6a653f7537260c71787d31eb9f44faa542210dbe5b9d4af76b0d4618003be",
+      "published/glzlaohuai/apk-installer/screenshots/1.png": "353785c3a5cc01d45cbe93adc6feec98e160d01b05456798c777b43ee1de1c87",
+      "published/glzlaohuai/apk-installer/screenshots/zh-Hans/1.png": "174af197a3e5447b6c0e58d4e33e1ad3bd22ee59dcce8e1fed39629ff778c2c0",
+      "published/state.json": "9c42ad6b56672c96ddc215e4eeb8b4b0e80d7a40f1390affa3db6720ab18081a"
     }
   },
-  "signature": "7ca99834458e8ec52c225c092acebc3ac34e27352bd2d44a67e70cce7472758d"
+  "signature": "e16508b310f92d6c49fcf0ff79412e427fd2a864dc92f20bd42dcdfa8bebab87"
 }

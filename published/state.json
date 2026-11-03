@@ -269,20 +269,20 @@
     },
     "glzlaohuai/apk-installer": {
       "active": true,
-      "tree_hash": "74cdd281cc43828fee839787cd2dcb4ea9cca0a15e272f3854f38c0af088d467",
-      "source_commit": "df8a31f8f70b4cfe3d2d3222dfa7a140d0b0b837",
+      "tree_hash": "bcf63fd9798330756792608b5d5c205ffd8646bd10b9796fff44cc8c7684062f",
+      "source_commit": "7bf0f40c4c10d81620f339eb8d99e8a78ff70a97",
       "first_published_at": "2026-10-09T09:20:25Z",
       "release": {
-        "version": "1.0.1",
-        "sha256": "dac70124490c7f5d605e0010e9292003634dd2fea98110334b9ac0b4fcf7c31e",
-        "source_commit": "df8a31f8f70b4cfe3d2d3222dfa7a140d0b0b837",
-        "merged_at": "2026-10-10T10:50:34Z",
-        "published_at": "2026-10-10T10:50:34Z",
+        "version": "1.0.2",
+        "sha256": "f8a6a653f7537260c71787d31eb9f44faa542210dbe5b9d4af76b0d4618003be",
+        "source_commit": "7bf0f40c4c10d81620f339eb8d99e8a78ff70a97",
+        "merged_at": "2026-11-03T07:52:01Z",
+        "published_at": "2026-11-03T07:52:00Z",
         "pr": {
-          "number": 44,
-          "url": "https://github.com/NotchAny/notchany-registry/pull/44",
-          "title": "Support .apkm split bundles (adb install-multiple)",
-          "body": "## What changed\n\n- Accept `.apkm` (APKMIRROR split bundle) files in addition to `.apk`, both in the action's `accepts` declaration and the drop rule.\n- `.apkm` files are ZIP archives: the action extracts the contained split APKs (`base.apk` first) into the per-execution temp directory and installs them with `adb install-multiple -r`. Single `.apk` files keep the original `adb install -r` path.\n- Debug/test detection (`debuggable` / `testOnly`) now inspects the base APK of the bundle, and the `-t` confirmation flow applies to bundles too.\n- New i18n strings (zh-Hans/en): APKM extraction failure and empty-bundle errors; generalized the file-missing wording.\n\nVerified end-to-end on a real device: extension check, extraction, manifest parse, device selection and `install-multiple` invocation all work.\n\n## 中文说明\n\n- 支持拖入 `.apkm` 分包（APKMirror  bundle），自动解压后用 `adb install-multiple -r` 安装，`base.apk` 排最前。\n- 调试/测试包检测作用于 bundle 的 base APK，`-t` 确认流程同样适用。\n- 新增两条中英文词条，微调文件不存在文案。\n",
+          "number": 60,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/60",
+          "title": "Install APK 1.0.2: native notch selection and confirmation",
+          "body": "Move multi-device selection and debug/test APK confirmation into NotchAny's native notch interface. Device serials identify selections; cancellation, timeout, malformed replies, and unknown IDs cannot continue to installation. Single-device release installation keeps its direct path.\n\nRequires NotchAny 1.0.19. The 600-second action budget covers two 120-second interactions and the existing 240-second ADB timeout. English and Chinese marketplace screenshots now show the actual native picker rendered by 1.0.19 with sample emulator entries.\n\nValidation: six isolated Python tests cover stable IDs, cancellation/timeout without installation, exact boolean confirmation, malformed replies, and ADB target/test flags; CLI package validation passed. No APK was installed during validation. Physical Android devices, full-screen/Space transitions, and multiple monitors were not exercised.\n",
           "author": {
             "github_user_id": "2596885",
             "login": "glzlaohuai",
@@ -644,6 +644,10 @@
     {
       "id": "121a51fb-66e4-41f4-9fc3-21b817b56061",
       "candidate_commit": "48373dfcfcefe423db5bb52c1897fe0dc253dc79"
+    },
+    {
+      "id": "a582f4c2-2889-4829-99b2-7af8b7755c39",
+      "candidate_commit": "7bf0f40c4c10d81620f339eb8d99e8a78ff70a97"
     }
   ]
 }

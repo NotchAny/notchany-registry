@@ -3,6 +3,32 @@
   "package_id": "glzlaohuai/apk-installer",
   "releases": [
     {
+      "version": "1.0.2",
+      "sha256": "f8a6a653f7537260c71787d31eb9f44faa542210dbe5b9d4af76b0d4618003be",
+      "source_commit": "7bf0f40c4c10d81620f339eb8d99e8a78ff70a97",
+      "merged_at": "2026-11-03T07:52:01Z",
+      "published_at": "2026-11-03T07:52:00Z",
+      "pr": {
+        "number": 60,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/60",
+        "title": "Install APK 1.0.2: native notch selection and confirmation",
+        "body": "Move multi-device selection and debug/test APK confirmation into NotchAny's native notch interface. Device serials identify selections; cancellation, timeout, malformed replies, and unknown IDs cannot continue to installation. Single-device release installation keeps its direct path.\n\nRequires NotchAny 1.0.19. The 600-second action budget covers two 120-second interactions and the existing 240-second ADB timeout. English and Chinese marketplace screenshots now show the actual native picker rendered by 1.0.19 with sample emulator entries.\n\nValidation: six isolated Python tests cover stable IDs, cancellation/timeout without installation, exact boolean confirmation, malformed replies, and ADB target/test flags; CLI package validation passed. No APK was installed during validation. Physical Android devices, full-screen/Space transitions, and multiple monitors were not exercised.\n",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    },
+    {
       "version": "1.0.1",
       "sha256": "dac70124490c7f5d605e0010e9292003634dd2fea98110334b9ac0b4fcf7c31e",
       "source_commit": "df8a31f8f70b4cfe3d2d3222dfa7a140d0b0b837",
