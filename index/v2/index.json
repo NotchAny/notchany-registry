@@ -1,6 +1,6 @@
 {
   "index_schema": 2,
-  "generated_at": "2026-11-03T08:10:54Z",
+  "generated_at": "2026-11-03T08:14:14Z",
   "packages": [
     {
       "names": {
@@ -474,16 +474,17 @@
         "zh-Hans": "刘海屏网易云音乐播放器：封面、同步歌词与播放控制。"
       },
       "descriptions": {
-        "en": "Shows the current NetEase Cloud Music track in the notch tray: album art, scrolling lyrics, progress, and previous / play-pause / next controls. Optional online lyrics. Requires NetEase Cloud Music and macOS Automation permission.",
-        "zh-Hans": "在刘海托盘显示网易云当前曲目：封面、滚动歌词、进度条和上一曲/播放暂停/下一曲。可选在线歌词。需要已安装网易云音乐并授予自动化权限。"
+        "en": "Shows the current NetEase Cloud Music track in the notch tray: album art, scrolling lyrics, progress, and previous / play-pause / next controls. Optional online lyrics. Requires NetEase Cloud Music and macOS Automation permission. Failed explicit controls now show a native notch alert, including control errors previously hidden by a normal playback refresh. Permission explanations appear only after a click; background refresh stays silent and pauses automatic retries while permission is required. Lyrics and playback notifications keep their existing behavior. Requires NotchAny 1.0.19 or later.",
+        "zh-Hans": "在刘海托盘显示网易云当前曲目：封面、滚动歌词、进度条和上一曲/播放暂停/下一曲。可选在线歌词。需要已安装网易云音乐并授予自动化权限。 主动控制失败时显示原生刘海提示，不再用正常播放状态掩盖操作错误。点击权限入口后在刘海中说明授权路径；后台刷新保持静默，缺少权限时暂停自动重试。歌词与播放通知沿用现有机制。需要 NotchAny 1.0.19 或更高版本。"
       },
       "default_locale": "en",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "tags": [
         "music",
         "player"
       ],
       "license": "MIT",
+      "min_app_version": "1.0.19",
       "package_id": "glzlaohuai/netease-cloud-music",
       "path": "published/glzlaohuai/netease-cloud-music/package.notchany.json",
       "icon_path": "published/glzlaohuai/netease-cloud-music/icon.png",
@@ -492,8 +493,8 @@
       "action_kind": "shell",
       "input_kind": "none",
       "envelope_version": 6,
-      "sha256": "a97db306f53bad6ea146fef42ff08b093ec60a86f4efea7644aab89e2f31d663",
-      "size_bytes": 232304,
+      "sha256": "8c089d1184b79db906dc3ea8a87c439f8b8909b797432af4bf00bfdcc072c5a6",
+      "size_bytes": 234443,
       "requires": [],
       "has_parameters": true,
       "has_notification": true,
@@ -507,7 +508,7 @@
         ]
       },
       "published_at": "2026-10-01T12:59:27Z",
-      "updated_at": "2026-10-01T12:59:27Z",
+      "updated_at": "2026-11-03T08:14:14Z",
       "history_path": "history/v1/glzlaohuai/netease-cloud-music.json"
     },
     {

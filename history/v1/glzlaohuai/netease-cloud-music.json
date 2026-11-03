@@ -3,6 +3,37 @@
   "package_id": "glzlaohuai/netease-cloud-music",
   "releases": [
     {
+      "version": "1.0.1",
+      "sha256": "8c089d1184b79db906dc3ea8a87c439f8b8909b797432af4bf00bfdcc072c5a6",
+      "source_commit": "2e6360b08194408c414e47c54f6329d1d476490b",
+      "merged_at": "2026-11-03T08:14:15Z",
+      "published_at": "2026-11-03T08:14:14Z",
+      "pr": {
+        "number": 72,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/72",
+        "title": "NetEase Cloud Music 1.0.1: native control failure feedback",
+        "body": "Show native notch feedback when an explicit playback control or launch fails. Previously some menu-control failures were followed by an ordinary playback refresh, which made the failed command look successful; those commands now return a failed execution. The widget reports the error once and clears its busy state for retry.\n\nKeep recoverable not-running/permission overlays. Clicking the permission entry explains the macOS Automation/Accessibility path in the notch; cancelling stops the retry. Background refresh remains silent and pauses automatic retries while permission is required. Lyrics, playback notifications and successful controls keep their existing behavior. Requires NotchAny 1.0.19; package/action IDs and English/Chinese languages are preserved. Screenshots use the App's actual widget renderer with sample playback data.\n\nValidation: two isolated Python tests cover all three failed controls, permission failures and unavailable-app controls before any media reads. Three JavaScript tests cover explicit errors, silent polling, permission/not-running feedback and retry after rejected transport. Nine App widget tests cover English, Chinese, fallback French, successful controls, errors and permission entry clicks. CLI and registry content checks passed. All playback results were mocked: no music app was launched, no playback was controlled and no lyrics network request was sent. Real system authorization and full-screen/Space/multiple-monitor behavior were not exercised.\n",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        },
+        {
+          "github_user_id": "41898282",
+          "login": "github-actions[bot]",
+          "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4"
+        }
+      ],
+      "approved_by": []
+    },
+    {
       "version": "1.0.0",
       "sha256": "a97db306f53bad6ea146fef42ff08b093ec60a86f4efea7644aab89e2f31d663",
       "source_commit": "4e9b5944f4c43fab5c9244537737c1328b713a91",
@@ -34,6 +65,11 @@
       "github_user_id": "2596885",
       "login": "glzlaohuai",
       "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+    },
+    {
+      "github_user_id": "41898282",
+      "login": "github-actions[bot]",
+      "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4"
     }
   ]
 }

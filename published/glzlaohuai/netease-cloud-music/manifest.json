@@ -1,11 +1,12 @@
 {
   "default_locale" : "en",
   "descriptions" : {
-    "en" : "Shows the current NetEase Cloud Music track in the notch tray: album art, scrolling lyrics, progress, and previous \/ play-pause \/ next controls. Optional online lyrics. Requires NetEase Cloud Music and macOS Automation permission.",
-    "zh-Hans" : "在刘海托盘显示网易云当前曲目：封面、滚动歌词、进度条和上一曲\/播放暂停\/下一曲。可选在线歌词。需要已安装网易云音乐并授予自动化权限。"
+    "en" : "Shows the current NetEase Cloud Music track in the notch tray: album art, scrolling lyrics, progress, and previous \/ play-pause \/ next controls. Optional online lyrics. Requires NetEase Cloud Music and macOS Automation permission. Failed explicit controls now show a native notch alert, including control errors previously hidden by a normal playback refresh. Permission explanations appear only after a click; background refresh stays silent and pauses automatic retries while permission is required. Lyrics and playback notifications keep their existing behavior. Requires NotchAny 1.0.19 or later.",
+    "zh-Hans" : "在刘海托盘显示网易云当前曲目：封面、滚动歌词、进度条和上一曲\/播放暂停\/下一曲。可选在线歌词。需要已安装网易云音乐并授予自动化权限。 主动控制失败时显示原生刘海提示，不再用正常播放状态掩盖操作错误。点击权限入口后在刘海中说明授权路径；后台刷新保持静默，缺少权限时暂停自动重试。歌词与播放通知沿用现有机制。需要 NotchAny 1.0.19 或更高版本。"
   },
   "license" : "MIT",
   "manifest_version" : 1,
+  "min_app_version" : "1.0.19",
   "names" : {
     "en" : "NetEase Cloud Music",
     "zh-Hans" : "网易云音乐"
@@ -18,5 +19,5 @@
     "music",
     "player"
   ],
-  "version" : "1.0.0"
+  "version" : "1.0.1"
 }
