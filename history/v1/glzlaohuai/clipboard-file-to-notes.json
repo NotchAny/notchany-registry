@@ -3,6 +3,37 @@
   "package_id": "glzlaohuai/clipboard-file-to-notes",
   "releases": [
     {
+      "version": "1.0.1",
+      "sha256": "c5ae73ab02aeb10184d0ec5937d0167543570a3ff32124227aafb32c06208450",
+      "source_commit": "7b9018ea41bcae00873f5ed4ef3ea0cbde7e48ce",
+      "merged_at": "2026-11-03T07:59:05Z",
+      "published_at": "2026-11-03T07:59:04Z",
+      "pr": {
+        "number": 64,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/64",
+        "title": "剪贴板／文件到备忘录 1.0.1：刘海预览与确认",
+        "body": "将剪贴板预览与写入确认迁入原生刘海。先读取一次文本并存入本次执行的私有临时目录，预览与最终写入复用同一快照，确认期间剪贴板变化不会更换写入内容。取消、超时、接口错误和无效回复均停止写入。文件输入继续直接写入，保留文本解码、换行、HTML 转义和自动化权限说明。\n\n最低版本为 NotchAny 1.0.19，总超时调整为 240 秒。沿用原包 ID、动作 ID 与中文语言设置；截图来自新版 App 实际渲染的刘海确认界面，使用样本文本，未创建真实备忘录。\n\n验证：6 项隔离测试覆盖取消、超时、严格布尔确认、接口错误、多行及特殊字符快照、1200 字预览和文件直写分支；AppleScript 编译、CLI 包校验通过。测试拦截备忘录写入，未改动用户剪贴板。真实备忘录创建、系统授权、全屏／Space 和多显示器未在本轮自动验证。\n",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        },
+        {
+          "github_user_id": "41898282",
+          "login": "github-actions[bot]",
+          "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4"
+        }
+      ],
+      "approved_by": []
+    },
+    {
       "version": "1.0.0",
       "sha256": "55322c50b319624cf5d854184d1513b047aa7d0c429c1444dba9348bb116dc45",
       "source_commit": "9d870737f30930278c64ba25852cb1f06295a4e7",
