@@ -1,6 +1,6 @@
 {
   "index_schema": 1,
-  "generated_at": "2026-11-03T07:59:04Z",
+  "generated_at": "2026-11-03T08:03:28Z",
   "packages": [
     {
       "names": {
@@ -179,7 +179,7 @@
         "zh-Hans": "将剪贴板历史中的文本保存为本地文件，保留快速保存及列表／紧凑布局。历史选择在刘海内完成，不默认选中；取消或超时不保存。保存完成统一使用一份 NotchAny 执行结果提示。需要 NotchAny 1.0.19 或更高版本。"
       },
       "default_locale": "en",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "tags": [
         "clipboard",
         "productivity"
@@ -209,7 +209,7 @@
         ]
       },
       "published_at": "2026-10-01T03:57:41Z",
-      "updated_at": "2026-11-03T07:56:59Z"
+      "updated_at": "2026-11-03T08:03:28Z"
     },
     {
       "names": {

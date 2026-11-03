@@ -3,6 +3,32 @@
   "package_id": "glzlaohuai/clipboard-to-file",
   "releases": [
     {
+      "version": "1.0.2",
+      "sha256": "f3cca91c3bb341457bcf126e95994ee724872161f21315544b778dd8c8b418ec",
+      "source_commit": "747479c52cba3c20d7547a389b6865bf0a650d58",
+      "merged_at": "2026-11-03T08:03:29Z",
+      "published_at": "2026-11-03T08:03:28Z",
+      "pr": {
+        "number": 66,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/66",
+        "title": "Clipboard to File 1.0.2: correct screenshot locales",
+        "body": "Correct the English and Simplified Chinese screenshot groups for Clipboard to File. Both images come from successful App widget tests with sample history; no personal clipboard data is used. The Store's primary locale is English, while the action's fallback language is Chinese, so Store screenshot grouping must use the manifest locale.\n\nNative selection and execution behavior are unchanged from 1.0.1. CLI package validation passed. The six earlier widget tests covered English, Chinese, fallback French and both layouts.\n",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    },
+    {
       "version": "1.0.1",
       "sha256": "f3cca91c3bb341457bcf126e95994ee724872161f21315544b778dd8c8b418ec",
       "source_commit": "ed5530b09e074efe53e2887925c2bfd43c6c1088",

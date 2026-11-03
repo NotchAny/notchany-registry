@@ -40,20 +40,20 @@
     },
     "glzlaohuai/clipboard-to-file": {
       "active": true,
-      "tree_hash": "d5d34bc9428e79f6c3c81b095ffa327545d0fa74c4b42d3a0a4299bca20e12cc",
-      "source_commit": "ed5530b09e074efe53e2887925c2bfd43c6c1088",
+      "tree_hash": "444d4aed3cdd8784bf1cfea6dd4006c5190da4e517bb468d916612c72006d065",
+      "source_commit": "747479c52cba3c20d7547a389b6865bf0a650d58",
       "first_published_at": "2026-10-01T03:57:41Z",
       "release": {
-        "version": "1.0.1",
+        "version": "1.0.2",
         "sha256": "f3cca91c3bb341457bcf126e95994ee724872161f21315544b778dd8c8b418ec",
-        "source_commit": "ed5530b09e074efe53e2887925c2bfd43c6c1088",
-        "merged_at": "2026-11-03T07:56:59Z",
-        "published_at": "2026-11-03T07:56:59Z",
+        "source_commit": "747479c52cba3c20d7547a389b6865bf0a650d58",
+        "merged_at": "2026-11-03T08:03:29Z",
+        "published_at": "2026-11-03T08:03:28Z",
         "pr": {
-          "number": 62,
-          "url": "https://github.com/NotchAny/notchany-registry/pull/62",
-          "title": "Clipboard to File 1.0.1: native history selection",
-          "body": "Move clipboard history selection into the native notch picker, keyed by the existing history record ID. Duplicate preview text cannot select another record, and cancellation or timeout saves nothing. Preserve quick save and both widget layouts; remove the widget's extra save toast so completion is shown once by NotchAny.\n\nRequires NotchAny 1.0.19. English and Chinese screenshots were captured by the App's actual widget renderer using sample history. Existing languages and package/action IDs are preserved.\n\nValidation: four isolated Python tests cover stable IDs, cancellation/timeout without saving, unknown selections, and silent background refresh. Six App widget tests cover English, Chinese, fallback French, list quick-save and compact history-selection buttons with mocked results. CLI package validation passed. Tests did not read the user's clipboard or create user files. Real keyboard/focus, Space/full-screen, and multiple monitors remain outside these checks.\n",
+          "number": 66,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/66",
+          "title": "Clipboard to File 1.0.2: correct screenshot locales",
+          "body": "Correct the English and Simplified Chinese screenshot groups for Clipboard to File. Both images come from successful App widget tests with sample history; no personal clipboard data is used. The Store's primary locale is English, while the action's fallback language is Chinese, so Store screenshot grouping must use the manifest locale.\n\nNative selection and execution behavior are unchanged from 1.0.1. CLI package validation passed. The six earlier widget tests covered English, Chinese, fallback French and both layouts.\n",
           "author": {
             "github_user_id": "2596885",
             "login": "glzlaohuai",
@@ -65,11 +65,6 @@
             "github_user_id": "2596885",
             "login": "glzlaohuai",
             "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
-          },
-          {
-            "github_user_id": "41898282",
-            "login": "github-actions[bot]",
-            "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4"
           }
         ],
         "approved_by": []
@@ -661,6 +656,10 @@
     {
       "id": "133b5316-236c-4547-b8ff-827b4911b6e8",
       "candidate_commit": "7b9018ea41bcae00873f5ed4ef3ea0cbde7e48ce"
+    },
+    {
+      "id": "366adf31-c63d-40d8-8f8c-608ccc04b78c",
+      "candidate_commit": "747479c52cba3c20d7547a389b6865bf0a650d58"
     }
   ]
 }
