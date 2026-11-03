@@ -237,20 +237,20 @@
     },
     "glzlaohuai/rainbow-praise": {
       "active": true,
-      "tree_hash": "272d8ada06c86731a350be7182b7f513e20bcf042d44881c4fae94da645b345b",
-      "source_commit": "35477f4ddf4e41834251ef146b814f222a2f260c",
+      "tree_hash": "25f03dcb0428a6d3c2ed8eea37ddf9b93a453e570c047279ac6846880821275b",
+      "source_commit": "3a170cc362246fa653a96760bfd4a41f14617a6a",
       "first_published_at": "2026-10-09T04:14:15Z",
       "release": {
-        "version": "1.0.0",
-        "sha256": "3638c484a46394abe59ee1fd609b99dd67a0294e2495f8456bde3198006d81f2",
-        "source_commit": "35477f4ddf4e41834251ef146b814f222a2f260c",
-        "merged_at": "2026-10-09T04:14:16Z",
-        "published_at": "2026-10-09T04:14:15Z",
+        "version": "1.0.1",
+        "sha256": "53e9b2e9e0ea550a86a7117bc585f648d5a5c70288bf94653bd38a7b9e5b81af",
+        "source_commit": "3a170cc362246fa653a96760bfd4a41f14617a6a",
+        "merged_at": "2026-11-03T08:10:54Z",
+        "published_at": "2026-11-03T08:10:54Z",
         "pr": {
-          "number": 33,
-          "url": "https://github.com/NotchAny/notchany-registry/pull/33",
-          "title": "新增 Rainbow Praise v1.0.0",
-          "body": "首次发布彩虹屁发射器：内置多种夸赞风格，支持 OpenAI 兼容接口生成文案，提供 AI 配置测试，并随机播放烟花、彩纸、彩虹、霓虹、金光和激光全屏特效。",
+          "number": 70,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/70",
+          "title": "彩虹屁发射器 1.0.1：刘海连接反馈并保留夸赞正文",
+          "body": "AI 连接测试不再把错误或模型信息写进夸赞正文。测试成功显示一次原生刘海短提示；失败通过刘海提示展示原因，当前夸赞继续保留。测试改由点击处理函数调用数据源并主动反馈，避免与执行结果重复；后台渲染不发起提示，测试失败后可重试。\n\n最低版本为 NotchAny 1.0.19，保留原包与动作 ID、现有中文语言和效果。商店截图由 App 实际渲染样本夸赞。\n\n验证：Python 测试覆盖成功／失败诊断载荷；两项 JavaScript 测试覆盖正文保留、一次性反馈、后台渲染静默、网络异常后恢复。4 次 App Widget 测试覆盖中文及未配置语言回落、正常与失败状态和测试按钮；CLI 包校验、仓库内容检查通过。全部使用模拟 AI 返回，没有读取密钥或请求第三方 API；真实 AI 服务与全屏／Space、多屏未在本轮验证。\n",
           "author": {
             "github_user_id": "2596885",
             "login": "glzlaohuai",
@@ -262,6 +262,11 @@
             "github_user_id": "2596885",
             "login": "glzlaohuai",
             "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          },
+          {
+            "github_user_id": "41898282",
+            "login": "github-actions[bot]",
+            "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4"
           }
         ],
         "approved_by": []
@@ -669,6 +674,10 @@
     {
       "id": "6459ce29-9ff2-4502-9d12-92997ca4ba1f",
       "candidate_commit": "581915241d7304a88dbb2ca07eecf0c15f252b53"
+    },
+    {
+      "id": "593a70dc-c05b-4c41-8ca2-e0340418873b",
+      "candidate_commit": "3a170cc362246fa653a96760bfd4a41f14617a6a"
     }
   ]
 }
