@@ -1,29 +1,30 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "3a170cc362246fa653a96760bfd4a41f14617a6a",
-    "decision_id": "593a70dc-c05b-4c41-8ca2-e0340418873b",
+    "candidate_commit": "2e6360b08194408c414e47c54f6329d1d476490b",
+    "decision_id": "6ffda95d-bd28-4703-bab2-96f0cc061d75",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 70,
-        "head_sha": "33400da16d9cdf2de83d859af2d7393f68fe23e5",
-        "base_sha": "5d5236fb7abbe5cc9cd0560daf5a422bef4860f3",
-        "package_id": "glzlaohuai/rainbow-praise",
+        "pr_number": 72,
+        "head_sha": "797336d299a25869de4698f8d6922fb79aaad13f",
+        "base_sha": "a6ccec1e40004b6cf862938356f88ad7463927cc",
+        "package_id": "glzlaohuai/netease-cloud-music",
         "operation": "update",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/rainbow-praise.json": "e43c531a2c11b41535a4b5555f14b98af397c5269fe95201136ac94356b842f6",
-      "index/v1/index.json": "757f08b2751232e2718cf7c502cd826e591f7444e53dbc32ed967350c4d6b587",
-      "index/v2/index.json": "a089aa2f2e5d54b5d1b694b576e777810e16870303e0de54672064580fba85ee",
-      "published/glzlaohuai/rainbow-praise/manifest.json": "74f22ef4b7bb8a3447fd4f136b42e13e1e7e576ab455c0ac422509accd1f0524",
-      "published/glzlaohuai/rainbow-praise/package.notchany.json": "53e9b2e9e0ea550a86a7117bc585f648d5a5c70288bf94653bd38a7b9e5b81af",
-      "published/glzlaohuai/rainbow-praise/screenshots/1.png": "6c220bd44c34887e62a13b6a8e65836a49fd2b3a0c52f2370cbfe1d099c1d120",
-      "published/state.json": "052f373a7f12f7754e14970bbc9300449847d36b4d365a2519585349f0946e2a"
+      "history/v1/glzlaohuai/netease-cloud-music.json": "c22a43ee32800d43ba55f9e6337a53297a55cfb7d11a992b8de61934fa393e26",
+      "index/v1/index.json": "6af0d2c8b7e4d6cc710944f6d1495671f5dddbb41c632bf4b63fc21fe3e2a69e",
+      "index/v2/index.json": "8640b6801f2b60ac375d9d9d73cca607e76396d5fc953525d952b90e50e4890a",
+      "published/glzlaohuai/netease-cloud-music/manifest.json": "dfc14f91c3143f6e91feee1479b66e0c0566d1da3af4f269de0054bbe53406c1",
+      "published/glzlaohuai/netease-cloud-music/package.notchany.json": "8c089d1184b79db906dc3ea8a87c439f8b8909b797432af4bf00bfdcc072c5a6",
+      "published/glzlaohuai/netease-cloud-music/screenshots/1.png": "716592259ec73b427a28d9cc54498ab545a46ce7e42b60984a9eacab04661c2f",
+      "published/glzlaohuai/netease-cloud-music/screenshots/zh-Hans/1.png": "1a876a08ae61e6204d1280f78588fd3e824e3c665c99f5ffa20cfa72cafcd630",
+      "published/state.json": "9f60c0d03208ac197fbbc312a1f5b322bb2711f2e6eb93ea49b7d08e36c84ea5"
     }
   },
-  "signature": "fe795d7a799e629866f18fb835a54a0d65936714ac7a40a8a97705d81da82d90"
+  "signature": "3ccd400173a523341568635b003cd3d19c9b9070aa3708b43b4aecc1d9a9c0c9"
 }
