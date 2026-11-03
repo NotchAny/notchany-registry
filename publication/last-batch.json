@@ -1,29 +1,29 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "7b9018ea41bcae00873f5ed4ef3ea0cbde7e48ce",
-    "decision_id": "133b5316-236c-4547-b8ff-827b4911b6e8",
+    "candidate_commit": "747479c52cba3c20d7547a389b6865bf0a650d58",
+    "decision_id": "366adf31-c63d-40d8-8f8c-608ccc04b78c",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 64,
-        "head_sha": "6cef506f627967a2e659d31d8a4bb0b4f00e10c7",
-        "base_sha": "6e0ab5f414e75d40eae5852cd581990826477958",
-        "package_id": "glzlaohuai/clipboard-file-to-notes",
+        "pr_number": 66,
+        "head_sha": "b7d88c210c3e13ab6fb82b1aff175e7d3c44b796",
+        "base_sha": "630055cab1ee86faf2f60761681ceb75b47f4751",
+        "package_id": "glzlaohuai/clipboard-to-file",
         "operation": "update",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/clipboard-file-to-notes.json": "99c8945ed30a1e5ea3a9722f6ad8c3c1dce11f6e71c929ff60463cf90b08ce26",
-      "index/v1/index.json": "8e48f758018a559ab1bc1c6c70eda547094b4a2dc3898b3275de0d5a6e12f8c7",
-      "index/v2/index.json": "d144b30d7a35c6b8b961928ea53e7f0782b7d109dc4e6bf49d568082433658cc",
-      "published/glzlaohuai/clipboard-file-to-notes/manifest.json": "81a894ac8d4ed611326606a70f4269114ccb107955b0dc8c632b2eb9071ae90d",
-      "published/glzlaohuai/clipboard-file-to-notes/package.notchany.json": "c5ae73ab02aeb10184d0ec5937d0167543570a3ff32124227aafb32c06208450",
-      "published/glzlaohuai/clipboard-file-to-notes/screenshots/1.png": "677af4b5ee0c4cf68148d873d84f795c1a33f716382ff1c10be41beedd9d90cf",
-      "published/state.json": "6ddf5654aa84ec50f707495785b435ff7e31709a320f8e75ecdb89b0b0267304"
+      "history/v1/glzlaohuai/clipboard-to-file.json": "d3ee8da023a0b9feb4e87975d8772457ca7e2623ddbb4918c6e98ebb9b1dcbd0",
+      "index/v1/index.json": "8e211fe83508a0b836c45ceaa796ca7be411cfa7fe52782f1683cdf381c0229a",
+      "index/v2/index.json": "69bec93f9e40787a277f096c9d88a0ec3558926bb336d130470688b7780cbba9",
+      "published/glzlaohuai/clipboard-to-file/manifest.json": "6881ea12f26f4604f834881a94e5f1cc88e56936431695976de1332dfba214e7",
+      "published/glzlaohuai/clipboard-to-file/screenshots/1.png": "b621e84326850f22a2077997180ebf851d428b750a658710ba28ce3d9c73e6db",
+      "published/glzlaohuai/clipboard-to-file/screenshots/zh-Hans/1.png": "e172edcbe685aeac49b51e872f0ca2de6f70e9746b77bda956e67acb7703d084",
+      "published/state.json": "75cfda9397afd49b4a1d81e90749b830605a17c3c4bb532da82346b8b3361cea"
     }
   },
-  "signature": "71493369a0dd08f9c5e8f4e8da8fa3aff82450f5b91554d7a88157c7baebe481"
+  "signature": "0243325ed665ac19f36a9a04a8220f2a45e6054dc3a9b8e51400ddafdbc545c7"
 }
