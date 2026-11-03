@@ -1,11 +1,12 @@
 {
   "default_locale" : "en",
   "descriptions" : {
-    "en" : "Mirror non-system menu bar status items inside NotchAny. It preserves the live order and visual appearance, supports standard clicks, adapts from one row to multi-row layouts, and refreshes on workspace events with a polling fallback.\n\nRequires Accessibility and Screen Recording permissions. All processing stays on your Mac.",
-    "zh-Hans" : "在 NotchAny 刘海中镜像非系统菜单栏状态项，保留实时顺序和图标外观，支持标准单击，并会根据组件尺寸从单行自动调整为多行布局。应用启动、退出、唤醒和空间切换会触发刷新，同时保留低频轮询兜底。\n\n需要辅助功能与屏幕录制权限，所有处理均在本机完成。"
+    "en" : "Mirror non-system menu bar status items inside NotchAny. It preserves the live order and visual appearance, supports standard clicks, adapts from one row to multi-row layouts, and refreshes on workspace events with a polling fallback.\n\nRequires Accessibility and Screen Recording permissions. All processing stays on your Mac. Explicit click failures and permission explanations use native notch alerts. Background refresh stays silent, keeping errors inline. Successful menu opening adds no prompt. Requires NotchAny 1.0.19 or later.",
+    "zh-Hans" : "在 NotchAny 刘海中镜像非系统菜单栏状态项，保留实时顺序和图标外观，支持标准单击，并会根据组件尺寸从单行自动调整为多行布局。应用启动、退出、唤醒和空间切换会触发刷新，同时保留低频轮询兜底。\n\n需要辅助功能与屏幕录制权限，所有处理均在本机完成。 主动点击失败与权限说明使用原生刘海提示；后台刷新错误保留在组件内，成功打开菜单时不额外提示。需要 NotchAny 1.0.19 或更高版本。"
   },
   "license" : "MIT",
   "manifest_version" : 1,
+  "min_app_version" : "1.0.19",
   "names" : {
     "en" : "Menu Bar Control Center",
     "zh-Hans" : "菜单栏控制中心"
@@ -14,5 +15,5 @@
     "en" : "Mirror and click third-party macOS menu bar items from the notch.",
     "zh-Hans" : "在刘海中镜像并点击第三方 macOS 菜单栏状态项。"
   },
-  "version" : "1.0.1"
+  "version" : "1.0.2"
 }
