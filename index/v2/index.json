@@ -1,6 +1,6 @@
 {
   "index_schema": 2,
-  "generated_at": "2026-11-03T08:03:28Z",
+  "generated_at": "2026-11-03T08:07:55Z",
   "packages": [
     {
       "names": {
@@ -424,13 +424,14 @@
         "zh-Hans": "在刘海中镜像并点击第三方 macOS 菜单栏状态项。"
       },
       "descriptions": {
-        "en": "Mirror non-system menu bar status items inside NotchAny. It preserves the live order and visual appearance, supports standard clicks, adapts from one row to multi-row layouts, and refreshes on workspace events with a polling fallback.\n\nRequires Accessibility and Screen Recording permissions. All processing stays on your Mac.",
-        "zh-Hans": "在 NotchAny 刘海中镜像非系统菜单栏状态项，保留实时顺序和图标外观，支持标准单击，并会根据组件尺寸从单行自动调整为多行布局。应用启动、退出、唤醒和空间切换会触发刷新，同时保留低频轮询兜底。\n\n需要辅助功能与屏幕录制权限，所有处理均在本机完成。"
+        "en": "Mirror non-system menu bar status items inside NotchAny. It preserves the live order and visual appearance, supports standard clicks, adapts from one row to multi-row layouts, and refreshes on workspace events with a polling fallback.\n\nRequires Accessibility and Screen Recording permissions. All processing stays on your Mac. Explicit click failures and permission explanations use native notch alerts. Background refresh stays silent, keeping errors inline. Successful menu opening adds no prompt. Requires NotchAny 1.0.19 or later.",
+        "zh-Hans": "在 NotchAny 刘海中镜像非系统菜单栏状态项，保留实时顺序和图标外观，支持标准单击，并会根据组件尺寸从单行自动调整为多行布局。应用启动、退出、唤醒和空间切换会触发刷新，同时保留低频轮询兜底。\n\n需要辅助功能与屏幕录制权限，所有处理均在本机完成。 主动点击失败与权限说明使用原生刘海提示；后台刷新错误保留在组件内，成功打开菜单时不额外提示。需要 NotchAny 1.0.19 或更高版本。"
       },
       "default_locale": "en",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "tags": [],
       "license": "MIT",
+      "min_app_version": "1.0.19",
       "package_id": "glzlaohuai/menu-bar-mirror",
       "path": "published/glzlaohuai/menu-bar-mirror/package.notchany.json",
       "icon_path": "published/glzlaohuai/menu-bar-mirror/icon.png",
@@ -439,8 +440,8 @@
       "action_kind": "shell",
       "input_kind": "none",
       "envelope_version": 4,
-      "sha256": "1253a9f1903eb27b7cc6d31dc16efb8dba98add4b67fe95e786d583d788a6e41",
-      "size_bytes": 45992,
+      "sha256": "83b038e2c0bbd0484a53e53be69129a28ff88f3553421612a034df4c615159ca",
+      "size_bytes": 47106,
       "requires": [
         "swiftc"
       ],
@@ -460,7 +461,7 @@
         ]
       },
       "published_at": "2026-10-22T08:39:19Z",
-      "updated_at": "2026-10-22T09:58:46Z",
+      "updated_at": "2026-11-03T08:07:55Z",
       "history_path": "history/v1/glzlaohuai/menu-bar-mirror.json"
     },
     {
