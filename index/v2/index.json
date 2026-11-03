@@ -1,6 +1,6 @@
 {
   "index_schema": 2,
-  "generated_at": "2026-11-03T08:07:55Z",
+  "generated_at": "2026-11-03T08:10:54Z",
   "packages": [
     {
       "names": {
@@ -518,10 +518,10 @@
         "zh-Hans": "点击生成彩虹屁，并随机播放烟花、彩虹等全屏庆祝特效"
       },
       "descriptions": {
-        "zh-Hans": "点击组件即可领取一条彩虹屁，并随机播放全屏庆祝特效。\n\n功能包括：\n- 内置热血、温柔、离谱、江湖和职场五种夸赞风格\n- 支持 OpenAI 兼容的 Chat Completions 接口\n- 可编辑 AI 提示词模板，支持 `{name}` 和 `{style}` 变量\n- 内置 AI 配置连通性测试，明确显示成功与错误原因\n- 随机播放烟花、彩纸、彩虹、霓虹、金光和激光效果\n- AI 请求失败时自动回退到内置词库\n\nAPI Key 作为普通参数保存在动作配置中，请仅在自己的设备上使用可信密钥。"
+        "zh-Hans": "点击组件即可领取一条彩虹屁，并随机播放全屏庆祝特效。\n\n功能包括：\n- 内置热血、温柔、离谱、江湖和职场五种夸赞风格\n- 支持 OpenAI 兼容的 Chat Completions 接口\n- 可编辑 AI 提示词模板，支持 `{name}` 和 `{style}` 变量\n- 内置 AI 配置连通性测试，明确显示成功与错误原因\n- 随机播放烟花、彩纸、彩虹、霓虹、金光和激光效果\n- AI 请求失败时自动回退到内置词库\n\nAPI Key 作为普通参数保存在动作配置中，请仅在自己的设备上使用可信密钥。 主动测试 AI 连接时，成功只显示一次刘海短提示，失败通过刘海提示完整说明原因，保留当前夸赞正文。后台刷新不弹提示。需要 NotchAny 1.0.19 或更高版本。"
       },
       "default_locale": "zh-Hans",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "tags": [
         "entertainment",
         "ai",
@@ -529,6 +529,7 @@
         "fullscreen-effect"
       ],
       "license": "MIT",
+      "min_app_version": "1.0.19",
       "package_id": "glzlaohuai/rainbow-praise",
       "path": "published/glzlaohuai/rainbow-praise/package.notchany.json",
       "icon_path": "published/glzlaohuai/rainbow-praise/icon.png",
@@ -537,8 +538,8 @@
       "action_kind": "shell",
       "input_kind": "none",
       "envelope_version": 10,
-      "sha256": "3638c484a46394abe59ee1fd609b99dd67a0294e2495f8456bde3198006d81f2",
-      "size_bytes": 25475,
+      "sha256": "53e9b2e9e0ea550a86a7117bc585f648d5a5c70288bf94653bd38a7b9e5b81af",
+      "size_bytes": 26080,
       "requires": [],
       "has_parameters": true,
       "has_notification": false,
@@ -548,7 +549,7 @@
         "published/glzlaohuai/rainbow-praise/screenshots/1.png"
       ],
       "published_at": "2026-10-09T04:14:15Z",
-      "updated_at": "2026-10-09T04:14:15Z",
+      "updated_at": "2026-11-03T08:10:54Z",
       "history_path": "history/v1/glzlaohuai/rainbow-praise.json"
     },
     {
