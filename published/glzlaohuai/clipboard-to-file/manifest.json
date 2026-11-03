@@ -1,7 +1,12 @@
 {
   "default_locale" : "en",
+  "descriptions" : {
+    "en" : "Save text from clipboard history to a local file, preserving quick save and the list or compact layout. History selection uses the native notch picker with no default selection. Cancelling or timing out saves nothing. A successful save uses one NotchAny execution result. Requires NotchAny 1.0.19 or later.",
+    "zh-Hans" : "将剪贴板历史中的文本保存为本地文件，保留快速保存及列表／紧凑布局。历史选择在刘海内完成，不默认选中；取消或超时不保存。保存完成统一使用一份 NotchAny 执行结果提示。需要 NotchAny 1.0.19 或更高版本。"
+  },
   "license" : "MIT",
   "manifest_version" : 1,
+  "min_app_version" : "1.0.19",
   "names" : {
     "en" : "Clipboard to File",
     "zh-Hans" : "剪贴板存文件"
@@ -14,5 +19,5 @@
     "clipboard",
     "productivity"
   ],
-  "version" : "1.0.0"
+  "version" : "1.0.1"
 }

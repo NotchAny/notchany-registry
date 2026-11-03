@@ -40,20 +40,20 @@
     },
     "glzlaohuai/clipboard-to-file": {
       "active": true,
-      "tree_hash": "eee05b2ef176df81b3041becebccfef421eb42e2e1a0553b7bc8baf5274a34cb",
-      "source_commit": "2329796062843445dfbe4f30b37252079bc6bdc7",
+      "tree_hash": "d5d34bc9428e79f6c3c81b095ffa327545d0fa74c4b42d3a0a4299bca20e12cc",
+      "source_commit": "ed5530b09e074efe53e2887925c2bfd43c6c1088",
       "first_published_at": "2026-10-01T03:57:41Z",
       "release": {
-        "version": "1.0.0",
-        "sha256": "3f42ca43c8038b702108745ed632c68216845801f2bfec2f110d69f59500498e",
-        "source_commit": "2329796062843445dfbe4f30b37252079bc6bdc7",
-        "merged_at": "2026-10-01T03:57:41Z",
-        "published_at": "2026-10-01T03:57:41Z",
+        "version": "1.0.1",
+        "sha256": "f3cca91c3bb341457bcf126e95994ee724872161f21315544b778dd8c8b418ec",
+        "source_commit": "ed5530b09e074efe53e2887925c2bfd43c6c1088",
+        "merged_at": "2026-11-03T07:56:59Z",
+        "published_at": "2026-11-03T07:56:59Z",
         "pr": {
-          "number": 9,
-          "url": "https://github.com/NotchAny/notchany-registry/pull/9",
-          "title": "Clipboard to File",
-          "body": "Save clipboard history items as files with auto format detection.\n\nPackage: `glzlaohuai/clipboard-to-file`",
+          "number": 62,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/62",
+          "title": "Clipboard to File 1.0.1: native history selection",
+          "body": "Move clipboard history selection into the native notch picker, keyed by the existing history record ID. Duplicate preview text cannot select another record, and cancellation or timeout saves nothing. Preserve quick save and both widget layouts; remove the widget's extra save toast so completion is shown once by NotchAny.\n\nRequires NotchAny 1.0.19. English and Chinese screenshots were captured by the App's actual widget renderer using sample history. Existing languages and package/action IDs are preserved.\n\nValidation: four isolated Python tests cover stable IDs, cancellation/timeout without saving, unknown selections, and silent background refresh. Six App widget tests cover English, Chinese, fallback French, list quick-save and compact history-selection buttons with mocked results. CLI package validation passed. Tests did not read the user's clipboard or create user files. Real keyboard/focus, Space/full-screen, and multiple monitors remain outside these checks.\n",
           "author": {
             "github_user_id": "2596885",
             "login": "glzlaohuai",
@@ -65,6 +65,11 @@
             "github_user_id": "2596885",
             "login": "glzlaohuai",
             "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+          },
+          {
+            "github_user_id": "41898282",
+            "login": "github-actions[bot]",
+            "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4"
           }
         ],
         "approved_by": []
@@ -648,6 +653,10 @@
     {
       "id": "a582f4c2-2889-4829-99b2-7af8b7755c39",
       "candidate_commit": "7bf0f40c4c10d81620f339eb8d99e8a78ff70a97"
+    },
+    {
+      "id": "f518a4ba-41cd-4432-81fb-bda266ef6a64",
+      "candidate_commit": "ed5530b09e074efe53e2887925c2bfd43c6c1088"
     }
   ]
 }
