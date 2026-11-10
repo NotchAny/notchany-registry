@@ -540,20 +540,20 @@
     },
     "glzlaohuai/keyboard-mouse-cleaning": {
       "active": true,
-      "tree_hash": "249209c073b6162468daab75c2a92cb09b4355469a98ec694796b3a336516035",
-      "source_commit": "48373dfcfcefe423db5bb52c1897fe0dc253dc79",
+      "tree_hash": "b0d4703398776954d96fc063ccaa86f552f97c693be5d81c26de013f2d90707f",
+      "source_commit": "9b56805f90be3f60c7be664b6b6475a877bb6703",
       "first_published_at": "2026-10-26T04:09:36Z",
       "release": {
-        "version": "1.0.0",
-        "sha256": "594e617b88c02be300b0f6c6556cbb4a446cf9b8ae8ea6eff25378b421f69e9f",
-        "source_commit": "48373dfcfcefe423db5bb52c1897fe0dc253dc79",
-        "merged_at": "2026-10-26T04:09:37Z",
-        "published_at": "2026-10-26T04:09:36Z",
+        "version": "1.0.1",
+        "sha256": "7227460c2c5dc91b5807e14923d41ff33715595f759efa954c8f3156b775f754",
+        "source_commit": "9b56805f90be3f60c7be664b6b6475a877bb6703",
+        "merged_at": "2026-11-10T09:44:21Z",
+        "published_at": "2026-11-10T09:44:20Z",
         "pr": {
-          "number": 58,
-          "url": "https://github.com/NotchAny/notchany-registry/pull/58",
-          "title": "Add Keyboard & Mouse Cleaning v1.0.0",
-          "body": "Add an English and Simplified Chinese keyboard/mouse cleaning action. It blocks keyboard input, mouse buttons, dragging and scrolling, with a dedicated unlock button, a 10-minute automatic release and an emergency shortcut. A red fullscreen glow marks activation; confetti plays after input is restored.\n\nThe action carries its Swift helper source, compiles locally on first use and caches the executable. It requires Apple Command Line Tools or Xcode and uses NotchAny's existing Accessibility authorization when launched from NotchAny. There are no user-specific paths, external binary downloads, login items or input recording.\n\nValidation: 17 input-filter checks; first-use cache compilation; English and Chinese permission probes; real start/unlock runs for both languages; bilingual native UI previews and action demo captures.\n",
+          "number": 74,
+          "url": "https://github.com/NotchAny/notchany-registry/pull/74",
+          "title": "修复键鼠清洁解锁卡住的问题（v1.0.1）",
+          "body": "点击“结束清洁”后，旧版会持续等待系统报告所有按键和鼠标按钮已松开。状态残留时，普通结束和紧急快捷键都可能一直等到 10 分钟倒计时结束。\n\n本次更新将松键等待限制为约 1 秒，等待时可再次点击“立即解锁”直接退出；Control + Option + Command + Esc 与显式解锁请求立即恢复输入。补充独立的 unlock / stop 事件，关闭状态调用不会重新开启清洁。更新中英文操作说明和清洁画面截图。\n\n验证：17 项输入过滤检查、16 项解锁回归检查通过；真实按钮点击、紧急快捷键和 CLI 解锁测试通过，中英文原生界面截图已复核。外接多显示器、Space 切换和全屏应用尚未复验。\n\n",
           "author": {
             "github_user_id": "2596885",
             "login": "glzlaohuai",
@@ -687,6 +687,10 @@
     {
       "id": "6ffda95d-bd28-4703-bab2-96f0cc061d75",
       "candidate_commit": "2e6360b08194408c414e47c54f6329d1d476490b"
+    },
+    {
+      "id": "cfef03ce-6251-4b30-adb4-201923714890",
+      "candidate_commit": "9b56805f90be3f60c7be664b6b6475a877bb6703"
     }
   ]
 }

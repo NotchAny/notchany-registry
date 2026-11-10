@@ -1,30 +1,32 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "2e6360b08194408c414e47c54f6329d1d476490b",
-    "decision_id": "6ffda95d-bd28-4703-bab2-96f0cc061d75",
+    "candidate_commit": "9b56805f90be3f60c7be664b6b6475a877bb6703",
+    "decision_id": "cfef03ce-6251-4b30-adb4-201923714890",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 72,
-        "head_sha": "797336d299a25869de4698f8d6922fb79aaad13f",
-        "base_sha": "a6ccec1e40004b6cf862938356f88ad7463927cc",
-        "package_id": "glzlaohuai/netease-cloud-music",
+        "pr_number": 74,
+        "head_sha": "8774af70b52ffb6b2dd085bd035dd4ab177367de",
+        "base_sha": "6664c3fd6f71210bf670b1c6c781ea7a2fc61794",
+        "package_id": "glzlaohuai/keyboard-mouse-cleaning",
         "operation": "update",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/netease-cloud-music.json": "c22a43ee32800d43ba55f9e6337a53297a55cfb7d11a992b8de61934fa393e26",
-      "index/v1/index.json": "6af0d2c8b7e4d6cc710944f6d1495671f5dddbb41c632bf4b63fc21fe3e2a69e",
-      "index/v2/index.json": "8640b6801f2b60ac375d9d9d73cca607e76396d5fc953525d952b90e50e4890a",
-      "published/glzlaohuai/netease-cloud-music/manifest.json": "dfc14f91c3143f6e91feee1479b66e0c0566d1da3af4f269de0054bbe53406c1",
-      "published/glzlaohuai/netease-cloud-music/package.notchany.json": "8c089d1184b79db906dc3ea8a87c439f8b8909b797432af4bf00bfdcc072c5a6",
-      "published/glzlaohuai/netease-cloud-music/screenshots/1.png": "716592259ec73b427a28d9cc54498ab545a46ce7e42b60984a9eacab04661c2f",
-      "published/glzlaohuai/netease-cloud-music/screenshots/zh-Hans/1.png": "1a876a08ae61e6204d1280f78588fd3e824e3c665c99f5ffa20cfa72cafcd630",
-      "published/state.json": "9f60c0d03208ac197fbbc312a1f5b322bb2711f2e6eb93ea49b7d08e36c84ea5"
+      "history/v1/glzlaohuai/keyboard-mouse-cleaning.json": "6d92a4173da68501c380d3e0f8dfbb396f825b60d19beeba6316730123fa971a",
+      "index/v1/index.json": "fd6c6d9bb2e6f48f865eeb94378465e2e1e04d1a5538072a20a92f256233e6c6",
+      "index/v2/index.json": "787931ea5d2d3749d0e871533c0cdb09a674fe5ceff7269d857eddd86bdaa02e",
+      "published/glzlaohuai/keyboard-mouse-cleaning/manifest.json": "f105bc5af91d7703d45c853993080583f1f34dbbd21b5d99d290d6212900bab1",
+      "published/glzlaohuai/keyboard-mouse-cleaning/package.notchany.json": "7227460c2c5dc91b5807e14923d41ff33715595f759efa954c8f3156b775f754",
+      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/1.png": "e391070d992f64bf628d630110b6acd8d42de625a7da813740a1b4b3c8eafbc1",
+      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/2.png": "f8e62ed0a1c0965caf15eaa1dd2c87d589502a2ca56a004eb56e37fa966cdbac",
+      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/zh-Hans/1.png": "76e5b601b42f99311859d6e91128531f59a0df6647e8217ca06db382744f206b",
+      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/zh-Hans/2.png": "6a2bebfbd70cbb6cc4ef8b67d07e47affc42d144e8d7385a94c130947f846b0e",
+      "published/state.json": "150636eee25b413dc7337306a48b54d9dbd33f26f46538154f99027e29a72092"
     }
   },
-  "signature": "3ccd400173a523341568635b003cd3d19c9b9070aa3708b43b4aecc1d9a9c0c9"
+  "signature": "94cb3553dee2609575c8b162f81b5cc4d765994ea472ed0800bc265c08ab14cc"
 }
