@@ -1,0 +1,39 @@
+{
+  "history_schema": 1,
+  "package_id": "glzlaohuai/android-devices",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "sha256": "339af762cab4bbdd6d39c757d9520c9c4d0e0d9a857b7828ba93999aacc3e253",
+      "source_commit": "a6dc954e36e0b540f8da4108625327d60195048f",
+      "merged_at": "2026-11-18T07:27:53Z",
+      "published_at": "2026-11-18T07:27:52Z",
+      "pr": {
+        "number": 76,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/76",
+        "title": "新增 android-devices v1.0.0",
+        "body": "",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    }
+  ],
+  "contributors": [
+    {
+      "github_user_id": "2596885",
+      "login": "glzlaohuai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+    }
+  ]
+}

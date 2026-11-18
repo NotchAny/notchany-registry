@@ -1,32 +1,36 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "9b56805f90be3f60c7be664b6b6475a877bb6703",
-    "decision_id": "cfef03ce-6251-4b30-adb4-201923714890",
+    "candidate_commit": "a6dc954e36e0b540f8da4108625327d60195048f",
+    "decision_id": "72bb62b4-d186-44e3-805d-bac77a4b680e",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 74,
-        "head_sha": "8774af70b52ffb6b2dd085bd035dd4ab177367de",
-        "base_sha": "6664c3fd6f71210bf670b1c6c781ea7a2fc61794",
-        "package_id": "glzlaohuai/keyboard-mouse-cleaning",
-        "operation": "update",
+        "pr_number": 76,
+        "head_sha": "6d09d7c2e29a0c1619d072b5e1fab75097c12b5e",
+        "base_sha": "70349ef86ca20b153e7db9d62c4b015eb62e9c20",
+        "package_id": "glzlaohuai/android-devices",
+        "operation": "create",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/keyboard-mouse-cleaning.json": "6d92a4173da68501c380d3e0f8dfbb396f825b60d19beeba6316730123fa971a",
-      "index/v1/index.json": "fd6c6d9bb2e6f48f865eeb94378465e2e1e04d1a5538072a20a92f256233e6c6",
-      "index/v2/index.json": "787931ea5d2d3749d0e871533c0cdb09a674fe5ceff7269d857eddd86bdaa02e",
-      "published/glzlaohuai/keyboard-mouse-cleaning/manifest.json": "f105bc5af91d7703d45c853993080583f1f34dbbd21b5d99d290d6212900bab1",
-      "published/glzlaohuai/keyboard-mouse-cleaning/package.notchany.json": "7227460c2c5dc91b5807e14923d41ff33715595f759efa954c8f3156b775f754",
-      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/1.png": "e391070d992f64bf628d630110b6acd8d42de625a7da813740a1b4b3c8eafbc1",
-      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/2.png": "f8e62ed0a1c0965caf15eaa1dd2c87d589502a2ca56a004eb56e37fa966cdbac",
-      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/zh-Hans/1.png": "76e5b601b42f99311859d6e91128531f59a0df6647e8217ca06db382744f206b",
-      "published/glzlaohuai/keyboard-mouse-cleaning/screenshots/zh-Hans/2.png": "6a2bebfbd70cbb6cc4ef8b67d07e47affc42d144e8d7385a94c130947f846b0e",
-      "published/state.json": "150636eee25b413dc7337306a48b54d9dbd33f26f46538154f99027e29a72092"
+      "history/v1/glzlaohuai/android-devices.json": "7ab9be4b8c9188fadc9349c34d1e505e529732f18d78d77191729edac3f4b839",
+      "index/v1/index.json": "9b872ef5bcbc9ac63dda6708d135eaf7f971905f14886c83e7ba67c6fe0815f6",
+      "index/v2/index.json": "a5dac29c93828f53a8486f71b629c5c9ea977cf3a8d22138ed5fbdf141fb9f1f",
+      "published/glzlaohuai/android-devices/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
+      "published/glzlaohuai/android-devices/icon.png": "33ccbd8e7604499cf6cb0591bb6e961a802288a70741c7e44781e84b6fbc6bab",
+      "published/glzlaohuai/android-devices/manifest.json": "038a787312b53dcde77535275b716921a86765de2f3bbb38d1bd118a5a6990ac",
+      "published/glzlaohuai/android-devices/package.notchany.json": "339af762cab4bbdd6d39c757d9520c9c4d0e0d9a857b7828ba93999aacc3e253",
+      "published/glzlaohuai/android-devices/screenshots/1.png": "07aca10f5faa0118c3d4de84c8f91174693947f0245950f718a60dae23db3f45",
+      "published/glzlaohuai/android-devices/screenshots/2.png": "cd69c2b179ff6b8877e3e1f68d341246a36aaa683f9a4cffb72d73024d649714",
+      "published/glzlaohuai/android-devices/screenshots/3.png": "725f4fc5ccffd9864c2accc306009f9a629c6b471404e855cb8a462ad36fda27",
+      "published/glzlaohuai/android-devices/screenshots/zh-Hans/1.png": "5601a1e21003f9f225cd626b89bebb412a6b6df9377a2b9aad7ccf10366e8633",
+      "published/glzlaohuai/android-devices/screenshots/zh-Hans/2.png": "cf8597c4bed9bf2d73b9a4161d9bbc519889fbcdc4163d1146aacfe8f2628050",
+      "published/glzlaohuai/android-devices/screenshots/zh-Hans/3.png": "01b6ee2e98225da8279772306369a4c6e9e5f39a2368f2c5e8c036adfbdfd468",
+      "published/state.json": "83cffa603c5351af61fe3e432a12bf6c6ced4ad6a5d0bfedb0e3d73af9e50f2b"
     }
   },
-  "signature": "94cb3553dee2609575c8b162f81b5cc4d765994ea472ed0800bc265c08ab14cc"
+  "signature": "4f242412c27cc63672d59978c63ece566405e5609259f7fe392ddac5ff480055"
 }
