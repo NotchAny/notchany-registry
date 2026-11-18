@@ -1,0 +1,25 @@
+{
+  "default_locale" : "en",
+  "descriptions" : {
+    "en" : "Lists every Android device connected over ADB (USB, Wi-Fi or emulator) with its name, Android version, connection type and battery. One click takes a screenshot or starts and stops a screen recording; files are saved to your Mac (your macOS screenshot folder by default) and screenshots are also copied to the clipboard. Recording runs on the phone, survives unplugging, and stops and saves automatically at a configurable limit. Click a device for a detail page with live CPU, GPU, memory and battery stats plus full specs: SoC and core clusters, GPU and graphics APIs, RAM and storage, display resolution, size, refresh rate and HDR, battery capacity and health, build, kernel and more. Requires adb (Android platform-tools).",
+    "zh-Hans" : "列出通过 ADB 连接的所有 Android 设备（USB、Wi-Fi 或模拟器），显示名称、Android 版本、连接方式和电量。一键截图或开始\/停止录屏，文件保存到 Mac（默认跟随 macOS 截图位置），截图同时复制到剪贴板。录屏在手机端运行，拔线不中断，到达可设置的最长时长后自动停止并保存。点击设备进入详情页：实时查看 CPU、GPU、内存与电池状态，以及 SoC 与核心簇、GPU 与图形 API、内存与存储、屏幕分辨率\/尺寸\/刷新率\/HDR、电池容量与健康度、系统版本与内核等完整规格。需要安装 adb（Android platform-tools）。"
+  },
+  "license" : "MIT",
+  "manifest_version" : 1,
+  "names" : {
+    "en" : "Android Devices",
+    "zh-Hans" : "Android 设备"
+  },
+  "summaries" : {
+    "en" : "ADB device panel for Android: screenshots, screen recording and hardware specs",
+    "zh-Hans" : "列出已连接的 Android 设备：一键截图、录屏，查看 CPU、GPU、内存等详细硬件信息"
+  },
+  "tags" : [
+    "android",
+    "adb",
+    "developer-tools",
+    "screen-recording",
+    "device-info"
+  ],
+  "version" : "1.0.0"
+}
