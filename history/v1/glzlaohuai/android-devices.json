@@ -3,6 +3,32 @@
   "package_id": "glzlaohuai/android-devices",
   "releases": [
     {
+      "version": "1.1.0",
+      "sha256": "eadddf144e796415d570fde9828bdd2a40f1f857f07cdc8eedb8f16a70f1ee02",
+      "source_commit": "30ace3faf7ee387286b48ebc652f4fb194c5febb",
+      "merged_at": "2026-11-19T09:59:02Z",
+      "published_at": "2026-11-19T09:59:01Z",
+      "pr": {
+        "number": 78,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/78",
+        "title": "更新 android-devices v1.1.0：Mac ⇄ 手机剪贴板互传",
+        "body": "## 变更\n- 设备行新增剪贴板按钮，打开面板：输入文本一键写入手机剪贴板（⌘↩），或读取手机剪贴板到刘海并同时复制到 Mac 剪贴板。\n- Android 没有读写剪贴板的 shell 命令：脚本内嵌一个约 5 KB 的 dex（`NotchClip`，源码见下），首次使用时按内容哈希命名推送到 `/data/local/tmp`，以 shell 身份经 `app_process` 反射调用系统 `IClipboard`（与 scrcpy 同一思路），手机上不安装任何 App。\n- Android 14+ 锁屏期间系统一律拒绝读取剪贴板，面板会明确提示「已锁屏 · 解锁后才能读取」，不误报为空。\n- 小组件声明 `wants_text_input`（输入框需要键盘）。\n- 已在 Xiaomi 14（HyperOS 3 / Android 16）上实测写入与锁屏检测。\n\n<details><summary>NotchClip.java（内嵌 dex 的源码，d8 --release --min-api 21 编译）</summary>\n\n```java\nimport android.content.ClipData;\nimport android.os.IBinder;\nimport android.util.Base64;\nimport java.io.ByteArrayOutputStream;\nimport java.io.InputStream;\nimport java.lang.reflect.InvocationTargetException;\nimport java.lang.reflect.Method;\nimport java.nio.charset.StandardCharsets;\n\n// 以 shell 身份经 app_process 读写系统剪贴板（参数签名随系统版本变化，按类型反射填充）\npublic final class NotchClip {\n    private static final String PKG = \"com.android.shell\";\n\n    public static void main(String[] args) {\n        try {\n            Object cb = service(\"clipboard\", \"android.content.IClipboard\");\n            String cmd = args.length > 0 ? args[0] : \"\";\n            if (cmd.equals(\"get\")) {\n                ClipData clip = (ClipData) call(cb, \"getPrimaryClip\", null);\n                if (clip == null || clip.getItemCount() == 0) {\n                    // Android 14+ 锁屏期间一律读不到剪贴板，单独报出来以免误判为空\n                    System.out.println(locked() ? \"LOCKED\" : \"EMPTY\");\n                    return;\n                }\n                StringBuilder sb = new StringBuilder();\n                for (int i = 0; i < clip.getItemCount(); i++) {\n                    CharSequence text = clip.getItemAt(i).getText();\n                    if (text == null) text = clip.getItemAt(i).getHtmlText();\n                    if (text == null) continue;\n                    if (sb.length() > 0) sb.append('\\n');\n                    sb.append(text);\n                }\n                System.out.println(sb.length() == 0 ? \"NONTEXT\"\n                        : \"OK \" + Base64.encodeToString(sb.toString().getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP));\n            } else if (cmd.equals(\"set\")) {\n                ByteArrayOutputStream buf = new ByteArrayOutputStream();\n                InputStream in = System.in;\n                byte[] chunk = new byte[8192];\n                for (int n; (n = in.read(chunk)) > 0; ) buf.write(chunk, 0, n);\n                String b64 = new String(buf.toByteArray(), StandardCharsets.US_ASCII).trim();\n                String text = new String(Base64.decode(b64, Base64.DEFAULT), StandardCharsets.UTF_8);\n                call(cb, \"setPrimaryClip\", ClipData.newPlainText(\"NotchAny\", text));\n                System.out.println(\"OK\");\n            } else {\n                System.out.println(\"ERR usage: get | set (base64 on stdin)\");\n                System.exit(2);\n            }\n        } catch (Throwable e) {\n            while (e instanceof InvocationTargetException && e.getCause() != null) e = e.getCause();\n            System.out.println(\"ERR \" + e.getClass().getSimpleName() + \": \" + e.getMessage());\n            System.exit(1);\n        }\n    }\n\n    private static Object service(String name, String iface) throws Exception {\n        Object binder = Class.forName(\"android.os.ServiceManager\").getMethod(\"getService\", String.class).invoke(null, name);\n        return Class.forName(iface + \"$Stub\").getMethod(\"asInterface\", IBinder.class).invoke(null, binder);\n    }\n\n    private static boolean locked() {\n        try {\n            return Boolean.TRUE.equals(call(service(\"trust\", \"android.app.trust.ITrustManager\"), \"isDeviceLocked\", null));\n        } catch (Throwable e) {\n            return false;\n        }\n    }\n\n    private static Object call(Object cb, String name, ClipData clip) throws Exception {\n        for (Method m : cb.getClass().getMethods()) {\n            if (!m.getName().equals(name)) continue;\n            Class<?>[] types = m.getParameterTypes();\n            Object[] args = new Object[types.length];\n            boolean pkgSet = false;\n            for (int i = 0; i < types.length; i++) {\n                if (types[i] == ClipData.class) args[i] = clip;\n                else if (types[i] == String.class) { args[i] = pkgSet ? null : PKG; pkgSet = true; }\n                else if (types[i] == int.class) args[i] = 0;  // userId / deviceId 取默认 0\n                else if (types[i] == boolean.class) args[i] = true;\n                else throw new NoSuchMethodException(m.toString());\n            }\n            return m.invoke(cb, args);\n        }\n        throw new NoSuchMethodException(name);\n    }\n}\n```\n</details>\n",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    },
+    {
       "version": "1.0.0",
       "sha256": "339af762cab4bbdd6d39c757d9520c9c4d0e0d9a857b7828ba93999aacc3e253",
       "source_commit": "a6dc954e36e0b540f8da4108625327d60195048f",

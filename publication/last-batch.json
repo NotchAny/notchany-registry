@@ -1,36 +1,32 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "a6dc954e36e0b540f8da4108625327d60195048f",
-    "decision_id": "72bb62b4-d186-44e3-805d-bac77a4b680e",
+    "candidate_commit": "30ace3faf7ee387286b48ebc652f4fb194c5febb",
+    "decision_id": "e420c2ec-7dd8-47aa-8926-41f9861f05dc",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 76,
-        "head_sha": "6d09d7c2e29a0c1619d072b5e1fab75097c12b5e",
-        "base_sha": "70349ef86ca20b153e7db9d62c4b015eb62e9c20",
+        "pr_number": 78,
+        "head_sha": "40e07fd059eb55d6fe102c737918f0ae0ed0f4fb",
+        "base_sha": "8228fbe0b387c52dcbf60d434033332a3bbcbd08",
         "package_id": "glzlaohuai/android-devices",
-        "operation": "create",
+        "operation": "update",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/android-devices.json": "7ab9be4b8c9188fadc9349c34d1e505e529732f18d78d77191729edac3f4b839",
-      "index/v1/index.json": "9b872ef5bcbc9ac63dda6708d135eaf7f971905f14886c83e7ba67c6fe0815f6",
-      "index/v2/index.json": "a5dac29c93828f53a8486f71b629c5c9ea977cf3a8d22138ed5fbdf141fb9f1f",
-      "published/glzlaohuai/android-devices/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
-      "published/glzlaohuai/android-devices/icon.png": "33ccbd8e7604499cf6cb0591bb6e961a802288a70741c7e44781e84b6fbc6bab",
-      "published/glzlaohuai/android-devices/manifest.json": "038a787312b53dcde77535275b716921a86765de2f3bbb38d1bd118a5a6990ac",
-      "published/glzlaohuai/android-devices/package.notchany.json": "339af762cab4bbdd6d39c757d9520c9c4d0e0d9a857b7828ba93999aacc3e253",
-      "published/glzlaohuai/android-devices/screenshots/1.png": "07aca10f5faa0118c3d4de84c8f91174693947f0245950f718a60dae23db3f45",
-      "published/glzlaohuai/android-devices/screenshots/2.png": "cd69c2b179ff6b8877e3e1f68d341246a36aaa683f9a4cffb72d73024d649714",
-      "published/glzlaohuai/android-devices/screenshots/3.png": "725f4fc5ccffd9864c2accc306009f9a629c6b471404e855cb8a462ad36fda27",
-      "published/glzlaohuai/android-devices/screenshots/zh-Hans/1.png": "5601a1e21003f9f225cd626b89bebb412a6b6df9377a2b9aad7ccf10366e8633",
-      "published/glzlaohuai/android-devices/screenshots/zh-Hans/2.png": "cf8597c4bed9bf2d73b9a4161d9bbc519889fbcdc4163d1146aacfe8f2628050",
-      "published/glzlaohuai/android-devices/screenshots/zh-Hans/3.png": "01b6ee2e98225da8279772306369a4c6e9e5f39a2368f2c5e8c036adfbdfd468",
-      "published/state.json": "83cffa603c5351af61fe3e432a12bf6c6ced4ad6a5d0bfedb0e3d73af9e50f2b"
+      "history/v1/glzlaohuai/android-devices.json": "26378d101e7e1599b11088af4dab199d6dfd88f9f98948f545c7a927f32371ef",
+      "index/v1/index.json": "0e5129dec2e372cec6abe71ad40f3657a6e6adf92c51da5474941de42e26bd46",
+      "index/v2/index.json": "e159f7f669bbee9fa4f0530f2d2d43e07f686ab9c0bb70bf4f1d7e6c60004697",
+      "published/glzlaohuai/android-devices/manifest.json": "5269460949b2714d7870548f00b6531632af2552e8e263e4474d7382fdcb4064",
+      "published/glzlaohuai/android-devices/package.notchany.json": "eadddf144e796415d570fde9828bdd2a40f1f857f07cdc8eedb8f16a70f1ee02",
+      "published/glzlaohuai/android-devices/screenshots/1.png": "747ecc92df3de14c0efd68bad9d0ad8deb6c73913d6fcb5186af39da8182c94b",
+      "published/glzlaohuai/android-devices/screenshots/2.png": "115cb105c6bd2e242cbc9dafd561033ebf0af1471c2a2115362cbbc8b62a54a4",
+      "published/glzlaohuai/android-devices/screenshots/3.png": "cd69c2b179ff6b8877e3e1f68d341246a36aaa683f9a4cffb72d73024d649714",
+      "published/glzlaohuai/android-devices/screenshots/4.png": "725f4fc5ccffd9864c2accc306009f9a629c6b471404e855cb8a462ad36fda27",
+      "published/state.json": "348be023886ce3ec9bfb977e7adef183e787bf60e66a148863236c50c82da801"
     }
   },
-  "signature": "4f242412c27cc63672d59978c63ece566405e5609259f7fe392ddac5ff480055"
+  "signature": "6d279937511f9e69ce8c71c12adbad59a6d36817772807d9fcf92b1fcd5c0e68"
 }
