@@ -3,6 +3,32 @@
   "package_id": "glzlaohuai/android-devices",
   "releases": [
     {
+      "version": "1.2.0",
+      "sha256": "ad0a6587fad1faae7c41bfa13d454594fb5133b0c2a4b095a39064d9edf33664",
+      "source_commit": "5309c7f81ad2ba4255617697fdb723a55f2f2245",
+      "merged_at": "2026-11-20T09:20:39Z",
+      "published_at": "2026-11-20T09:20:39Z",
+      "pr": {
+        "number": 80,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/80",
+        "title": "更新 android-devices v1.2.0：支持 USB 连接的 iPhone / iPad",
+        "body": "Add support for USB-connected iPhone and iPad alongside Android devices.\n\n- iOS devices appear in the same list (name, model, iOS/iPadOS version, battery) via macOS's built-in usbmuxd; no libimobiledevice or extra tools needed. Untrusted devices show a \"tap Trust\" hint\n- iOS detail page: live battery / power / battery health / storage tiles plus chip, cores, RAM, storage, resolution, battery capacity & cycles, charger, OS build, serial and UDID\n- iOS screenshot and screen recording (.mov with device audio) through CoreMediaIO, same as QuickTime. A small Swift helper is compiled once with the Xcode command line tools and asks for camera access under its own name (\"NotchAny iOS Screen\")\n- adb missing or stopped no longer blanks the widget; iOS devices still show, with a start-adb button at the bottom\n- New icon; renamed to \"Android & iOS Devices\"\n- Clipboard sync stays Android-only (iOS has no host-side clipboard access)",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    },
+    {
       "version": "1.1.0",
       "sha256": "eadddf144e796415d570fde9828bdd2a40f1f857f07cdc8eedb8f16a70f1ee02",
       "source_commit": "30ace3faf7ee387286b48ebc652f4fb194c5febb",
