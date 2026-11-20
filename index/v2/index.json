@@ -1,25 +1,25 @@
 {
   "index_schema": 2,
-  "generated_at": "2026-11-19T09:59:01Z",
+  "generated_at": "2026-11-20T09:20:39Z",
   "packages": [
     {
       "names": {
-        "en": "Android Devices",
-        "zh-Hans": "Android 设备"
+        "en": "Android & iOS Devices",
+        "zh-Hans": "Android / iOS 设备"
       },
       "summaries": {
-        "en": "ADB device panel for Android: screenshots, recording, clipboard sync and specs",
-        "zh-Hans": "列出已连接的 Android 设备：一键截图、录屏、剪贴板互传，查看 CPU、GPU、内存等详细硬件信息"
+        "en": "Android & iOS device panel: screenshots, recording, clipboard sync and specs",
+        "zh-Hans": "列出已连接的 Android 与 iOS 设备：一键截图、录屏、剪贴板互传，查看硬件详情与电池健康"
       },
       "descriptions": {
-        "en": "Lists every Android device connected over ADB (USB, Wi-Fi or emulator) with its name, Android version, connection type and battery. One click takes a screenshot or starts and stops a screen recording; files are saved to your Mac (your macOS screenshot folder by default) and screenshots are also copied to the clipboard. The clipboard button opens a text box: type or paste text and send it to the phone's clipboard, or pull the phone's clipboard into the notch and onto your Mac's clipboard. Nothing is installed on the phone; Android doesn't allow reading the clipboard while the phone is locked. Recording runs on the phone, survives unplugging, and stops and saves automatically at a configurable limit. Click a device for a detail page with live CPU, GPU, memory and battery stats plus full specs: SoC and core clusters, GPU and graphics APIs, RAM and storage, display resolution, size, refresh rate and HDR, battery capacity and health, build, kernel and more. Requires adb (Android platform-tools).",
-        "zh-Hans": "列出通过 ADB 连接的所有 Android 设备（USB、Wi-Fi 或模拟器），显示名称、Android 版本、连接方式和电量。一键截图或开始/停止录屏，文件保存到 Mac（默认跟随 macOS 截图位置），截图同时复制到剪贴板。剪贴板按钮打开输入框：输入或粘贴文本一键写入手机剪贴板，也可以把手机剪贴板读到刘海并复制到 Mac；无需在手机上安装 App，手机锁屏时系统不允许读取剪贴板。录屏在手机端运行，拔线不中断，到达可设置的最长时长后自动停止并保存。点击设备进入详情页：实时查看 CPU、GPU、内存与电池状态，以及 SoC 与核心簇、GPU 与图形 API、内存与存储、屏幕分辨率/尺寸/刷新率/HDR、电池容量与健康度、系统版本与内核等完整规格。需要安装 adb（Android platform-tools）。"
+        "en": "Lists Android devices connected over ADB (USB, Wi-Fi or emulator) and iPhones/iPads connected over USB, with name, OS version, connection type and battery. One click takes a screenshot or starts and stops a screen recording; files are saved to your Mac (your macOS screenshot folder by default) and screenshots are also copied to the clipboard. Android: the clipboard button sends text to the phone's clipboard or pulls the phone's clipboard onto your Mac, with nothing installed on the phone; recording runs on the phone, survives unplugging, and stops and saves automatically at a configurable limit. iPhone/iPad: screenshots and recordings (with device audio) are captured like QuickTime does — the first use compiles a small helper with the Xcode command line tools and asks for camera access, because macOS treats the iOS screen as a camera. Click a device for a detail page: Android shows live CPU, GPU, memory and battery stats plus full specs (SoC and core clusters, GPU and graphics APIs, RAM and storage, display, battery health, build, kernel); iOS shows live battery, power, battery health and storage plus chip, RAM, storage, resolution, battery capacity and cycles, OS build, serial and UDID. Android needs adb (Android platform-tools); iOS devices just need to trust this Mac.",
+        "zh-Hans": "列出通过 ADB 连接的 Android 设备（USB、Wi-Fi 或模拟器）和通过 USB 连接的 iPhone / iPad，显示名称、系统版本、连接方式和电量。一键截图或开始/停止录屏，文件保存到 Mac（默认跟随 macOS 截图位置），截图同时复制到剪贴板。Android：剪贴板按钮可把文本写入手机剪贴板，或把手机剪贴板读到 Mac，无需在手机上安装 App；录屏在手机端运行，拔线不中断，到达可设置的最长时长后自动停止并保存。iPhone / iPad：截图与录屏（含手机声音）与 QuickTime 同一通道，首次使用会用 Xcode 命令行工具编译一个小助手并请求摄像头权限（macOS 把 iOS 屏幕当作摄像头管理）。点击设备进入详情页：Android 实时查看 CPU、GPU、内存与电池，以及 SoC 与核心簇、GPU 与图形 API、内存与存储、屏幕、电池健康、系统版本与内核等完整规格；iOS 实时查看电量、功率、电池健康与存储，以及芯片、内存、存储、分辨率、电池容量与循环次数、系统版本、序列号和 UDID。Android 需要 adb（Android platform-tools）；iOS 设备只需信任这台 Mac。"
       },
       "default_locale": "en",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "tags": [
         "android",
-        "adb",
+        "ios",
         "developer-tools",
         "screen-recording",
         "device-info"
@@ -33,8 +33,8 @@
       "action_kind": "shell",
       "input_kind": "none",
       "envelope_version": 8,
-      "sha256": "eadddf144e796415d570fde9828bdd2a40f1f857f07cdc8eedb8f16a70f1ee02",
-      "size_bytes": 93934,
+      "sha256": "ad0a6587fad1faae7c41bfa13d454594fb5133b0c2a4b095a39064d9edf33664",
+      "size_bytes": 491637,
       "requires": [
         "adb"
       ],
@@ -56,7 +56,7 @@
         ]
       },
       "published_at": "2026-11-18T07:27:52Z",
-      "updated_at": "2026-11-19T09:59:01Z",
+      "updated_at": "2026-11-20T09:20:39Z",
       "history_path": "history/v1/glzlaohuai/android-devices.json"
     },
     {
