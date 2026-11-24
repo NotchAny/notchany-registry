@@ -1,32 +1,32 @@
 {
   "payload": {
     "schema": 1,
-    "candidate_commit": "5309c7f81ad2ba4255617697fdb723a55f2f2245",
-    "decision_id": "e1f5f97b-2d78-4330-a8c5-b07746359035",
+    "candidate_commit": "7edce4e88472cb8e9238b1c6af391b51b5bd23e6",
+    "decision_id": "d11b0f99-e263-42e5-9af0-953ef56daa6c",
     "requests": [
       {
         "repository": "NotchAny/notchany-registry",
-        "pr_number": 80,
-        "head_sha": "8422b485d282b5a8cd19774f36c2072b58d93231",
-        "base_sha": "42de97bd5ec2b2eea1dc1a58b2804ed91cc58cb5",
-        "package_id": "glzlaohuai/android-devices",
-        "operation": "update",
+        "pr_number": 82,
+        "head_sha": "4e50d55b009cc582106f7fc462f0b635a6631e11",
+        "base_sha": "544fb33bf144d36476c66730b8f0f7cd283b35c3",
+        "package_id": "glzlaohuai/json-tool",
+        "operation": "create",
         "actor_github_user_id": "2596885",
         "reviews": []
       }
     ],
     "artifacts": {
-      "history/v1/glzlaohuai/android-devices.json": "260d022e9efed2a8276944200a6c088bf6bfccb6901a63654e3348abd5f46d50",
-      "index/v1/index.json": "af4708e40a1dfdb4eb89e9b46ba7d520bc173920ae0177af59bd079ae16e9a97",
-      "index/v2/index.json": "fee01dfa0d15c9e4a9d1f86a81a659c9d87960e41ece2d01c02e8f2508f014b7",
-      "published/glzlaohuai/android-devices/icon.png": "285415be3c632910453c7db6066d035a2d8b5ebc92a5bcfe0a7192a354b5f239",
-      "published/glzlaohuai/android-devices/manifest.json": "a75c26830d9fdd7c0f0afe87ef646e47d3d63afe1aaf89020692105d7fa8964a",
-      "published/glzlaohuai/android-devices/package.notchany.json": "ad0a6587fad1faae7c41bfa13d454594fb5133b0c2a4b095a39064d9edf33664",
-      "published/glzlaohuai/android-devices/screenshots/1.png": "27ec932605b07cf2da80ae1d58b988e96e528fc262ce5e217533c331f7182d64",
-      "published/glzlaohuai/android-devices/screenshots/2.png": "29adffa5d79a41caa83ea9e80b3ae08e11b452c6178e6ceedde4a34fe19ea4ef",
-      "published/glzlaohuai/android-devices/screenshots/4.png": "115cb105c6bd2e242cbc9dafd561033ebf0af1471c2a2115362cbbc8b62a54a4",
-      "published/state.json": "18586a37fec692ec2f584b9ecca482042e571de32f8c10d96132a8086c01bdfd"
+      "history/v1/glzlaohuai/json-tool.json": "a2413f0b7b6f71e11c5ca4a18a00cd084618adbdfdfaec9fb63ba4f7ad5bd84a",
+      "index/v1/index.json": "417944f0ddb9e3de196fa2dc1ff620769fda1fc8e5b45d8fb61fa4a9ed330e36",
+      "index/v2/index.json": "ab151cebd4fb29959c8c39105400f439d830a011e795c5e251de09f7e25d4b6b",
+      "published/glzlaohuai/json-tool/LICENSE": "8c810df485d0c00f7c5c421d056d158972314e2de4be5a67566bbd77be7d7617",
+      "published/glzlaohuai/json-tool/icon.png": "89b977d449b36ec603566835977324cacc1fb7c0c048b1f08382b4ed64bff0b6",
+      "published/glzlaohuai/json-tool/manifest.json": "4ec69368e3955257f474c9f81453a793dd14e9f45dcdd19049fd3ddcf573c6b7",
+      "published/glzlaohuai/json-tool/package.notchany.json": "c3a27df6f9599e13accfd5e4931892977524a12305db13e88f65396b4b77dcd9",
+      "published/glzlaohuai/json-tool/screenshots/1.jpg": "f257d0b855f090b5b454ffc3edcfe8710db10aaf1479ef00b74e28222cfe7c79",
+      "published/glzlaohuai/json-tool/screenshots/zh-Hans/1.jpg": "114f35af2e081cdd4f4ad7e2214f6d4b02c14c3f82cb98fcdaf800edb0ec7e3b",
+      "published/state.json": "8ac6af9d8872ac00b694c84a36b49cba3775191ab1e10fbe021de0ce3a367602"
     }
   },
-  "signature": "7644e79590f811244bcdadcc781eb620c59db9dd2207383011294ac420307917"
+  "signature": "fa165dbc8e772686661b30eafea2a1c7b75208a3e858f443bb65ffbf8bd66dd4"
 }
