@@ -1,0 +1,39 @@
+{
+  "history_schema": 1,
+  "package_id": "glzlaohuai/json-tool",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "sha256": "c3a27df6f9599e13accfd5e4931892977524a12305db13e88f65396b4b77dcd9",
+      "source_commit": "7edce4e88472cb8e9238b1c6af391b51b5bd23e6",
+      "merged_at": "2026-11-24T11:29:29Z",
+      "published_at": "2026-11-24T11:29:28Z",
+      "pr": {
+        "number": 82,
+        "url": "https://github.com/NotchAny/notchany-registry/pull/82",
+        "title": "Add glzlaohuai/json-tool 1.0.0",
+        "body": "Native JSON formatter / tree viewer / editor opened from a tray button. Reads the clipboard, compiles a small AppKit app locally on first use (Swift source embedded in the action script, ad-hoc signed), English + Simplified Chinese.",
+        "author": {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      },
+      "contributors": [
+        {
+          "github_user_id": "2596885",
+          "login": "glzlaohuai",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+        }
+      ],
+      "approved_by": []
+    }
+  ],
+  "contributors": [
+    {
+      "github_user_id": "2596885",
+      "login": "glzlaohuai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2596885?v=4"
+    }
+  ]
+}

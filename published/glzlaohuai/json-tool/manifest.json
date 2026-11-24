@@ -1,0 +1,25 @@
+{
+  "default_locale" : "en",
+  "descriptions" : {
+    "en" : "A tray button that opens a native macOS window (AppKit, compiled locally on first click) with the JSON currently on your clipboard. Left pane: editor with line numbers, syntax colors and live validation that points at the exact line\/column of an error. Right pane: collapsible tree, double-click a row to copy its value, selection shows the JSON path. Toolbar: read clipboard, format, minify, indent 2\/4\/Tab, sort keys, copy all, clear. Lenient parsing extracts JSON embedded in logs, drops trailing commas and unwraps escaped JSON strings; key order, big integers and decimals are preserved. Follows system light\/dark mode; UI in English or Simplified Chinese following the NotchAny interface language. Requires Xcode Command Line Tools for the one-time compile.",
+    "zh-Hans" : "托盘按钮，点击后把剪贴板里的 JSON 载入一个原生 macOS 窗口（AppKit，首次点击时本机编译一次）。左侧编辑器带行号、语法着色和实时校验，出错时精确指出行列；右侧树形视图可逐层折叠，双击复制值，选中行显示 JSON 路径。工具栏：读取剪贴板、格式化、压缩、缩进 2\/4\/Tab、键名排序、复制全部、清空。容错解析：自动提取日志中夹带的 JSON、去掉多余尾逗号、解开转义过的 JSON 字符串；保留原始键顺序，大整数与小数不丢精度。跟随系统深浅色，界面语言随 NotchAny 设置切换中英文。一次性编译需要 Xcode Command Line Tools。"
+  },
+  "license" : "MIT",
+  "manifest_version" : 1,
+  "names" : {
+    "en" : "JSON Tool",
+    "zh-Hans" : "JSON 工具"
+  },
+  "summaries" : {
+    "en" : "Read clipboard JSON into a native window to format, browse, edit and copy it",
+    "zh-Hans" : "点击读取剪贴板 JSON，在原生窗口中格式化、树形查看、编辑与复制"
+  },
+  "tags" : [
+    "json",
+    "formatter",
+    "viewer",
+    "editor",
+    "clipboard"
+  ],
+  "version" : "1.0.0"
+}
